@@ -1,12 +1,42 @@
-<div class="flex justify-content-center align-items-center h-screen">
-  <p-card>
-    <div class="brandName flex justify-content-start mt-auto">
+<!-- <div class="flex justify-content-center align-items-center h-screen">
+  <p>
+    <div class="brandName">
       <h1>CAD-UTILS</h1>
     </div>
-    <div class="cbiInfo">
-      <div class="icon">
+    <div class="cbiInfo flex flex-wrap">
         <i class="fa-solid fa-chevron-right"></i>
-      </div>
+        <span>
+          This is related to info
+        </span>
     </div>
-  </p-card>
+  </p>
+</div> -->
+
+<div class="flex justify-content-center align-items-center h-screen">
+  
+<p-card>
+  <p-header class="flex justify-content-center">
+    <h1>CAD-UTILS</h1>
+  </p-header>
+  <div class="cbiInfo flex flex-wrap" style="margin-top: -30px;">
+    <i class="fa-solid fa-chevron-right  bg-green-500 p-2 text-white"></i>
+    <span class="p-2 bg-cyan-500 text-white">
+      Type your Username and Password
+    </span>
+</div>
+<form class="cib_login flex flex-column">
+  
+<span class="p-float-label flex  w-full mt-5">
+  <input pInputText id="username" class="flex w-full" />
+  <label htmlFor="username" class="flex w-full text-lg mb-1">Username</label>
+</span>
+<span class="p-float-label flex w-full mt-5">
+  <p-password  [toggleMask]="true" [feedback]="false" class="flex w-full" ></p-password>
+  <label for="password" class="flex w-full text-lg mb-1">Password</label>
+</span>
+
+<button pButton pRipple label="Submit" class="p-button mt-3"></button>
+</form>
+
+</p-card>
 </div>
