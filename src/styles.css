@@ -4,10 +4,13 @@
 @import "primeflex/primeflex.css";
 @import "@fortawesome/fontawesome-free/css/all.min.css";
 
-.p-password{
-    width: 100% !important;
+* {
+  margin: 0;
+  padding: 0;
 }
-.p-inputtext
-{
-    width: 100% !important;
+.p-password {
+  width: 100% !important;
+}
+.p-inputtext {
+  width: 100% !important;
 }

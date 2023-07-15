@@ -1,28 +1,59 @@
 <div class="flex justify-content-center align-items-center h-screen">
-  
-<p-card>
-  <p-header class="flex justify-content-center">
-    <h1 class="text-primary">CAD-UTILS</h1>
-  </p-header>
-  <div class="cbiInfo flex flex-wrap" style="margin-top: -30px;">
-    <i class="fa-solid fa-chevron-right  bg-green-500 p-2 text-white"></i>
-    <span class="p-2 bg-cyan-500 text-white">
-      Type your Username and Password
-    </span>
-</div>
-<form class="cib_login flex flex-column" #loginForm="ngForm">
-<div *ngIf="isCredentialsFailed" class="text-red-500 mt-3" >Invalid credentials</div>
-<span class="p-float-label flex  w-full mt-5">
-  <input pInputText id="username" [(ngModel)]="username" #usernameInput="ngModel"  [ngModelOptions]="{standalone: true}" [ngClass]="{'ng-invalid':(usernameInput.touched || usernameInput.dirty),'ng-invalid ng-dirty':isCredentialsFailed}" required >
-  <label htmlFor="username" class="flex w-full text-lg mb-1">Username</label>
-</span>
-<span class="p-float-label flex w-full mt-5">
-  <p-password  [toggleMask]="true" [feedback]="false" [(ngModel)]="password" #passwordInput="ngModel" [ngModelOptions]="{standalone: true}" class="flex w-full" [ngClass]="{'ng-invalid': passwordInput.touched || passwordInput.dirty,'ng-invalid  ng-dirty':isCredentialsFailed}" required ></p-password>
-  <label for="password" class="flex w-full text-lg mb-1">Password</label>
-</span>
+  <p-card>
+    <p-header class="flex justify-content-center m-2 p-2">
+      <h1 class="text-primary m-2">CAD-UTILS</h1>
+    </p-header>
+    <div class="cbiInfo flex flex-wrap" style="margin-top: -30px">
+      <i class="fa-solid fa-chevron-right bg-green-500 p-2 text-white"></i>
+      <span class="p-2 bg-cyan-500 text-white">
+        Type your Username and Password
+      </span>
+    </div>
+    <form class="cib_login flex flex-column" #loginForm="ngForm">
+      <div *ngIf="isCredentialsFailed" class="text-red-500 mt-3">
+        Invalid credentials
+      </div>
+      <span class="p-float-label flex w-full mt-5">
+        <input
+          pInputText
+          id="username"
+          [(ngModel)]="username"
+          #usernameInput="ngModel"
+          [ngModelOptions]="{ standalone: true }"
+          [ngClass]="{
+            'ng-invalid': usernameInput.touched || usernameInput.dirty,
+            'ng-invalid ng-dirty': isCredentialsFailed
+          }"
+          required
+        />
+        <label htmlFor="username" class="flex w-full text-lg mb-1"
+          >Username</label
+        >
+      </span>
+      <span class="p-float-label flex w-full mt-5">
+        <p-password
+          [toggleMask]="true"
+          [feedback]="false"
+          [(ngModel)]="password"
+          #passwordInput="ngModel"
+          [ngModelOptions]="{ standalone: true }"
+          class="flex w-full"
+          [ngClass]="{
+            'ng-invalid': passwordInput.touched || passwordInput.dirty,
+            'ng-invalid  ng-dirty': isCredentialsFailed
+          }"
+          required
+        ></p-password>
+        <label for="password" class="flex w-full text-lg mb-1">Password</label>
+      </span>
 
-<button pButton pRipple label="Submit" (click)="onLogin()" class="p-button mt-3"></button>
-</form>
-
-</p-card>
+      <button
+        pButton
+        pRipple
+        label="Submit"
+        (click)="onLogin()"
+        class="p-button mt-3"
+      ></button>
+    </form>
+  </p-card>
 </div>
