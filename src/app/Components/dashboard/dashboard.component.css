@@ -1,14 +1,15 @@
+
+
 /* Left Panel */
 .leftSide_panel {
-  height: 9.5vh;
-  position: absolute;
+  height:4rem;
   display: flex;
-  left: 150px;
+  flex: 4;
   padding: 5px;
   border: none;
   background: transparent;
   font-size: 24px;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 .semi-closed {
@@ -16,7 +17,7 @@
 }
 .leftSidepanel {
   position: fixed;
-  top: 9.7vh;
+  top: 4rem;
   width: 250px;
   height: 100vh;
   background-color: white;
@@ -27,11 +28,11 @@
 
 /* Right Panel */
 .rightSide_panel {
-  position: absolute;
-  height: 9.5vh;
+  height: 4rem;
   right: 40px;
   display: flex;
-  justify-content: center;
+  flex: 1;
+  justify-content: flex-start;
   align-items: center;
   padding: 5px;
   border: none;
@@ -41,6 +42,7 @@
 /* Brand Name*/
 .brandName {
   display: flex;
+  flex: 1;
   justify-content: center;
   align-items: center;
 }

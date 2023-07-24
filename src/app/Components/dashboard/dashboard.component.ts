@@ -9,7 +9,6 @@ export class DashboardComponent {
   isSidebarSemiClosed = false;
 
   toggleSidebar() {
-    console.log('I am clicked!');
     this.isSidebarSemiClosed = !this.isSidebarSemiClosed;
   }
   // Right Panel
