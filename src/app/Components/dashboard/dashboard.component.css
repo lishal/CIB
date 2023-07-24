@@ -39,13 +39,16 @@
 }
 
 /* Right Panel */
+.rightSide{
+	display: flex;
+	justify-content: flex-end;
+	flex: 1;
+}
 .rightSide_panel {
   position: relative;
   height: 4rem;
   right: 4rem;
   display: flex;
-  flex: 3;
-  justify-content: flex-end;
   align-items: center;
   padding: 5px;
   border: none;

@@ -14,11 +14,13 @@
   
 
   <!-- Right panel -->
-
-  <button class="rightSide_panel" (click)="showRightPanel()">
-    <i class="fa-solid fa-arrow-left"></i>
-  </button>
-  <p-sidebar [(visible)]="displayRightPanel" position="right">
-    Right side content
-  </p-sidebar>
+  <div class="rightSide">
+    <button class="rightSide_panel" (click)="showRightPanel()">
+      <i class="fa-solid fa-arrow-left"></i>
+    </button>
+    <p-sidebar [(visible)]="displayRightPanel" position="right">
+      Right side content
+    </p-sidebar>
+  </div>
+  
 </div>
