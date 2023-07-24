@@ -18,12 +18,13 @@
   height:4rem;
   display: flex;
   padding: 5px;
-  margin-left: 10px;
+  margin-left: 5vw;
   border: none;
   background: transparent;
   font-size: 24px;
   justify-content: flex-end;
   align-items: center;
+  color:white;
 }
 .semi-closed {
   width: 100px !important;
@@ -53,4 +54,5 @@
   border: none;
   background: transparent;
   font-size: 20px;
+  color: white;
 }

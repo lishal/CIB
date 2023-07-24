@@ -21,21 +21,4 @@ export class DashboardComponent {
   hideRightPanel() {
     this.displayRightPanel = false;
   }
-  menuItems = [
-    {
-      label: 'Home',
-      icon: 'pi pi-home',
-      routerLink: ['/home'],
-    },
-    {
-      label: 'About',
-      icon: 'pi pi-info',
-      routerLink: ['/about'],
-    },
-    {
-      label: 'Contact',
-      icon: 'pi pi-envelope',
-      routerLink: ['/contact'],
-    },
-  ];
 }
