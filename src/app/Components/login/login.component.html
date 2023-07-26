@@ -21,32 +21,29 @@
           #usernameInput="ngModel"
           [ngModelOptions]="{ standalone: true }"
           [ngClass]="{
-            'ng-invalid': usernameInput.touched || usernameInput.dirty,
             'ng-invalid ng-dirty': isCredentialsFailed
           }"
-          required
         />
         <label htmlFor="username" class="flex w-full text-lg mb-1"
           >Username</label
         >
       </span>
       <span class="p-float-label flex w-full mt-5">
-        <p-password
-          [toggleMask]="true"
-          [feedback]="false"
+        <input
+          pInputText
+          id="password"
           [(ngModel)]="password"
           #passwordInput="ngModel"
           [ngModelOptions]="{ standalone: true }"
-          class="flex w-full"
+          type="password"
           [ngClass]="{
-            'ng-invalid': passwordInput.touched || passwordInput.dirty,
-            'ng-invalid  ng-dirty': isCredentialsFailed
+            'ng-invalid ng-dirty': isCredentialsFailed
           }"
-          required
-        ></p-password>
-        <label for="password" class="flex w-full text-lg mb-1">Password</label>
+        />
+        <label htmlFor="password" class="flex w-full text-lg mb-1"
+          >Password</label
+        >
       </span>
-
       <button
         pButton
         pRipple
