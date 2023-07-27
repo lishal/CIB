@@ -5,7 +5,7 @@
       <h1>CADUtils</h1>
     </div>
     <button class="leftSide_panel" (click)="toggleSidebar()">
-      <i class="fa-solid fa-bars"></i>
+        <i class="dashboard-bars fa-solid fa-bars"></i>
     </button>
     <div class="leftSidepanel" [class.semi-closed]="isSidebarSemiClosed">
     </div>
@@ -15,7 +15,7 @@
   <!-- Right panel -->
   <div class="rightSide">
     <button class="rightSide_panel" (click)="showRightPanel()">
-      <i class="fa-solid fa-arrow-left"></i>
+      <i class="dashboard-left-arrow fa-solid fa-arrow-left"></i>
     </button>
     <p-sidebar [(visible)]="displayRightPanel" position="right">
       Right side content

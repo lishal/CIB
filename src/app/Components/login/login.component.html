@@ -1,16 +1,16 @@
 <div class="flex justify-content-center align-items-center h-screen">
   <p-card>
     <p-header class="flex justify-content-center m-2 p-2">
-      <h1 class="text-primary m-2">CAD-UTILS</h1>
+      <h1 class=" m-2" style="color: var(--primary);">CAD-UTILS</h1>
     </p-header>
     <div class="cbiInfo flex flex-wrap" style="margin-top: -30px">
-      <i class="fa-solid fa-chevron-right bg-green-500 p-2 text-white"></i>
-      <span class="p-2 bg-cyan-500 text-white">
+      <i class="fa-solid fa-chevron-right p-2 " style="background-color: var(--success);color: var(--white);"></i>
+      <span class="cbi-login-info p-2">
         Type your Username and Password
       </span>
     </div>
     <form class="cib_login flex flex-column" #loginForm="ngForm">
-      <div *ngIf="isCredentialsFailed" class="text-red-500 mt-3">
+      <div *ngIf="isCredentialsFailed" class="mt-3" style="color: var(--danger);">
         Invalid credentials
       </div>
       <span class="p-float-label flex w-full mt-5">

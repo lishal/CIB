@@ -16,15 +16,37 @@
   
 .leftSide_panel {
   height:4rem;
+
   display: flex;
   padding: 5px;
   margin-left: 5vw;
   border: none;
   background: transparent;
   font-size: 24px;
-  justify-content: flex-end;
+  justify-content: space-around;
   align-items: center;
-  color:white;
+  color:var(--white);
+  /* height: 30px; */
+  /* width: 50px; */
+}
+.dashboard-bars,.dashboard-left-arrow{
+  height: 2.5rem;
+  width: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.dashboard-bars:hover,.dashboard-left-arrow:hover{
+  cursor: pointer;
+  
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.dashboard-bars:active,.dashboard-left-arrow:active{
+  /* background-color: rgba(0, 0, 0, 0.3); */
+  border: 3px solid rgba(0, 0, 0, 0.2);
+  transition:rgba(0, 0, 0, 0.2) 0.1s ease-in;
 }
 .semi-closed {
   width: 100px !important;
@@ -54,5 +76,6 @@
   border: none;
   background: transparent;
   font-size: 20px;
-  color: white;
+  
+  color: var(--white);
 }
