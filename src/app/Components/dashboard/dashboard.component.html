@@ -5,12 +5,31 @@
       <h1>CADUtils</h1>
     </div>
     <button class="leftSide_panel" (click)="toggleSidebar()">
-        <i class="dashboard-bars fa-solid fa-bars"></i>
+      <i class="dashboard-bars fa-solid fa-bars"></i>
     </button>
-    <div class="leftSidepanel" [class.semi-closed]="isSidebarSemiClosed">
+    <div
+      class="leftSidepanel flex h-full flex-column"
+      [class.semi-closed]="isSidebarSemiClosed"
+    >
+      <div
+        class="leftSidepanel-content flex flex-row justify-content-center align-items-center"
+        *ngFor="let item of items"
+      >
+        <div
+          class="leftSidepanel-contenticon flex-1 flex justify-content-center text-2xl m-3 cursor-pointer"
+          [ngClass]="{ 'leftSidepanel-closedIcon': isSidebarSemiClosed }"
+        >
+          <i class="{{ item.icon }}"></i>
+        </div>
+        <div
+          class="leftSidepanel-contentLabel cursor-pointer"
+          [ngClass]="{ 'leftSidepanel-closedLabel': isSidebarSemiClosed }"
+        >
+          {{ item.label }}
+        </div>
+      </div>
     </div>
   </div>
-  
 
   <!-- Right panel -->
   <div class="rightSide">
@@ -21,5 +40,4 @@
       Right side content
     </p-sidebar>
   </div>
-  
 </div>

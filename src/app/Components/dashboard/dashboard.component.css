@@ -1,21 +1,19 @@
-
-
 /* Left Panel */
-.leftSide{
-	display: flex;
-	flex: 5;
+.leftSide {
+  display: flex;
+  flex: 5;
 }
 /* Brand Name*/
 .brandName {
-	display: flex;
-	padding: 1rem;
-	justify-content: flex-start;
-	align-items: center;
-	font-size: 2.5vh;
-  }
-  
+  display: flex;
+  padding: 1rem;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 2.5vh;
+}
+
 .leftSide_panel {
-  height:4rem;
+  height: 4rem;
 
   display: flex;
   padding: 5px;
@@ -25,11 +23,12 @@
   font-size: 24px;
   justify-content: space-around;
   align-items: center;
-  color:var(--white);
+  color: var(--white);
   /* height: 30px; */
   /* width: 50px; */
 }
-.dashboard-bars,.dashboard-left-arrow{
+.dashboard-bars,
+.dashboard-left-arrow {
   height: 2.5rem;
   width: 2.5rem;
   display: flex;
@@ -38,18 +37,36 @@
   border-radius: 50%;
 }
 
-.dashboard-bars:hover,.dashboard-left-arrow:hover{
+.dashboard-bars:hover,
+.dashboard-left-arrow:hover {
   cursor: pointer;
-  
+
   background-color: rgba(0, 0, 0, 0.1);
 }
-.dashboard-bars:active,.dashboard-left-arrow:active{
+.dashboard-bars:active,
+.dashboard-left-arrow:active {
   /* background-color: rgba(0, 0, 0, 0.3); */
   border: 3px solid rgba(0, 0, 0, 0.2);
-  transition:rgba(0, 0, 0, 0.2) 0.1s ease-in;
+  transition: rgba(0, 0, 0, 0.2) 0.1s ease-in;
+}
+.leftSidepanel-contentLabel {
+  display: flex;
+  flex: 2;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 1rem;
+  font-size: 1.5rem;
 }
 .semi-closed {
   width: 100px !important;
+}
+.leftSidepanel-closedIcon {
+  display: flex;
+  justify-content: center !important;
+  align-items: center;
+}
+.leftSidepanel-closedLabel {
+  display: none;
 }
 .leftSidepanel {
   position: fixed;
@@ -63,10 +80,10 @@
 }
 
 /* Right Panel */
-.rightSide{
-	display: flex;
-	justify-content: flex-start;
-	flex: 1;
+.rightSide {
+  display: flex;
+  justify-content: flex-start;
+  flex: 1;
 }
 .rightSide_panel {
   height: 4rem;
@@ -76,6 +93,5 @@
   border: none;
   background: transparent;
   font-size: 20px;
-  
   color: var(--white);
 }
