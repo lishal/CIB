@@ -14,7 +14,7 @@
 
 .leftSide_panel {
   height: 4rem;
-
+  
   display: flex;
   padding: 5px;
   margin-left: 5vw;
@@ -73,9 +73,9 @@
   top: 4rem;
   width: 250px;
   height: 100vh;
-  background-color: white;
+  background-color:var(--white);
   transition: width 0.3s ease;
-  color: black;
+  color: var(--dark);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
