@@ -37,7 +37,8 @@
       <i class="dashboard-left-arrow fa-solid fa-arrow-left"></i>
     </button>
     <p-sidebar [(visible)]="displayRightPanel" position="right">
-      Right side content
+      <a (click)="onClickRightPanel('Setup')">Setup</a>
+      <a (click)="onClickRightPanel('Credit')">Credit</a>
     </p-sidebar>
   </div>
 </div>
