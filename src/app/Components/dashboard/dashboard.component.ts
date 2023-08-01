@@ -30,33 +30,48 @@ export class DashboardComponent implements OnInit {
       case 'Setup':
         this.items = [
           {
-            label: 'Home',
-            icon: 'fa-solid fa-house',
+            label: 'Company',
+            icon: 'fa-solid fa-building',
             url: 'http://angular.io',
           },
           {
-            label: 'Company',
-            icon: 'fa-solid fa-building',
+            label: 'Employee',
+            icon: 'fa-solid fa-people-group',
             routerLink: '/fileupload',
           },
           {
-            label: 'Settings',
+            label: 'Valuator',
+            icon: 'fa-solid fa-user-doctor',
+            routerLink: '/fileupload',
+          },
+          {
+            label: 'Lookup List',
             icon: 'fa-solid fa-gear',
             routerLink: '/fileupload',
           },
           {
-            label: 'Auth',
+            label: 'Security',
             icon: 'fa-solid fa-key',
             routerLink: '/fileupload',
           },
           {
-            label: 'Setting2',
+            label: 'AD Management',
             icon: 'fa-solid fa-gears',
             routerLink: '/fileupload',
           },
           {
-            label: 'Mail',
+            label: 'Email Template(s)',
             icon: 'fa-solid fa-envelope',
+            routerLink: '/fileupload',
+          },
+          {
+            label: 'SMS Template',
+            icon: 'fa-solid fa-comment',
+            routerLink: '/fileupload',
+          },
+          {
+            label: 'Popup Message',
+            icon: 'fa-solid fa-bell',
             routerLink: '/fileupload',
           },
         ];
@@ -65,33 +80,53 @@ export class DashboardComponent implements OnInit {
       case 'Credit':
         this.items = [
           {
-            label: 'Credit Test1',
-            icon: 'fa-solid fa-house',
+            label: 'Dashboard',
+            icon: 'fa-solid fa-gauge',
             url: 'http://angular.io',
           },
           {
-            label: 'Credit Test2',
+            label: 'Email Config',
+            icon: 'fa-solid fa-envelope',
+            routerLink: '/fileupload',
+          },
+          {
+            label: 'CIB Entry',
+            icon: 'fa-solid fa-image-portrait',
+            routerLink: '/fileupload',
+          },
+          {
+            label: 'Valuator Branch Link',
             icon: 'fa-solid fa-building',
             routerLink: '/fileupload',
           },
           {
-            label: 'Credit Test3',
-            icon: 'fa-solid fa-gear',
+            label: 'Validate Entry',
+            icon: 'fa-solid fa-address-card',
             routerLink: '/fileupload',
           },
           {
-            label: 'Credit Test4',
-            icon: 'fa-solid fa-key',
+            label: 'CIB Viewer',
+            icon: 'fa-solid fa-star',
             routerLink: '/fileupload',
           },
           {
-            label: 'Credit Test5',
-            icon: 'fa-solid fa-gears',
+            label: 'Generate IFF',
+            icon: 'fa-solid fa-wrench',
             routerLink: '/fileupload',
           },
           {
-            label: 'Credit Test6',
-            icon: 'fa-solid fa-envelope',
+            label: 'Check For Blacklist',
+            icon: 'fa-solid fa-star-of-life',
+            routerLink: '/fileupload',
+          },
+          {
+            label: 'Data Management',
+            icon: 'fa-solid fa-database',
+            routerLink: '/fileupload',
+          },
+          {
+            label: 'Reports',
+            icon: 'fa-solid fa-bars',
             routerLink: '/fileupload',
           },
         ];
@@ -137,33 +172,48 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.items = [
       {
-        label: 'Home',
-        icon: 'fa-solid fa-house',
+        label: 'Company',
+        icon: 'fa-solid fa-building',
         url: 'http://angular.io',
       },
       {
-        label: 'Company',
-        icon: 'fa-solid fa-building',
+        label: 'Employee',
+        icon: 'fa-solid fa-people-group',
         routerLink: '/fileupload',
       },
       {
-        label: 'Settings',
+        label: 'Valuator',
+        icon: 'fa-solid fa-user-doctor',
+        routerLink: '/fileupload',
+      },
+      {
+        label: 'Lookup List',
         icon: 'fa-solid fa-gear',
         routerLink: '/fileupload',
       },
       {
-        label: 'Auth',
+        label: 'Security',
         icon: 'fa-solid fa-key',
         routerLink: '/fileupload',
       },
       {
-        label: 'Setting2',
+        label: 'AD Management',
         icon: 'fa-solid fa-gears',
         routerLink: '/fileupload',
       },
       {
-        label: 'Mail',
+        label: 'Email Template(s)',
         icon: 'fa-solid fa-envelope',
+        routerLink: '/fileupload',
+      },
+      {
+        label: 'SMS Template',
+        icon: 'fa-solid fa-comment',
+        routerLink: '/fileupload',
+      },
+      {
+        label: 'Popup Message',
+        icon: 'fa-solid fa-bell',
         routerLink: '/fileupload',
       },
     ];

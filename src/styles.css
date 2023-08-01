@@ -25,4 +25,11 @@
 }
 .p-sidebar {
   width: 15rem !important;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.p-sidebar-right {
+  top: 4rem !important;
+}
+.p-component-overlay{
+  width:0rem !important;
 }
