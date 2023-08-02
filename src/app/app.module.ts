@@ -11,6 +11,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { SidebarModule } from 'primeng/sidebar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MenubarModule } from 'primeng/menubar';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, DashboardComponent],
@@ -23,7 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     PasswordModule,
     FormsModule,
     SidebarModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule,MenubarModule
   ],
   providers: [],
   bootstrap: [AppComponent],

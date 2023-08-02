@@ -11,7 +11,8 @@
       class="leftSidepanel flex h-full flex-column"
       [class.semi-closed]="isSidebarSemiClosed"
     >
-      <div
+    <p-menubar [model]="items">
+      <!-- <div
         class="leftSidepanel-content flex flex-row justify-content-center align-items-center"
         *ngFor="let item of items"
       >
@@ -27,7 +28,8 @@
         >
           {{ item.label }}
         </div>
-      </div>
+      </div> -->
+    </p-menubar>
     </div>
   </div>
 

@@ -131,41 +131,6 @@ export class DashboardComponent implements OnInit {
           },
         ];
         break;
-
-      default:
-        this.items = [
-          {
-            label: 'Home',
-            icon: 'fa-solid fa-house',
-            url: 'http://angular.io',
-          },
-          {
-            label: 'Company',
-            icon: 'fa-solid fa-building',
-            routerLink: '/fileupload',
-          },
-          {
-            label: 'Settings',
-            icon: 'fa-solid fa-gear',
-            routerLink: '/fileupload',
-          },
-          {
-            label: 'Auth',
-            icon: 'fa-solid fa-key',
-            routerLink: '/fileupload',
-          },
-          {
-            label: 'Setting2',
-            icon: 'fa-solid fa-gears',
-            routerLink: '/fileupload',
-          },
-          {
-            label: 'Mail',
-            icon: 'fa-solid fa-envelope',
-            routerLink: '/fileupload',
-          },
-        ];
-        break;
     }
   }
 
@@ -210,11 +175,22 @@ export class DashboardComponent implements OnInit {
         label: 'SMS Template',
         icon: 'fa-solid fa-comment',
         routerLink: '/fileupload',
+        items: [
+          {
+              label: 'Mail',
+              icon: 'fa-solid fa-envelope'
+          },
+          {
+              label: 'Setting2',
+              icon: 'fa-solid fa-gears'
+          }
+      ]
       },
       {
         label: 'Popup Message',
         icon: 'fa-solid fa-bell',
         routerLink: '/fileupload',
+        
       },
     ];
   }
