@@ -177,20 +177,19 @@ export class DashboardComponent implements OnInit {
         routerLink: '/fileupload',
         items: [
           {
-              label: 'Mail',
-              icon: 'fa-solid fa-envelope'
+            label: 'Mail',
+            icon: 'fa-solid fa-envelope',
           },
           {
-              label: 'Setting2',
-              icon: 'fa-solid fa-gears'
-          }
-      ]
+            label: 'Setting2',
+            icon: 'fa-solid fa-gears',
+          },
+        ],
       },
       {
         label: 'Popup Message',
         icon: 'fa-solid fa-bell',
         routerLink: '/fileupload',
-        
       },
     ];
   }

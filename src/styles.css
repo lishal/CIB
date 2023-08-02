@@ -6,12 +6,12 @@
 :root {
   --cyan: #06b6d4;
   --white: #ffffff;
-  --primary:#3B82F6;
-  --success:#22c55e;
-  --danger:#ff3d32;
-  --dark:#000000;
-  --sidePanel:#292323;
-  --sidePanelHover:#e9ecef;
+  --primary: #3b82f6;
+  --success: #22c55e;
+  --danger: #ff3d32;
+  --dark: #000000;
+  --sidePanel: #292323;
+  --sidePanelHover: #e9ecef;
 }
 
 * {
@@ -31,26 +31,32 @@
 .p-sidebar-right {
   top: 4rem !important;
 }
-.p-component-overlay{
-  width:0rem !important;
+.p-component-overlay {
+  width: 0rem !important;
 }
-.p-menubar{
+.p-menubar {
   background-color: var(--white);
   border: none;
 }
-.semi-closed .p-menubar .p-menuitem{
+.semi-closed .p-menubar .p-menuitem {
   display: flex;
   flex-direction: column;
   width: 100%;
 
   flex-wrap: nowrap !important;
 }
-.p-menubar .p-menuitem{
+.p-menubar .p-menuitem {
   width: 100%;
 }
-.p-menubar-root-list>.p-menuitem-active>p-menubarsub>.p-submenu-list{
+.p-menubar-root-list > .p-menuitem-active > p-menubarsub > .p-submenu-list {
   width: 100%;
+}
+.p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-link {
+  white-space: nowrap !important;
 }
 .semi-closed .p-menuitem-text {
   display: none;
+}
+.p-menubar .p-submenu-list {
+  position: relative !important;
 }

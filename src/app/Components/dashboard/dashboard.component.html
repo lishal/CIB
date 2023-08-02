@@ -11,25 +11,7 @@
       class="leftSidepanel flex h-full flex-column"
       [class.semi-closed]="isSidebarSemiClosed"
     >
-    <p-menubar [model]="items">
-      <!-- <div
-        class="leftSidepanel-content flex flex-row justify-content-center align-items-center"
-        *ngFor="let item of items"
-      >
-        <div
-          class="leftSidepanel-contenticon flex-1 flex justify-content-center text-lg cursor-pointer"
-          [ngClass]="{ 'leftSidepanel-closedIcon': isSidebarSemiClosed }"
-        >
-          <i class="{{ item.icon }}"></i>
-        </div>
-        <div
-          class="leftSidepanel-contentLabel cursor-pointer"
-          [ngClass]="{ 'leftSidepanel-closedLabel': isSidebarSemiClosed }"
-        >
-          {{ item.label }}
-        </div>
-      </div> -->
-    </p-menubar>
+      <p-menubar [model]="items"></p-menubar>
     </div>
   </div>
 
@@ -38,30 +20,28 @@
     <button class="rightSide_panel" (click)="showRightPanel()">
       <i class="dashboard-left-arrow fa-solid fa-arrow-left"></i>
     </button>
-    <p-sidebar  [(visible)]="displayRightPanel" position="right">
+    <p-sidebar [(visible)]="displayRightPanel" position="right">
       <div class="rightSide_panel-content">
         <div class="rightpanel_content setup">
-        <div class="content_icon flex-row bg-yellow-500">
-          <i class="fa-solid fa-wrench "></i>
+          <div class="content_icon flex-row bg-yellow-500">
+            <i class="fa-solid fa-wrench"></i>
+          </div>
+          <div class="content_label flex">
+            <a (click)="onClickRightPanel('Setup')">Setup</a>
+          </div>
         </div>
-        <div class="content_label flex ">
-          <a (click)="onClickRightPanel('Setup')">Setup</a>
-        </div>
-        </div>
-      
-      <div class="rightSide_panel-content">
-        <div class="rightpanel_content credit">
-        <div class="content_icon flex-row bg-cyan-500">
-          <i class="fa-solid fa-chart-simple"></i>
-        </div>
-        <div class="content_label">
-          <a (click)="onClickRightPanel('Credit')">Credit</a>
+
+        <div class="rightSide_panel-content">
+          <div class="rightpanel_content credit">
+            <div class="content_icon flex-row bg-cyan-500">
+              <i class="fa-solid fa-chart-simple"></i>
+            </div>
+            <div class="content_label">
+              <a (click)="onClickRightPanel('Credit')">Credit</a>
+            </div>
+          </div>
         </div>
       </div>
-      </div>
-    </div>
-      
-      
     </p-sidebar>
   </div>
 </div>
