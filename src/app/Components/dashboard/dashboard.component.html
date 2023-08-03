@@ -1,4 +1,4 @@
-<div class="topnavbar flex w-screen bg-primary h-4rem">
+<div class="topnavbar flex  bg-primary h-4rem">
   <!-- Left Panel -->
   <div class="leftSide">
     <div class="brandName">
@@ -8,11 +8,15 @@
       <i class="dashboard-bars fa-solid fa-bars"></i>
     </button>
     <div
-      class="leftSidepanel flex h-full flex-column"
+      class="leftSidepanel flex flex-column"
       [class.semi-closed]="isSidebarSemiClosed"
     >
       <p-menubar [model]="items"></p-menubar>
     </div>
+    <div class="toppanel_heading">
+      <span>{{topPanelLabel}}</span>
+    </div>
+    
   </div>
 
   <!-- Right panel -->
@@ -45,3 +49,7 @@
     </p-sidebar>
   </div>
 </div>
+<div class="CBI-container" [class.CBI_closed-container]="isSidebarSemiClosed">
+  <router-outlet></router-outlet>
+</div>
+

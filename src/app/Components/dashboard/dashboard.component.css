@@ -1,4 +1,7 @@
 /* Left Panel */
+*{
+    /*  */   
+}
 .leftSide {
   display: flex;
   flex: 5;
@@ -75,10 +78,10 @@
   border: 2px solid black;
 } */
 .leftSidepanel {
-  position: fixed;
+  position: absolute;
   top: 4rem;
   width: 250px;
-  height: 100vh;
+  min-height: 100vh;
   background-color:var(--white);
   transition: width 0.3s ease;
   color: var(--dark);
@@ -122,8 +125,8 @@
   background-color: var(--sidePanelHover);
 }
 .content_icon{
-  height: 40px;
-  width: 40px;
+  height: 25px;
+  width: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -132,10 +135,30 @@
 }
 .content_label{
   display: flex;
-  padding: 0.75rem;
+  padding: 0.25rem;
   justify-content: center;
   align-items: center;
-  font-size: 1.125rem;
+  font-size: 1rem;
+}
+
+/* Heading */
+.toppanel_heading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 4rem;
 }
 
 
+/* Main Container */
+.CBI_closed-container{
+  margin-left: 100px !important;
+  transition: margin-left 0.3s ease;
+}
+.CBI-container{
+  display: flex;
+  margin-left: 250px;
+  min-height: 100vh;
+  padding: 1rem;
+  transition: margin-left 0.3s ease;
+}
