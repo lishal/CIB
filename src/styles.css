@@ -58,5 +58,25 @@
   display: none;
 }
 .p-menubar .p-submenu-list {
-  position: relative !important;
+  position: static !important;
+
+}
+
+@media screen and (max-width: 960px) {
+  .p-menubar .p-menubar-button {
+      display: none;
+ }
+  .p-menubar {
+      position: inherit;
+ }
+  .p-menubar .p-menubar-root-list {
+      display: flex;
+      align-items: center;
+      position: unset;
+      padding: unset;
+      background: inherit;
+      border: unset;
+      box-shadow: unset;
+      width: unset;
+ }
 }
