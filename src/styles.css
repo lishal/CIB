@@ -65,6 +65,6 @@
 
 .p-menuitem-link :hover {
   background-color: var(--sidePanelHover) !important;
-  padding: 0.15rem 0.4rem;
+  padding: 0rem 0.3rem;
   transition: 0.2s ease-in-out;
 }
