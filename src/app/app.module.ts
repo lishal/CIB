@@ -44,6 +44,7 @@ import { ValuatorReportsComponent } from './Components/Credit/Reports/valuator-r
 import { OtherReportsComponent } from './Components/Credit/Reports/other-reports/other-reports.component';
 import { CiclReportComponent } from './Components/Credit/Reports/cicl-report/cicl-report.component';
 import { AfterEligibilityDataComponent } from './Components/Credit/Database_Management/after-eligibility-data/after-eligibility-data.component';
+import { TabMenuModule } from 'primeng/tabmenu';
 @NgModule({
   declarations: [
     AppComponent,
@@ -93,6 +94,7 @@ import { AfterEligibilityDataComponent } from './Components/Credit/Database_Mana
     SidebarModule,
     BrowserAnimationsModule,
     PanelMenuModule,
+    TabMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
