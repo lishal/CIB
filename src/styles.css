@@ -47,7 +47,8 @@
 .p-panelmenu .p-panelmenu-header > a:hover {
   background-color: var(--sidePanelHover) !important;
   padding: 0.75rem 1.5rem;
-  transition: 0.2s ease-in-out;
+  color: var(--primary) !important;
+  transition: 0.1s ease-in-out;
 }
 .p-panelmenu .p-panelmenu-header > a .p-menuitem-text {
   white-space: nowrap !important;
@@ -66,5 +67,6 @@
 .p-menuitem-link :hover {
   background-color: var(--sidePanelHover) !important;
   padding: 0rem 0.3rem;
-  transition: 0.2s ease-in-out;
+  color: var(--primary) !important;
+  transition: 0.1s ease-in-out;
 }
