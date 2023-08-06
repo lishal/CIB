@@ -122,6 +122,8 @@
 .rightpanel_content:hover {
   border-radius: 10px;
   background-color: var(--sidePanelHover);
+  /* font-size: 18px;
+  transition: 0.2s ease-in-out; */
 }
 .content_icon {
   height: 25px;
