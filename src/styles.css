@@ -11,13 +11,15 @@
   --danger: #ff3d32;
   --dark: #000000;
   --sidePanel: #292323;
+  --sidePanellabel: #495057;
   --sidePanelHover: #e9ecef;
 }
 
 * {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 .p-password {
   width: 100% !important;
@@ -34,52 +36,27 @@
   min-height: 100vh !important;
   position: absolute !important;
 }
-.p-component-overlay {
-  /* width: 0rem !important; */
-}
-.p-menubar {
-  background-color: var(--white);
-  border: none;
-}
-.semi-closed .p-menubar .p-menuitem {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
 
-  flex-wrap: nowrap !important;
+.p-panelmenu .p-panelmenu-header > a {
+  border: none !important;
+  background-color: transparent !important;
+  padding: 0.75rem 1.25rem;
+  color: var(--sidePanellabel);
+  font-weight: unset;
 }
-.p-menubar .p-menuitem {
-  width: 100%;
+.p-panelmenu .p-panelmenu-header > a:hover {
+  background-color: var(--sidePanelHover) !important;
 }
-.p-menubar-root-list > .p-menuitem-active > p-menubarsub > .p-submenu-list {
-  width: 100%;
-}
-.p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-link {
+.p-panelmenu .p-panelmenu-header > a .p-menuitem-text {
   white-space: nowrap !important;
 }
+
 .semi-closed .p-menuitem-text {
   display: none;
 }
-.p-menubar .p-submenu-list {
-  position: static !important;
-
-}
-
-@media screen and (max-width: 960px) {
-  .p-menubar .p-menubar-button {
-      display: none;
- }
-  .p-menubar {
-      position: inherit;
- }
-  .p-menubar .p-menubar-root-list {
-      display: flex;
-      align-items: center;
-      position: unset;
-      padding: unset;
-      background: inherit;
-      border: unset;
-      box-shadow: unset;
-      width: unset;
- }
+.p-panelmenu-icon {
+  position: absolute;
+  right: 0;
+  margin-top: -7px;
+  transform: rotate(90deg);
 }

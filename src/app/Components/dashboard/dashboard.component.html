@@ -1,4 +1,4 @@
-<div class="topnavbar flex  bg-primary h-4rem">
+<div class="topnavbar flex bg-primary h-4rem">
   <!-- Left Panel -->
   <div class="leftSide">
     <div class="brandName">
@@ -11,12 +11,11 @@
       class="leftSidepanel flex flex-column"
       [class.semi-closed]="isSidebarSemiClosed"
     >
-      <p-menubar [model]="items"></p-menubar>
+      <p-panelMenu [model]="items"> </p-panelMenu>
     </div>
     <div class="toppanel_heading">
-      <span>{{topPanelLabel}}</span>
+      <span>{{ topPanelLabel }}</span>
     </div>
-    
   </div>
 
   <!-- Right panel -->
@@ -26,7 +25,10 @@
     </button>
     <p-sidebar [(visible)]="displayRightPanel" position="right">
       <div class="rightSide_panel-content">
-        <div class="rightpanel_content setup" (click)="onClickRightPanel('Setup')">
+        <div
+          class="rightpanel_content setup"
+          (click)="onClickRightPanel('Setup')"
+        >
           <div class="content_icon flex-row bg-yellow-500">
             <i class="fa-solid fa-wrench"></i>
           </div>
@@ -36,12 +38,15 @@
         </div>
 
         <div class="rightSide_panel-content">
-          <div class="rightpanel_content credit" (click)="onClickRightPanel('Credit')">
+          <div
+            class="rightpanel_content credit"
+            (click)="onClickRightPanel('Credit')"
+          >
             <div class="content_icon flex-row bg-cyan-500">
               <i class="fa-solid fa-chart-simple"></i>
             </div>
             <div class="content_label">
-              <span >Credit</span>
+              <span>Credit</span>
             </div>
           </div>
         </div>
@@ -52,4 +57,3 @@
 <div class="CBI-container" [class.CBI_closed-container]="isSidebarSemiClosed">
   <router-outlet></router-outlet>
 </div>
-

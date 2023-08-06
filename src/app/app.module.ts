@@ -11,10 +11,15 @@ import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { SidebarModule } from 'primeng/sidebar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MenubarModule } from 'primeng/menubar';
 import { CompanyComponent } from './Components/Setup/company/company.component';
+import { PanelMenuModule } from 'primeng/panelmenu';
 @NgModule({
-  declarations: [AppComponent, LoginComponent, DashboardComponent, CompanyComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    DashboardComponent,
+    CompanyComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -25,7 +30,7 @@ import { CompanyComponent } from './Components/Setup/company/company.component';
     FormsModule,
     SidebarModule,
     BrowserAnimationsModule,
-    MenubarModule,
+    PanelMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
