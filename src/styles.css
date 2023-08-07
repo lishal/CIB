@@ -67,16 +67,17 @@
   top: 15px;
   transform: rotate(90deg);
 }
-
+.leftSidePanel .leftPanelContainer .p-panelmenu .p-panelmenu-content {
+  border: 2px solid var(--moderateDark);
+  border-radius: 10px;
+}
 .leftSidePanel
   .leftPanelContainer
   .p-panelmenu
   .p-panelmenu-content
   .p-element
   .p-menuitem-link {
-  padding: 10px 22px;
-  font-weight: 600;
-  transition: 0.2s ease-in-out;
+  padding: unset;
 }
 .leftSidePanel
   .leftPanelContainer
@@ -85,21 +86,28 @@
   .p-element
   .p-menuitem-link
   span {
+  padding: 0.75rem 1.25rem;
+  width: 260px;
+  font-weight: 600;
   color: var(--lightDark);
+  display: inline-flex;
+  justify-content: flex-end;
+  transition: all 0.2s ease-in-out;
 }
+
 .leftSidePanel
   .leftPanelContainer
   .p-panelmenu
   .p-panelmenu-content
   .p-element
   .p-menuitem-link
-  span:hover {
-  padding: 0px 4px;
-  transition: 0.2s ease-in-out;
+  :hover {
+  padding: 0.75rem 1.55rem;
+  transition: all 0.2s ease-in-out !important;
 }
-.p-menuitem-link-active {
-  background-color: red !important; /* Apply your desired active background color */
-}
+/* .p-menuitem-link-active {
+  background-color: red !important;
+} */
 
 .rightSidePanel .p-sidebar {
   width: 15rem !important;
