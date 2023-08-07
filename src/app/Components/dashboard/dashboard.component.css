@@ -1,10 +1,14 @@
-.topnavbar{
-  background: linear-gradient(-206deg, var(--topnavbarcolor1) 5%, var(--topnavbarcolor2) 100%);
+.topnavbar {
+  background: linear-gradient(
+    -206deg,
+    var(--topnavbarcolor1) 5%,
+    var(--topnavbarcolor2) 100%
+  );
   height: 60px;
 }
 .topnavbar .brandname {
   position: absolute;
-  left:60px;
+  left: 60px;
   height: 60px;
   width: 140px;
   color: var(--white);
@@ -14,9 +18,8 @@
   font-size: 24px;
   font-weight: 600;
   transition: background-color 0.2s;
-
 }
-.topnavbar .sideBar_button{
+.topnavbar .sideBar_button {
   position: absolute;
   left: 200px;
   width: 60px;
@@ -30,10 +33,10 @@
   text-align: center;
   transition: background-color 0.2s;
 }
-.topnavbar .sideBar_button:hover{
+.topnavbar .sideBar_button:hover {
   background-color: var(--topnavbarHover);
 }
-.topnavbar .rightSide_button{
+.topnavbar .rightSide_button {
   display: inline-block;
   position: absolute;
   right: 0;
@@ -48,13 +51,14 @@
   cursor: pointer;
   transition: background-color 0.2s;
 }
-.topnavbar .rightSide_button:hover{
+.topnavbar .rightSide_button:hover {
   background-color: var(--topnavbarHover);
 }
 
 /* Left Side Panel */
 
-.leftSidePanel{
+.leftSidePanel {
+  display: block;
   width: 260px;
   background-color: var(--white);
   border-right: solid 1px #d6d7d9;
@@ -64,15 +68,16 @@
   height: 100%;
   overflow: auto;
   box-sizing: border-box;
-  transition: left 0.2s;
+  transition: all 0.2s ease-in-out;
   padding-bottom: 20px;
+  white-space: nowrap;
 }
-.leftSidePanel .sidepanelCloseInner{
+.leftSidePanel .sidepanelCloseInner {
   display: none;
-  transition: width 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
-.topnavbar .toppanel_heading{
+.topnavbar .toppanel_heading {
   position: absolute;
   left: 290px;
   height: 60px;
@@ -85,11 +90,11 @@
   font-weight: 600;
 }
 
-.sidepanelCloseOuter{
+.sidepanelCloseOuter {
   width: 0;
   transition: width 0.2s ease-in-out;
 }
-.rightSidePanel .rightSide_panel-content .rightpanel_content{
+.rightSidePanel .rightSide_panel-content .rightpanel_content {
   display: flex;
   flex-direction: row;
   padding: 8px 12px;
@@ -99,14 +104,14 @@
   transition: 0.2s ease-in-out;
 }
 
-.rightSidePanel .rightSide_panel-content .rightpanel_content:hover{
+.rightSidePanel .rightSide_panel-content .rightpanel_content:hover {
   background-color: var(--sidePanelHover);
   color: var(--moderateDark);
   padding: 10px 14px;
   transition: 0.2s ease-in-out;
 }
 
-.rightSidePanel .rightSide_panel-content .rightpanel_content .content_icon{
+.rightSidePanel .rightSide_panel-content .rightpanel_content .content_icon {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -114,30 +119,24 @@
   height: 30px;
   width: 30px;
 }
-.rightSidePanel .rightSide_panel-content .rightpanel_content .content_label{
+.rightSidePanel .rightSide_panel-content .rightpanel_content .content_label {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0px 14px;
 }
 
-.mainContainer{
+.mainContainer {
   position: relative;
   margin-right: 260px;
   left: 260px;
   min-height: 90vh;
-  padding:0.5rem 1rem;
+  padding: 0.5rem 1rem;
   transition: 0.2s ease-in-out;
-  
-  
-  
 }
-.sidePanelClosedContainer{
+.sidePanelClosedContainer {
   position: relative;
   left: 0px;
   width: 100%;
   transition: left 0.2s ease;
-  
-  
-  
 }
