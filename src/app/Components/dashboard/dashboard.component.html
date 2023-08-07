@@ -5,6 +5,9 @@
     <button class="sideBar_button" (click)="toggleSidebar()">
         <i class="fa-solid fa-bars"></i>
     </button>
+    <div class="toppanel_heading" >
+      <span>{{topPanelLabel}}</span>
+    </div>
     <button class="rightSide_button " (click)="showRightPanel()">
         <i class="fa-solid fa-ellipsis-v"></i>
     </button>
@@ -34,4 +37,7 @@
           </div>
         </div>
       </p-sidebar>
+</div>
+<div class="mainContainer" [class.sidePanelClosedContainer]="isSidebarClosed">
+    <router-outlet></router-outlet>
 </div>
