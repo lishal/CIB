@@ -39,7 +39,7 @@
   position: relative;
   cursor: pointer;
   font-weight: 600;
-  background-color: transparent;
+  background-color: var(--white) !important;
   border: none;
   transition: 0.2s ease-in-out;
 }
