@@ -7,11 +7,11 @@ import { MenuItem } from 'primeng/api';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  isSidebarSemiClosed = false;
+  isSidebarClosed = false;
   topPanelLabel: string = '';
 
   toggleSidebar() {
-    this.isSidebarSemiClosed = !this.isSidebarSemiClosed;
+    this.isSidebarClosed = !this.isSidebarClosed;
   }
   // Right Panel
   displayRightPanel = false;

@@ -1,59 +1,37 @@
-<div class="topnavbar flex bg-primary h-4rem">
-  <!-- Left Panel -->
-  <div class="leftSide">
-    <div class="brandName">
-      <h1>CADUtils</h1>
+<div class="topnavbar flex">
+    <div class="brandname">
+        <span>CADUtils</span>
     </div>
-    <button class="leftSide_panel" (click)="toggleSidebar()">
-      <i class="dashboard-bars fa-solid fa-bars"></i>
+    <button class="sideBar_button" (click)="toggleSidebar()">
+        <i class="fa-solid fa-bars"></i>
     </button>
-    <div
-      class="leftSidepanel flex flex-column"
-      [class.semi-closed]="isSidebarSemiClosed"
-    >
-      <p-panelMenu [model]="items"> </p-panelMenu>
-    </div>
-    <div class="toppanel_heading">
-      <span>{{ topPanelLabel }}</span>
-    </div>
-  </div>
-
-  <!-- Right panel -->
-  <div class="rightSide">
-    <button class="rightSide_panel" (click)="showRightPanel()">
-      <i class="dashboard-left-arrow fa-solid fa-arrow-left"></i>
+    <button class="rightSide_button " (click)="showRightPanel()">
+        <i class="fa-solid fa-ellipsis-v"></i>
     </button>
-    <p-sidebar [(visible)]="displayRightPanel" position="right">
-      <div class="rightSide_panel-content">
-        <div
-          class="rightpanel_content setup"
-          (click)="onClickRightPanel('Setup')"
-        >
-          <div class="content_icon flex-row bg-yellow-500">
-            <i class="fa-solid fa-wrench"></i>
-          </div>
-          <div class="content_label flex">
-            <span>Setup</span>
-          </div>
-        </div>
-
-        <div class="rightSide_panel-content">
-          <div
-            class="rightpanel_content credit"
-            (click)="onClickRightPanel('Credit')"
-          >
-            <div class="content_icon flex-row bg-cyan-500">
-              <i class="fa-solid fa-chart-simple"></i>
-            </div>
-            <div class="content_label">
-              <span>Credit</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </p-sidebar>
-  </div>
 </div>
-<div class="CBI-container" [class.CBI_closed-container]="isSidebarSemiClosed">
-  <router-outlet></router-outlet>
+<div class="leftSidePanel" [class.sidepanelCloseOuter]="isSidebarClosed">
+    <p-panelMenu class="leftPanelContainer" [model]="items" [class.sidepanelCloseInner]="isSidebarClosed" ></p-panelMenu>
+</div>
+<div class="rightSidePanel">
+      <p-sidebar [(visible)]="displayRightPanel" position="right">
+        <div class="rightSide_panel-content">
+          <div class="rightpanel_content setup" (click)="onClickRightPanel('Setup')">
+            <span class="content_icon fa-solid fa-wrench bg-yellow-500">
+            </span>
+            <span class="content_label flex">
+              Setup
+            </span>
+          </div>
+  
+          <div class="rightSide_panel-content">
+            <div class="rightpanel_content credit" (click)="onClickRightPanel('Credit')">
+              <span class="content_icon fa-solid fa-chart-simple flex-row bg-cyan-500">
+              </span>
+              <span class="content_label">
+                Credit
+              </span>
+            </div>
+          </div>
+        </div>
+      </p-sidebar>
 </div>

@@ -9,10 +9,15 @@
   --primary: #3b82f6;
   --success: #22c55e;
   --danger: #ff3d32;
+  --lightDark:#6c757d;
+  --moderateDark:#343a40;
   --dark: #000000;
   --sidePanel: #292323;
   --sidePanellabel: #495057;
   --sidePanelHover: #e9ecef;
+  --topnavbarcolor1:#4b6cb7;
+  --topnavbarcolor2:#182848;
+  --topnavbarHover:#23252A;
 }
 
 * {
@@ -27,46 +32,58 @@
 .p-inputtext {
   width: 100% !important;
 }
-.p-sidebar {
-  width: 15rem !important;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+.leftSidePanel .leftPanelContainer .p-panelmenu .p-panelmenu-header > a{
+  display: block;
+  padding: 8px 12px;
+  position: relative;
+  cursor: pointer;
+  font-weight: 600;
+  background-color: transparent;
+  border: none;
+  transition: 0.2s ease-in-out;
 }
-.p-sidebar-right {
-  top: 4rem !important;
-  min-height: 100vh !important;
-  position: absolute !important;
+.leftSidePanel .leftPanelContainer .p-panelmenu .p-panelmenu-header > a:hover{
+  padding: 10px 14px;
+  transition: 0.2s ease-in-out;
+}
+.leftSidePanel .leftPanelContainer .p-panelmenu .p-panelmenu-header > a span {
+  margin-left: 12px; 
+  font-size: 16px;
 }
 
-.p-panelmenu .p-panelmenu-header > a {
-  border: none !important;
-  background-color: transparent !important;
-  padding: 0.75rem 1.25rem;
-  color: var(--sidePanellabel);
-  font-weight: unset;
-}
-.p-panelmenu .p-panelmenu-header > a:hover {
-  background-color: var(--sidePanelHover) !important;
-  padding: 0.75rem 1.5rem;
-  color: var(--primary) !important;
-  transition: 0.1s ease-in-out;
-}
-.p-panelmenu .p-panelmenu-header > a .p-menuitem-text {
+
+.leftSidePanel .leftPanelContainer .p-panelmenu .p-panelmenu-header > a .p-menuitem-text {
   white-space: nowrap !important;
 }
 
-.semi-closed .p-menuitem-text {
-  display: none;
-}
-.p-panelmenu-icon {
+
+.leftSidePanel .leftPanelContainer .p-panelmenu .p-panelmenu-icon {
   position: absolute;
   right: 0;
-  margin-top: -7px;
+  top: 15px;
   transform: rotate(90deg);
 }
 
-.p-menuitem-link :hover {
-  background-color: var(--sidePanelHover) !important;
-  padding: 0rem 0.3rem;
-  color: var(--primary) !important;
-  transition: 0.1s ease-in-out;
+.leftSidePanel .leftPanelContainer .p-panelmenu .p-panelmenu-content .p-element .p-menuitem-link {
+  padding: 10px 22px;
+  font-weight: 600;
+  transition: 0.2s ease-in-out;
+}
+.leftSidePanel .leftPanelContainer .p-panelmenu .p-panelmenu-content .p-element .p-menuitem-link span{
+  color: var(--lightDark);
+} 
+.leftSidePanel .leftPanelContainer .p-panelmenu .p-panelmenu-content .p-element .p-menuitem-link span:hover {
+  padding: 2px 4px;
+  transition: 0.2s ease-in-out;
+  
+}
+
+.rightSidePanel .p-sidebar {
+  width: 15rem !important;
+  overflow: hidden;
+  height: 90.5%;
+  top: 60px !important;
+  position: absolute !important;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
