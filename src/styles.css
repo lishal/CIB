@@ -9,15 +9,15 @@
   --primary: #3b82f6;
   --success: #22c55e;
   --danger: #ff3d32;
-  --lightDark:#6c757d;
-  --moderateDark:#343a40;
+  --lightDark: #6c757d;
+  --moderateDark: #343a40;
   --dark: #000000;
   --sidePanel: #292323;
   --sidePanellabel: #495057;
   --sidePanelHover: #e9ecef;
-  --topnavbarcolor1:#4b6cb7;
-  --topnavbarcolor2:#182848;
-  --topnavbarHover:#23252A;
+  --topnavbarcolor1: #4b6cb7;
+  --topnavbarcolor2: #182848;
+  --topnavbarHover: #23252a;
 }
 
 * {
@@ -33,7 +33,7 @@
   width: 100% !important;
 }
 
-.leftSidePanel .leftPanelContainer .p-panelmenu .p-panelmenu-header > a{
+.leftSidePanel .leftPanelContainer .p-panelmenu .p-panelmenu-header > a {
   display: block;
   padding: 8px 12px;
   position: relative;
@@ -43,20 +43,23 @@
   border: none;
   transition: 0.2s ease-in-out;
 }
-.leftSidePanel .leftPanelContainer .p-panelmenu .p-panelmenu-header > a:hover{
-  padding: 10px 14px;
+.leftSidePanel .leftPanelContainer .p-panelmenu .p-panelmenu-header > a:hover {
+  padding: 8px 14px;
   transition: 0.2s ease-in-out;
 }
 .leftSidePanel .leftPanelContainer .p-panelmenu .p-panelmenu-header > a span {
-  margin-left: 12px; 
+  margin-left: 12px;
   font-size: 16px;
 }
 
-
-.leftSidePanel .leftPanelContainer .p-panelmenu .p-panelmenu-header > a .p-menuitem-text {
+.leftSidePanel
+  .leftPanelContainer
+  .p-panelmenu
+  .p-panelmenu-header
+  > a
+  .p-menuitem-text {
   white-space: nowrap !important;
 }
-
 
 .leftSidePanel .leftPanelContainer .p-panelmenu .p-panelmenu-icon {
   position: absolute;
@@ -65,18 +68,37 @@
   transform: rotate(90deg);
 }
 
-.leftSidePanel .leftPanelContainer .p-panelmenu .p-panelmenu-content .p-element .p-menuitem-link {
+.leftSidePanel
+  .leftPanelContainer
+  .p-panelmenu
+  .p-panelmenu-content
+  .p-element
+  .p-menuitem-link {
   padding: 10px 22px;
   font-weight: 600;
   transition: 0.2s ease-in-out;
 }
-.leftSidePanel .leftPanelContainer .p-panelmenu .p-panelmenu-content .p-element .p-menuitem-link span{
+.leftSidePanel
+  .leftPanelContainer
+  .p-panelmenu
+  .p-panelmenu-content
+  .p-element
+  .p-menuitem-link
+  span {
   color: var(--lightDark);
-} 
-.leftSidePanel .leftPanelContainer .p-panelmenu .p-panelmenu-content .p-element .p-menuitem-link span:hover {
-  padding: 2px 4px;
+}
+.leftSidePanel
+  .leftPanelContainer
+  .p-panelmenu
+  .p-panelmenu-content
+  .p-element
+  .p-menuitem-link
+  span:hover {
+  padding: 0px 4px;
   transition: 0.2s ease-in-out;
-  
+}
+.p-menuitem-link-active {
+  background-color: red !important; /* Apply your desired active background color */
 }
 
 .rightSidePanel .p-sidebar {

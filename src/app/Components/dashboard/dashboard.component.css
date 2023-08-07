@@ -107,7 +107,7 @@
 .rightSidePanel .rightSide_panel-content .rightpanel_content:hover {
   background-color: var(--sidePanelHover);
   color: var(--moderateDark);
-  padding: 10px 14px;
+  padding: 8px 14px;
   transition: 0.2s ease-in-out;
 }
 
