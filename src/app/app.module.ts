@@ -45,6 +45,7 @@ import { OtherReportsComponent } from './Components/Credit/Reports/other-reports
 import { CiclReportComponent } from './Components/Credit/Reports/cicl-report/cicl-report.component';
 import { AfterEligibilityDataComponent } from './Components/Credit/Database_Management/after-eligibility-data/after-eligibility-data.component';
 import { TabMenuModule } from 'primeng/tabmenu';
+import { CompanyDetailComponent } from './Components/Setup/company/company-detail/company-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,6 +83,7 @@ import { TabMenuModule } from 'primeng/tabmenu';
     OtherReportsComponent,
     CiclReportComponent,
     AfterEligibilityDataComponent,
+    CompanyDetailComponent,
   ],
   imports: [
     BrowserModule,

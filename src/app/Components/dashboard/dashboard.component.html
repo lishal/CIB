@@ -17,6 +17,7 @@
 </div>
 <div class="rightSidePanel">
       <p-sidebar [(visible)]="displayRightPanel" position="right">
+        <ng-template pTemplate="header" ><span>contents</span></ng-template>
         <div class="rightSide_panel-content">
           <div class="rightpanel_content setup" (click)="onClickRightPanel('Setup')">
             <span class="content_icon fa-solid fa-wrench bg-yellow-500">
@@ -31,7 +32,7 @@
               <span class="content_icon fa-solid fa-chart-simple flex-row bg-cyan-500">
               </span>
               <span class="content_label">
-                Credit
+                Credit Reporting
               </span>
             </div>
           </div>
