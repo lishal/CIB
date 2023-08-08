@@ -34,6 +34,12 @@ import { ValuatorReportsComponent } from './Components/Credit/Reports/valuator-r
 import { OtherReportsComponent } from './Components/Credit/Reports/other-reports/other-reports.component';
 import { CiclReportComponent } from './Components/Credit/Reports/cicl-report/cicl-report.component';
 import { ValidateEntryComponent } from './Components/Credit/validate-entry/validate-entry.component';
+import { CompanyDetailComponent } from './Components/Setup/company/company-detail/company-detail.component';
+import { ProvinceComponent } from './Components/Setup/company/province/province.component';
+import { BranchComponent } from './Components/Setup/company/branch/branch.component';
+import { DepartmentComponent } from './Components/Setup/company/department/department.component';
+import { RoleComponent } from './Components/Setup/company/role/role.component';
+import { BackupComponent } from './Components/Setup/company/backup/backup.component';
 
 const routes: Routes = [
   {
@@ -44,7 +50,36 @@ const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent,
     children: [
-      { path: 'company', component: CompanyComponent },
+      {
+        path: 'company',
+        component: CompanyComponent,
+        children: [
+          {
+            path: 'companyDetail',
+            component: CompanyDetailComponent,
+          },
+          {
+            path: 'province',
+            component: ProvinceComponent,
+          },
+          {
+            path: 'branch',
+            component: BranchComponent,
+          },
+          {
+            path: 'department',
+            component: DepartmentComponent,
+          },
+          {
+            path: 'role',
+            component: RoleComponent,
+          },
+          {
+            path: 'backup',
+            component: BackupComponent,
+          },
+        ],
+      },
       { path: 'employee', component: EmployeeComponent },
       { path: 'valuator', component: ValuatorComponent },
       { path: 'lookup', component: LookupListComponent },

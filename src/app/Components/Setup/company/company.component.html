@@ -1,13 +1,12 @@
-<div class="company">
-  <p-tabMenu [model]="items" ></p-tabMenu>
+<div class="company-heading">
+  <p-tabMenu [model]="items"></p-tabMenu>
   <div class="heading">
     <span>
       <i class="fa-solid fa-building"></i>
     </span>
-    <span>
-      Company Setup
-    </span>
+    <span> Company Setup </span>
   </div>
 </div>
-
-
+<div class="company-main">
+  <router-outlet></router-outlet>
+</div>

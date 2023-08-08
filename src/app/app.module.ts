@@ -46,6 +46,11 @@ import { CiclReportComponent } from './Components/Credit/Reports/cicl-report/cic
 import { AfterEligibilityDataComponent } from './Components/Credit/Database_Management/after-eligibility-data/after-eligibility-data.component';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { CompanyDetailComponent } from './Components/Setup/company/company-detail/company-detail.component';
+import { ProvinceComponent } from './Components/Setup/company/province/province.component';
+import { BranchComponent } from './Components/Setup/company/branch/branch.component';
+import { DepartmentComponent } from './Components/Setup/company/department/department.component';
+import { RoleComponent } from './Components/Setup/company/role/role.component';
+import { BackupComponent } from './Components/Setup/company/backup/backup.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -84,6 +89,11 @@ import { CompanyDetailComponent } from './Components/Setup/company/company-detai
     CiclReportComponent,
     AfterEligibilityDataComponent,
     CompanyDetailComponent,
+    ProvinceComponent,
+    BranchComponent,
+    DepartmentComponent,
+    RoleComponent,
+    BackupComponent,
   ],
   imports: [
     BrowserModule,

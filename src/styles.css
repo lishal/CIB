@@ -152,15 +152,19 @@
   cursor: default;
 }
 
-.company .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link {
+.company-heading .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link {
   color: var(--lightDark) !important;
   font-size: 16px !important;
   font-weight: 600;
 }
-.company .p-tabmenu .p-tabmenu-nav .p-tabmenuitem.p-highlight .p-menuitem-link {
+.company-heading
+  .p-tabmenu
+  .p-tabmenu-nav
+  .p-tabmenuitem.p-highlight
+  .p-menuitem-link {
   border-color: var(--topnavbarcolor1) !important;
 }
-.company
+.company-heading
   .p-tabmenu
   .p-tabmenu-nav
   .p-highlight

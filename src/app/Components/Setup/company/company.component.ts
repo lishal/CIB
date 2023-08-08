@@ -8,18 +8,22 @@ import { MenuItem } from 'primeng/api';
 })
 export class CompanyComponent implements OnInit {
   items: MenuItem[] | undefined;
-  test:[{
-    label:'Company Setup'
-    icon:'fa-solid fa-building'
-  }] | undefined;
+  test:
+    | [
+        {
+          label: 'Company Setup';
+          icon: 'fa-solid fa-building';
+        }
+      ]
+    | undefined;
   ngOnInit() {
     this.items = [
-      { label: 'Company' },
-      { label: 'Province' },
-      { label: 'Branch' },
-      { label: 'Department' },
-      { label: 'Role' },
-      { label: 'Backup' },
+      { label: 'Company', routerLink: 'companyDetail' },
+      { label: 'Province', routerLink: 'province' },
+      { label: 'Branch', routerLink: 'branch' },
+      { label: 'Department', routerLink: 'department' },
+      { label: 'Role', routerLink: 'role' },
+      { label: 'Backup', routerLink: 'backup' },
     ];
   }
 }

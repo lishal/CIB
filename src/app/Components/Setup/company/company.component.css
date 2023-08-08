@@ -1,16 +1,18 @@
-.company{
+.company-heading {
   display: inline-flex;
   justify-content: space-between;
   width: 100%;
 }
-.company .heading{
+.company-heading .heading {
   display: flex;
   align-items: center;
   justify-content: flex-end;
- 
 }
-.company .heading span{
+.company-heading .heading span {
   font-size: 18px;
   font-weight: 600;
+  padding: 3px 6px;
+}
+.company-main {
   padding: 3px 6px;
 }
