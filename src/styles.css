@@ -53,6 +53,7 @@
 
 .leftSidePanel .leftPanelContainer .p-panelmenu .p-panelmenu-header > a:hover {
   padding: 8px 14px;
+  background-color: var(--sidePanelHover) !important;
   transition: 0.2s ease-in-out;
 }
 .leftSidePanel .leftPanelContainer .p-panelmenu .p-panelmenu-header > a span {
