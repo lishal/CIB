@@ -43,6 +43,10 @@
   border: none;
   transition: 0.2s ease-in-out;
 }
+.leftSidePanel .leftPanelContainer .p-panelmenu .p-panelmenu-header .p-menuitem-link-active{
+color: var(--topnavbarcolor1) !important;
+}
+
 .leftSidePanel .leftPanelContainer .p-panelmenu .p-panelmenu-header > a:hover {
   padding: 8px 14px;
   transition: 0.2s ease-in-out;
@@ -78,6 +82,22 @@
   .p-element
   .p-menuitem-link {
   padding: unset;
+}
+.p-panelmenu .p-panelmenu-content .p-menuitem .p-menuitem-link .p-menuitem-text{
+  color: unset !important;
+}
+.leftSidePanel
+.p-element
+.p-highlight a{
+    color: var(--topnavbarcolor1) !important;
+  }
+.leftSidePanel
+  .leftPanelContainer
+  .p-panelmenu-panel
+  .p-panelmenu-content
+  .p-element
+  .p-menuitem-link-active{
+  color: var(--topnavbarcolor1) !important;
 }
 .leftSidePanel
   .leftPanelContainer

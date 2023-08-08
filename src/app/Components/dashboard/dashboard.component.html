@@ -13,7 +13,7 @@
     </button>
 </div>
 <div class="leftSidePanel" [class.sidepanelCloseOuter]="isSidebarClosed">
-    <p-panelMenu class="leftPanelContainer" [model]="items" [class.sidepanelCloseInner]="isSidebarClosed" ></p-panelMenu>
+    <p-panelMenu class="leftPanelContainer" [model]="items" [class.sidepanelCloseInner]="isSidebarClosed" [multiple]="false"></p-panelMenu>
 </div>
 <div class="rightSidePanel">
       <p-sidebar [(visible)]="displayRightPanel" position="right">
