@@ -4,7 +4,10 @@
     var(--topnavbarcolor1) 5%,
     var(--topnavbarcolor2) 100%
   );
+  position: fixed;
+  display: block;
   height: 60px;
+  width: 100%;
 }
 .topnavbar .brandname {
   position: absolute;
@@ -134,10 +137,12 @@
 .mainContainer {
   position: absolute;
   left: 260px;
+  top:60px;
   right: 0;
   min-height: 90vh;
   padding: 0.5rem 1rem;
   transition: all 0.2s ease-in;
+  z-index: -1;
 }
 .sidePanelClosedContainer {
   position: absolute;

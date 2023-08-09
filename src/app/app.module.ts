@@ -13,6 +13,7 @@ import { SidebarModule } from 'primeng/sidebar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CompanyComponent } from './Components/Setup/company/company.component';
 import { PanelMenuModule } from 'primeng/panelmenu';
+import { TableModule } from 'primeng/table';
 import { EmployeeComponent } from './Components/Setup/employee/employee.component';
 import { ValuatorComponent } from './Components/Setup/valuator/valuator.component';
 import { LookupListComponent } from './Components/Setup/lookup-list/lookup-list.component';
@@ -107,6 +108,7 @@ import { BackupComponent } from './Components/Setup/company/backup/backup.compon
     BrowserAnimationsModule,
     PanelMenuModule,
     TabMenuModule,
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent],

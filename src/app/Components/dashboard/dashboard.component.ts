@@ -36,7 +36,7 @@ export class DashboardComponent implements OnInit {
           {
             label: 'Company',
             icon: 'fa-solid fa-building',
-            routerLink: 'company',
+            routerLink: 'company/companyDetail',
             title: 'Company',
           },
           {
@@ -279,7 +279,7 @@ export class DashboardComponent implements OnInit {
       {
         label: 'Company',
         icon: 'fa-solid fa-building',
-        routerLink: 'company',
+        routerLink: 'company/companyDetail',
 
         title: 'Company',
       },
