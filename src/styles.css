@@ -11,6 +11,7 @@
   --danger: #ff3d32;
   --lightDark: #6c757d;
   --moderateDark: #343a40;
+  --shine:#01A1C1;
   --dark: #000000;
   --sidePanel: #292323;
   --sidePanellabel: #495057;
@@ -32,6 +33,22 @@
 .p-inputtext {
   width: 100% !important;
 }
+.leftSidePanel::-webkit-scrollbar{
+  width: 3px;
+}
+.leftSidePanel::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px white;
+  border-radius: 10px;
+}
+
+/* Handle */
+.leftSidePanel::-webkit-scrollbar-thumb {
+  background: var(--dark);
+  border-radius: 10px;
+}
+.leftSidePanel .leftPanelContainer .p-panelmenu .p-panelmenu-header{
+  background-color: transparent;
+}
 
 .leftSidePanel .leftPanelContainer .p-panelmenu .p-panelmenu-header > a {
   display: block;
@@ -39,21 +56,30 @@
   position: relative;
   cursor: pointer;
   font-weight: 600;
-  background-color: var(--white) !important;
+  background-color: transparent;
   border: none;
   transition: 0.2s ease-in-out;
+  color: var(--white);
+}
+.leftSidePanel .leftPanelContainer .p-panelmenu .p-panelmenu-header >  a:focus{
+  box-shadow: none;
+}
+.leftSidePanel .leftPanelContainer .p-panelmenu .p-panelmenu-header >  a .p-menuitem-icon{
+  width: 30px;
+  margin-right: unset;
 }
 .leftSidePanel
   .leftPanelContainer
   .p-panelmenu
   .p-panelmenu-header
   .p-menuitem-link-active {
-  color: var(--topnavbarcolor1) !important;
+  color: var(--dark) !important;
 }
 
 .leftSidePanel .leftPanelContainer .p-panelmenu .p-panelmenu-header > a:hover {
   padding: 8px 14px;
-  background-color: var(--sidePanelHover) !important;
+  background-color: var(--topnavbarHover) !important;
+  color: var(--white) !important;
   transition: 0.2s ease-in-out;
 }
 .leftSidePanel .leftPanelContainer .p-panelmenu .p-panelmenu-header > a span {
@@ -77,8 +103,13 @@
   transform: rotate(90deg);
 }
 .leftSidePanel .leftPanelContainer .p-panelmenu .p-panelmenu-content {
-  border: 2px solid var(--moderateDark);
-  border-radius: 10px;
+  /* border: 2px solid var(--moderateDark); */
+  background-color: var(--shine);
+  padding: unset;
+}
+.leftSidePanel .leftPanelContainer .p-panelmenu .p-panelmenu-content{
+  border: unset;
+  background-color: transparent;
 }
 .leftSidePanel
   .leftPanelContainer
@@ -87,6 +118,7 @@
   .p-element
   .p-menuitem-link {
   padding: unset;
+  color: var(--white);
 }
 .p-panelmenu
   .p-panelmenu-content
@@ -96,7 +128,7 @@
   color: unset !important;
 }
 .leftSidePanel .p-element .p-highlight a {
-  color: var(--topnavbarcolor1) !important;
+  color: var(--white) !important;
 }
 .leftSidePanel
   .leftPanelContainer
@@ -104,7 +136,7 @@
   .p-panelmenu-content
   .p-element
   .p-menuitem-link-active {
-  color: var(--topnavbarcolor1) !important;
+  color: var(--dark) !important;
 }
 .leftSidePanel
   .leftPanelContainer
@@ -116,22 +148,22 @@
   padding: 0.75rem 1.55rem;
   width: 260px;
   font-weight: 600;
-  color: var(--lightDark);
   display: inline-flex;
   justify-content: flex-start;
-  transition: all 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
-
 .leftSidePanel
   .leftPanelContainer
   .p-panelmenu
   .p-panelmenu-content
   .p-element
-  .p-menuitem-link
-  :hover {
-  padding: 0.75rem 1.65rem;
-  transition: all 0.2s ease-in-out !important;
-}
+  .p-menuitem-link:hover{
+    padding: 0px 3px;
+    background-color: var(--topnavbarHover) !important;
+    color: var(--white) !important;
+    transition: padding 0.2s ease-in-out;
+    /* color: var(--white) !important; */
+  }
 /* .p-menuitem-link-active {
   background-color: red !important;
 } */

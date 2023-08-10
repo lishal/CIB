@@ -1,9 +1,10 @@
 .topnavbar {
-  background: linear-gradient(
+  /* background: linear-gradient(
     -206deg,
     var(--topnavbarcolor1) 5%,
     var(--topnavbarcolor2) 100%
-  );
+  ); */
+  background-color: var(--shine);
   position: fixed;
   display: block;
   height: 60px;
@@ -63,7 +64,7 @@
 .leftSidePanel {
   display: block;
   width: 260px;
-  background-color: var(--white);
+  background-color: var(--shine);
   border-right: solid 1px #d6d7d9;
   position: fixed;
   top: 60px;
