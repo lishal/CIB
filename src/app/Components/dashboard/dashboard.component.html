@@ -8,6 +8,12 @@
   <div class="toppanel_heading">
     <span>{{ topPanelLabel }}</span>
   </div>
+  <div class="profile">
+    <p-button (click)="profileToggle()" label="Admin"></p-button>
+    <p-overlay [(visible)]="profileOverlay" [responsive]="{ breakpoint: '640px', direction: 'bottom', contentStyleClass: 'h-20rem' }" contentStyleClass="p-4 surface-overlay shadow-2 border-round">
+        Content
+    </p-overlay>
+  </div>
   <button class="rightSide_button" (click)="showRightPanel()">
     <i class="fa-solid fa-ellipsis-v"></i>
   </button>

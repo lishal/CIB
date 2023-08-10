@@ -1,18 +1,153 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-
+import { Router  } from '@angular/router';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  isSidebarClosed = false;
+
+  currentRoute:string='';
   topPanelLabel: string = '';
+  constructor(router: Router) { 
+    router.events.subscribe((url:any) =>{
+      this.currentRoute=router.url;
+
+        if(this.currentRoute==="/dashboard/company/companyDetail"){
+          this.topPanelLabel="Comapny Detail";
+        }
+        else if(this.currentRoute==="/dashboard/company"){
+          this.topPanelLabel="Company";
+        }
+        else if(this.currentRoute==="/dashboard/company/province"){
+          this.topPanelLabel="Province";
+        }
+        else if(this.currentRoute==="/dashboard/company/branch"){
+          this.topPanelLabel="Branch";
+        }
+        else if(this.currentRoute==="/dashboard/company/department"){
+          this.topPanelLabel="Department";
+        }
+        else if(this.currentRoute==="/dashboard/company/role"){
+          this.topPanelLabel="Role";
+        }
+        else if(this.currentRoute==="/dashboard/company/backup"){
+          this.topPanelLabel="Backup";
+        }
+        else if(this.currentRoute==="/dashboard/employee"){
+          this.topPanelLabel="Employee";
+        }
+        else if(this.currentRoute==="/dashboard/valuator"){
+          this.topPanelLabel="valuator";
+        }
+        else if(this.currentRoute==="/dashboard/lookup"){
+          this.topPanelLabel="lookup list";
+        }
+        else if(this.currentRoute==="/dashboard/security"){
+          this.topPanelLabel="security";
+        }
+        else if(this.currentRoute==="/dashboard/admanagement"){
+          this.topPanelLabel="AD Management";
+        }
+        else if(this.currentRoute==="/dashboard/emailTemplates"){
+          this.topPanelLabel="Email Templates";
+        }
+        else if(this.currentRoute==="/dashboard/smsTemplates"){
+          this.topPanelLabel="SMS Template";
+        }
+        else if(this.currentRoute==="/dashboard/popupMessage"){
+          this.topPanelLabel="Popup Message";
+        }
+        else if(this.currentRoute==="/dashboard/creditDashboard"){
+          this.topPanelLabel="Dashboard";
+        }
+        else if(this.currentRoute==="/dashboard/emailConfig"){
+          this.topPanelLabel="Email Config";
+        }
+        else if(this.currentRoute==="/dashboard/cibEntry"){
+          this.topPanelLabel="Cib Entry";
+        }
+        else if(this.currentRoute==="/dashboard/valuatorBranchLink"){
+          this.topPanelLabel="valuator Branch Link";
+        }
+        else if(this.currentRoute==="/dashboard/validateEntry"){
+          this.topPanelLabel="Validate Entry";
+        }
+        else if(this.currentRoute==="/dashboard/cibViewer"){
+          this.topPanelLabel="Cib Viewer";
+        }
+        else if(this.currentRoute==="/dashboard/generateIFf"){
+          this.topPanelLabel="Generate IFf";
+        }
+        else if(this.currentRoute==="/dashboard/checkBlackList"){
+          this.topPanelLabel="check Black List";
+        }
+        else if(this.currentRoute==="/dashboard/cleanDuplicateEntry"){
+          this.topPanelLabel="clean Duplicate Entry";
+        }
+        else if(this.currentRoute==="/dashboard/importDataFromOther"){
+          this.topPanelLabel="import Data From Other";
+        }
+        else if(this.currentRoute==="/dashboard/importExportCbsData"){
+          this.topPanelLabel="Import/Export CBS Data";
+        }
+        else if(this.currentRoute==="/dashboard/importViaApi"){
+          this.topPanelLabel="import Via Api";
+        }
+        else if(this.currentRoute==="/dashboard/afterEligibilityData"){
+          this.topPanelLabel="after Eligibility Data";
+        }
+        else if(this.currentRoute==="/dashboard/internalScreening"){
+          this.topPanelLabel="internal Screening";
+        }
+        else if(this.currentRoute==="/dashboard/handleMatching"){
+          this.topPanelLabel="handle Matching";
+        }
+        else if(this.currentRoute==="/dashboard/guarantorSearch"){
+          this.topPanelLabel="Borrower/Guarantor Search";
+        }
+        else if(this.currentRoute==="/dashboard/valuatorByBranch"){
+          this.topPanelLabel="valuator By Branch";
+        }
+        else if(this.currentRoute==="/dashboard/performanceReport"){
+          this.topPanelLabel="performance Report";
+        }
+        else if(this.currentRoute==="/dashboard/segmentReport"){
+          this.topPanelLabel="segment Report";
+        }
+        else if(this.currentRoute==="/dashboard/nonComplianceReports"){
+          this.topPanelLabel="non Compliance Reports";
+        }
+        else if(this.currentRoute==="/dashboard/valuatorReports"){
+          this.topPanelLabel="valuator Reports";
+        }
+        else if(this.currentRoute==="/dashboard/otherReports"){
+          this.topPanelLabel="other Reports";
+        }
+        else if(this.currentRoute==="/dashboard/ciclReport"){
+          this.topPanelLabel="cicl Report";
+        }
+
+    }); 
+  }
+  
+  // if(this.currentRoute=="/company"){
+  //   this.topPanel="Company";
+  // }
+  isSidebarClosed = false;
+  
+  profileOverlay: boolean = false;
+
+  profileToggle() {
+    this.profileOverlay = !this.profileOverlay;
+  }
 
   toggleSidebar() {
     this.isSidebarClosed = !this.isSidebarClosed;
+    
   }
+  
   // Right Panel
   displayRightPanel = false;
 
@@ -26,11 +161,12 @@ export class DashboardComponent implements OnInit {
   currentLeftPanel: string = '';
 
   items: MenuItem[] | undefined;
-
+  
   onClickRightPanel(content: string) {
     this.currentLeftPanel = content;
     switch (this.currentLeftPanel) {
       case 'Setup':
+        // console.log(this.route.url);
         this.topPanelLabel = 'Setup and Configuration';
         this.items = [
           {
@@ -38,6 +174,7 @@ export class DashboardComponent implements OnInit {
             icon: 'fa-solid fa-building',
             routerLink: 'company/companyDetail',
             title: 'Company',
+      
           },
           {
             label: 'Employee',
@@ -201,7 +338,7 @@ export class DashboardComponent implements OnInit {
                 // icon: 'fa-solid fa-database',
                 routerLink: 'handleMatching',
 
-                title: 'Handle Matching',
+                title: 'Handle Matching'
               },
             ],
           },
@@ -274,12 +411,11 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.topPanelLabel = 'Setup and Configuration';
     this.items = [
       {
         label: 'Company',
         icon: 'fa-solid fa-building',
-        routerLink: 'company/companyDetail',
+        routerLink: 'company',
 
         title: 'Company',
       },

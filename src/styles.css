@@ -37,7 +37,7 @@
   width: 3px;
 }
 .leftSidePanel::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px white;
+  box-shadow: inset 0 0 5px var(--white);
   border-radius: 10px;
 }
 
@@ -151,6 +151,15 @@
   display: inline-flex;
   justify-content: flex-start;
   transition: 0.2s ease-in-out;
+}
+
+.leftSidePanel
+  .leftPanelContainer
+  .p-panelmenu
+  .p-panelmenu-content
+  .p-element
+  .p-menuitem-link:focus{
+  box-shadow: none;
 }
 .leftSidePanel
   .leftPanelContainer

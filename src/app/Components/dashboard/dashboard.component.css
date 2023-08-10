@@ -58,7 +58,12 @@
 .topnavbar .rightSide_button:hover {
   background-color: var(--topnavbarHover);
 }
-
+.topnavbar .profile{
+  position: absolute;
+  right: 40px;
+  height: 60px;
+  border: 2px solid red;
+}
 /* Left Side Panel */
 
 .leftSidePanel {

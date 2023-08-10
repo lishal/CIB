@@ -52,6 +52,7 @@ import { BranchComponent } from './Components/Setup/company/branch/branch.compon
 import { DepartmentComponent } from './Components/Setup/company/department/department.component';
 import { RoleComponent } from './Components/Setup/company/role/role.component';
 import { BackupComponent } from './Components/Setup/company/backup/backup.component';
+import { OverlayModule } from 'primeng/overlay';
 @NgModule({
   declarations: [
     AppComponent,
@@ -108,7 +109,8 @@ import { BackupComponent } from './Components/Setup/company/backup/backup.compon
     BrowserAnimationsModule,
     PanelMenuModule,
     TabMenuModule,
-    TableModule
+    TableModule,
+    OverlayModule
   ],
   providers: [],
   bootstrap: [AppComponent],
