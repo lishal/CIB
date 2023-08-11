@@ -60,9 +60,42 @@
 }
 .topnavbar .profile{
   position: absolute;
-  right: 40px;
-  height: 60px;
-  border: 2px solid red;
+  right: 65px;
+  height:100%;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+}
+.topnavbar .profile .userBtn{
+  color: var(--white);
+  background-color: transparent !important;
+}
+.topnavbar .profile .userBtn:hover ,.notification .notificationBtn:hover{
+  cursor: pointer;
+  background-color: rgba(0, 0,0, 0.2) !important;
+  color: var(--dark) !important;
+  transition: all 0.2s ease-in-out;
+}
+.topnavbar .profile .userBtn i{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.topnavbar .notification{
+  position: absolute;
+  right: 105px;
+  height:100%;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+}
+.topnavbar .notification .notificationBtn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--white);
 }
 /* Left Side Panel */
 
@@ -70,7 +103,6 @@
   display: block;
   width: 260px;
   background-color: var(--shine);
-  border-right: solid 1px #d6d7d9;
   position: fixed;
   top: 60px;
   left: 0;
@@ -135,10 +167,7 @@
   padding: 0px 6px;
   text-transform: uppercase;
 }
-.panelHeader {
-  display: flex;
-  border: 2px solid red !important;
-}
+
 
 .mainContainer {
   position: absolute;

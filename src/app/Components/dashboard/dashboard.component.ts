@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuItem } from 'primeng/api';
+import { MenuItem ,PrimeNGConfig } from 'primeng/api';
 import { Router  } from '@angular/router';
 @Component({
   selector: 'app-dashboard',
@@ -10,7 +10,7 @@ export class DashboardComponent implements OnInit {
 
   currentRoute:string='';
   topPanelLabel: string = '';
-  constructor(router: Router) { 
+  constructor(router: Router,private primengConfig: PrimeNGConfig) { 
     router.events.subscribe((url:any) =>{
       this.currentRoute=router.url;
 
@@ -141,6 +141,11 @@ export class DashboardComponent implements OnInit {
 
   profileToggle() {
     this.profileOverlay = !this.profileOverlay;
+  }
+  notificationOverlay: boolean = false;
+
+  notificationToggle() {
+    this.notificationOverlay = !this.notificationOverlay;
   }
 
   toggleSidebar() {
@@ -411,6 +416,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.primengConfig.ripple = true;
     this.items = [
       {
         label: 'Company',

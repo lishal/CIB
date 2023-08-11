@@ -167,7 +167,7 @@
   .p-panelmenu-content
   .p-element
   .p-menuitem-link:hover{
-    padding: 0px 3px;
+    padding: 0px 2px;
     background-color: var(--topnavbarHover) !important;
     color: var(--white) !important;
     transition: padding 0.2s ease-in-out;
@@ -213,4 +213,54 @@
   .p-menuitem-link
   .p-menuitem-text {
   color: var(--topnavbarcolor1) !important;
+}
+
+
+/* Profile */
+.topnavbar .profile .p-overlay{
+  top: 60px !important;
+  right: 5px !important;
+  left: unset !important;
+}
+
+.topnavbar .profile .p-overlay .p-overlay-content{
+  padding: unset !important;
+  min-width: 15rem;
+  border-radius: 10px !important;
+}
+.topnavbar .profile .p-overlay .p-overlay-content .userinfo{
+  display: flex;
+  background-color: var(--shine);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 70px;
+  /* border-top-left-radius: 10px;
+  border-top-right-radius: 10px; */
+  color: var(--white);
+}
+.topnavbar .profile .p-overlay .p-overlay-content .userSettings{
+  display: flex;
+  width: 100%;
+  height: 60px;
+  justify-content: space-around;
+  align-items: center;
+}
+.topnavbar .profile .p-overlay .p-overlay-content .userSettings .p-button.p-button-text{
+  padding: unset !important;
+  height: 40px;
+  padding: 5px !important;
+
+}
+.topnavbar .profile .p-overlay .p-overlay-content .userSettings .p-button.p-button-text .p-button-label{
+  font-weight: 500;
+}
+
+.topnavbar .notification .p-overlay{
+  top: 60px !important;
+  right: 5px !important;
+  left: unset !important;
+}
+.topnavbar .notification .p-overlay .p-overlay-content{
+  min-width: 15rem;
 }

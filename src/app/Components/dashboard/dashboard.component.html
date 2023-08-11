@@ -9,9 +9,28 @@
     <span>{{ topPanelLabel }}</span>
   </div>
   <div class="profile">
-    <p-button (click)="profileToggle()" label="Admin"></p-button>
-    <p-overlay [(visible)]="profileOverlay" [responsive]="{ breakpoint: '640px', direction: 'bottom', contentStyleClass: 'h-20rem' }" contentStyleClass="p-4 surface-overlay shadow-2 border-round">
-        Content
+    
+    <div pRipple class="userBtn border-circle w-2rem h-2rem flex" (click)="profileToggle()">
+      <i class="fa-solid fa-user"></i>
+    </div>
+    <p-overlay [(visible)]="profileOverlay"  contentStyleClass="p-4 surface-overlay shadow-2 border-round">
+        <div class="userinfo">
+          <span class="text-2xl">Admin</span>
+          <span class="text-1xl">Admin@admin.com</span>
+        </div>
+        <div class="userSettings">
+          <p-button label="Change Password" styleClass="p-button-raised p-button-text"></p-button>
+          <p-button label="Sign Out" styleClass="p-button-raised p-button-text p-button-danger"></p-button>
+        </div>
+    </p-overlay>
+  </div>
+  <div class="notification">
+    
+    <div pRipple class="notificationBtn border-circle w-2rem h-2rem flex" (click)="notificationToggle()">
+      <i class="fa-solid fa-bell"></i>
+    </div>
+    <p-overlay [(visible)]="notificationOverlay"  contentStyleClass="p-4 surface-overlay shadow-2 border-round">
+        Notifications here!
     </p-overlay>
   </div>
   <button class="rightSide_button" (click)="showRightPanel()">

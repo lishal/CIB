@@ -53,6 +53,7 @@ import { DepartmentComponent } from './Components/Setup/company/department/depar
 import { RoleComponent } from './Components/Setup/company/role/role.component';
 import { BackupComponent } from './Components/Setup/company/backup/backup.component';
 import { OverlayModule } from 'primeng/overlay';
+import { RippleModule } from 'primeng/ripple';
 @NgModule({
   declarations: [
     AppComponent,
@@ -110,7 +111,8 @@ import { OverlayModule } from 'primeng/overlay';
     PanelMenuModule,
     TabMenuModule,
     TableModule,
-    OverlayModule
+    OverlayModule,
+    RippleModule
   ],
   providers: [],
   bootstrap: [AppComponent],

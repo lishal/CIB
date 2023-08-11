@@ -15,7 +15,7 @@ export class LoginComponent {
   onLogin(): void {
     if (this.username === 'admin' && this.password === 'admin') {
       this.isCredentialsFailed = false;
-      this.router.navigate(['/dashboard/company']);
+      this.router.navigate(['/dashboard/company/companyDetail']);
     } else if (this.username === '' && this.password === '') {
       this.isCredentialsFailed = true;
     } else {
