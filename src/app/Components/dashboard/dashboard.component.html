@@ -9,36 +9,64 @@
     <span>{{ topPanelLabel }}</span>
   </div>
   <div class="profile">
-    
-    <div pRipple class="userBtn border-circle w-2rem h-2rem flex" (click)="profileToggle()">
+    <div
+      pRipple
+      class="userBtn border-circle w-2rem h-2rem flex"
+      (click)="profileToggle()"
+    >
       <i class="fa-solid fa-user"></i>
     </div>
-    <p-overlay [(visible)]="profileOverlay"  contentStyleClass="p-4 surface-overlay shadow-2 border-round">
-        <div class="userinfo">
-          <span class="text-2xl">Admin</span>
-          <span class="text-1xl">Admin@admin.com</span>
-        </div>
-        <div class="userSettings">
-          <p-button label="Change Password" styleClass="p-button-raised p-button-text"></p-button>
-          <p-button label="Sign Out" styleClass="p-button-raised p-button-text p-button-danger"></p-button>
-        </div>
+    <p-overlay
+      [(visible)]="profileOverlay"
+      contentStyleClass="p-4 surface-overlay shadow-2 border-round"
+    >
+      <div class="userinfo">
+        <span class="text-2xl">Admin</span>
+        <span class="text-1xl">Admin@admin.com</span>
+      </div>
+      <div class="userSettings">
+        <p-button
+          label="Change Password"
+          styleClass="p-button-raised p-button-text"
+        ></p-button>
+        <p-button
+          label="Sign Out"
+          styleClass="p-button-raised p-button-text p-button-danger"
+        ></p-button>
+      </div>
     </p-overlay>
   </div>
   <div class="notification">
-    
-    <div pRipple class="notificationBtn border-circle w-2rem h-2rem flex" (click)="notificationToggle()">
+    <div
+      pRipple
+      class="notificationBtn border-circle w-2rem h-2rem flex"
+      (click)="notificationToggle()"
+    >
       <i class="fa-solid fa-bell"></i>
     </div>
-    <p-overlay [(visible)]="notificationOverlay"  contentStyleClass="p-4 surface-overlay shadow-2 border-round">
-        Notifications here!
+    <p-overlay
+      [(visible)]="notificationOverlay"
+      contentStyleClass="p-4 surface-overlay shadow-2 border-round"
+    >
+      Notifications here!
     </p-overlay>
   </div>
-  <form class="search">
-  <div class="search__wrapper">
-    <input type="text" name="" placeholder="Search for..." class="search__field">
-    <button type="submit" class="border-none fa fa-search search__icon"></button>
+  <div class="search">
+    <div class="search-bar flex flex-row">
+      <input
+        type="text"
+        name=""
+        placeholder="Search Here...."
+        class="search_field"
+      />
+      <button
+        pRipple
+        type="submit"
+        class="fa-solid fa-search search_icon border-circle flex"
+      ></button>
+    </div>
   </div>
-</form>
+
   <button class="rightSide_button" (click)="showRightPanel()">
     <i class="fa-solid fa-ellipsis-v"></i>
   </button>
