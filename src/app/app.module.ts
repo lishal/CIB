@@ -54,6 +54,7 @@ import { RoleComponent } from './Components/Setup/company/role/role.component';
 import { BackupComponent } from './Components/Setup/company/backup/backup.component';
 import { OverlayModule } from 'primeng/overlay';
 import { RippleModule } from 'primeng/ripple';
+import {HttpClientModule} from '@angular/common/http'
 @NgModule({
   declarations: [
     AppComponent,
@@ -112,7 +113,8 @@ import { RippleModule } from 'primeng/ripple';
     TabMenuModule,
     TableModule,
     OverlayModule,
-    RippleModule
+    RippleModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],

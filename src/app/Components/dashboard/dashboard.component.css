@@ -102,31 +102,27 @@
   position: absolute;
   height: 100%;
   right: 145px;
-  width: 45rem;
+  width: 20rem;
   background-color: var(--shine);
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  /* border: 2px solid red; */
 }
 
 .topnavbar .search-bar {
   --size: 2rem;
-  width: 100%;
   border-radius: 50px;
   height: var(--size);
-  /* padding: 3px; */
   width: var(--size);
   position: relative;
   transition: width 0.3s ease-in-out;
-  /* border: 2px solid white; */
   overflow: hidden;
+
 
   &:focus-within {
     width: 100%;
     border: 2px solid var(--white);
-
     .search_field {
       opacity: 1;
       position: absolute;

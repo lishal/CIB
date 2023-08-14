@@ -1,10 +1,28 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
+import {ProvinceService} from '../../../../Services/Setup/province.service'
 
 @Component({
   selector: 'app-province',
   templateUrl: './province.component.html',
   styleUrls: ['./province.component.css']
 })
-export class ProvinceComponent {
+export class ProvinceComponent implements OnInit {
+  data:any[]=[];
+  isLoading:boolean=false;
+  constructor(private api:ProvinceService){}
+
+  ngOnInit(): void {
+    this.isLoading=true;
+  
+    this.api.fetchData().subscribe((response)=>{
+      this.data=response;
+      this.isLoading=false;
+      // console.log(this.data)
+    },
+    (error)=>{
+      console.log(error)
+      this.isLoading=false;
+    })
+  }
 
 }

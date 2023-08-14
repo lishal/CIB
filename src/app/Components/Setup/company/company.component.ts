@@ -9,9 +9,7 @@ import { Router } from '@angular/router';
 })
 export class CompanyComponent implements OnInit {
   items: MenuItem[] | undefined;
-  constructor(private router: Router) {}
   ngOnInit() {
-    this.router.navigate(['/dashboard/company/companyDetail']);
     this.items = [
       { label: 'Company', routerLink: 'companyDetail' },
       { label: 'Province', routerLink: 'province' },
