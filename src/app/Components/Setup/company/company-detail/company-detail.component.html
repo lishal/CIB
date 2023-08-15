@@ -1,43 +1,51 @@
 <div class="card mt-3">
-    <p-table [value]="products"
+  <p-table
+    [value]="products"
     styleClass="p-datatable-sm p-datatable-striped "
-    
-    
     [showCurrentPageReport]="true"
     [tableStyle]="{ 'min-width': '50rem' }"
     [rows]="5"
     [paginator]="true"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-    >
+  >
     <!-- 
      -->
     <!-- 
     [rowsPerPageOptions]="[5,10, 25, 50,100]" 
     <th pSortableColumn="id"  style="width:30%">Id <p-sortIcon class="hidden" field="id"></p-sortIcon></th>
 -->
-        <ng-template pTemplate="header">
-            <tr>
-                <th style="width:20%"></th>
-                <th style="width:30%">Company Name </th>
-                <th style="width:10%">DPID </th>
-                <th style="width:10%">Prev.DPID</th>
-                <th style="width:20%">TradingSym </th>
-                <th style="width:20%">SecretKey </th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-product>
-            <tr>
-                <td>
-                    <button pButton pRipple icon="fa-solid fa-pen-to-square" class="h-2rem w-2rem p-button-rounded p-button-success mr-2" ></button>
-                    <button pButton pRipple icon="fa-solid fa-file" class="h-2rem w-2rem p-button-rounded p-button-warning"></button>
-                </td>
-                <td>{{product.companyName}}</td>
-                <td>{{product.dpid}}</td>
-                <td>{{product.prevDpid}}</td>
-                <td>{{product.tradingStm}}</td>
-                <td>{{product.secretKey}}</td>
-            </tr>
-        </ng-template>
-        
-    </p-table>
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 20%"></th>
+        <th style="width: 30%">Company Name</th>
+        <th style="width: 10%">DPID</th>
+        <th style="width: 10%">Prev.DPID</th>
+        <th style="width: 20%">TradingSym</th>
+        <th style="width: 20%">SecretKey</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-product>
+      <tr>
+        <td>
+          <button
+            pButton
+            pRipple
+            icon="fa-solid fa-pen-to-square"
+            class="h-2rem w-2rem p-button-rounded p-button-success mr-2"
+          ></button>
+          <button
+            pButton
+            pRipple
+            icon="fa-solid fa-file"
+            class="h-2rem w-2rem p-button-rounded p-button-warning"
+          ></button>
+        </td>
+        <td>{{ product.companyName }}</td>
+        <td>{{ product.dpid }}</td>
+        <td>{{ product.prevDpid }}</td>
+        <td>{{ product.tradingStm }}</td>
+        <td>{{ product.secretKey }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
 </div>
