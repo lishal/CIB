@@ -1,6 +1,6 @@
 <div class="card mt-3">
   <p-table
-    #province
+    #search
     [value]="data"
     loadingIcon="fa-solid fa-spinner fa-spin-pulse"
     [loading]="isLoading"
@@ -22,7 +22,7 @@
             pInputText
             type="text"
             (input)="
-              province.filterGlobal($any($event.target).value, 'contains')
+            search.filterGlobal($any($event.target).value, 'contains')
             "
             placeholder="Search here..."
           />
@@ -40,7 +40,7 @@
         <th pSortableColumn="swift_bic" style="width: 20%">IsActive</th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-data>
+    <ng-template pTemplate="body" let-data> 
       <tr>
         <td>
           <button
@@ -72,6 +72,11 @@
         <td>{{ data?.bank_name }}</td>
         <td>{{ data?.swift_bic }}</td>
       </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+        <tr>
+            <td colspan="7" style="text-align: center;">Sorry! No record found </td>
+        </tr>
     </ng-template>
   </p-table>
 </div>

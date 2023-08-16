@@ -54,7 +54,9 @@ import { RoleComponent } from './Components/Setup/company/role/role.component';
 import { BackupComponent } from './Components/Setup/company/backup/backup.component';
 import { OverlayModule } from 'primeng/overlay';
 import { RippleModule } from 'primeng/ripple';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule} from '@angular/common/http';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { ToastModule } from 'primeng/toast';
 @NgModule({
   declarations: [
     AppComponent,
@@ -114,7 +116,9 @@ import {HttpClientModule} from '@angular/common/http'
     TableModule,
     OverlayModule,
     RippleModule,
-    HttpClientModule
+    HttpClientModule,
+    DynamicDialogModule,
+    ToastModule
   ],
   providers: [],
   bootstrap: [AppComponent],
