@@ -1,73 +1,138 @@
-
 <div class="card">
-    <div class="formgrid grid">
-        <div class="field col-12 mt-3 md:col-6 ">
-            <div class="grid">
-                <div class="col-12">
-                    <div class="field grid">
-                        <label for="companyName" class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center">Company Name <span style="color: red;">&nbsp; *</span></label>
-                        <div class="col-12 md:col-7">
-                            <input id="companyName" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="field grid">
-                        <label for="abbreveration" class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center">Abbreveration <span style="color: red;">&nbsp; *</span></label>
-                        <div class="col-12 md:col-7">
-                            <input id="abbreveration" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="field grid">
-                        <label for="dataProviderId" class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center">Data Provider ID <span style="color: red;">&nbsp; *</span></label>
-                        <div class="col-12 md:col-7">
-                            <input id="dataProviderId" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="field grid">
-                        <label for="prevDataProviderId" class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center">Prev Data Provider ID</label>
-                        <div class="col-12 md:col-7">
-                            <input id="prevDataProviderId" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="field grid">
-                        <label for="tradingSymbol" class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center">Trading Symbol</label>
-                        <div class="col-12 md:col-7">
-                            <input id="tradingSymbol" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <div class="field grid">
-                        <label for="secretKey" class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center">Secret Key</label>
-                        <div class="col-12 md:col-7">
-                            <input id="secretKey" type="text" class="surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" style="background-color: lightgray !important;" disabled>
-                        </div>
-                    </div>
-                </div>
+  <div class="formgrid grid">
+    <div class="field col-12 mt-3 md:col-6">
+      <div class="grid">
+        <div class="col-12">
+          <div class="field grid">
+            <label
+              for="companyName"
+              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center"
+              >Company Name <span style="color: red">&nbsp; *</span></label
+            >
+            <div class="col-12 md:col-7">
+              <input
+                id="companyName"
+                type="text"
+                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                [value]="data[0].companyName"
+              />
             </div>
-            
+          </div>
         </div>
-        <div class="field col-12 mt-3 md:col-6">
-            <div class="grid">
-                <div class="col-12">
-                    <div class="field grid">
-                        <label for="firstname4" class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center">Select Profile Photo</label>
-                        <div class="col-12 md:col-7">
-                            <input id="firstname4" type="file" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" (change)="handleImage($event)">
-                            <img *ngIf="uploadedImg" [src]="uploadedImg">
-                        </div>
-                    </div>
-                </div>
+        <div class="col-12">
+          <div class="field grid">
+            <label
+              for="abbreveration"
+              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center"
+              >Abbreveration <span style="color: red">&nbsp; *</span></label
+            >
+            <div class="col-12 md:col-7">
+              <input
+                id="abbreveration"
+                type="text"
+                [value]="data[0].abbreveration"
+                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+              />
             </div>
-
+          </div>
         </div>
+        <div class="col-12">
+          <div class="field grid">
+            <label
+              for="dataProviderId"
+              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center"
+              >Data Provider ID <span style="color: red">&nbsp; *</span></label
+            >
+            <div class="col-12 md:col-7">
+              <input
+                id="dataProviderId"
+                type="text"
+                [value]="data[0].dpid"
+                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="field grid">
+            <label
+              for="prevDataProviderId"
+              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center"
+              >Prev Data Provider ID</label
+            >
+            <div class="col-12 md:col-7">
+              <input
+                id="prevDataProviderId"
+                type="text"
+                [value]="data[0].prevDpid"
+                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="field grid">
+            <label
+              for="tradingSymbol"
+              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center"
+              >Trading Symbol</label
+            >
+            <div class="col-12 md:col-7">
+              <input
+                id="tradingSymbol"
+                type="text"
+                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="field grid">
+            <label
+              for="secretKey"
+              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center"
+              >Secret Key</label
+            >
+            <div class="col-12 md:col-7">
+              <input
+                id="secretKey"
+                type="text"
+                class="surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                style="background-color: lightgray !important"
+                disabled
+              />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="field col-12 mt-3 md:col-6">
+      <div class="grid">
+        <div class="col-12">
+          <div class="field grid">
+            <label
+              for="firstname4"
+              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center"
+              >Select Profile Photo</label
+            >
+            <div class="col-12 md:col-7">
+              <input
+                id="firstname4"
+                type="file"
+                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                (change)="handleImage($event)"
+              />
+              <img
+                *ngIf="selectedImageUrl"
+                [src]="selectedImageUrl"
+                height="180"
+                width="180"
+                alt="Selected Image"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
