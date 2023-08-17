@@ -1,8 +1,9 @@
 import { Component, OnInit ,OnDestroy } from '@angular/core';
 import { BranchService } from '../../../../Services/Setup/Company/branch.service';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import {EditBranch} from './editbranch'
-import {ViewBranch} from './viewbranch'
+import {EditComponent} from './edit/edit.component'
+import {ViewComponent} from './view/view.component'
+import { DeleteComponent } from './delete/delete.component';
 
 @Component({
   selector: 'app-branch',
@@ -18,9 +19,10 @@ export class BranchComponent {
 
   showData(id: number) {
     const displayData = this.data.find((data) => data.id === id);
-    this.ref = this.dialogService.open(ViewBranch, {
+    this.ref = this.dialogService.open(ViewComponent, {
       header: `Detailed View of ${displayData.account_number} account number`,
       width: '70%',
+      height:'60%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
       maximizable: true,
@@ -37,9 +39,10 @@ export class BranchComponent {
   }
   editData(id: number) {
     const editData = this.data.find((data) => data.id === id);
-    this.ref = this.dialogService.open(EditBranch, {
+    this.ref = this.dialogService.open(EditComponent, {
       header: `Edit Province for ${id} id`,
       width: '70%',
+      height:'60%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
       maximizable: true,
@@ -48,7 +51,15 @@ export class BranchComponent {
   }
   deleteData(id: number) {
     const deleteData = this.data.find((data) => data.id === id);
-    // console.log(deleteData);
+    this.ref = this.dialogService.open(DeleteComponent, {
+      header: `Edit Province for ${id} id`,
+      width: '70%',
+      height:'60%',
+      contentStyle: { overflow: 'auto' },
+      baseZIndex: 10000,
+      maximizable: true,
+      data : deleteData
+  });
   }
   ngOnInit(): void {
     this.isLoading = true;
@@ -57,7 +68,6 @@ export class BranchComponent {
       (response) => {
         this.data = response;
         this.isLoading = false;
-        // console.log(this.data)
       },
       (error) => {
         console.log(error);

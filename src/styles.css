@@ -264,3 +264,9 @@
 .topnavbar .notification .p-overlay .p-overlay-content{
   min-width: 15rem;
 }
+
+/* Form */
+
+.editForm .field.grid > label{
+  justify-content: flex-end;
+}

@@ -32,12 +32,14 @@
             pRipple
             icon="fa-solid fa-pen-to-square"
             class="h-2rem w-2rem p-button-rounded p-button-success mr-2"
+            (click)="editData(data.id)"
           ></button>
           <button
             pButton
             pRipple
             icon="fa-solid fa-file"
             class="h-2rem w-2rem p-button-rounded p-button-warning"
+            (click)="showData(data.id)"
           ></button>
         </td>
         <td>{{ data.companyName }}</td>
