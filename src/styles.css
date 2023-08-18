@@ -278,3 +278,8 @@
 .topnavbar .notification .p-overlay .p-overlay-content {
   min-width: 15rem;
 }
+
+/* Edit Form */
+.editForm .p-card{
+  box-shadow: unset !important;
+}

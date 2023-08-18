@@ -31,7 +31,7 @@ export class CompanyDetailComponent implements OnInit {
     const displayData = this.data.find((data) => data.id === id);
     this.ref = this.dialogService.open(ViewComponent, {
       header: `Detailed View of ${displayData?.id} account number`,
-      width: '70%',
+      width: '75%',
       height: '80%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
@@ -44,7 +44,7 @@ export class CompanyDetailComponent implements OnInit {
     const editData = this.data.find((data) => data.id === id);
     this.ref = this.dialogService.open(EditComponent, {
       header: `Edit Company`,
-      width: '70%',
+      width: '75%',
       height: '80%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,

@@ -1,4 +1,4 @@
-<div class="card">
+<p-card class="editForm">
   <div class="formgrid grid">
     <div class="field col-12 mt-3 md:col-6">
       <div class="grid">
@@ -6,7 +6,7 @@
           <div class="field grid">
             <label
               for="companyName"
-              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center"
+              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
               >Company Name <span style="color: red">&nbsp; *</span></label
             >
             <div class="col-12 md:col-7">
@@ -23,7 +23,7 @@
           <div class="field grid">
             <label
               for="abbreveration"
-              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center"
+              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
               >Abbreveration <span style="color: red">&nbsp; *</span></label
             >
             <div class="col-12 md:col-7">
@@ -40,7 +40,7 @@
           <div class="field grid">
             <label
               for="dataProviderId"
-              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center"
+              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
               >Data Provider ID <span style="color: red">&nbsp; *</span></label
             >
             <div class="col-12 md:col-7">
@@ -57,7 +57,7 @@
           <div class="field grid">
             <label
               for="prevDataProviderId"
-              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center"
+              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
               >Prev Data Provider ID</label
             >
             <div class="col-12 md:col-7">
@@ -74,7 +74,7 @@
           <div class="field grid">
             <label
               for="tradingSymbol"
-              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center"
+              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
               >Trading Symbol</label
             >
             <div class="col-12 md:col-7">
@@ -90,7 +90,7 @@
           <div class="field grid">
             <label
               for="secretKey"
-              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center"
+              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
               >Secret Key</label
             >
             <div class="col-12 md:col-7">
@@ -112,7 +112,7 @@
           <div class="field grid">
             <label
               for="firstname4"
-              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center"
+              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
               >Select Profile Photo</label
             >
             <div class="col-12 md:col-7">
@@ -125,8 +125,8 @@
               <img
                 *ngIf="selectedImageUrl"
                 [src]="selectedImageUrl"
-                height="180"
-                width="180"
+                height=180
+                width=auto
                 alt="Selected Image"
               />
             </div>
@@ -134,5 +134,87 @@
         </div>
       </div>
     </div>
+    <div class="field col-12 mt-3 md:col-12 flex justify-content-center align-item-center font-bold text-lg">
+      Disbale Validation of CIB
+    </div>
+
+    <div class="field col-12 mt-1 md:col-6">
+      <div class="grid">
+        <div class="col-12">
+          <div class="field grid">
+            <label
+              for="companyName"
+              class="col-12 mb-2 md:col-8 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
+              >RepaymentFrq Validation? <span style="color: red">&nbsp; *</span></label
+            >
+            <div class="col-12 md:col-4">
+              <p-toggleButton [(ngModel)]="repaymentFrq" onLabel="True" offLabel="False" onIcon='fa-solid ; fa-check' offIcon="fa-solid fa-times" [style]="{ width: '10em' }"></p-toggleButton>
+            </div>
+          </div>
+          <div class="field grid">
+            <label
+              for="companyName"
+              class="col-12 mb-2 md:col-8 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
+              >Installment Amt Validation? <span style="color: red">&nbsp; *</span></label
+            >
+            <div class="col-12 md:col-4">
+              <p-toggleButton [(ngModel)]="installmentAmt" onLabel="True" offLabel="False" onIcon='fa-solid ; fa-check' offIcon="fa-solid fa-times" [style]="{ width: '10em' }"></p-toggleButton>
+            </div>
+          </div>
+          <div class="field grid">
+            <label
+              for="companyName"
+              class="col-12 mb-2 md:col-8 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
+              >InstallmentOverdue Validation? <span style="color: red">&nbsp; *</span></label
+            >
+            <div class="col-12 md:col-4">
+              <p-toggleButton [(ngModel)]="installmentOverdue" onLabel="True" offLabel="False" onIcon='fa-solid ; fa-check' offIcon="fa-solid fa-times" [style]="{ width: '10em' }"></p-toggleButton>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="field col-12 mt-1 md:col-6">
+      <div class="grid">
+        <div class="col-12">
+          <div class="field grid">
+            <label
+              for="companyName"
+              class="col-12 mb-2 md:col-8 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
+              >Installment Number Validation? <span style="color: red">&nbsp; *</span></label
+            >
+            <div class="col-12 md:col-4">
+              <p-toggleButton [(ngModel)]="installmentNumber" onLabel="True" offLabel="False" onIcon='fa-solid ; fa-check' offIcon="fa-solid fa-times" [style]="{ width: '10em' }"></p-toggleButton>
+            </div>
+          </div>
+          <div class="field grid">
+            <label
+              for="companyName"
+              class="col-12 mb-2 md:col-8 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
+              >Disbursed Amt/Date Validation? <span style="color: red">&nbsp; *</span></label
+            >
+            <div class="col-12 md:col-4">
+              <p-toggleButton [(ngModel)]="disbursedAmtDate" onLabel="True" offLabel="False" onIcon='fa-solid ; fa-check' offIcon="fa-solid fa-times" [style]="{ width: '10em' }"></p-toggleButton>
+            </div>
+          </div>
+          <div class="field grid">
+            <label
+              for="companyName"
+              class="col-12 mb-2 md:col-8 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
+              >HighestCreditUsage Validation? <span style="color: red">&nbsp; *</span></label
+            >
+            <div class="col-12 md:col-4">
+              <p-toggleButton [(ngModel)]="highestCreditUsage" onLabel="True" offLabel="False" onIcon='fa-solid ; fa-check' offIcon="fa-solid fa-times" [style]="{ width: '10em' }"></p-toggleButton>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+  <ng-template pTemplate="footer">
+    <div class="btnGroup flex w-full justify-content-end">
+      <button pButton type="button" label="Cancel" class="p-button-raised p-button-text p-button-plain mr-2"></button>
+      <button pButton type="button" label="Submit" class="p-button-raised p-button-info"></button>
+    </div>
+</ng-template>
+</p-card>

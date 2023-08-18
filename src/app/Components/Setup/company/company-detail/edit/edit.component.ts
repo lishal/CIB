@@ -5,15 +5,17 @@ import {
   DynamicDialogConfig,
 } from 'primeng/dynamicdialog';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { ToggleButtonModule } from 'primeng/togglebutton';
 import { CardModule } from 'primeng/card';
-import { ButtonModule } from 'primeng/button';
+import {ButtonModule} from 'primeng/button';
 
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.css'],
   providers: [DialogService],
-  imports: [CardModule, ButtonModule, CommonModule],
+  imports: [ToggleButtonModule, CommonModule,FormsModule,CardModule,ButtonModule],
   standalone: true,
 })
 export class EditComponent implements OnInit {
@@ -23,6 +25,12 @@ export class EditComponent implements OnInit {
   ) {}
   data: any[] = [];
   selectedImageUrl: string | ArrayBuffer | null = null;
+  repaymentFrq: boolean = false;
+  installmentAmt: boolean = false;
+  installmentOverdue: boolean = false;
+  installmentNumber: boolean = false;
+  disbursedAmtDate: boolean = false;
+  highestCreditUsage: boolean = false;
   handleImage(event: any) {
     const file: File = event.target.files[0];
     if (file) {
