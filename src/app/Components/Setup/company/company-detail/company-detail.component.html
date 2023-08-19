@@ -15,6 +15,7 @@
     <th pSortableColumn="id"  style="width:30%">Id <p-sortIcon class="hidden" field="id"></p-sortIcon></th>
 -->
     <ng-template pTemplate="header">
+      <p-toast [ngClass]="'custom-toast'"></p-toast>
       <tr>
         <th style="width: 20%"></th>
         <th style="width: 30%">Company Name</th>
@@ -43,9 +44,9 @@
           ></button>
         </td>
         <td>{{ data.companyName }}</td>
-        <td>{{ data.dpid }}</td>
-        <td>{{ data.prevDpid }}</td>
-        <td>{{ data.tradingStm }}</td>
+        <td>{{ data.dataProviderId }}</td>
+        <td>{{ data.prevDataProviderId }}</td>
+        <td>{{ data.tradingSymbol }}</td>
         <td>{{ data.secretKey }}</td>
       </tr>
     </ng-template>

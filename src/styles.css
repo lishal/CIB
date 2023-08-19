@@ -280,6 +280,11 @@
 }
 
 /* Edit Form */
-.editForm .p-card{
+.editForm .p-card {
   box-shadow: unset !important;
+}
+
+/* Toast */
+.p-toast-top-right {
+  top: 60px !important;
 }

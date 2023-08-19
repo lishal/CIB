@@ -1,1 +1,148 @@
-<p>view works from company details!</p>
+<p-card class="editForm">
+  <div class="grid">
+    <div class="field col-12 mt-3 md:col-6">
+      <div class="grid">
+        <div class="col-12">
+          <div class="field grid">
+            <label
+              for="companyName"
+              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
+              >Company Name:
+            </label>
+            <div class="col-12 md:col-7">{{ data[0].companyName }}</div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="field grid">
+            <label
+              for="abbreveration"
+              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
+              >Abbreveration:
+            </label>
+            <div class="col-12 md:col-7">{{ data[0].abbreveration }}</div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="field grid">
+            <label
+              for="dataProviderId"
+              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
+              >Data Provider ID:
+            </label>
+            <div class="col-12 md:col-7">{{ data[0].dataProviderId }}</div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="field grid">
+            <label
+              for="prevDataProviderId"
+              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
+              >Prev Data Provider ID:</label
+            >
+            <div class="col-12 md:col-7">{{ data[0].prevDataProviderId }}</div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="field grid">
+            <label
+              for="tradingSymbol"
+              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
+              >Trading Symbol:</label
+            >
+            <div class="col-12 md:col-7">{{ data[0].tradingSymbol }}</div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="field grid">
+            <label
+              for="secretKey"
+              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
+              >Secret Key:</label
+            >
+            <div class="col-12 md:col-7">{{ data[0].secretKey }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="field col-12 mt-3 md:col-6">
+      <div class="grid">
+        <div class="col-12">
+          <div class="field grid">
+            <label
+              for="firstname4"
+              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
+              >Profile Photo:</label
+            >
+            <div class="col-12 md:col-7">Image here</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="field col-12 mt-3 md:col-12 flex justify-content-center align-item-center font-bold text-lg"
+    >
+      Validation of CIB
+    </div>
+
+    <div class="field col-12 mt-1 md:col-6">
+      <div class="grid">
+        <div class="col-12">
+          <div class="field grid">
+            <label
+              for="companyName"
+              class="col-12 mb-2 md:col-8 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
+              >RepaymentFrq Validation:
+            </label>
+            <div class="col-12 md:col-4">{{ data[0].repaymentFrq }}</div>
+          </div>
+          <div class="field grid">
+            <label
+              for="companyName"
+              class="col-12 mb-2 md:col-8 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
+              >Installment Amt Validation:
+            </label>
+            <div class="col-12 md:col-4">{{ data[0].installmentAmt }}</div>
+          </div>
+          <div class="field grid">
+            <label
+              for="companyName"
+              class="col-12 mb-2 md:col-8 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
+              >InstallmentOverdue Validation:
+            </label>
+            <div class="col-12 md:col-4">{{ data[0].installmentOverdue }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="field col-12 mt-1 md:col-6">
+      <div class="grid">
+        <div class="col-12">
+          <div class="field grid">
+            <label
+              for="companyName"
+              class="col-12 mb-2 md:col-8 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
+              >Installment Number Validation:
+            </label>
+            <div class="col-12 md:col-4">{{ data[0].installmentNumber }}</div>
+          </div>
+          <div class="field grid">
+            <label
+              for="companyName"
+              class="col-12 mb-2 md:col-8 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
+              >Disbursed Amt/Date Validation:
+            </label>
+            <div class="col-12 md:col-4">{{ data[0].disbursedAmtDate }}</div>
+          </div>
+          <div class="field grid">
+            <label
+              for="companyName"
+              class="col-12 mb-2 md:col-8 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
+              >HighestCreditUsage Validation:
+            </label>
+            <div class="col-12 md:col-4">{{ data[0].highestCreditUsage }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</p-card>

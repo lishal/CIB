@@ -1,5 +1,5 @@
 <p-card class="editForm">
-  <div class="formgrid grid">
+  <form [formGroup]="myForm" class="formgrid grid" (ngSubmit)="onSubmit()">
     <div class="field col-12 mt-3 md:col-6">
       <div class="grid">
         <div class="col-12">
@@ -14,8 +14,20 @@
                 id="companyName"
                 type="text"
                 class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-                [value]="data[0].companyName"
+                formControlName="companyName"
+                [ngClass]="{
+                  'invalid-input': myForm.get('companyName')?.invalid
+                }"
               />
+              <div
+                *ngIf="
+                  myForm.get('companyName')?.invalid &&
+                  myForm.get('companyName')?.touched
+                "
+                style="color: red"
+              >
+                Company Name is required.
+              </div>
             </div>
           </div>
         </div>
@@ -30,9 +42,22 @@
               <input
                 id="abbreveration"
                 type="text"
-                [value]="data[0].abbreveration"
                 class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                formControlName="abbreveration"
+                [ngClass]="{
+                  'invalid-input': myForm.get('abbreveration')?.invalid
+                }"
               />
+              <div
+                *ngIf="
+                  (myForm.get('abbreveration')?.invalid &&
+                    myForm.get('abbreveration')?.touched) ||
+                  myForm.get('abbreveration')?.value === ''
+                "
+                style="color: red"
+              >
+                Abbreveration is required.
+              </div>
             </div>
           </div>
         </div>
@@ -46,10 +71,24 @@
             <div class="col-12 md:col-7">
               <input
                 id="dataProviderId"
-                type="text"
-                [value]="data[0].dpid"
+                type="number"
                 class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                formControlName="dataProviderId"
+                [ngClass]="{
+                  'invalid-input': myForm.get('dataProviderId')?.invalid
+                }"
               />
+              <div
+                *ngIf="
+                  (myForm.get('dataProviderId')?.invalid &&
+                    myForm.get('dataProviderId')?.touched) ||
+                  myForm.get('dataProviderId')?.value === '' ||
+                  myForm.get('dataProviderId')?.hasError('pattern')
+                "
+                style="color: red"
+              >
+                Invalid Data Provider Id.
+              </div>
             </div>
           </div>
         </div>
@@ -63,10 +102,19 @@
             <div class="col-12 md:col-7">
               <input
                 id="prevDataProviderId"
-                type="text"
-                [value]="data[0].prevDpid"
+                type="number"
                 class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                formControlName="prevDataProviderId"
+                [ngClass]="{
+                  'invalid-input': myForm.get('prevDataProviderId')?.invalid
+                }"
               />
+              <div
+                *ngIf="myForm.get('prevDataProviderId')?.hasError('pattern')"
+                style="color: red"
+              >
+                Invalid Prev Data Provider Id.
+              </div>
             </div>
           </div>
         </div>
@@ -82,6 +130,7 @@
                 id="tradingSymbol"
                 type="text"
                 class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                formControlName="tradingSymbol"
               />
             </div>
           </div>
@@ -99,7 +148,7 @@
                 type="text"
                 class="surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
                 style="background-color: lightgray !important"
-                disabled
+                formControlName="secretKey"
               />
             </div>
           </div>
@@ -125,8 +174,8 @@
               <img
                 *ngIf="selectedImageUrl"
                 [src]="selectedImageUrl"
-                height=180
-                width=auto
+                height="180"
+                width="auto"
                 alt="Selected Image"
               />
             </div>
@@ -134,7 +183,9 @@
         </div>
       </div>
     </div>
-    <div class="field col-12 mt-3 md:col-12 flex justify-content-center align-item-center font-bold text-lg">
+    <div
+      class="field col-12 mt-3 md:col-12 flex justify-content-center align-item-center font-bold text-lg"
+    >
       Disbale Validation of CIB
     </div>
 
@@ -145,30 +196,45 @@
             <label
               for="companyName"
               class="col-12 mb-2 md:col-8 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
-              >RepaymentFrq Validation? <span style="color: red">&nbsp; *</span></label
+              >RepaymentFrq Validation?
+              <span style="color: red">&nbsp; *</span></label
             >
             <div class="col-12 md:col-4">
-              <p-toggleButton [(ngModel)]="repaymentFrq" onLabel="True" offLabel="False" onIcon='fa-solid ; fa-check' offIcon="fa-solid fa-times" [style]="{ width: '10em' }"></p-toggleButton>
+              <p-selectButton
+                [options]="stateOptions"
+                [style]="{ width: '10em' }"
+                formControlName="repaymentFrq"
+              ></p-selectButton>
             </div>
           </div>
           <div class="field grid">
             <label
               for="companyName"
               class="col-12 mb-2 md:col-8 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
-              >Installment Amt Validation? <span style="color: red">&nbsp; *</span></label
+              >Installment Amt Validation?
+              <span style="color: red">&nbsp; *</span></label
             >
             <div class="col-12 md:col-4">
-              <p-toggleButton [(ngModel)]="installmentAmt" onLabel="True" offLabel="False" onIcon='fa-solid ; fa-check' offIcon="fa-solid fa-times" [style]="{ width: '10em' }"></p-toggleButton>
+              <p-selectButton
+                [options]="stateOptions"
+                [style]="{ width: '10em' }"
+                formControlName="installmentAmt"
+              ></p-selectButton>
             </div>
           </div>
           <div class="field grid">
             <label
               for="companyName"
               class="col-12 mb-2 md:col-8 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
-              >InstallmentOverdue Validation? <span style="color: red">&nbsp; *</span></label
+              >InstallmentOverdue Validation?
+              <span style="color: red">&nbsp; *</span></label
             >
             <div class="col-12 md:col-4">
-              <p-toggleButton [(ngModel)]="installmentOverdue" onLabel="True" offLabel="False" onIcon='fa-solid ; fa-check' offIcon="fa-solid fa-times" [style]="{ width: '10em' }"></p-toggleButton>
+              <p-selectButton
+                [options]="stateOptions"
+                [style]="{ width: '10em' }"
+                formControlName="installmentOverdue"
+              ></p-selectButton>
             </div>
           </div>
         </div>
@@ -181,40 +247,68 @@
             <label
               for="companyName"
               class="col-12 mb-2 md:col-8 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
-              >Installment Number Validation? <span style="color: red">&nbsp; *</span></label
+              >Installment Number Validation?
+              <span style="color: red">&nbsp; *</span></label
             >
             <div class="col-12 md:col-4">
-              <p-toggleButton [(ngModel)]="installmentNumber" onLabel="True" offLabel="False" onIcon='fa-solid ; fa-check' offIcon="fa-solid fa-times" [style]="{ width: '10em' }"></p-toggleButton>
+              <p-selectButton
+                [options]="stateOptions"
+                [style]="{ width: '10em' }"
+                formControlName="installmentNumber"
+              ></p-selectButton>
             </div>
           </div>
           <div class="field grid">
             <label
               for="companyName"
               class="col-12 mb-2 md:col-8 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
-              >Disbursed Amt/Date Validation? <span style="color: red">&nbsp; *</span></label
+              >Disbursed Amt/Date Validation?
+              <span style="color: red">&nbsp; *</span></label
             >
             <div class="col-12 md:col-4">
-              <p-toggleButton [(ngModel)]="disbursedAmtDate" onLabel="True" offLabel="False" onIcon='fa-solid ; fa-check' offIcon="fa-solid fa-times" [style]="{ width: '10em' }"></p-toggleButton>
+              <p-selectButton
+                [options]="stateOptions"
+                [style]="{ width: '10em' }"
+                formControlName="disbursedAmtDate"
+              ></p-selectButton>
             </div>
           </div>
           <div class="field grid">
             <label
               for="companyName"
               class="col-12 mb-2 md:col-8 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
-              >HighestCreditUsage Validation? <span style="color: red">&nbsp; *</span></label
+              >HighestCreditUsage Validation?
+              <span style="color: red">&nbsp; *</span></label
             >
             <div class="col-12 md:col-4">
-              <p-toggleButton [(ngModel)]="highestCreditUsage" onLabel="True" offLabel="False" onIcon='fa-solid ; fa-check' offIcon="fa-solid fa-times" [style]="{ width: '10em' }"></p-toggleButton>
+              <p-selectButton
+                [options]="stateOptions"
+                [style]="{ width: '10em' }"
+                formControlName="highestCreditUsage"
+              ></p-selectButton>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </form>
   <ng-template pTemplate="footer">
+    <p-toast></p-toast>
     <div class="btnGroup flex w-full justify-content-end">
-      <button pButton type="button" label="Cancel" class="p-button-raised p-button-text p-button-plain mr-2"></button>
-      <button pButton type="button" label="Submit" class="p-button-raised p-button-info"></button>
+      <button
+        pButton
+        type="button"
+        label="Cancel"
+        class="p-button-raised p-button-text p-button-plain mr-2"
+        (click)="onCancle()"
+      ></button>
+      <button
+        pButton
+        type="button"
+        label="Submit"
+        class="p-button-raised p-button-info"
+        (click)="onSubmit()"
+      ></button>
     </div>
-</ng-template>
+  </ng-template>
 </p-card>
