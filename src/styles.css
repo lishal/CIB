@@ -288,3 +288,7 @@
 .p-toast-top-right {
   top: 60px !important;
 }
+
+.invalid-input {
+  border-color: red !important;
+}

@@ -10,8 +10,9 @@ import { MessageService } from 'primeng/api';
   styleUrls: ['./company-detail.component.css'],
   providers: [DialogService, MessageService],
 })
-export class CompanyDetailComponent implements OnInit {
+export class CompanyDetailComponent implements OnInit, OnDestroy {
   ref: DynamicDialogRef | undefined;
+  isLoading: boolean = false;
   constructor(
     private api: CompanyDetailService,
     public dialogService: DialogService,
@@ -75,6 +76,22 @@ export class CompanyDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.data;
+    // this.isLoading = true;
+    // this.api.fetchData().subscribe(
+    //   (response) => {
+    //     this.data = response;
+    //     this.isLoading = false;
+    //     // console.log(this.data)
+    //   },
+    //   (error) => {
+    //     console.log(error);
+    //     this.isLoading = false;
+    //   }
+    // );
+  }
+  ngOnDestroy(): void {
+    if (this.ref) {
+      this.ref.close();
+    }
   }
 }

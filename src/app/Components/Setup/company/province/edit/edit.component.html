@@ -1,0 +1,176 @@
+<p-toast></p-toast>
+<form [formGroup]="myForm" class="addForm relative min-h-full">
+  <div class="field grid">
+    <label
+      for="provinceCode"
+      class="col-5 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Province Code <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
+      <input
+        id="provinceCode"
+        type="text"
+        formControlName="provinceCode"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('provinceCode')?.invalid &&
+            myForm.get('provinceCode')?.touched
+        }"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+      <div
+        *ngIf="
+          myForm.get('provinceCode')?.invalid &&
+          myForm.get('provinceCode')?.touched
+        "
+        style="color: red"
+      >
+        Province Code is required.
+      </div>
+    </div>
+    <label
+      for="provinceName"
+      class="col-7 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Province Name <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-7 md:col-4 sm:mb-1 sm:col-8">
+      <input
+        id="provinceName"
+        type="text"
+        formControlName="provinceName"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('provinceName')?.invalid &&
+            myForm.get('provinceName')?.touched
+        }"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+      <div
+        *ngIf="
+          myForm.get('provinceName')?.invalid &&
+          myForm.get('provinceName')?.touched
+        "
+        style="color: red"
+      >
+        Province Name is required.
+      </div>
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="provinceAddress"
+      class="col-12 mb-2 md:col-2 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Province Address <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-12 md:col-10 sm:col-8">
+      <textarea
+        id="provinceAddress"
+        type="text"
+        rows="5"
+        formControlName="provinceAddress"
+        style="resize: none"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('provinceAddress')?.invalid &&
+            myForm.get('provinceAddress')?.touched
+        }"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      >
+      </textarea>
+      <div
+        *ngIf="
+          myForm.get('provinceAddress')?.invalid &&
+          myForm.get('provinceAddress')?.touched
+        "
+        style="color: red"
+      >
+        Province Address is required.
+      </div>
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="phoneNo"
+      class="col-5 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Phone No
+    </label>
+    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
+      <input
+        id="phoneNo"
+        type="text"
+        formControlName="phoneNo"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('phoneNo')?.invalid && myForm.get('phoneNo')?.touched
+        }"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+      <div
+        *ngIf="myForm.get('phoneNo')?.hasError('pattern')"
+        style="color: red"
+      >
+        Invalid Phone No.
+      </div>
+    </div>
+    <label
+      for="provinceManagerEmailID"
+      class="col-7 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Province Manager EmailID <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-7 md:col-4 sm:mb-1 sm:col-8">
+      <input
+        id="provinceManagerEmailID"
+        type="email"
+        formControlName="provinceManagerEmailID"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('provinceManagerEmailID')?.invalid &&
+            myForm.get('provinceManagerEmailID')?.touched
+        }"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+      <div
+        *ngIf="
+          (myForm.get('provinceManagerEmailID')?.invalid &&
+            myForm.get('provinceManagerEmailID')?.touched) ||
+          myForm.get('provinceManagerEmailID')?.hasError('pattern')
+        "
+        style="color: red"
+      >
+        Invalid province Manager Email Id.
+      </div>
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="isActive"
+      class="col-5 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >isActive
+    </label>
+    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
+      <p-selectButton
+        [options]="stateOptions"
+        [style]="{ width: '10em' }"
+        formControlName="isActive"
+      ></p-selectButton>
+    </div>
+  </div>
+  <div
+    class="btnGroup absolute bottom-0 right-0 flex mt-3 w-full justify-content-end"
+  >
+    <button
+      pButton
+      type="button"
+      label="Cancel"
+      class="p-button-raised p-button-text p-button-plain mr-2"
+      (click)="onCancle()"
+    ></button>
+    <button
+      pButton
+      type="button"
+      label="Submit"
+      class="p-button-raised p-button-info"
+      (click)="onSubmit()"
+    ></button>
+  </div>
+</form>

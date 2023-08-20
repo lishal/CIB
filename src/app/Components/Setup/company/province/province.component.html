@@ -21,15 +21,25 @@
           <input
             pInputText
             type="text"
-            (input)="
-            search.filterGlobal($any($event.target).value, 'contains')
-            "
+            (input)="search.filterGlobal($any($event.target).value, 'contains')"
             placeholder="Search here..."
           />
         </span>
+        <div class="btnGroup ml-1">
+          <p-button
+            icon="fa-solid fa-arrow-up-right-from-square"
+            styleClass="p-button-success mr-1"
+            (click)="exportExcel()"
+          ></p-button>
+          <p-button
+            icon="fa-solid fa-circle-plus"
+            (click)="addData()"
+          ></p-button>
+        </div>
       </div>
     </ng-template>
     <ng-template pTemplate="header">
+      <p-toast></p-toast>
       <tr>
         <th style="width: 15%"></th>
         <th pSortableColumn="id" style="width: 10%">ProvinceCode</th>
@@ -40,7 +50,7 @@
         <th pSortableColumn="swift_bic" style="width: 20%">IsActive</th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-data> 
+    <ng-template pTemplate="body" let-data>
       <tr>
         <td>
           <button
@@ -48,35 +58,35 @@
             pRipple
             icon="fa-solid fa-file"
             class="h-2rem w-2rem p-button-rounded p-button-warning mr-1"
-            (click)="showData(data.id)"
+            (click)="showData(data.provinceCode)"
           ></button>
           <button
             pButton
             pRipple
             icon="fa-solid fa-pen-to-square"
             class="h-2rem w-2rem p-button-rounded p-button-success mr-1"
-            (click)="editData(data.id)"
+            (click)="editData(data.provinceCode)"
           ></button>
           <button
             pButton
             pRipple
             icon="fa-solid fa-trash"
             class="h-2rem w-2rem p-button-rounded p-button-danger"
-            (click)="deleteData(data.id)"
+            (click)="deleteData(data.provinceCode)"
           ></button>
         </td>
-        <td>{{ data?.id }}</td>
-        <td>{{ data?.uid }}</td>
-        <td>{{ data?.account_number }}</td>
-        <td>{{ data?.iban }}</td>
-        <td>{{ data?.bank_name }}</td>
-        <td>{{ data?.swift_bic }}</td>
+        <td>{{ data?.provinceCode }}</td>
+        <td>{{ data?.provinceName }}</td>
+        <td>{{ data?.provinceManagerEmailID }}</td>
+        <td>{{ data?.provinceAddress }}</td>
+        <td>{{ data?.phoneNo }}</td>
+        <td>{{ data?.isActive }}</td>
       </tr>
     </ng-template>
     <ng-template pTemplate="emptymessage">
-        <tr>
-            <td colspan="7" style="text-align: center;">Sorry! No record found </td>
-        </tr>
+      <tr>
+        <td colspan="7" style="text-align: center">Sorry! No record found</td>
+      </tr>
     </ng-template>
   </p-table>
 </div>

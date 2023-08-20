@@ -1,0 +1,77 @@
+<div class="addForm relative min-h-full">
+  <div class="field grid">
+    <label
+      for="provinceCode"
+      class="col-5 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4 text-lg"
+      >Province Code:
+    </label>
+    <div class="col-5 md:col-3 sm:mb-1 sm:col-8 text-lg">
+      {{ data[0].provinceCode }}
+    </div>
+    <label
+      for="provinceName"
+      class="col-7 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4 text-lg"
+      >Province Name:
+    </label>
+    <div class="col-7 md:col-4 sm:mb-1 sm:col-8 text-lg">
+      {{ data[0].provinceName }}
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="provinceAddress"
+      class="col-12 mb-2 md:col-2 md:justify-content-end sm:justify-content-start font-bold sm:col-4 text-lg"
+      >Province Address:
+    </label>
+    <div class="col-12 md:col-10 sm:col-8 text-lg">
+      {{ data[0].provinceAddress }}
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="phoneNo"
+      class="col-5 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4 text-lg"
+      >Phone No:
+    </label>
+    <div class="col-5 md:col-3 sm:mb-1 sm:col-8 text-lg">
+      {{ data[0].phoneNo }}
+    </div>
+    <label
+      for="provinceManagerEmailID"
+      class="col-7 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4 text-lg"
+      >Province Manager EmailID:
+    </label>
+    <div class="col-7 md:col-4 sm:mb-1 sm:col-8 text-lg">
+      {{ data[0].provinceManagerEmailID }}
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="isActive"
+      class="col-5 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4 text-lg"
+      >isActive:
+    </label>
+    <div class="col-5 md:col-3 sm:mb-1 sm:col-8 text-lg">
+      {{ data[0].isActive }}
+    </div>
+  </div>
+  <div
+    class="btnGroup absolute bottom-0 right-0 flex mt-3 w-full justify-content-end"
+  >
+    <button
+      pButton
+      type="button"
+      label="Cancel"
+      class="p-button-raised p-button-text p-button-plain mr-2"
+      (click)="onCancle()"
+    ></button>
+    <p-confirmPopup></p-confirmPopup>
+    <button
+      pButton
+      type="button"
+      label="Delete"
+      class="p-button-raised p-button-danger p-button-plain mr-2"
+      (click)="onDelete($event)"
+    ></button>
+  </div>
+</div>
