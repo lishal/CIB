@@ -292,3 +292,8 @@
 .invalid-input {
   border-color: red !important;
 }
+
+/* Dropdown */
+.p-dropdown{
+  display: flex !important;
+}

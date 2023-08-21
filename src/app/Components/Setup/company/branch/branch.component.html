@@ -27,6 +27,16 @@
               placeholder="Search here..."
             />
           </span>
+          <div class="btnGroup ml-1">
+            <p-button
+              icon="fa-solid fa-arrow-up-right-from-square"
+              styleClass="p-button-success mr-1"
+            ></p-button>
+            <p-button
+              icon="fa-solid fa-circle-plus"
+              (click)="addData()"
+            ></p-button>
+          </div>
         </div>
       </ng-template>
       <ng-template pTemplate="header">

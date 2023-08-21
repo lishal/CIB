@@ -3,12 +3,12 @@ import { DynamicDialogRef,DialogService,DynamicDialogConfig } from 'primeng/dyna
 
 
 @Component({
-  selector: 'app-view',
+  selector: 'app-branch-view',
   templateUrl: './view.component.html',
   styleUrls: ['./view.component.css'],
   providers: [DialogService]
 })
-export class ViewComponent implements OnInit{
+export class ViewBranchComponent implements OnInit{
   constructor(private dialogService: DynamicDialogConfig, public ref: DynamicDialogRef) {}
     data: any[] = [];
     ngOnInit() {

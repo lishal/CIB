@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { DynamicDialogRef,DialogService,DynamicDialogConfig } from 'primeng/dynamicdialog';
 
 @Component({
-  selector: 'app-delete',
+  selector: 'app-branch-delete',
   templateUrl: './delete.component.html',
   styleUrls: ['./delete.component.css'],
   providers: [DialogService]
 })
-export class DeleteComponent  implements OnInit{
+export class DeleteBranchComponent  implements OnInit{
   constructor(private dialogService: DynamicDialogConfig, public ref: DynamicDialogRef) {}
   data: any[] = [];
   ngOnInit() {

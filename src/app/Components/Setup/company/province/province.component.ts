@@ -44,7 +44,7 @@ export class ProvinceComponent implements OnInit, OnDestroy {
   addData() {
     this.ref = this.dialogService.open(AddProvinceComponent, {
       header: `Add Province`,
-      width: '70%',
+      width: '80%',
       height: '80%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
@@ -69,7 +69,7 @@ export class ProvinceComponent implements OnInit, OnDestroy {
     );
     this.ref = this.dialogService.open(ViewProvinceComponent, {
       header: `Detailed View of ${displayData.provinceCode}`,
-      width: '70%',
+      width: '80%',
       height: '50%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
@@ -83,7 +83,7 @@ export class ProvinceComponent implements OnInit, OnDestroy {
     );
     this.ref = this.dialogService.open(EditProvinceComponent, {
       header: `Edit Province of ${provinceCode}`,
-      width: '70%',
+      width: '80%',
       height: '80%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
@@ -118,7 +118,7 @@ export class ProvinceComponent implements OnInit, OnDestroy {
     );
     this.ref = this.dialogService.open(DeleteProvinceComponent, {
       header: `Delete ${deleteData.provinceCode}`,
-      width: '70%',
+      width: '80%',
       height: '50%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
