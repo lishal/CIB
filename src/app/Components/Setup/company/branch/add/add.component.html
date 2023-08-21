@@ -20,8 +20,7 @@
       />
       <div
         *ngIf="
-          myForm.get('branchName')?.invalid &&
-          myForm.get('branchName')?.touched
+          myForm.get('branchName')?.invalid && myForm.get('branchName')?.touched
         "
         style="color: red"
       >
@@ -31,8 +30,8 @@
     <label
       for="branchNameNepali"
       class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Branch Name in Nepali: </label
-    >
+      >Branch Name in Nepali:
+    </label>
     <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
       <input
         id="branchNameNepali"
@@ -73,8 +72,8 @@
     <label
       for="previousDataProviderBranchId"
       class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Previous Data Provider Branch ID: </label
-    >
+      >Previous Data Provider Branch ID:
+    </label>
     <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
       <input
         id="previousDataProviderBranchId"
@@ -91,28 +90,33 @@
       >District: <span style="color: red">&nbsp; *</span></label
     >
     <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-        <p-dropdown [options]="districtList" [(ngModel)]="selectedDistrict" formControlName="district" optionLabel="name" [filter]="true" filterBy="name" [showClear]="true" placeholder="Select a District" 
+      <p-dropdown
+        [options]="districtList"
+        formControlName="district"
+        optionLabel="name"
+        [filter]="true"
+        filterBy="name"
+        [showClear]="true"
+        placeholder="Select a District"
         [ngClass]="{
-            'invalid-input':
-              myForm.get('district')?.invalid &&
-              myForm.get('district')?.touched 
-          }"
-        >
-            <ng-template pTemplate="selectedItem">
-                <div class="flex align-items-center gap-2" *ngIf="selectedDistrict">
-                    <div>{{selectedDistrict.name}}</div>
-                </div>
-            </ng-template>
-            <ng-template let-district pTemplate="item">
-                <div class="flex align-items-center gap-2">
-                    <div>{{ district.name}}</div>
-                </div>
-            </ng-template>
-        </p-dropdown>
+          'invalid-input':
+            myForm.get('district')?.invalid && myForm.get('district')?.touched ,
+        }"
+      >
+        <ng-template pTemplate="selectedItem">
+          <div class="flex align-items-center gap-2" *ngIf="district">
+            <div>{{ district.name }}</div>
+          </div>
+        </ng-template>
+        <ng-template let-district pTemplate="item">
+          <div class="flex align-items-center gap-2">
+            <div>{{ district.name }}</div>
+          </div>
+        </ng-template>
+      </p-dropdown>
       <div
         *ngIf="
-          myForm.get('district')?.invalid &&
-          myForm.get('district')?.touched
+          myForm.get('district')?.invalid && myForm.get('district')?.touched
         "
         style="color: red"
       >
@@ -125,21 +129,34 @@
       >Province Name <span style="color: red">&nbsp; *</span></label
     >
     <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-      <input
-        id="provinceName"
-        type="text"
+      <p-dropdown
+        [options]="provinceList"
         formControlName="provinceName"
+        optionLabel="name"
+        [filter]="true"
+        filterBy="name"
+        [showClear]="true"
+        placeholder="Select a Province"
         [ngClass]="{
           'invalid-input':
-            myForm.get('provinceName')?.invalid &&
-            myForm.get('provinceName')?.touched
+            myForm.get('province')?.invalid && myForm.get('province')?.touched
         }"
-        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-      />
+      >
+        <ng-template pTemplate="selectedItem">
+          <div class="flex align-items-center gap-2" *ngIf="province">
+            <div>{{ province.name }}</div>
+          </div>
+        </ng-template>
+        <ng-template let-province pTemplate="item">
+          <div class="flex align-items-center gap-2">
+            <div>{{ province.name }}</div>
+          </div>
+        </ng-template>
+      </p-dropdown>
       <div
         *ngIf="
-          (myForm.get('provinceName')?.invalid &&
-          myForm.get('provinceName')?.touched) 
+          myForm.get('provinceName')?.invalid &&
+          myForm.get('provinceName')?.touched
         "
         style="color: red"
       >
@@ -252,8 +269,8 @@
       />
       <div
         *ngIf="
-          (myForm.get('performanceCutOff')?.invalid &&
-            myForm.get('performanceCutOff')?.touched)
+          myForm.get('performanceCutOff')?.invalid &&
+          myForm.get('performanceCutOff')?.touched
         "
         style="color: red"
       >
@@ -263,7 +280,7 @@
     <label
       for="isActive"
       class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >isActive  <span style="color: red">&nbsp; *</span>
+      >isActive <span style="color: red">&nbsp; *</span>
     </label>
     <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
       <p-selectButton
@@ -273,7 +290,9 @@
       ></p-selectButton>
     </div>
   </div>
-  <div class="flex justify-content-center align-items-center font-bold text-xl m-3">
+  <div
+    class="flex justify-content-center align-items-center font-bold text-xl m-3"
+  >
     Enable KSKL Inquiry
   </div>
   <div class="field grid">
@@ -301,7 +320,6 @@
         formControlName="stockInspection"
       ></p-selectButton>
     </div>
-    
   </div>
   <div class="field grid">
     <label
@@ -328,7 +346,6 @@
         formControlName="insurance"
       ></p-selectButton>
     </div>
-    
   </div>
   <div
     class="btnGroup absolute bottom-3 right-0 flex mt-3 w-full justify-content-end pb-2"
