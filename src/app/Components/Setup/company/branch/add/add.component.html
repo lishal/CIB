@@ -95,17 +95,11 @@
         formControlName="district"
         optionLabel="name"
         [filter]="true"
-        filterBy="name"
-        [showClear]="true"
-        placeholder="Select a District"
-        [ngClass]="{
-          'invalid-input':
-            myForm.get('district')?.invalid && myForm.get('district')?.touched ,
-        }"
+        filterBy="name"        
       >
         <ng-template pTemplate="selectedItem">
-          <div class="flex align-items-center gap-2" *ngIf="district">
-            <div>{{ district.name }}</div>
+          <div class="flex align-items-center gap-2" *ngIf="selectedDistrict">
+            <div>{{ selectedDistrict }}</div>
           </div>
         </ng-template>
         <ng-template let-district pTemplate="item">
@@ -114,14 +108,6 @@
           </div>
         </ng-template>
       </p-dropdown>
-      <div
-        *ngIf="
-          myForm.get('district')?.invalid && myForm.get('district')?.touched
-        "
-        style="color: red"
-      >
-        District is required.
-      </div>
     </div>
     <label
       for="provinceName"
@@ -135,16 +121,10 @@
         optionLabel="name"
         [filter]="true"
         filterBy="name"
-        [showClear]="true"
-        placeholder="Select a Province"
-        [ngClass]="{
-          'invalid-input':
-            myForm.get('province')?.invalid && myForm.get('province')?.touched
-        }"
       >
         <ng-template pTemplate="selectedItem">
-          <div class="flex align-items-center gap-2" *ngIf="province">
-            <div>{{ province.name }}</div>
+          <div class="flex align-items-center gap-2" *ngIf="selectedProvince">
+            <div>{{ selectedProvince }}</div>
           </div>
         </ng-template>
         <ng-template let-province pTemplate="item">
@@ -153,15 +133,6 @@
           </div>
         </ng-template>
       </p-dropdown>
-      <div
-        *ngIf="
-          myForm.get('provinceName')?.invalid &&
-          myForm.get('provinceName')?.touched
-        "
-        style="color: red"
-      >
-        Province Name is required.
-      </div>
     </div>
   </div>
   <div class="field grid">

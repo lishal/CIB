@@ -121,11 +121,11 @@ export class AddBranchComponent implements OnInit {
     { name: 'Terhathum' },
     { name: 'Udayapur' },
   ];
-  district = this.districtList[0];
+  selectedDistrict=this.districtList[0].name
 
   //Province List
   provinceList: Province[] = [{ name: 'karnali' }, { name: 'bagmati' }];
-  province = this.provinceList[0];
+  selectedProvince=this.provinceList[0].name
 
   added: boolean = false;
   constructor(
@@ -135,13 +135,14 @@ export class AddBranchComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log(this.selectedDistrict)
     this.myForm = this.fb.group({
       branchName: ['', Validators.required],
       branchNameNepali: [''],
       dataProviderBranchId: ['', Validators.required],
       previousDataProviderBranchId: [''],
-      district: [this.district, Validators.required],
-      provinceName: [this.province, Validators.required],
+      district: [this.selectedDistrict],
+      provinceName: [this.selectedProvince],
 
       branchAddress: ['', Validators.required],
       phoneNo: ['', Validators.pattern('^[0-9]{10}$')],
@@ -159,12 +160,18 @@ export class AddBranchComponent implements OnInit {
       pendingDocument: [false, Validators.required],
       insurance: [false, Validators.required],
     });
+    this.myForm.get('district')?.valueChanges.subscribe((value)=>{
+      this.selectedDistrict=value.name
+    })
+    this.myForm.get('provinceName')?.valueChanges.subscribe((value)=>{
+      this.selectedProvince=value.name
+    })
   }
   onSubmit() {
     if (this.myForm.valid) {
       const formValues = this.myForm.value;
-      formValues.district = formValues.district.name;
-      formValues.provinceName = formValues.provinceName.name;
+      formValues.district = this.selectedDistrict;
+      formValues.provinceName = this.selectedProvince;
       this.added = true;
       this.ref.close([formValues, this.added]);
     } else {
