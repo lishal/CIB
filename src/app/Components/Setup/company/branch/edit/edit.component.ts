@@ -6,13 +6,16 @@ import {
   FormBuilder,
   Validators,
 } from '@angular/forms';
-import { DynamicDialogRef,DialogService,DynamicDialogConfig, } from 'primeng/dynamicdialog';
+import {
+  DynamicDialogRef,
+  DialogService,
+  DynamicDialogConfig,
+} from 'primeng/dynamicdialog';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { CommonModule } from '@angular/common';
 import { DropdownModule } from 'primeng/dropdown';
-
 
 interface District {
   name: String;
@@ -33,10 +36,10 @@ interface Province {
     CommonModule,
     DropdownModule,
   ],
-  providers: [MessageService,DialogService],
+  providers: [MessageService, DialogService],
   standalone: true,
 })
-export class EditBranchComponent  implements OnInit {
+export class EditBranchComponent implements OnInit {
   myForm!: FormGroup;
   data: any[] = [];
   stateOptions: any[] = [
@@ -45,8 +48,8 @@ export class EditBranchComponent  implements OnInit {
   ];
   updated: boolean = false;
 
-   //District List
-   districtList: District[] = [
+  //District List
+  districtList: District[] = [
     { name: 'Achham' },
     { name: 'Arghakhanchi' },
     { name: 'Baglung' },
@@ -125,13 +128,9 @@ export class EditBranchComponent  implements OnInit {
     { name: 'Terhathum' },
     { name: 'Udayapur' },
   ];
-  selectedDistrict:string | undefined;
-
-  
-
   //Province List
-  provinceList: Province[] = [{ name: 'karnali' }, { name: 'bagmati' }];
-  selectedProvince : string | undefined;
+  provinceList: Province[] = [{ name: 'Karnali' }, { name: 'Bagmati' }];
+  oldDataProviderBranchId: string | undefined;
   constructor(
     private fb: FormBuilder,
     public ref: DynamicDialogRef,
@@ -141,13 +140,14 @@ export class EditBranchComponent  implements OnInit {
 
   ngOnInit(): void {
     this.data = [this.dialogService.data];
-    this.selectedDistrict=this.data[0].district;
-    this.selectedProvince=this.data[0].provinceName
 
     this.myForm = this.fb.group({
       branchName: [this.data[0].branchName, Validators.required],
       branchNameNepali: [this.data[0].branchNameNepali],
-      dataProviderBranchId: [this.data[0].dataProviderBranchId, Validators.required],
+      dataProviderBranchId: [
+        this.data[0].dataProviderBranchId,
+        Validators.required,
+      ],
       previousDataProviderBranchId: [this.data[0].previousDataProviderBranchId],
       district: [this.data[0].district, Validators.required],
       provinceName: [this.data[0].provinceName, Validators.required],
@@ -168,21 +168,15 @@ export class EditBranchComponent  implements OnInit {
       pendingDocument: [this.data[0].pendingDocument, Validators.required],
       insurance: [this.data[0].insurance, Validators.required],
     });
-
-    this.myForm.get('district')?.valueChanges.subscribe((value)=>{
-      this.selectedDistrict=value.name;
-    }) 
-    this.myForm.get('provinceName')?.valueChanges.subscribe((value)=>{
-      this.selectedProvince=value.name;
-    }) 
+    this.oldDataProviderBranchId = this.myForm.get(
+      'dataProviderBranchId'
+    )?.value;
   }
   onSubmit() {
     if (this.myForm.valid) {
       const formValues = this.myForm.value;
-      formValues.district = this.selectedDistrict;
-      formValues.provinceName = this.selectedProvince;
       this.updated = true;
-      this.ref.close([formValues, this.updated]);
+      this.ref.close([formValues, this.updated, this.oldDataProviderBranchId]);
     } else {
       this.messageService.add({
         severity: 'error',
@@ -195,4 +189,3 @@ export class EditBranchComponent  implements OnInit {
     this.ref.close();
   }
 }
-

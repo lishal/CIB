@@ -14,23 +14,25 @@ import { MessageService } from 'primeng/api';
   providers: [DialogService, MessageService],
 })
 export class BranchComponent {
-  data: any[] = [{
-    accountMonitoring: false,
-    branchAddress: "test",
-    branchManagerEmailId: "lbhari188@gmail.com",
-    branchName: "test",
-    branchNameNepali:"test",
-    dataProviderBranchId:"test",
-    district:"Sindhuli",
-    insurance:false,
-    isActive:true,
-    pendingDocument:true,
-    performanceCutOff:"test",
-    phoneNo:"1234567890",
-    previousDataProviderBranchId:"test",
-    provinceName:"karnali",
-    stockInspection: true
-  }];
+  data: any[] = [
+    {
+      accountMonitoring: false,
+      branchAddress: 'test',
+      branchManagerEmailId: 'lbhari188@gmail.com',
+      branchName: 'test',
+      branchNameNepali: 'test',
+      dataProviderBranchId: 'test',
+      district: 'Sindhuli',
+      insurance: false,
+      isActive: true,
+      pendingDocument: true,
+      performanceCutOff: 'test',
+      phoneNo: '1234567890',
+      previousDataProviderBranchId: 'test',
+      provinceName: 'Karnali',
+      stockInspection: true,
+    },
+  ];
   isLoading: boolean = false;
   ref: DynamicDialogRef | undefined;
   constructor(
@@ -41,7 +43,7 @@ export class BranchComponent {
 
   addData() {
     this.ref = this.dialogService.open(AddBranchComponent, {
-      header: `Add Province`,
+      header: `Add Branch`,
       width: '90%',
       height: '80%',
       contentStyle: { overflow: 'auto' },
@@ -75,9 +77,11 @@ export class BranchComponent {
     });
   }
   editData(dataProviderBranchId: string) {
-    const editData = this.data.find((data) => data.dataProviderBranchId === dataProviderBranchId);
+    const editData = this.data.find(
+      (data) => data.dataProviderBranchId === dataProviderBranchId
+    );
     this.ref = this.dialogService.open(EditBranchComponent, {
-      header: `Edit Province of ${dataProviderBranchId} `,
+      header: `Edit Branch of ${dataProviderBranchId} `,
       width: '90%',
       height: '80%',
       contentStyle: { overflow: 'auto' },
@@ -85,31 +89,33 @@ export class BranchComponent {
       maximizable: true,
       data: editData,
     });
-    this.ref.onClose.subscribe((data: any) => {
-      if (data !== undefined) {
-        if (data[1] === true) {
+    this.ref.onClose.subscribe((datas: any) => {
+      if (datas !== undefined) {
+        if (datas[1] === true) {
           const index = this.data.findIndex(
             (data) => data.dataProviderBranchId === dataProviderBranchId
           );
-          this.data[index].branchName = data[0].branchName;
-          this.data[index].branchNameNepali = data[0].branchNameNepali;
-          this.data[index].dataProviderBranchId = data[0].dataProviderBranchId;
-          this.data[index].previousDataProviderBranchId = data[0].previousDataProviderBranchId;
-          this.data[index].district = data[0].district;
-          this.data[index].provinceName = data[0].provinceName;
-          this.data[index].branchAddress = data[0].branchAddress;
-          this.data[index].phoneNo = data[0].phoneNo;
-          this.data[index].branchManagerEmailId = data[0].branchManagerEmailId;
-          this.data[index].performanceCutOff = data[0].performanceCutOff;
-          this.data[index].isActive = data[0].isActive;
-          this.data[index].accountMonitoring = data[0].accountMonitoring;
-          this.data[index].stockInspection = data[0].stockInspection;
-          this.data[index].pendingDocument = data[0].pendingDocument;
-          this.data[index].insurance = data[0].insurance;
+          this.data[index].branchName = datas[0].branchName;
+          this.data[index].branchNameNepali = datas[0].branchNameNepali;
+          this.data[index].dataProviderBranchId = datas[0].dataProviderBranchId;
+          this.data[index].previousDataProviderBranchId =
+            datas[0].previousDataProviderBranchId;
+          this.data[index].district = datas[0].district;
+          this.data[index].provinceName = datas[0].provinceName;
+          this.data[index].branchAddress = datas[0].branchAddress;
+          this.data[index].phoneNo = datas[0].phoneNo;
+          this.data[index].branchManagerEmailId = datas[0].branchManagerEmailId;
+          this.data[index].performanceCutOff = datas[0].performanceCutOff;
+          this.data[index].isActive = datas[0].isActive;
+          this.data[index].accountMonitoring = datas[0].accountMonitoring;
+          this.data[index].stockInspection = datas[0].stockInspection;
+          this.data[index].pendingDocument = datas[0].pendingDocument;
+          this.data[index].insurance = datas[0].insurance;
+          dataProviderBranchId = datas[0].dataProviderBranchId;
           this.messageService.add({
             severity: 'success',
             summary: 'Success',
-            detail: 'Data added successfully',
+            detail: 'Data updated successfully',
           });
         }
       }
@@ -118,7 +124,7 @@ export class BranchComponent {
   deleteData(id: number) {
     const deleteData = this.data.find((data) => data.id === id);
     this.ref = this.dialogService.open(DeleteBranchComponent, {
-      header: `Edit Province for ${id} id`,
+      header: `Edit Branch for ${id} id`,
       width: '90%',
       height: '80%',
       contentStyle: { overflow: 'auto' },

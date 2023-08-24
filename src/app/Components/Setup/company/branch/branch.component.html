@@ -1,4 +1,5 @@
 <div class="card mt-3">
+  <p-toast></p-toast>
   <p-table
     #search
     [value]="data"
@@ -71,7 +72,7 @@
             pRipple
             icon="fa-solid fa-pen-to-square"
             class="h-2rem w-2rem p-button-rounded p-button-success mr-1"
-            (click)="editData(data.branchName)"
+            (click)="editData(data.dataProviderBranchId)"
           ></button>
           <button
             pButton

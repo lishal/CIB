@@ -94,20 +94,21 @@
         [options]="districtList"
         formControlName="district"
         optionLabel="name"
+        optionValue="name"
         [filter]="true"
-        filterBy="name"        
+        filterBy="name"
+        [showClear]="true"
+        placeholder="Select a district"
       >
-        <ng-template pTemplate="selectedItem">
-          <div class="flex align-items-center gap-2" *ngIf="selectedDistrict">
-            <div>{{ selectedDistrict }}</div>
-          </div>
-        </ng-template>
-        <ng-template let-district pTemplate="item">
-          <div class="flex align-items-center gap-2">
-            <div>{{ district.name }}</div>
-          </div>
-        </ng-template>
       </p-dropdown>
+      <div
+        *ngIf="
+          myForm.get('district')?.invalid && myForm.get('district')?.touched
+        "
+        style="color: red"
+      >
+        District is required.
+      </div>
     </div>
     <label
       for="provinceName"
@@ -119,20 +120,22 @@
         [options]="provinceList"
         formControlName="provinceName"
         optionLabel="name"
+        optionValue="name"
         [filter]="true"
         filterBy="name"
+        [showClear]="true"
+        placeholder="Select a province"
       >
-        <ng-template pTemplate="selectedItem">
-          <div class="flex align-items-center gap-2" *ngIf="selectedProvince">
-            <div>{{ selectedProvince }}</div>
-          </div>
-        </ng-template>
-        <ng-template let-province pTemplate="item">
-          <div class="flex align-items-center gap-2">
-            <div>{{ province.name }}</div>
-          </div>
-        </ng-template>
       </p-dropdown>
+      <div
+        *ngIf="
+          myForm.get('provinceName')?.invalid &&
+          myForm.get('provinceName')?.touched
+        "
+        style="color: red"
+      >
+        Province is required.
+      </div>
     </div>
   </div>
   <div class="field grid">
