@@ -1,1 +1,164 @@
-<p>delete works!</p>
+<div class="addForm relative min-h-full h-auto mb-3">
+    <div class="field grid">
+      <label
+        for="branchName"
+        class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+        >Branch Name:</label
+      >
+      <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+        {{data[0].branchName}}
+      </div>
+      <label
+        for="branchNameNepali"
+        class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+        >Branch Name in Nepali:
+      </label>
+      <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+          {{data[0].branchNameNepali}}
+      </div>
+    </div>
+    <div class="field grid">
+      <label
+        for="dataProviderBranchId"
+        class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+        >Data Provider Branch Id:</label
+      >
+      <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+          {{data[0].dataProviderBranchId}}
+      </div>
+      <label
+        for="previousDataProviderBranchId"
+        class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+        >Previous Data Provider Branch ID:
+      </label>
+      <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+          {{data[0].previousDataProviderBranchId}}
+      </div>
+    </div>
+    <div class="field grid">
+      <label
+        for="district"
+        class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+        >District:</label
+      >
+      <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+          {{data[0].district}}
+      </div>
+      <label
+        for="provinceName"
+        class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+        >Province Name:</label
+      >
+      <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+          {{data[0].provinceName}}
+      </div>
+    </div>
+    <div class="field grid">
+      <label
+        for="branchAddress"
+        class="col-12 mb-2 md:col-3 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+        >Branch Address:</label
+      >
+      <div class="col-12 md:col-9 sm:col-8">
+          {{data[0].branchAddress}}
+      </div>
+    </div>
+    <div class="field grid">
+      <label
+        for="phoneNo"
+        class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+        >Phone No
+      </label>
+      <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+          {{data[0].phoneNo}}
+      </div>
+      <label
+        for="branchManagerEmailId"
+        class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+        >Branch Manager EmailID </label
+      >
+      <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+          {{data[0].branchManagerEmailId}}
+      </div>
+    </div>
+    <div class="field grid">
+      <label
+        for="performanceCutOff"
+        class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+        >Performance Cut Off:</label
+      >
+      <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+          {{data[0].performanceCutOff}}
+      </div>
+      <label
+        for="isActive"
+        class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+        >isActive:
+      </label>
+      <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+          {{data[0].isActive}}
+    </div>
+    </div>
+    <div
+      class="flex justify-content-center align-items-center font-bold text-xl m-3"
+    >
+      Enable KSKL Inquiry
+    </div>
+    <div class="field grid">
+      <label
+        for="accountMonitoring"
+        class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+        >Account Monitoring:
+      </label>
+      <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+          {{data[0].accountMonitoring}}
+      </div>
+      <label
+        for="stockInspection"
+        class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+        >Stock Inspection:
+      </label>
+      <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+          {{data[0].stockInspection}}
+      </div>
+    </div>
+    <div class="field grid">
+      <label
+        for="pendingDocument"
+        class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+        >Pending Document:
+      </label>
+      <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+          {{data[0].pendingDocument}}
+      </div>
+      <label
+        for="insurance"
+        class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+        >Insurance: 
+      </label>
+      <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+          {{data[0].insurance}}
+      </div>
+    </div>
+    <div
+      class="btnGroup absolute bottom-3 right-0 flex mt-3 w-full justify-content-end pb-2"
+    >
+      <button
+        pButton
+        type="button"
+        label="Cancel"
+        class="p-button-raised p-button-text p-button-plain mr-2"
+        (click)="onCancle()"
+      ></button>
+    
+    <p-confirmPopup></p-confirmPopup>
+    <button
+      pButton
+      type="button"
+      label="Delete"
+      class="p-button-raised p-button-danger p-button-plain mr-2"
+      (click)="onDelete($event)"
+    ></button>
+  </div>
+  </div>
+  

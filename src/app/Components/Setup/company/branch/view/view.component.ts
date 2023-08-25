@@ -1,23 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { DynamicDialogRef,DialogService,DynamicDialogConfig } from 'primeng/dynamicdialog';
-
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-branch-view',
   templateUrl: './view.component.html',
   styleUrls: ['./view.component.css'],
-  providers: [DialogService]
+  providers: [DialogService],
+  imports: [ButtonModule],
+  standalone:true
 })
 export class ViewBranchComponent implements OnInit{
   constructor(private dialogService: DynamicDialogConfig, public ref: DynamicDialogRef) {}
     data: any[] = [];
     ngOnInit() {
-        this.data=this.dialogService.data;
-        // console.log(this.data);
+        this.data=[this.dialogService.data];
     }
-
-    // selectProduct(product: Product) {
-    //     this.ref.close(product);
-    // }
+    onCancle() {
+      this.ref.close();
+    }
 
 }

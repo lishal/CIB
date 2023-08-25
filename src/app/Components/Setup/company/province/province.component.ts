@@ -5,7 +5,6 @@ import { ViewProvinceComponent } from './view/view.component';
 import { EditProvinceComponent } from './edit/edit.component';
 import { AddProvinceComponent } from './add/add.component';
 import { MessageService } from 'primeng/api';
-import * as xlsx from 'xlsx';
 import * as FileSaver from 'file-saver';
 import { DeleteProvinceComponent } from './delete/delete.component';
 
@@ -154,7 +153,7 @@ export class ProvinceComponent implements OnInit, OnDestroy {
         bookType: 'xlsx',
         type: 'array',
       });
-      this.saveAsExcelFile(excelBuffer, 'products');
+      this.saveAsExcelFile(excelBuffer, 'province');
     });
   }
   saveAsExcelFile(buffer: any, fileName: string): void {

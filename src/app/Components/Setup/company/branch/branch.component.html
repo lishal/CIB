@@ -12,7 +12,7 @@
     [rowsPerPageOptions]="[5, 10, 25, 50]"
     [paginator]="true"
     [filterDelay]="0"
-    [globalFilterFields]="['id', 'account_number']"
+    [globalFilterFields]="['dataProviderBranchId', 'branchName']"
     [tableStyle]="{ 'min-width': '100rem' }"
   >
     <ng-template pTemplate="caption">
@@ -30,6 +30,7 @@
           <p-button
             icon="fa-solid fa-arrow-up-right-from-square"
             styleClass="p-button-success mr-1"
+            (click)="exportExcel()"
           ></p-button>
           <p-button
             icon="fa-solid fa-circle-plus"
@@ -65,7 +66,7 @@
             pRipple
             icon="fa-solid fa-file"
             class="h-2rem w-2rem p-button-rounded p-button-warning mr-1"
-            (click)="showData(data.id)"
+            (click)="showData(data.dataProviderBranchId)"
           ></button>
           <button
             pButton
@@ -79,7 +80,7 @@
             pRipple
             icon="fa-solid fa-trash"
             class="h-2rem w-2rem p-button-rounded p-button-danger"
-            (click)="deleteData(data.id)"
+            (click)="deleteData(data.dataProviderBranchId)"
           ></button>
         </td>
         <td>{{ data?.dataProviderBranchId }}</td>

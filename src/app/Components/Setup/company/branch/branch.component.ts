@@ -7,6 +7,8 @@ import { DeleteBranchComponent } from './delete/delete.component';
 import { AddBranchComponent } from './add/add.component';
 import { MessageService } from 'primeng/api';
 
+import * as FileSaver from 'file-saver';
+
 @Component({
   selector: 'app-branch',
   templateUrl: './branch.component.html',
@@ -64,10 +66,10 @@ export class BranchComponent {
     });
   }
 
-  showData(id: number) {
-    const displayData = this.data.find((data) => data.id === id);
+  showData(dataProviderBranchId: string) {
+    const displayData = this.data.find((data) => data.dataProviderBranchId === dataProviderBranchId);
     this.ref = this.dialogService.open(ViewBranchComponent, {
-      header: `Detailed View of ${displayData.account_number} account number`,
+      header: `Detailed View of ${displayData.dataProviderBranchId}`,
       width: '90%',
       height: '80%',
       contentStyle: { overflow: 'auto' },
@@ -121,16 +123,35 @@ export class BranchComponent {
       }
     });
   }
-  deleteData(id: number) {
-    const deleteData = this.data.find((data) => data.id === id);
+  deleteData(dataProviderBranchId: string) {
+    const deleteData = this.data.find((data) => data.dataProviderBranchId === dataProviderBranchId);
     this.ref = this.dialogService.open(DeleteBranchComponent, {
-      header: `Edit Branch for ${id} id`,
+      header: `Delete Branch for ${dataProviderBranchId} id`,
       width: '90%',
       height: '80%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
       maximizable: true,
       data: deleteData,
+    });
+    this.ref.onClose.subscribe((data: any) => {
+      if (data === 'accepted') {
+        const index = this.data.findIndex(
+          (data) => data.dataProviderBranchId === dataProviderBranchId
+        );
+        this.data.splice(index, 1);
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'Data deleted successfully',
+        });
+      } else if (data === 'rejected') {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Rejected',
+          detail: 'You have rejected',
+        });
+      }
     });
   }
   ngOnInit(): void {
@@ -146,6 +167,31 @@ export class BranchComponent {
     //   }
     // );
   }
+
+  exportExcel() {
+    import('xlsx').then((xlsx) => {
+      const worksheet = xlsx.utils.json_to_sheet(this.data);
+      const workbook = { Sheets: { data: worksheet }, SheetNames: ['data'] };
+      const excelBuffer: any = xlsx.write(workbook, {
+        bookType: 'xlsx',
+        type: 'array',
+      });
+      this.saveAsExcelFile(excelBuffer, 'branch');
+    });
+  }
+  saveAsExcelFile(buffer: any, fileName: string): void {
+    let EXCEL_TYPE =
+      'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+    let EXCEL_EXTENSION = '.xlsx';
+    const data: Blob = new Blob([buffer], {
+      type: EXCEL_TYPE,
+    });
+    FileSaver.saveAs(
+      data,
+      fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION
+    );
+  }
+
   ngOnDestroy(): void {
     if (this.ref) {
       this.ref.close();
