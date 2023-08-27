@@ -57,6 +57,7 @@ import { RippleModule } from 'primeng/ripple';
 import { HttpClientModule } from '@angular/common/http';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { ToastModule } from 'primeng/toast';
+
 @NgModule({
   declarations: [
     AppComponent,

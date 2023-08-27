@@ -1,50 +1,50 @@
-import { Component, OnInit ,OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RoleService } from '../../../../Services/Setup/Company/role.service';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import {EditRole} from './editrole'
-import {ViewRole} from './viewrole'
+import { EditRoleComponent } from './edit/edit.component';
+import { ViewRoleComponent } from './view/view.component';
 
 @Component({
   selector: 'app-role',
   templateUrl: './role.component.html',
   styleUrls: ['./role.component.css'],
-  providers: [DialogService]
+  providers: [DialogService],
 })
-export class RoleComponent implements OnInit ,OnDestroy{
+export class RoleComponent implements OnInit, OnDestroy {
   data: any[] = [];
   isLoading: boolean = false;
   ref: DynamicDialogRef | undefined;
-  constructor(private api: RoleService,public dialogService: DialogService) {}
+  constructor(private api: RoleService, public dialogService: DialogService) {}
 
   showData(id: number) {
     const displayData = this.data.find((data) => data.id === id);
-    this.ref = this.dialogService.open(ViewRole, {
+    this.ref = this.dialogService.open(ViewRoleComponent, {
       header: `Detailed View of ${displayData.account_number} account number`,
-      width: '70%',
+      width: '80%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
       maximizable: true,
-      data : displayData
-  });
+      data: displayData,
+    });
 
-  // this.ref.onClose.subscribe((product: Product) => {
-     
-  // });
+    // this.ref.onClose.subscribe((product: Product) => {
 
-  // this.ref.onMaximize.subscribe((value) => {
-      
-  // });
+    // });
+
+    // this.ref.onMaximize.subscribe((value) => {
+
+    // });
   }
   editData(id: number) {
     const editData = this.data.find((data) => data.id === id);
-    this.ref = this.dialogService.open(EditRole, {
+    this.ref = this.dialogService.open(EditRoleComponent, {
       header: `Edit role for ${id} id`,
-      width: '70%',
+      width: '80%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
       maximizable: true,
-      data : editData
-  });
+      data: editData,
+    });
   }
   deleteData(id: number) {
     const deleteData = this.data.find((data) => data.id === id);
