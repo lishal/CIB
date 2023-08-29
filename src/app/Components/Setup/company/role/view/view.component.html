@@ -1,1 +1,42 @@
-<p>view works!</p>
+
+<div form class="relative min-h-full h-auto mb-3">
+  <div class="field grid">
+    <label
+      for="roleName"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Role Name:</label
+    >
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      {{data[0]?.roleName}}
+    </div>
+    <label
+    for="systemDefined"
+    class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+    >Is System Defined:
+  </label>
+  <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+    {{data[0]?.systemDefined}}
+  </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="description"
+      class="col-12 mb-2 md:col-3 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Description</label
+    >
+    <div class="col-12 md:col-9 sm:col-8">
+        {{data[0]?.description}}
+    </div>
+</div>
+  <div
+    class="btnGroup absolute bottom-0 right-0 flex mt-3 w-full justify-content-end pb-2"
+  >
+    <button
+      pButton
+      type="button"
+      label="Cancel"
+      class="p-button-raised p-button-text p-button-plain mr-2"
+      (click)="onCancle()"
+    ></button>
+  </div>
+</div>

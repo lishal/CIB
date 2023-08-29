@@ -1,3 +1,4 @@
+<p-toast></p-toast>
 <div class="card mt-3">
   <p-table
     #search
@@ -26,7 +27,7 @@
           />
         </span>
         <div class="btnGroup ml-1">
-          <p-button icon="fa-solid fa-circle-plus"></p-button>
+          <p-button icon="fa-solid fa-circle-plus" (click)="addData()"></p-button>
         </div>
       </div>
     </ng-template>
@@ -45,25 +46,25 @@
             pRipple
             icon="fa-solid fa-file"
             class="p-button-rounded p-button-secondary p-button-text mr-1"
-            (click)="showData(data.id)"
+            (click)="showData(data.roleName)"
           ></button>
           <button
             pButton
             pRipple
             icon="fa-solid fa-pen-to-square"
             class="p-button-rounded p-button-success p-button-text mr-1"
-            (click)="editData(data.id)"
+            (click)="editData(data.roleName)"
           ></button>
           <button
             pButton
             pRipple
             icon="fa-solid fa-trash"
             class="p-button-rounded p-button-danger p-button-text"
-            (click)="deleteData(data.id)"
+            (click)="deleteData(data.roleName)"
           ></button>
         </td>
-        <td>{{ data?.bank_name }}</td>
-        <td>{{ data?.uid }}</td>
+        <td>{{ data?.roleName }}</td>
+        <td>{{ data?.description }}</td>
       </tr>
     </ng-template>
     <ng-template pTemplate="emptymessage">

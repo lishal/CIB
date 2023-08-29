@@ -4,12 +4,15 @@ import {
   DialogService,
   DynamicDialogConfig,
 } from 'primeng/dynamicdialog';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-role-view',
   templateUrl: './view.component.html',
   styleUrls: ['./view.component.css'],
   providers: [DialogService],
+  imports:[ButtonModule],
+  standalone:true
 })
 export class ViewRoleComponent implements OnInit {
   constructor(
@@ -18,7 +21,9 @@ export class ViewRoleComponent implements OnInit {
   ) {}
   data: any[] = [];
   ngOnInit() {
-    this.data = this.dialogService.data;
-    // console.log(this.data);
+    this.data = [this.dialogService.data];
+  }
+  onCancle() {
+    this.ref.close();
   }
 }

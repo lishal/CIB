@@ -1,1 +1,93 @@
-<!-- <form [formGroup]="myForm" class="addForm relative min-h-full h-auto mb-3"> -->
+<p-toast></p-toast>
+<form [formGroup]="myForm" class="addForm relative min-h-full h-auto mb-3">
+  <div class="field grid">
+    <label
+      for="roleName"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Role Name: <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <input
+        id="roleName"
+        type="text"
+        formControlName="roleName"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('roleName')?.invalid &&
+            myForm.get('roleName')?.touched
+        }"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+      <div
+        *ngIf="
+          myForm.get('roleName')?.invalid && myForm.get('roleName')?.touched
+        "
+        style="color: red"
+      >
+        Role Name is required.
+      </div>
+    </div>
+    <label
+    for="systemDefined"
+    class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+    >Is System Defined: <span style="color: red">&nbsp; *</span>
+  </label>
+  <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+    <p-selectButton
+      [options]="stateOptions"
+      [style]="{ width: '10em' }"
+      formControlName="systemDefined"
+    ></p-selectButton>
+  </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="description"
+      class="col-12 mb-2 md:col-3 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Description <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-12 md:col-9 sm:col-8">
+      <textarea
+        id="description"
+        type="text"
+        rows="5"
+        formControlName="description"
+        style="resize: none"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('description')?.invalid &&
+            myForm.get('description')?.touched
+        }"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      >
+      </textarea>
+      <div
+        *ngIf="
+          myForm.get('description')?.invalid &&
+          myForm.get('description')?.touched
+        "
+        style="color: red"
+      >
+        Description is required.
+      </div>
+    </div>
+    </div>
+  <div
+    class="btnGroup absolute bottom-0 right-0 flex mt-3 w-full justify-content-end pb-2"
+  >
+    <button
+      pButton
+      type="button"
+      label="Cancel"
+      class="p-button-raised p-button-text p-button-plain mr-2"
+      (click)="onCancle()"
+    ></button>
+    <button
+      pButton
+      type="button"
+      label="Submit"
+      class="p-button-raised p-button-info"
+      (click)="onSubmit()"
+    ></button>
+  </div>
+</form>
