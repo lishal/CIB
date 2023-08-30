@@ -1,0 +1,335 @@
+<p-toast></p-toast>
+<form [formGroup]="myForm" class="addForm relative min-h-full h-auto mb-3">
+  <div class="field grid">
+    <label
+      for="deptName"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Dept Name: <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <input
+        id="deptName"
+        type="text"
+        formControlName="deptName"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('deptName')?.invalid &&
+            myForm.get('deptName')?.touched
+        }"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+      <div
+        *ngIf="
+          myForm.get('deptName')?.invalid && myForm.get('deptName')?.touched
+        "
+        style="color: red"
+      >
+        Dept Name is required.
+      </div>
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="shortName"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Short Name: <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <input
+        id="shortName"
+        type="text"
+        formControlName="shortName"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('shortName')?.invalid &&
+            myForm.get('shortName')?.touched
+        }"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+      <div
+        *ngIf="
+          myForm.get('shortName')?.invalid &&
+          myForm.get('shortName')?.touched
+        "
+        style="color: red"
+      >
+        Short Name is required.
+      </div>
+    </div>
+    <label
+      for="parentIdentifer"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Parent Identifier:
+    </label>
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <p-dropdown
+        [options]="parentIdentiferList"
+        formControlName="parentIdentifer"
+        optionLabel="name"
+        optionValue="name"
+        [filter]="true"
+        filterBy="name"
+        [showClear]="true"
+        placeholder="--Select Option--"
+      >
+      </p-dropdown>
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="deptAddress"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Dept Address: <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <input
+        id="deptAddress"
+        type="text"
+        formControlName="deptAddress"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('deptAddress')?.invalid &&
+            myForm.get('deptAddress')?.touched
+        }"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+      <div
+        *ngIf="
+          myForm.get('deptAddress')?.invalid &&
+          myForm.get('deptAddress')?.touched
+        "
+        style="color: red"
+      >
+        Dept Address is required.
+      </div>
+    </div>
+    <label
+      for="provinceName"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Province Name <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <p-dropdown
+        [options]="provinceList"
+        formControlName="provinceName"
+        optionLabel="name"
+        optionValue="name"
+        [filter]="true"
+        filterBy="name"
+        [showClear]="true"
+        placeholder="Select a province"
+      >
+      </p-dropdown>
+      <div
+        *ngIf="
+          myForm.get('provinceName')?.invalid &&
+          myForm.get('provinceName')?.touched
+        "
+        style="color: red"
+      >
+        Province is required.
+      </div>
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="branchAddress"
+      class="col-12 mb-2 md:col-3 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Branch Address <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-12 md:col-9 sm:col-8">
+      <textarea
+        id="branchAddress"
+        type="text"
+        rows="5"
+        formControlName="branchAddress"
+        style="resize: none"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('branchAddress')?.invalid &&
+            myForm.get('branchAddress')?.touched
+        }"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      >
+      </textarea>
+      <div
+        *ngIf="
+          myForm.get('branchAddress')?.invalid &&
+          myForm.get('branchAddress')?.touched
+        "
+        style="color: red"
+      >
+        Branch Address is required.
+      </div>
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="phoneNo"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Phone No
+    </label>
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <input
+        id="phoneNo"
+        type="text"
+        formControlName="phoneNo"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('phoneNo')?.invalid && myForm.get('phoneNo')?.touched
+        }"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+      <div
+        *ngIf="myForm.get('phoneNo')?.hasError('pattern')"
+        style="color: red"
+      >
+        Invalid Phone No.
+      </div>
+    </div>
+    <label
+      for="branchManagerEmailId"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Branch Manager EmailID <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <input
+        id="branchManagerEmailId"
+        type="email"
+        formControlName="branchManagerEmailId"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('branchManagerEmailId')?.invalid &&
+            myForm.get('branchManagerEmailId')?.touched
+        }"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+      <div
+        *ngIf="
+          (myForm.get('branchManagerEmailId')?.invalid &&
+            myForm.get('branchManagerEmailId')?.touched) ||
+          myForm.get('branchManagerEmailId')?.hasError('pattern')
+        "
+        style="color: red"
+      >
+        Invalid Branch Manager Email Id.
+      </div>
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="performanceCutOff"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Performance Cut Off: <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <input
+        id="performanceCutOff"
+        type="text"
+        formControlName="performanceCutOff"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('performanceCutOff')?.invalid &&
+            myForm.get('performanceCutOff')?.touched
+        }"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+      <div
+        *ngIf="
+          myForm.get('performanceCutOff')?.invalid &&
+          myForm.get('performanceCutOff')?.touched
+        "
+        style="color: red"
+      >
+        Performance Cut Off is required.
+      </div>
+    </div>
+    <label
+      for="isActive"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >isActive <span style="color: red">&nbsp; *</span>
+    </label>
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <p-selectButton
+        [options]="stateOptions"
+        [style]="{ width: '10em' }"
+        formControlName="isActive"
+      ></p-selectButton>
+    </div>
+  </div>
+  <div
+    class="flex justify-content-center align-items-center font-bold text-xl m-3"
+  >
+    Enable KSKL Inquiry
+  </div>
+  <div class="field grid">
+    <label
+      for="accountMonitoring"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Account Monitoring: <span style="color: red">&nbsp; *</span>
+    </label>
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <p-selectButton
+        [options]="stateOptions"
+        [style]="{ width: '10em' }"
+        formControlName="accountMonitoring"
+      ></p-selectButton>
+    </div>
+    <label
+      for="stockInspection"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Stock Inspection: <span style="color: red">&nbsp; *</span>
+    </label>
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <p-selectButton
+        [options]="stateOptions"
+        [style]="{ width: '10em' }"
+        formControlName="stockInspection"
+      ></p-selectButton>
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="pendingDocument"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Pending Document: <span style="color: red">&nbsp; *</span>
+    </label>
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <p-selectButton
+        [options]="stateOptions"
+        [style]="{ width: '10em' }"
+        formControlName="pendingDocument"
+      ></p-selectButton>
+    </div>
+    <label
+      for="insurance"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Insurance: <span style="color: red">&nbsp; *</span>
+    </label>
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <p-selectButton
+        [options]="stateOptions"
+        [style]="{ width: '10em' }"
+        formControlName="insurance"
+      ></p-selectButton>
+    </div>
+  </div>
+  <div
+    class="btnGroup absolute bottom-3 right-0 flex mt-3 w-full justify-content-end pb-2"
+  >
+    <button
+      pButton
+      type="button"
+      label="Cancel"
+      class="p-button-raised p-button-text p-button-plain mr-2"
+      (click)="onCancle()"
+    ></button>
+    <button
+      pButton
+      type="button"
+      label="Submit"
+      class="p-button-raised p-button-info"
+      (click)="onSubmit()"
+    ></button>
+  </div>
+</form>

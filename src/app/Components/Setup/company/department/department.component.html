@@ -28,6 +28,12 @@
               placeholder="Search here..."
             />
           </span>
+          <div class="btnGroup ml-1">
+            <p-button
+              icon="fa-solid fa-circle-plus"
+              (click)="addData()"
+            ></p-button>
+          </div>
         </div>
       </ng-template>
       <ng-template pTemplate="header">
@@ -47,22 +53,22 @@
               pButton
               pRipple
               icon="fa-solid fa-file"
-              class="h-2rem w-2rem p-button-rounded p-button-warning mr-1"
-              (click)="showData(data.id)"
+              class="p-button-rounded p-button-secondary p-button-text mr-1"
+              (click)="showData(data.dataProviderBranchId)"
             ></button>
             <button
               pButton
               pRipple
               icon="fa-solid fa-pen-to-square"
-              class="h-2rem w-2rem p-button-rounded p-button-success mr-1"
-              (click)="editData(data.id)"
+              class="p-button-rounded p-button-success p-button-text mr-1"
+              (click)="editData(data.dataProviderBranchId)"
             ></button>
             <button
               pButton
               pRipple
               icon="fa-solid fa-trash"
-              class="h-2rem w-2rem p-button-rounded p-button-danger"
-              (click)="deleteData(data.id)"
+              class="p-button-rounded p-button-danger p-button-text"
+              (click)="deleteData(data.dataProviderBranchId)"
             ></button>
           </td>
           <td>{{ data?.id }}</td>
