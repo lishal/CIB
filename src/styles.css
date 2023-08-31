@@ -297,3 +297,8 @@
 .p-dropdown{
   display: flex !important;
 }
+
+/* Calender */
+.p-calendar{
+  width: 100% !important;
+}

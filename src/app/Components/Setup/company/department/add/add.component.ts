@@ -12,6 +12,7 @@ import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { CommonModule } from '@angular/common';
 import { DropdownModule } from 'primeng/dropdown';
+import { CalendarModule } from 'primeng/calendar';
 
 interface District {
   name: String;
@@ -31,6 +32,7 @@ interface Province {
     ToastModule,
     CommonModule,
     DropdownModule,
+    CalendarModule
   ],
   providers: [MessageService],
   standalone: true,
@@ -63,11 +65,13 @@ export class AddDepartmentComponent implements OnInit {
       deptNameNepali: [''],
       shortName: ['', Validators.required],
       deptAddress: ['',Validators.required],
-      parentIdentifer: ['', Validators.required],
-      provinceName: ['Bagmati', Validators.required],
-
-      branchAddress: ['', Validators.required],
       phoneNo: ['', Validators.pattern('^[0-9]{10}$')],
+      parentIdentifer: ['', Validators.required],
+      psegHead: [''],
+      ssegHead:[''],
+      faxno:[''],
+      date:['',Validators.required],
+      branchAddress: ['', Validators.required],
       branchManagerEmailId: [
         '',
         [

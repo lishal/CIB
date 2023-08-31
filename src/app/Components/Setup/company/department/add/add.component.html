@@ -104,32 +104,81 @@
       </div>
     </div>
     <label
-      for="provinceName"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Province Name <span style="color: red">&nbsp; *</span></label
-    >
+      for="phoneNo"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end  font-bold sm:col-4"
+      >Phone No <span style="color: red">&nbsp; *</span>
+    </label>
     <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-      <p-dropdown
-        [options]="provinceList"
-        formControlName="provinceName"
-        optionLabel="name"
-        optionValue="name"
-        [filter]="true"
-        filterBy="name"
-        [showClear]="true"
-        placeholder="Select a province"
-      >
-      </p-dropdown>
+      <input
+        id="phoneNo"
+        type="text"
+        formControlName="phoneNo"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('phoneNo')?.invalid && myForm.get('phoneNo')?.touched
+        }"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
       <div
-        *ngIf="
-          myForm.get('provinceName')?.invalid &&
-          myForm.get('provinceName')?.touched
-        "
+        *ngIf="myForm.get('phoneNo')?.hasError('pattern')"
         style="color: red"
       >
-        Province is required.
+        Invalid Phone No.
       </div>
     </div>
+  </div>
+  <div class="field grid">
+    <label
+    for="p-segHead"
+    class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+    >Primary Seg-Head:
+  </label>
+  <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+    <input
+      id="p-segHead"
+      type="text"
+      formControlName="psegHead"
+      class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+    />
+  </div>
+  <label
+    for="s-segHead"
+    class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+    >Secondary Seg-Head:
+  </label>
+  <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+    <input
+      id="s-segHead"
+      type="text"
+      formControlName="ssegHead"
+      class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+    />
+  </div>
+  </div>
+  <div class="field grid">
+    <label
+    for="faxno"
+    class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end font-bold sm:col-4"
+    >Fax Number:
+  </label>
+  <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+    <input
+      id="faxno"
+      type="text"
+      formControlName="faxno"
+      class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+    />
+  </div>
+  <label
+    for="date"
+    class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end  font-bold sm:col-4"
+    >Date Of Established:<span style="color: red">&nbsp; *</span>
+  </label>
+  <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+
+    <p-calendar formControlName="date" appendTo="body" ></p-calendar>
+  </div>
+  
   </div>
   <div class="field grid">
     <label
@@ -187,6 +236,7 @@
         Invalid Phone No.
       </div>
     </div>
+
     <label
       for="branchManagerEmailId"
       class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"

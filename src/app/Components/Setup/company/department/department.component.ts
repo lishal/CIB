@@ -21,7 +21,7 @@ export class DepartmentComponent implements OnInit ,OnDestroy {
 
   addData() {
     this.ref = this.dialogService.open(AddDepartmentComponent, {
-      header: `Add Branch`,
+      header: `Add Department`,
       width: '90%',
       height: '80%',
       contentStyle: { overflow: 'auto' },
@@ -45,7 +45,7 @@ export class DepartmentComponent implements OnInit ,OnDestroy {
   showData(id: number) {
     const displayData = this.data.find((data) => data.id === id);
     this.ref = this.dialogService.open(ViewDepartmentComponent, {
-      header: `Detailed View of ${displayData.account_number} account number`,
+      header: `Detailed View of ${displayData.deptName}`,
       width: '70%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
