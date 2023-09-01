@@ -40,8 +40,8 @@ interface Province {
 export class AddDepartmentComponent implements OnInit {
   myForm!: FormGroup;
   stateOptions: any[] = [
-    { label: 'False', value: false },
     { label: 'True', value: true },
+    { label: 'False', value: false },
   ];
   //parentIdentifer List
   parentIdentiferList: District[] = [
@@ -65,26 +65,23 @@ export class AddDepartmentComponent implements OnInit {
       deptNameNepali: [''],
       shortName: ['', Validators.required],
       deptAddress: ['',Validators.required],
-      phoneNo: ['', Validators.pattern('^[0-9]{10}$')],
+      phoneNo: ['', [Validators.pattern('^[0-9]{10}$'),Validators.required]],
       parentIdentifer: ['', Validators.required],
       psegHead: [''],
       ssegHead:[''],
       faxno:[''],
       date:['',Validators.required],
       branchAddress: ['', Validators.required],
-      branchManagerEmailId: [
+      depemail: [
         '',
         [
           Validators.required,
           Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}'),
         ],
       ],
-      performanceCutOff: ['', Validators.required],
-      isActive: [false, Validators.required],
-      accountMonitoring: [false, Validators.required],
-      stockInspection: [false, Validators.required],
-      pendingDocument: [false, Validators.required],
-      insurance: [false, Validators.required],
+      emailtopsh: [false, Validators.required],
+      emailtossh: [false, Validators.required],
+      deptfun: ['', Validators.required],
     });
   }
   onSubmit() {
