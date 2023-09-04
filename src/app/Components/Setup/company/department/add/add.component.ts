@@ -32,7 +32,7 @@ interface Province {
     ToastModule,
     CommonModule,
     DropdownModule,
-    CalendarModule
+    CalendarModule,
   ],
   providers: [MessageService],
   standalone: true,
@@ -44,13 +44,8 @@ export class AddDepartmentComponent implements OnInit {
     { label: 'False', value: false },
   ];
   //parentIdentifer List
-  parentIdentiferList: District[] = [
-    
-  ];
+  parentIdentiferList: District[] = [];
   parentIdentifer: string | undefined;
-  //Province List
-  provinceList: Province[] = [{ name: 'Karnali' }, { name: 'Bagmati' }];
-  province: string | undefined;
 
   added: boolean = false;
   constructor(
@@ -62,16 +57,14 @@ export class AddDepartmentComponent implements OnInit {
   ngOnInit(): void {
     this.myForm = this.fb.group({
       deptName: ['', Validators.required],
-      deptNameNepali: [''],
       shortName: ['', Validators.required],
-      deptAddress: ['',Validators.required],
-      phoneNo: ['', [Validators.pattern('^[0-9]{10}$'),Validators.required]],
-      parentIdentifer: ['', Validators.required],
+      parentIdentifer: [''],
+      deptAddress: ['', Validators.required],
+      phoneNo: ['', [Validators.pattern('^[0-9]{10}$'), Validators.required]],
       psegHead: [''],
-      ssegHead:[''],
-      faxno:[''],
-      date:['',Validators.required],
-      branchAddress: ['', Validators.required],
+      ssegHead: [''],
+      faxno: [''],
+      date: ['', Validators.required],
       depemail: [
         '',
         [

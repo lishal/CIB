@@ -1,4 +1,4 @@
-import { Component, OnInit ,OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DepartmentService } from '../../../../Services/Setup/Company/department.service';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { ViewDepartmentComponent } from './view/view.component';
@@ -11,13 +11,17 @@ import { DeleteDepartmentComponent } from './delete/delete.component';
   selector: 'app-department',
   templateUrl: './department.component.html',
   styleUrls: ['./department.component.css'],
-  providers: [DialogService,MessageService]
+  providers: [DialogService, MessageService],
 })
-export class DepartmentComponent implements OnInit ,OnDestroy {
+export class DepartmentComponent implements OnInit, OnDestroy {
   data: any[] = [];
   isLoading: boolean = false;
   ref: DynamicDialogRef | undefined;
-  constructor(private api: DepartmentService,public dialogService: DialogService,private messageService: MessageService) {}
+  constructor(
+    private api: DepartmentService,
+    public dialogService: DialogService,
+    private messageService: MessageService
+  ) {}
 
   addData() {
     this.ref = this.dialogService.open(AddDepartmentComponent, {
@@ -32,6 +36,9 @@ export class DepartmentComponent implements OnInit ,OnDestroy {
       if (data !== undefined) {
         if (data[1] === true) {
           this.data.push(data[0]);
+          const date = new Date(data[0].date);
+          const extractedDate = date.toISOString().split('T')[0];
+          console.log(extractedDate);
           this.messageService.add({
             severity: 'success',
             summary: 'Success',
@@ -50,16 +57,16 @@ export class DepartmentComponent implements OnInit ,OnDestroy {
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
       maximizable: true,
-      data : displayData
-  });
+      data: displayData,
+    });
 
-  // this.ref.onClose.subscribe((product: Product) => {
-     
-  // });
+    // this.ref.onClose.subscribe((product: Product) => {
 
-  // this.ref.onMaximize.subscribe((value) => {
-      
-  // });
+    // });
+
+    // this.ref.onMaximize.subscribe((value) => {
+
+    // });
   }
   editData(id: number) {
     const editData = this.data.find((data) => data.id === id);
@@ -69,11 +76,13 @@ export class DepartmentComponent implements OnInit ,OnDestroy {
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
       maximizable: true,
-      data : editData
-  });
+      data: editData,
+    });
   }
   deleteData(dataProviderBranchId: string) {
-    const deleteData = this.data.find((data) => data.dataProviderBranchId === dataProviderBranchId);
+    const deleteData = this.data.find(
+      (data) => data.dataProviderBranchId === dataProviderBranchId
+    );
     this.ref = this.dialogService.open(DeleteDepartmentComponent, {
       header: `Delete Branch for ${dataProviderBranchId} id`,
       width: '90%',

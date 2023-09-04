@@ -13,8 +13,7 @@
         formControlName="deptName"
         [ngClass]="{
           'invalid-input':
-            myForm.get('deptName')?.invalid &&
-            myForm.get('deptName')?.touched
+            myForm.get('deptName')?.invalid && myForm.get('deptName')?.touched
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
@@ -41,15 +40,13 @@
         formControlName="shortName"
         [ngClass]="{
           'invalid-input':
-            myForm.get('shortName')?.invalid &&
-            myForm.get('shortName')?.touched
+            myForm.get('shortName')?.invalid && myForm.get('shortName')?.touched
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
       <div
         *ngIf="
-          myForm.get('shortName')?.invalid &&
-          myForm.get('shortName')?.touched
+          myForm.get('shortName')?.invalid && myForm.get('shortName')?.touched
         "
         style="color: red"
       >
@@ -105,7 +102,7 @@
     </div>
     <label
       for="phoneNo"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end  font-bold sm:col-4"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end font-bold sm:col-4"
       >Phone No <span style="color: red">&nbsp; *</span>
     </label>
     <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
@@ -125,79 +122,82 @@
       >
         Invalid Phone No.
       </div>
-      <ng-template  #phoneElse>
+      <ng-template #phoneElse>
         <div
-        *ngIf="myForm.get('phoneNo')?.invalid &&
-        myForm.get('phoneNo')?.touched"
-        style="color: red"
-      >
-        Phone No is required.
-      </div>
+          *ngIf="
+            myForm.get('phoneNo')?.invalid && myForm.get('phoneNo')?.touched
+          "
+          style="color: red"
+        >
+          Phone No is required.
+        </div>
       </ng-template>
     </div>
   </div>
   <div class="field grid">
     <label
-    for="p-segHead"
-    class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-    >Primary Seg-Head:
-  </label>
-  <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-    <input
-      id="p-segHead"
-      type="text"
-      formControlName="psegHead"
-      class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-    />
-  </div>
-  <label
-    for="s-segHead"
-    class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-    >Secondary Seg-Head:
-  </label>
-  <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-    <input
-      id="s-segHead"
-      type="text"
-      formControlName="ssegHead"
-      class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-    />
-  </div>
+      for="p-segHead"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Primary Seg-Head:
+    </label>
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <input
+        id="p-segHead"
+        type="text"
+        formControlName="psegHead"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+    </div>
+    <label
+      for="s-segHead"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Secondary Seg-Head:
+    </label>
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <input
+        id="s-segHead"
+        type="text"
+        formControlName="ssegHead"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+    </div>
   </div>
   <div class="field grid">
     <label
-    for="faxno"
-    class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end font-bold sm:col-4"
-    >Fax Number:
-  </label>
-  <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-    <input
-      id="faxno"
-      type="text"
-      formControlName="faxno"
-      class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-    />
-  </div>
-  <label
-    for="date"
-    class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end  font-bold sm:col-4"
-    >Date Of Established:<span style="color: red">&nbsp; *</span>
-  </label>
-  <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-    <p-calendar formControlName="date" [ngClass]="{'invalid-input':
-        myForm.get('date')?.invalid && myForm.get('date')?.touched
-    }" appendTo="body" ></p-calendar>
-    <div
-        *ngIf="
-          myForm.get('date')?.invalid &&
-          myForm.get('date')?.touched
-        "
+      for="faxno"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end font-bold sm:col-4"
+      >Fax Number:
+    </label>
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <input
+        id="faxno"
+        type="text"
+        formControlName="faxno"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+    </div>
+    <label
+      for="date"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end font-bold sm:col-4"
+      >Date Of Established:<span style="color: red">&nbsp; *</span>
+    </label>
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <p-calendar
+        formControlName="date"
+        dateFormat="dd.mm.yy"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('date')?.invalid && myForm.get('date')?.touched
+        }"
+        appendTo="body"
+      ></p-calendar>
+      <div
+        *ngIf="myForm.get('date')?.invalid && myForm.get('date')?.touched"
         style="color: red"
       >
         Date is required.
       </div>
-  </div>
-  
+    </div>
   </div>
   <div class="field grid">
     <label
@@ -212,30 +212,23 @@
         formControlName="depemail"
         [ngClass]="{
           'invalid-input':
-            myForm.get('depemail')?.invalid &&
-            myForm.get('depemail')?.touched
+            myForm.get('depemail')?.invalid && myForm.get('depemail')?.touched
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
       <div
-      *ngIf="
-      myForm.get('depemail')?.hasError('pattern'); else elseEmail
-        "
+        *ngIf="myForm.get('depemail')?.hasError('pattern'); else elseEmail"
         style="color: red"
       >
-      Invalid Email Id
-       
+        Invalid Email Id
       </div>
       <ng-template #elseEmail>
         <div
-        *ngIf="
-        (myForm.get('depemail')?.invalid &&
-            myForm.get('depemail')?.touched)
-          
-        "
-        style="color: red"
-       
-          >
+          *ngIf="
+            myForm.get('depemail')?.invalid && myForm.get('depemail')?.touched
+          "
+          style="color: red"
+        >
           Email Id is required.
         </div>
       </ng-template>
@@ -280,22 +273,16 @@
         formControlName="deptfun"
         [ngClass]="{
           'invalid-input':
-            myForm.get('deptfun')?.invalid &&
-            myForm.get('deptfun')?.touched
+            myForm.get('deptfun')?.invalid && myForm.get('deptfun')?.touched
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
-        <div
-        *ngIf="
-        (myForm.get('deptfun')?.invalid &&
-            myForm.get('deptfun')?.touched)
-          
-        "
+      <div
+        *ngIf="myForm.get('deptfun')?.invalid && myForm.get('deptfun')?.touched"
         style="color: red"
-       
-          >
-          Dept Function is required.
-        </div>
+      >
+        Dept Function is required.
+      </div>
     </div>
   </div>
 
