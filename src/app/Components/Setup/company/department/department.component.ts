@@ -35,10 +35,10 @@ export class DepartmentComponent implements OnInit, OnDestroy {
     this.ref.onClose.subscribe((data: any) => {
       if (data !== undefined) {
         if (data[1] === true) {
-          this.data.push(data[0]);
           const date = new Date(data[0].date);
-          const extractedDate = date.toISOString().split('T')[0];
-          console.log(extractedDate);
+          const newDate = date.toISOString().split('T')[0];
+          data[0].date=newDate
+          this.data.push(data[0]);
           this.messageService.add({
             severity: 'success',
             summary: 'Success',
@@ -49,11 +49,12 @@ export class DepartmentComponent implements OnInit, OnDestroy {
     });
   }
 
-  showData(id: number) {
-    const displayData = this.data.find((data) => data.id === id);
+  showData(deptName: string) {
+    const displayData = this.data.find((data) => data.deptName === deptName);
     this.ref = this.dialogService.open(ViewDepartmentComponent, {
       header: `Detailed View of ${displayData.deptName}`,
-      width: '70%',
+      width: '90%',
+      height: '80%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
       maximizable: true,
@@ -68,11 +69,12 @@ export class DepartmentComponent implements OnInit, OnDestroy {
 
     // });
   }
-  editData(id: number) {
-    const editData = this.data.find((data) => data.id === id);
+  editData(deptName: string) {
+    const editData = this.data.find((data) => data.deptName === deptName);
     this.ref = this.dialogService.open(EditDepartmentComponent, {
-      header: `Edit department for ${id} id`,
-      width: '70%',
+      header: `Edit department for ${deptName}`,
+      width: '90%',
+      height: '80%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
       maximizable: true,
@@ -113,19 +115,19 @@ export class DepartmentComponent implements OnInit, OnDestroy {
     });
   }
   ngOnInit(): void {
-    this.isLoading = true;
+    // this.isLoading = true;
 
-    this.api.fetchData().subscribe(
-      (response) => {
-        this.data = response;
-        this.isLoading = false;
-        // console.log(this.data)
-      },
-      (error) => {
-        console.log(error);
-        this.isLoading = false;
-      }
-    );
+    // this.api.fetchData().subscribe(
+    //   (response) => {
+    //     this.data = response;
+    //     this.isLoading = false;
+    //     // console.log(this.data)
+    //   },
+    //   (error) => {
+    //     console.log(error);
+    //     this.isLoading = false;
+    //   }
+    // );
   }
 
   ngOnDestroy(): void {

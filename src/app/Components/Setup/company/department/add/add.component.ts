@@ -14,12 +14,10 @@ import { CommonModule } from '@angular/common';
 import { DropdownModule } from 'primeng/dropdown';
 import { CalendarModule } from 'primeng/calendar';
 
-interface District {
+interface parentIdentifer {
   name: String;
 }
-interface Province {
-  name: String;
-}
+
 
 @Component({
   selector: 'app-department-add',
@@ -44,7 +42,7 @@ export class AddDepartmentComponent implements OnInit {
     { label: 'False', value: false },
   ];
   //parentIdentifer List
-  parentIdentiferList: District[] = [];
+  parentIdentiferList: parentIdentifer[] = [];
   parentIdentifer: string | undefined;
 
   added: boolean = false;

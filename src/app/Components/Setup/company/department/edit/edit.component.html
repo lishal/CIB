@@ -2,179 +2,108 @@
 <form [formGroup]="myForm" class="addForm relative min-h-full h-auto mb-3">
   <div class="field grid">
     <label
-      for="branchName"
+      for="deptName"
       class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Branch Name: <span style="color: red">&nbsp; *</span></label
+      >Dept Name: <span style="color: red">&nbsp; *</span></label
     >
     <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
       <input
-        id="branchName"
+        id="deptName"
         type="text"
-        formControlName="branchName"
+        formControlName="deptName"
         [ngClass]="{
           'invalid-input':
-            myForm.get('branchName')?.invalid &&
-            myForm.get('branchName')?.touched
+            myForm.get('deptName')?.invalid && myForm.get('deptName')?.touched
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
       <div
         *ngIf="
-          myForm.get('branchName')?.invalid && myForm.get('branchName')?.touched
+          myForm.get('deptName')?.invalid && myForm.get('deptName')?.touched
         "
         style="color: red"
       >
-        Branch Name is required.
+        Dept Name is required.
       </div>
-    </div>
-    <label
-      for="branchNameNepali"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Branch Name in Nepali:
-    </label>
-    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-      <input
-        id="branchNameNepali"
-        type="text"
-        formControlName="branchNameNepali"
-        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-      />
     </div>
   </div>
   <div class="field grid">
     <label
-      for="dataProviderBranchId"
+      for="shortName"
       class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Data Provider Branch Id: <span style="color: red">&nbsp; *</span></label
+      >Short Name: <span style="color: red">&nbsp; *</span></label
     >
     <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
       <input
-        id="dataProviderBranchId"
+        id="shortName"
         type="text"
-        formControlName="dataProviderBranchId"
+        formControlName="shortName"
         [ngClass]="{
           'invalid-input':
-            myForm.get('dataProviderBranchId')?.invalid &&
-            myForm.get('dataProviderBranchId')?.touched
+            myForm.get('shortName')?.invalid && myForm.get('shortName')?.touched
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
       <div
         *ngIf="
-          myForm.get('dataProviderBranchId')?.invalid &&
-          myForm.get('dataProviderBranchId')?.touched
+          myForm.get('shortName')?.invalid && myForm.get('shortName')?.touched
         "
         style="color: red"
       >
-        Data Provider Branch ID is required.
+        Short Name is required.
       </div>
     </div>
     <label
-      for="previousDataProviderBranchId"
+      for="parentIdentifer"
       class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Previous Data Provider Branch ID:
+      >Parent Identifier:
     </label>
-    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-      <input
-        id="previousDataProviderBranchId"
-        type="text"
-        formControlName="previousDataProviderBranchId"
-        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-      />
-    </div>
-  </div>
-  <div class="field grid">
-    <label
-      for="district"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >District: <span style="color: red">&nbsp; *</span></label
-    >
     <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
       <p-dropdown
-        [options]="districtList"
-        formControlName="district"
+        [options]="parentIdentiferList"
+        formControlName="parentIdentifer"
         optionLabel="name"
         optionValue="name"
         [filter]="true"
         filterBy="name"
         [showClear]="true"
-        placeholder="Select a district"
+        placeholder="--Select Option--"
       >
       </p-dropdown>
-      <div
-        *ngIf="
-          myForm.get('district')?.invalid && myForm.get('district')?.touched
-        "
-        style="color: red"
-      >
-        District is required.
-      </div>
     </div>
+  </div>
+  <div class="field grid">
     <label
-      for="provinceName"
+      for="deptAddress"
       class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Province Name <span style="color: red">&nbsp; *</span></label
+      >Dept Address: <span style="color: red">&nbsp; *</span></label
     >
     <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-      <p-dropdown
-        [options]="provinceList"
-        formControlName="provinceName"
-        optionLabel="name"
-        optionValue="name"
-        [filter]="true"
-        filterBy="name"
-        [showClear]="true"
-        placeholder="Select a province"
-      >
-      </p-dropdown>
-      <div
-        *ngIf="
-          myForm.get('provinceName')?.invalid &&
-          myForm.get('provinceName')?.touched
-        "
-        style="color: red"
-      >
-        Province is required.
-      </div>
-    </div>
-  </div>
-  <div class="field grid">
-    <label
-      for="branchAddress"
-      class="col-12 mb-2 md:col-3 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Branch Address <span style="color: red">&nbsp; *</span></label
-    >
-    <div class="col-12 md:col-9 sm:col-8">
-      <textarea
-        id="branchAddress"
+      <input
+        id="deptAddress"
         type="text"
-        rows="5"
-        formControlName="branchAddress"
-        style="resize: none"
+        formControlName="deptAddress"
         [ngClass]="{
           'invalid-input':
-            myForm.get('branchAddress')?.invalid &&
-            myForm.get('branchAddress')?.touched
+            myForm.get('deptAddress')?.invalid &&
+            myForm.get('deptAddress')?.touched
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-      >
-      </textarea>
+      />
       <div
         *ngIf="
-          myForm.get('branchAddress')?.invalid &&
-          myForm.get('branchAddress')?.touched
+          myForm.get('deptAddress')?.invalid &&
+          myForm.get('deptAddress')?.touched
         "
         style="color: red"
       >
-        Branch Address is required.
+        Dept Address is required.
       </div>
     </div>
-  </div>
-  <div class="field grid">
     <label
       for="phoneNo"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Phone No
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end font-bold sm:col-4"
+      >Phone No <span style="color: red">&nbsp; *</span>
     </label>
     <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
       <input
@@ -188,139 +117,175 @@
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
       <div
-        *ngIf="myForm.get('phoneNo')?.hasError('pattern')"
+        *ngIf="myForm.get('phoneNo')?.hasError('pattern'); else phoneElse"
         style="color: red"
       >
         Invalid Phone No.
       </div>
-    </div>
-    <label
-      for="branchManagerEmailId"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Branch Manager EmailID <span style="color: red">&nbsp; *</span></label
-    >
-    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-      <input
-        id="branchManagerEmailId"
-        type="email"
-        formControlName="branchManagerEmailId"
-        [ngClass]="{
-          'invalid-input':
-            myForm.get('branchManagerEmailId')?.invalid &&
-            myForm.get('branchManagerEmailId')?.touched
-        }"
-        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-      />
-      <div
-        *ngIf="
-          (myForm.get('branchManagerEmailId')?.invalid &&
-            myForm.get('branchManagerEmailId')?.touched) ||
-          myForm.get('branchManagerEmailId')?.hasError('pattern')
-        "
-        style="color: red"
-      >
-        Invalid Branch Manager Email Id.
-      </div>
+      <ng-template #phoneElse>
+        <div
+          *ngIf="
+            myForm.get('phoneNo')?.invalid && myForm.get('phoneNo')?.touched
+          "
+          style="color: red"
+        >
+          Phone No is required.
+        </div>
+      </ng-template>
     </div>
   </div>
   <div class="field grid">
     <label
-      for="performanceCutOff"
+      for="p-segHead"
       class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Performance Cut Off: <span style="color: red">&nbsp; *</span></label
-    >
+      >Primary Seg-Head:
+    </label>
     <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
       <input
-        id="performanceCutOff"
+        id="p-segHead"
         type="text"
-        formControlName="performanceCutOff"
+        formControlName="psegHead"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+    </div>
+    <label
+      for="s-segHead"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Secondary Seg-Head:
+    </label>
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <input
+        id="s-segHead"
+        type="text"
+        formControlName="ssegHead"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="faxno"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end font-bold sm:col-4"
+      >Fax Number:
+    </label>
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <input
+        id="faxno"
+        type="text"
+        formControlName="faxno"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+    </div>
+    <label
+      for="date"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end font-bold sm:col-4"
+      >Date Of Established:<span style="color: red">&nbsp; *</span>
+    </label>
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <p-calendar
+        formControlName="date"
+        
         [ngClass]="{
           'invalid-input':
-            myForm.get('performanceCutOff')?.invalid &&
-            myForm.get('performanceCutOff')?.touched
+            myForm.get('date')?.invalid && myForm.get('date')?.touched
+        }"
+        appendTo="body"
+      ></p-calendar>
+      <div
+        *ngIf="myForm.get('date')?.invalid && myForm.get('date')?.touched"
+        style="color: red"
+      >
+        Date is required.
+      </div>
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="depemail"
+      class="col-12 mb-2 md:col-3 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Email Address <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-12 md:col-9 sm:col-8">
+      <input
+        id="depemail"
+        type="email"
+        formControlName="depemail"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('depemail')?.invalid && myForm.get('depemail')?.touched
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
       <div
-        *ngIf="
-          myForm.get('performanceCutOff')?.invalid &&
-          myForm.get('performanceCutOff')?.touched
-        "
+        *ngIf="myForm.get('depemail')?.hasError('pattern'); else elseEmail"
         style="color: red"
       >
-        Performance Cut Off is required.
+        Invalid Email Id
+      </div>
+      <ng-template #elseEmail>
+        <div
+          *ngIf="
+            myForm.get('depemail')?.invalid && myForm.get('depemail')?.touched
+          "
+          style="color: red"
+        >
+          Email Id is required.
+        </div>
+      </ng-template>
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="emailtopsh"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Email To PSH: <span style="color: red">&nbsp; *</span>
+    </label>
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <p-selectButton
+        [options]="stateOptions"
+        [style]="{ width: '10em' }"
+        formControlName="emailtopsh"
+      ></p-selectButton>
+    </div>
+    <label
+      for="emailtossh"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Email To SSH: <span style="color: red">&nbsp; *</span>
+    </label>
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <p-selectButton
+        [options]="stateOptions"
+        [style]="{ width: '10em' }"
+        formControlName="emailtossh"
+      ></p-selectButton>
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="deptfun"
+      class="col-12 mb-2 md:col-3 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Dept Function <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-12 md:col-9 sm:col-8">
+      <input
+        id="deptfun"
+        type="text"
+        formControlName="deptfun"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('deptfun')?.invalid && myForm.get('deptfun')?.touched
+        }"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+      <div
+        *ngIf="myForm.get('deptfun')?.invalid && myForm.get('deptfun')?.touched"
+        style="color: red"
+      >
+        Dept Function is required.
       </div>
     </div>
-    <label
-      for="isActive"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >isActive <span style="color: red">&nbsp; *</span>
-    </label>
-    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-      <p-selectButton
-        [options]="stateOptions"
-        [style]="{ width: '10em' }"
-        formControlName="isActive"
-      ></p-selectButton>
-    </div>
   </div>
-  <div
-    class="flex justify-content-center align-items-center font-bold text-xl m-3"
-  >
-    Enable KSKL Inquiry
-  </div>
-  <div class="field grid">
-    <label
-      for="accountMonitoring"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Account Monitoring: <span style="color: red">&nbsp; *</span>
-    </label>
-    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-      <p-selectButton
-        [options]="stateOptions"
-        [style]="{ width: '10em' }"
-        formControlName="accountMonitoring"
-      ></p-selectButton>
-    </div>
-    <label
-      for="stockInspection"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Stock Inspection: <span style="color: red">&nbsp; *</span>
-    </label>
-    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-      <p-selectButton
-        [options]="stateOptions"
-        [style]="{ width: '10em' }"
-        formControlName="stockInspection"
-      ></p-selectButton>
-    </div>
-  </div>
-  <div class="field grid">
-    <label
-      for="pendingDocument"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Pending Document: <span style="color: red">&nbsp; *</span>
-    </label>
-    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-      <p-selectButton
-        [options]="stateOptions"
-        [style]="{ width: '10em' }"
-        formControlName="pendingDocument"
-      ></p-selectButton>
-    </div>
-    <label
-      for="insurance"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Insurance: <span style="color: red">&nbsp; *</span>
-    </label>
-    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-      <p-selectButton
-        [options]="stateOptions"
-        [style]="{ width: '10em' }"
-        formControlName="insurance"
-      ></p-selectButton>
-    </div>
-  </div>
+
   <div
     class="btnGroup absolute bottom-3 right-0 flex mt-3 w-full justify-content-end pb-2"
   >

@@ -17,10 +17,7 @@ import { MessageService } from 'primeng/api';
 import { CommonModule } from '@angular/common';
 import { DropdownModule } from 'primeng/dropdown';
 
-interface District {
-  name: String;
-}
-interface Province {
+interface parentIdentifer {
   name: String;
 }
 
@@ -48,89 +45,10 @@ export class EditDepartmentComponent implements OnInit {
   ];
   updated: boolean = false;
 
-  //District List
-  districtList: District[] = [
-    { name: 'Achham' },
-    { name: 'Arghakhanchi' },
-    { name: 'Baglung' },
-    { name: 'Baitadi' },
-    { name: 'Bajhang' },
-    { name: 'Bajura' },
-    { name: 'Banke' },
-    { name: 'Bara' },
-    { name: 'Bardiya' },
-    { name: 'Bhaktapur' },
-    { name: 'Bhojpur' },
-    { name: 'Chitwan' },
-    { name: 'Dadeldhura' },
-    { name: 'Dailekh' },
-    { name: 'Dang' },
-    { name: 'Darchula' },
-    { name: 'Dhading' },
-    { name: 'Dhankuta' },
-    { name: 'Dhanusa' },
-    { name: 'Dolakha' },
-    { name: 'Dolpa' },
-    { name: 'Doti' },
-    { name: 'Gorkha' },
-    { name: 'Gulmi' },
-    { name: 'Humla' },
-    { name: 'Ilam' },
-    { name: 'Jajarkot' },
-    { name: 'Jhapa' },
-    { name: 'Jumla' },
-    { name: 'Kailali' },
-    { name: 'Kalikot' },
-    { name: 'Kanchanpur' },
-    { name: 'Kapilvastu' },
-    { name: 'Kaski' },
-    { name: 'Kathmandu' },
-    { name: 'Kavrepalanchok' },
-    { name: 'Khotang' },
-    { name: 'Lalitpur' },
-    { name: 'Lamjung' },
-    { name: 'Mahottari' },
-    { name: 'Makawanpur' },
-    { name: 'Manang' },
-    { name: 'Morang' },
-    { name: 'Mugu' },
-    { name: 'Mustang' },
-    { name: 'Myagdi' },
-    { name: 'Nawalpur' },
-    { name: 'Nuwakot' },
-    { name: 'Okhaldhunga' },
-    { name: 'Palpa' },
-    { name: 'Panchthar' },
-    { name: 'Parasi' },
-    { name: 'Parbat' },
-    { name: 'Parsa' },
-    { name: 'Pyuthan' },
-    { name: 'Ramechhap' },
-    { name: 'Rasuwa' },
-    { name: 'Rautahat' },
-    { name: 'Rolpa' },
-    { name: 'Rukum' },
-    { name: 'Rukum' },
-    { name: 'Rupandehi' },
-    { name: 'Salyan' },
-    { name: 'Sankhuwasabha' },
-    { name: 'Saptari' },
-    { name: 'Sarlahi' },
-    { name: 'Sindhuli' },
-    { name: 'Sindhupalchok' },
-    { name: 'Siraha' },
-    { name: 'Solukhumbu' },
-    { name: 'Sunsari' },
-    { name: 'Surkhet' },
-    { name: 'Syangja' },
-    { name: 'Tanahu' },
-    { name: 'Taplejung' },
-    { name: 'Terhathum' },
-    { name: 'Udayapur' },
-  ];
-  //Province List
-  provinceList: Province[] = [{ name: 'Karnali' }, { name: 'Bagmati' }];
-  oldDataProviderBranchId: string | undefined;
+ //parentIdentifer List
+ parentIdentiferList: parentIdentifer[] = [];
+ parentIdentifer: string | undefined;
+
   constructor(
     private fb: FormBuilder,
     public ref: DynamicDialogRef,
@@ -140,43 +58,34 @@ export class EditDepartmentComponent implements OnInit {
 
   ngOnInit(): void {
     this.data = [this.dialogService.data];
-
+    console.log(this.data[0].date);
     this.myForm = this.fb.group({
-      branchName: [this.data[0].branchName, Validators.required],
-      branchNameNepali: [this.data[0].branchNameNepali],
-      dataProviderBranchId: [
-        this.data[0].dataProviderBranchId,
-        Validators.required,
-      ],
-      previousDataProviderBranchId: [this.data[0].previousDataProviderBranchId],
-      district: [this.data[0].district, Validators.required],
-      provinceName: [this.data[0].provinceName, Validators.required],
-
-      branchAddress: [this.data[0].branchAddress, Validators.required],
-      phoneNo: [this.data[0].phoneNo, Validators.pattern('^[0-9]{10}$')],
-      branchManagerEmailId: [
-        this.data[0].branchManagerEmailId,
+      deptName: [this.data[0].deptName, Validators.required],
+      shortName: [this.data[0].shortName, Validators.required],
+      parentIdentifer: [this.data[0].parentIdentifer],
+      deptAddress: [this.data[0].deptAddress, Validators.required],
+      phoneNo: [this.data[0].phoneNo, [Validators.pattern('^[0-9]{10}$'), Validators.required]],
+      psegHead: [this.data[0].psegHead],
+      ssegHead: [this.data[0].ssegHead],
+      faxno: [this.data[0].faxno],
+      date: [this.data[0].date, Validators.required],
+      depemail: [
+        this.data[0].depemail,
         [
           Validators.required,
           Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}'),
         ],
       ],
-      performanceCutOff: [this.data[0].performanceCutOff, Validators.required],
-      isActive: [this.data[0].isActive, Validators.required],
-      accountMonitoring: [this.data[0].accountMonitoring, Validators.required],
-      stockInspection: [this.data[0].stockInspection, Validators.required],
-      pendingDocument: [this.data[0].pendingDocument, Validators.required],
-      insurance: [this.data[0].insurance, Validators.required],
+      emailtopsh: [this.data[0].emailtopsh, Validators.required],
+      emailtossh: [this.data[0].emailtossh, Validators.required],
+      deptfun: [this.data[0].deptfun, Validators.required],
     });
-    this.oldDataProviderBranchId = this.myForm.get(
-      'dataProviderBranchId'
-    )?.value;
   }
   onSubmit() {
     if (this.myForm.valid) {
       const formValues = this.myForm.value;
       this.updated = true;
-      this.ref.close([formValues, this.updated, this.oldDataProviderBranchId]);
+      this.ref.close([formValues, this.updated]);
     } else {
       this.messageService.add({
         severity: 'error',

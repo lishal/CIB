@@ -54,28 +54,28 @@
               pRipple
               icon="fa-solid fa-file"
               class="p-button-rounded p-button-secondary p-button-text mr-1"
-              (click)="showData(data.dataProviderBranchId)"
+              (click)="showData(data.deptName)"
             ></button>
             <button
               pButton
               pRipple
               icon="fa-solid fa-pen-to-square"
               class="p-button-rounded p-button-success p-button-text mr-1"
-              (click)="editData(data.dataProviderBranchId)"
+              (click)="editData(data.deptName)"
             ></button>
             <button
               pButton
               pRipple
               icon="fa-solid fa-trash"
               class="p-button-rounded p-button-danger p-button-text"
-              (click)="deleteData(data.dataProviderBranchId)"
+              (click)="deleteData(data.deptName)"
             ></button>
           </td>
-          <td>{{ data?.id }}</td>
-          <td>{{ data?.uid }}</td>
-          <td>{{ data?.account_number }}</td>
-          <td>{{ data?.iban }}</td>
-          <td>{{ data?.swift_bic }}</td>
+          <td>{{ data?.deptName }}</td>
+          <td>{{ data?.phoneNo }}</td>
+          <td>{{ data?.faxno }}</td>
+          <td>{{ data?.depemail }}</td>
+          <td>-</td>
         </tr>
       </ng-template>
       <ng-template pTemplate="emptymessage">
