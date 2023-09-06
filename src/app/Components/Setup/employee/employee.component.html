@@ -1,1 +1,58 @@
-<p>employee works!</p>
+<div class="employeeHeading">
+    <span class="text-3xl font-semibold">User Management</span>
+</div>
+<div class="card mt-3">
+    <p-table
+      
+      styleClass="p-datatable-sm p-datatable-striped "
+      [showCurrentPageReport]="true"
+      [tableStyle]="{ 'min-width': '50rem' }"
+      [rows]="5"
+      [paginator]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    >
+      <!-- 
+       -->
+      <!-- 
+      [rowsPerPageOptions]="[5,10, 25, 50,100]" 
+      <th pSortableColumn="id"  style="width:30%">Id <p-sortIcon class="hidden" field="id"></p-sortIcon></th>
+  -->
+      <ng-template pTemplate="header">
+        <p-toast [ngClass]="'custom-toast'"></p-toast>
+        <tr>
+          <th style="width: 15%"></th>
+          <th style="width: 30%">Company Name</th>
+          <th style="width: 10%">DPID</th>
+          <th style="width: 10%">Prev.DPID</th>
+          <th style="width: 20%">TradingSym</th>
+          <th style="width: 20%">SecretKey</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-data>
+        <tr>
+          <td>
+            <button
+              pButton
+              pRipple
+              icon="fa-solid fa-pen-to-square"
+              class="p-button-rounded p-button-success p-button-text mr-1"
+              
+            ></button>
+            <button
+              pButton
+              pRipple
+              icon="fa-solid fa-file"
+              class="p-button-rounded p-button-secondary p-button-text"
+              
+            ></button>
+          </td>
+          <td>test</td>
+          <td>test</td>
+          <td>test</td>
+          <td>test</td>
+          <td>test</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  

@@ -1,4 +1,4 @@
-
+<p-toast></p-toast>
 <div class="card mt-3">
     <p-table
       #search
@@ -75,7 +75,7 @@
           <td>{{ data?.phoneNo }}</td>
           <td>{{ data?.faxno }}</td>
           <td>{{ data?.depemail }}</td>
-          <td>-</td>
+          <td>{{ data?.isActive }}</td>
         </tr>
       </ng-template>
       <ng-template pTemplate="emptymessage">

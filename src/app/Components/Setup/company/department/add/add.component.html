@@ -177,25 +177,25 @@
       />
     </div>
     <label
-      for="date"
+      for="establishedDate"
       class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end font-bold sm:col-4"
       >Date Of Established:<span style="color: red">&nbsp; *</span>
     </label>
     <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
       <p-calendar
-        formControlName="date"
+        formControlName="establishedDate"
         dateFormat="dd.mm.yy"
         [ngClass]="{
           'invalid-input':
-            myForm.get('date')?.invalid && myForm.get('date')?.touched
+            myForm.get('establishedDate')?.invalid && myForm.get('establishedDate')?.touched
         }"
         appendTo="body"
       ></p-calendar>
       <div
-        *ngIf="myForm.get('date')?.invalid && myForm.get('date')?.touched"
+        *ngIf="myForm.get('establishedDate')?.invalid && myForm.get('establishedDate')?.touched"
         style="color: red"
       >
-        Date is required.
+      Established Date is required.
       </div>
     </div>
   </div>
@@ -285,6 +285,20 @@
       </div>
     </div>
   </div>
+  <div class="field grid">
+    <label
+      for="isActive"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >isActive: <span style="color: red">&nbsp; *</span>
+    </label>
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <p-selectButton
+        [options]="stateOptions"
+        [style]="{ width: '10em' }"
+        formControlName="isActive"
+      ></p-selectButton>
+    </div>
+    </div>
 
   <div
     class="btnGroup absolute bottom-3 right-0 flex mt-3 w-full justify-content-end pb-2"

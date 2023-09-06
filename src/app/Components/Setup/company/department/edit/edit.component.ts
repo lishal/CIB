@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,forwardRef } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import {
   ReactiveFormsModule,
   FormGroup,
   FormBuilder,
   Validators,
+  NG_VALUE_ACCESSOR
 } from '@angular/forms';
 import {
   DynamicDialogRef,
@@ -58,7 +59,7 @@ export class EditDepartmentComponent implements OnInit {
 
   ngOnInit(): void {
     this.data = [this.dialogService.data];
-    console.log(this.data[0].date);
+    // console.log(this.data[0].establishedDate);
     this.myForm = this.fb.group({
       deptName: [this.data[0].deptName, Validators.required],
       shortName: [this.data[0].shortName, Validators.required],
@@ -68,7 +69,7 @@ export class EditDepartmentComponent implements OnInit {
       psegHead: [this.data[0].psegHead],
       ssegHead: [this.data[0].ssegHead],
       faxno: [this.data[0].faxno],
-      date: [this.data[0].date, Validators.required],
+      // establishedDate: ['', Validators.required],
       depemail: [
         this.data[0].depemail,
         [
@@ -78,6 +79,7 @@ export class EditDepartmentComponent implements OnInit {
       ],
       emailtopsh: [this.data[0].emailtopsh, Validators.required],
       emailtossh: [this.data[0].emailtossh, Validators.required],
+      isActive: [this.data[0].isActive, Validators.required],
       deptfun: [this.data[0].deptfun, Validators.required],
     });
   }

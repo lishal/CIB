@@ -35,9 +35,9 @@ export class DepartmentComponent implements OnInit, OnDestroy {
     this.ref.onClose.subscribe((data: any) => {
       if (data !== undefined) {
         if (data[1] === true) {
-          const date = new Date(data[0].date);
-          const newDate = date.toISOString().split('T')[0];
-          data[0].date=newDate
+          // const date = new Date(data[0].date);
+          // const newDate = date.toISOString().split('T')[0];
+          // data[0].date=newDate
           this.data.push(data[0]);
           this.messageService.add({
             severity: 'success',
@@ -80,13 +80,43 @@ export class DepartmentComponent implements OnInit, OnDestroy {
       maximizable: true,
       data: editData,
     });
+    this.ref.onClose.subscribe((datas: any) => {
+      if (datas !== undefined) {
+        if (datas[1] === true) {
+          const index = this.data.findIndex(
+            (data) => data.deptName === deptName
+          );
+          this.data[index].deptName = datas[0].deptName;
+          this.data[index].shortName = datas[0].shortName;
+          this.data[index].parentIdentifer = datas[0].parentIdentifer;
+          this.data[index].deptAddress =
+            datas[0].deptAddress;
+          this.data[index].phoneNo = datas[0].phoneNo;
+          this.data[index].psegHead = datas[0].psegHead;
+          this.data[index].ssegHead = datas[0].ssegHead;
+          this.data[index].faxno = datas[0].faxno;
+          // this.data[index].establishedDate = datas[0].establishedDate;
+          this.data[index].depemail = datas[0].depemail;
+          this.data[index].emailtopsh = datas[0].emailtopsh;
+          this.data[index].emailtossh = datas[0].emailtossh;
+          this.data[index].deptfun = datas[0].deptfun;
+          this.data[index].isActive = datas[0].isActive;
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Success',
+            detail: 'Data updated successfully',
+          });
+        }
+      }
+    });
+
   }
-  deleteData(dataProviderBranchId: string) {
+  deleteData(deptName: string) {
     const deleteData = this.data.find(
-      (data) => data.dataProviderBranchId === dataProviderBranchId
+      (data) => data.deptName === deptName
     );
     this.ref = this.dialogService.open(DeleteDepartmentComponent, {
-      header: `Delete Branch for ${dataProviderBranchId} id`,
+      header: `Delete Branch for ${deptName} id`,
       width: '90%',
       height: '80%',
       contentStyle: { overflow: 'auto' },
@@ -97,7 +127,7 @@ export class DepartmentComponent implements OnInit, OnDestroy {
     this.ref.onClose.subscribe((data: any) => {
       if (data === 'accepted') {
         const index = this.data.findIndex(
-          (data) => data.dataProviderBranchId === dataProviderBranchId
+          (data) => data.deptName === deptName
         );
         this.data.splice(index, 1);
         this.messageService.add({

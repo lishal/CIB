@@ -62,7 +62,7 @@ export class AddDepartmentComponent implements OnInit {
       psegHead: [''],
       ssegHead: [''],
       faxno: [''],
-      date: ['', Validators.required],
+      establishedDate: ['', Validators.required],
       depemail: [
         '',
         [
@@ -72,6 +72,7 @@ export class AddDepartmentComponent implements OnInit {
       ],
       emailtopsh: [false, Validators.required],
       emailtossh: [false, Validators.required],
+      isActive: [false, Validators.required],
       deptfun: ['', Validators.required],
     });
   }
