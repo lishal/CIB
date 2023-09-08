@@ -1,0 +1,339 @@
+<p-toast></p-toast>
+<form [formGroup]="myForm" class="addForm relative min-h-full h-auto mb-3">
+  <div class="field grid">
+    <label
+      for="loginIdentifer"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Login Identifer: <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <input
+        id="loginIdentifer"
+        type="text"
+        formControlName="loginIdentifer"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('loginIdentifer')?.invalid &&
+            myForm.get('loginIdentifer')?.touched
+        }"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+      <div
+        *ngIf="
+          myForm.get('loginIdentifer')?.invalid && myForm.get('branchName')?.touched
+        "
+        style="color: red"
+      >
+      Login Identifer is required.
+      </div>
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="fullname"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Full name: <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <input
+        id="fullname"
+        type="text"
+        formControlName="fullname"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('fullname')?.invalid &&
+            myForm.get('fullname')?.touched
+        }"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+      <div
+        *ngIf="
+          myForm.get('fullname')?.invalid &&
+          myForm.get('fullname')?.touched
+        "
+        style="color: red"
+      >
+        Full name is required.
+      </div>
+    </div>
+    <label
+      for="staffCode"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Staff Code: <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <input
+        id="staffCode"
+        type="text"
+        formControlName="staffCode"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('staffCode')?.invalid &&
+            myForm.get('staffCode')?.touched
+        }"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+      <div
+        *ngIf="
+          myForm.get('staffCode')?.invalid &&
+          myForm.get('staffCode')?.touched
+        "
+        style="color: red"
+      >
+        Staff Code is required.
+      </div>
+    </div>
+    
+  </div>
+  <div class="field grid">
+    <label
+      for="department"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Department: <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <p-dropdown
+        [options]="DepartmentList"
+        formControlName="department"
+        optionLabel="name"
+        optionValue="name"
+        [filter]="true"
+        filterBy="name"
+        [showClear]="true"
+        placeholder="Select a department"
+      >
+      </p-dropdown>
+      <div
+        *ngIf="
+          myForm.get('department')?.invalid && myForm.get('department')?.touched
+        "
+        style="color: red"
+      >
+        Department is required.
+      </div>
+    </div>
+    <label
+      for="defaultBranch"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Default Branch <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <p-dropdown
+        [options]="BranchList"
+        formControlName="defaultBranch"
+        optionLabel="name"
+        optionValue="name"
+        [filter]="true"
+        filterBy="name"
+        [showClear]="true"
+        placeholder="Select a Branch"
+      >
+      </p-dropdown>
+      <div
+        *ngIf="
+          myForm.get('defaultBranch')?.invalid &&
+          myForm.get('defaultBranch')?.touched
+        "
+        style="color: red"
+      >
+        Branch is required.
+      </div>
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="emailAddress"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Email Address: <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+        <input
+        id="emailAddress"
+        type="email"
+        formControlName="emailAddress"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('emailAddress')?.invalid && myForm.get('emailAddress')?.touched
+        }"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+      <div
+        *ngIf="myForm.get('emailAddress')?.hasError('pattern'); else elseEmail"
+        style="color: red"
+      >
+        Invalid Email Id
+      </div>
+      <ng-template #elseEmail>
+        <div
+          *ngIf="
+            myForm.get('emailAddress')?.invalid && myForm.get('emailAddress')?.touched
+          "
+          style="color: red"
+        >
+          Email Id is required.
+        </div>
+      </ng-template>
+    </div>
+    <label
+    for="roleName"
+    class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+    >Role Name <span style="color: red">&nbsp; *</span></label
+  >
+  <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+    <p-dropdown
+      [options]="RoleList"
+      formControlName="roleName"
+      optionLabel="name"
+      optionValue="name"
+      [filter]="true"
+      filterBy="name"
+      [showClear]="true"
+      placeholder="Select a Role"
+    >
+    </p-dropdown>
+    <div
+      *ngIf="
+        myForm.get('roleName')?.invalid &&
+        myForm.get('roleName')?.touched
+      "
+      style="color: red"
+    >
+      Role is required.
+    </div>
+  </div>
+  </div>
+<div class="field grid">
+    <label
+      for="markerRight"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Marker Right <span style="color: red">&nbsp; *</span>
+    </label>
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <p-selectButton
+        [options]="stateOptions"
+        [style]="{ width: '10em' }"
+        formControlName="markerRight"
+      ></p-selectButton>
+    </div>
+    <label
+      for="restrictAccessByBranch"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Restrict Access By Branch <span style="color: red">&nbsp; *</span>
+    </label>
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <p-selectButton
+        [options]="stateOptions"
+        [style]="{ width: '10em' }"
+        formControlName="restrictAccessByBranch"
+      ></p-selectButton>
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+    for="defaultModule"
+    class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+    >Default Module <span style="color: red">&nbsp; *</span></label
+  >
+  <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+    <p-dropdown
+      [options]="ModuleList"
+      formControlName="defaultModule"
+      optionLabel="name"
+      optionValue="name"
+      [filter]="true"
+      filterBy="name"
+      [showClear]="true"
+      placeholder="Select a Module"
+    >
+    </p-dropdown>
+    <div
+      *ngIf="
+        myForm.get('defaultModule')?.invalid &&
+        myForm.get('defaultModule')?.touched
+      "
+      style="color: red"
+    >
+      Module is required.
+    </div>
+  </div>
+    <label
+      for="enableChangeType"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Enable Change Type <span style="color: red">&nbsp; *</span>
+    </label>
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <p-selectButton
+        [options]="stateOptions"
+        [style]="{ width: '10em' }"
+        formControlName="enableChangeType"
+      ></p-selectButton>
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="isActive"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Is Active: <span style="color: red">&nbsp; *</span>
+    </label>
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <p-selectButton
+        [options]="stateOptions"
+        [style]="{ width: '10em' }"
+        formControlName="isActive"
+      ></p-selectButton>
+    </div>
+</div>
+  <div class="field grid">
+    <label
+      for="passwordExpiryPeriod"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Password Expiry Period <span style="color: red">&nbsp; *</span>
+    </label>
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <input
+        id="passwordExpiryPeriod"
+        type="text"
+        formControlName="passwordExpiryPeriod"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('passwordExpiryPeriod')?.invalid && myForm.get('passwordExpiryPeriod')?.touched
+        }"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+      <div
+        *ngIf="myForm.get('passwordExpiryPeriod')?.hasError('pattern'); else elsephone"
+        style="color: red"
+      >
+        Invalid Password Expiry Period
+      </div>
+      <ng-template #elsephone>
+        <div
+          *ngIf="
+            myForm.get('passwordExpiryPeriod')?.invalid && myForm.get('passwordExpiryPeriod')?.touched
+          "
+          style="color: red"
+        >
+            Password Expiry Period is required.
+        </div>
+    </ng-template>
+    </div>
+  </div>
+  <div
+    class="btnGroup absolute bottom-3 right-0 flex mt-3 w-full justify-content-end pb-2"
+  >
+    <button
+      pButton
+      type="button"
+      label="Cancel"
+      class="p-button-raised p-button-text p-button-plain mr-2"
+      (click)="onCancle()"
+    ></button>
+    <button
+      pButton
+      type="button"
+      label="Submit"
+      class="p-button-raised p-button-info"
+      (click)="onSubmit()"
+    ></button>
+  </div>
+</form>

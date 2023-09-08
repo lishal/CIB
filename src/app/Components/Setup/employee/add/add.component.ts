@@ -1,0 +1,111 @@
+import { Component, OnInit } from '@angular/core';
+import { ButtonModule } from 'primeng/button';
+import {
+  ReactiveFormsModule,
+  FormGroup,
+  FormBuilder,
+  Validators,
+} from '@angular/forms';
+import { DynamicDialogRef } from 'primeng/dynamicdialog';
+import { SelectButtonModule } from 'primeng/selectbutton';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { CommonModule } from '@angular/common';
+import { DropdownModule } from 'primeng/dropdown';
+
+interface Department {
+  name: String;
+}
+interface Branch {
+  name: String;
+}
+interface Role {
+  name: String;
+}
+interface Module {
+  name: String;
+}
+
+@Component({
+  selector: 'app-employee-add',
+  templateUrl: './add.component.html',
+  styleUrls: ['./add.component.css'],
+  imports: [
+    ButtonModule,
+    ReactiveFormsModule,
+    SelectButtonModule,
+    ToastModule,
+    CommonModule,
+    DropdownModule,
+  ],
+  providers: [MessageService],
+  standalone: true,
+})
+export class AddEmployeeComponent  implements OnInit{
+
+  DepartmentList:Department[]=[];
+  BranchList:Branch[]=[];
+  RoleList:Role[]=[];
+  ModuleList:Module[]=[];
+
+  department: string | undefined;
+  branch: string | undefined;
+  role: string | undefined;
+  module: string | undefined;
+
+  myForm!: FormGroup;
+  stateOptions: any[] = [
+    { label: 'False', value: false },
+    { label: 'True', value: true },
+  ];
+
+  added: boolean = false;
+
+  constructor(
+    private fb: FormBuilder,
+    public ref: DynamicDialogRef,
+    private messageService: MessageService
+  ) {}
+
+  ngOnInit(): void {
+    this.myForm = this.fb.group({
+      loginIdentifer: ['Test', Validators.required],
+      fullname: ['Test',Validators.required],
+      staffCode: ['Test', Validators.required],
+      department: ['Test', Validators.required],
+      defaultBranch: ['Test', Validators.required],
+      emailAddress: [
+        'Test@gmail.com',
+        [
+          Validators.required,
+          Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}'),
+        ],
+      ],
+      roleName: ['Test', Validators.required],
+      markerRight: [false, Validators.required],
+      restrictAccessByBranch: [false, Validators.required],
+      defaultModule: ['0', Validators.required],
+      enableChangeType: [false, Validators.required],
+      isActive: [true, Validators.required],
+
+      passwordExpiryPeriod: ['10', [Validators.required,Validators.pattern('^[0-9]*$')]],
+    });
+  }
+  onSubmit() {
+    if (this.myForm.valid) {
+      const formValues = this.myForm.value;
+      this.added = true;
+      this.ref.close([formValues, this.added]);
+    } else {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Error',
+        detail: 'Please check all the fields',
+      });
+    }
+  }
+  onCancle() {
+    this.ref.close();
+  }
+
+}
