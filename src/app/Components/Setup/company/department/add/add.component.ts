@@ -18,7 +18,6 @@ interface parentIdentifer {
   name: String;
 }
 
-
 @Component({
   selector: 'app-department-add',
   templateUrl: './add.component.html',
@@ -37,6 +36,7 @@ interface parentIdentifer {
 })
 export class AddDepartmentComponent implements OnInit {
   myForm!: FormGroup;
+  establishedDate: Date | undefined;
   stateOptions: any[] = [
     { label: 'True', value: true },
     { label: 'False', value: false },
@@ -54,17 +54,20 @@ export class AddDepartmentComponent implements OnInit {
 
   ngOnInit(): void {
     this.myForm = this.fb.group({
-      deptName: ['', Validators.required],
-      shortName: ['', Validators.required],
-      parentIdentifer: [''],
-      deptAddress: ['', Validators.required],
-      phoneNo: ['', [Validators.pattern('^[0-9]{10}$'), Validators.required]],
-      psegHead: [''],
-      ssegHead: [''],
-      faxno: [''],
-      establishedDate: ['', Validators.required],
+      deptName: ['test', Validators.required],
+      shortName: ['test', Validators.required],
+      parentIdentifer: ['test'],
+      deptAddress: ['test', Validators.required],
+      phoneNo: [
+        '1234567890',
+        [Validators.pattern('^[0-9]{10}$'), Validators.required],
+      ],
+      psegHead: ['test'],
+      ssegHead: ['test'],
+      faxno: ['test'],
+      establishedDate: [new Date(), Validators.required],
       depemail: [
-        '',
+        'test@gmail.com',
         [
           Validators.required,
           Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}'),
@@ -73,7 +76,7 @@ export class AddDepartmentComponent implements OnInit {
       emailtopsh: [false, Validators.required],
       emailtossh: [false, Validators.required],
       isActive: [false, Validators.required],
-      deptfun: ['', Validators.required],
+      deptfun: ['test', Validators.required],
     });
   }
   onSubmit() {

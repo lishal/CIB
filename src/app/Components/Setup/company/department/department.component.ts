@@ -89,13 +89,12 @@ export class DepartmentComponent implements OnInit, OnDestroy {
           this.data[index].deptName = datas[0].deptName;
           this.data[index].shortName = datas[0].shortName;
           this.data[index].parentIdentifer = datas[0].parentIdentifer;
-          this.data[index].deptAddress =
-            datas[0].deptAddress;
+          this.data[index].deptAddress = datas[0].deptAddress;
           this.data[index].phoneNo = datas[0].phoneNo;
           this.data[index].psegHead = datas[0].psegHead;
           this.data[index].ssegHead = datas[0].ssegHead;
           this.data[index].faxno = datas[0].faxno;
-          // this.data[index].establishedDate = datas[0].establishedDate;
+          this.data[index].establishedDate = datas[0].establishedDate;
           this.data[index].depemail = datas[0].depemail;
           this.data[index].emailtopsh = datas[0].emailtopsh;
           this.data[index].emailtossh = datas[0].emailtossh;
@@ -109,12 +108,9 @@ export class DepartmentComponent implements OnInit, OnDestroy {
         }
       }
     });
-
   }
   deleteData(deptName: string) {
-    const deleteData = this.data.find(
-      (data) => data.deptName === deptName
-    );
+    const deleteData = this.data.find((data) => data.deptName === deptName);
     this.ref = this.dialogService.open(DeleteDepartmentComponent, {
       header: `Delete Branch for ${deptName} id`,
       width: '90%',
@@ -126,9 +122,7 @@ export class DepartmentComponent implements OnInit, OnDestroy {
     });
     this.ref.onClose.subscribe((data: any) => {
       if (data === 'accepted') {
-        const index = this.data.findIndex(
-          (data) => data.deptName === deptName
-        );
+        const index = this.data.findIndex((data) => data.deptName === deptName);
         this.data.splice(index, 1);
         this.messageService.add({
           severity: 'success',
@@ -146,7 +140,6 @@ export class DepartmentComponent implements OnInit, OnDestroy {
   }
   ngOnInit(): void {
     // this.isLoading = true;
-
     // this.api.fetchData().subscribe(
     //   (response) => {
     //     this.data = response;

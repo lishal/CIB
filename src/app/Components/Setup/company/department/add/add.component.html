@@ -184,18 +184,22 @@
     <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
       <p-calendar
         formControlName="establishedDate"
-        dateFormat="dd.mm.yy"
+        [(ngModel)]="myForm.value.establishedDate"
         [ngClass]="{
           'invalid-input':
-            myForm.get('establishedDate')?.invalid && myForm.get('establishedDate')?.touched
+            myForm.get('establishedDate')?.invalid &&
+            myForm.get('establishedDate')?.touched
         }"
         appendTo="body"
       ></p-calendar>
       <div
-        *ngIf="myForm.get('establishedDate')?.invalid && myForm.get('establishedDate')?.touched"
+        *ngIf="
+          myForm.get('establishedDate')?.invalid &&
+          myForm.get('establishedDate')?.touched
+        "
         style="color: red"
       >
-      Established Date is required.
+        Established Date is required.
       </div>
     </div>
   </div>
@@ -298,7 +302,7 @@
         formControlName="isActive"
       ></p-selectButton>
     </div>
-    </div>
+  </div>
 
   <div
     class="btnGroup absolute bottom-3 right-0 flex mt-3 w-full justify-content-end pb-2"

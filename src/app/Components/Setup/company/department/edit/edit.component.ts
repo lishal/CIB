@@ -1,11 +1,11 @@
-import { Component, OnInit,forwardRef } from '@angular/core';
+import { Component, OnInit, forwardRef } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import {
   ReactiveFormsModule,
   FormGroup,
   FormBuilder,
   Validators,
-  NG_VALUE_ACCESSOR
+  NG_VALUE_ACCESSOR,
 } from '@angular/forms';
 import {
   DynamicDialogRef,
@@ -17,6 +17,7 @@ import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { CommonModule } from '@angular/common';
 import { DropdownModule } from 'primeng/dropdown';
+import { CalendarModule } from 'primeng/calendar';
 
 interface parentIdentifer {
   name: String;
@@ -33,6 +34,7 @@ interface parentIdentifer {
     ToastModule,
     CommonModule,
     DropdownModule,
+    CalendarModule,
   ],
   providers: [MessageService, DialogService],
   standalone: true,
@@ -46,9 +48,9 @@ export class EditDepartmentComponent implements OnInit {
   ];
   updated: boolean = false;
 
- //parentIdentifer List
- parentIdentiferList: parentIdentifer[] = [];
- parentIdentifer: string | undefined;
+  //parentIdentifer List
+  parentIdentiferList: parentIdentifer[] = [];
+  parentIdentifer: string | undefined;
 
   constructor(
     private fb: FormBuilder,
@@ -59,17 +61,19 @@ export class EditDepartmentComponent implements OnInit {
 
   ngOnInit(): void {
     this.data = [this.dialogService.data];
-    // console.log(this.data[0].establishedDate);
     this.myForm = this.fb.group({
       deptName: [this.data[0].deptName, Validators.required],
       shortName: [this.data[0].shortName, Validators.required],
       parentIdentifer: [this.data[0].parentIdentifer],
       deptAddress: [this.data[0].deptAddress, Validators.required],
-      phoneNo: [this.data[0].phoneNo, [Validators.pattern('^[0-9]{10}$'), Validators.required]],
+      phoneNo: [
+        this.data[0].phoneNo,
+        [Validators.pattern('^[0-9]{10}$'), Validators.required],
+      ],
       psegHead: [this.data[0].psegHead],
       ssegHead: [this.data[0].ssegHead],
       faxno: [this.data[0].faxno],
-      // establishedDate: ['', Validators.required],
+      establishedDate: [this.data[0].establishedDate, Validators.required],
       depemail: [
         this.data[0].depemail,
         [

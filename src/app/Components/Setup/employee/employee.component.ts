@@ -9,7 +9,7 @@ import { AddEmployeeComponent } from './add/add.component';
   styleUrls: ['./employee.component.css'],
   providers: [DialogService, MessageService],
 })
-export class EmployeeComponent implements OnInit{
+export class EmployeeComponent implements OnInit {
   constructor(
     private api: EmployeeService,
     public dialogService: DialogService,
@@ -31,11 +31,7 @@ export class EmployeeComponent implements OnInit{
     this.ref.onClose.subscribe((data: any) => {
       if (data !== undefined) {
         if (data[1] === true) {
-          // const date = new Date(data[0].date);
-          // const newDate = date.toISOString().split('T')[0];
-          // data[0].date=newDate
           this.data.push(data[0]);
-          console.log(data[0])
           this.messageService.add({
             severity: 'success',
             summary: 'Success',
@@ -46,20 +42,9 @@ export class EmployeeComponent implements OnInit{
     });
   }
 
-  showData(loginIdentifer: string) {
+  showData(loginIdentifer: string) {}
+  editData(loginIdentifer: string) {}
+  deleteData(loginIdentifer: string) {}
 
-  }
-  editData(loginIdentifer: string) {
-
-  }
-  deleteData(loginIdentifer: string) {
-
-  }
-
-  
-  
-
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 }
