@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class CompanyComponent implements OnInit {
   items: MenuItem[] | undefined;
+  activeItem: MenuItem | undefined;
   ngOnInit() {
     this.items = [
       { label: 'Company', routerLink: 'companyDetail' },
@@ -18,5 +19,6 @@ export class CompanyComponent implements OnInit {
       { label: 'Role', routerLink: 'role' },
       { label: 'Backup', routerLink: 'backup' },
     ];
+    this.activeItem = this.items[1];
   }
 }

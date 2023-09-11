@@ -33,6 +33,7 @@
           <p-button
             icon="fa-solid fa-arrow-up-right-from-square"
             styleClass="p-button-success mr-1"
+            (click)="exportExcel()"
           ></p-button>
           <p-button
             icon="fa-solid fa-circle-plus"
@@ -43,29 +44,29 @@
     </ng-template>
     <ng-template pTemplate="header">
       <tr>
-        <th style="width: 31%"></th>
-        <th pSortableColumn="loginidhremployee" style="width: 10%">
+        <th></th>
+        <th pSortableColumn="loginidhremployee">
           LoginIDHREmployee
         </th>
-        <th pSortableColumn="fullname" style="width: 20%">FullName</th>
-        <th pSortableColumn="defaultBranch" style="width: 10%">Branch</th>
-        <th pSortableColumn="roleName" style="width: 20%">Role</th>
-        <th pSortableColumn="emailAddress" style="width: 20%">
+        <th pSortableColumn="fullname">FullName</th>
+        <th pSortableColumn="defaultBranch" >Branch</th>
+        <th pSortableColumn="roleName" >Role</th>
+        <th pSortableColumn="emailAddress" >
           EmailID
         </th>
-        <th pSortableColumn="defaultModule" style="width: 20%">DefaultModule</th>
-        <th pSortableColrumn="restrictAccessByBranch" style="width: 10%">
+        <th pSortableColumn="defaultModule">DefaultModule</th>
+        <th pSortableColrumn="restrictAccessByBranch" >
           RestrictByBranch
         </th>
-        <th pSortableColrumn="allowprovincebranch" style="width: 10%">
+        <th pSortableColrumn="allowprovincebranch" >
           AllowProvinceBranch
         </th>
-        <th pSortableColumn="isActive" style="width: 20%">isActive</th>
+        <th pSortableColumn="isActive" >isActive</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-data>
-      <tr>
-        <td>
+      <tr style="white-space: nowrap;">
+        <td >
           <button
             pButton
             pRipple

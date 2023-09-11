@@ -1,0 +1,123 @@
+<div class="addForm relative min-h-full h-auto mb-3">
+  <div class="field grid">
+    <label
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Login Identifer: <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      {{data[0].loginIdentifer}}
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Full name: <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      {{data[0].fullname}}
+    </div>
+    <label
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Staff Code: <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      {{data[0].staffCode}}
+    </div>
+    
+  </div>
+  <div class="field grid">
+    <label
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Department: <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      {{data[0].department}}
+    </div>
+    <label
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Default Branch <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      {{data[0].defaultBranch}}
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Email Address: <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      {{data[0].emailAddress}}
+    </div>
+    <label
+    for="roleName"
+    class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+    >Role Name <span style="color: red">&nbsp; *</span></label
+  >
+  <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+    {{data[0].roleName}}
+  </div>
+  </div>
+<div class="field grid">
+    <label
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Marker Right <span style="color: red">&nbsp; *</span>
+    </label>
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      {{data[0].markerRight}}
+    </div>
+    <label
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Restrict Access By Branch <span style="color: red">&nbsp; *</span>
+    </label>
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      {{data[0].restrictAccessByBranch}}
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+    class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+    >Default Module <span style="color: red">&nbsp; *</span></label
+  >
+  <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+    {{data[0].defaultModule}}
+  </div>
+    <label
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Enable Change Type <span style="color: red">&nbsp; *</span>
+    </label>
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      {{data[0].enableChangeType}}
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Is Active: <span style="color: red">&nbsp; *</span>
+    </label>
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      {{data[0].isActive}}
+    </div>
+</div>
+  <div class="field grid">
+    <label
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Password Expiry Period <span style="color: red">&nbsp; *</span>
+    </label>
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      {{data[0].passwordExpiryPeriod}}
+    </div>
+  </div>
+  <div
+    class="btnGroup absolute bottom-3 right-0 flex mt-3 w-full justify-content-end pb-2"
+  >
+    <button
+      pButton
+      type="button"
+      label="Cancel"
+      class="p-button-raised p-button-text p-button-plain mr-2"
+      (click)="onCancle()"
+    ></button>
+    
+  </div>
+</div>
