@@ -7,7 +7,6 @@ import { Router  } from '@angular/router';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-
   currentRoute:string='';
   topPanelLabel: string = '';
   constructor(router: Router,private primengConfig: PrimeNGConfig) { 
@@ -417,6 +416,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.primengConfig.ripple = true;
+    
     this.items = [
       {
         label: 'Company',

@@ -19,6 +19,6 @@ export class CompanyComponent implements OnInit {
       { label: 'Role', routerLink: 'role' },
       { label: 'Backup', routerLink: 'backup' },
     ];
-    this.activeItem = this.items[1];
+
   }
 }

@@ -40,6 +40,8 @@ import { BranchComponent } from './Components/Setup/company/branch/branch.compon
 import { DepartmentComponent } from './Components/Setup/company/department/department.component';
 import { RoleComponent } from './Components/Setup/company/role/role.component';
 import { BackupComponent } from './Components/Setup/company/backup/backup.component';
+import { InnerValuatorComponent } from './Components/Setup/valuator/valuator/valuator.component';
+import {RelationshipComponent} from './Components/Setup/valuator/relationship/relationship.component'
 
 const routes: Routes = [
   {
@@ -81,7 +83,16 @@ const routes: Routes = [
         ],
       },
       { path: 'employee', component: EmployeeComponent },
-      { path: 'valuator', component: ValuatorComponent },
+      { path: 'valuator', component: ValuatorComponent,children:[
+        {
+        path:'valuatorDetail',
+        component:InnerValuatorComponent
+        },
+        {
+          path:'relationship',
+          component:RelationshipComponent
+        }
+    ] },
       { path: 'lookup', component: LookupListComponent },
       { path: 'admanagement', component: AdManagementComponent },
       { path: 'security', component: SecurityComponent },
