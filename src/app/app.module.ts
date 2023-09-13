@@ -57,6 +57,8 @@ import { RippleModule } from 'primeng/ripple';
 import { HttpClientModule } from '@angular/common/http';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { ToastModule } from 'primeng/toast';
+import { InnerValuatorComponent } from './Components/Setup/valuator/valuator/valuator.component';
+
 
 @NgModule({
   declarations: [
@@ -101,6 +103,7 @@ import { ToastModule } from 'primeng/toast';
     DepartmentComponent,
     RoleComponent,
     BackupComponent,
+    InnerValuatorComponent
   ],
   imports: [
     BrowserModule,
