@@ -4,7 +4,7 @@ import { MenuItem } from 'primeng/api';
 @Component({
   selector: 'app-valuator',
   templateUrl: './valuator.component.html',
-  styleUrls: ['./valuator.component.css']
+  styleUrls: ['./valuator.component.css'],
 })
 export class ValuatorComponent implements OnInit {
   items: MenuItem[] | undefined;

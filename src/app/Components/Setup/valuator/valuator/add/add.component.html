@@ -1,0 +1,116 @@
+<p-toast></p-toast>
+<form [formGroup]="myForm" class="addForm relative min-h-full">
+  <div class="field grid">
+    <label
+      for="valuatorName"
+      class="col-5 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Valuator Name <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
+      <input
+        id="valuatorName"
+        type="text"
+        formControlName="valuatorName"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('valuatorName')?.invalid &&
+            myForm.get('valuatorName')?.touched
+        }"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+      <div
+        *ngIf="
+          myForm.get('valuatorName')?.invalid &&
+          myForm.get('valuatorName')?.touched
+        "
+        style="color: red"
+      >
+        Valuator Name is required.
+      </div>
+    </div>
+    <label
+      for="isIndividual"
+      class="col-5 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Is Individual <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
+      <input
+        id="isIndividual"
+        type="text"
+        formControlName="isIndividual"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('isIndividual')?.invalid &&
+            myForm.get('isIndividual')?.touched
+        }"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+      <div
+        *ngIf="
+          myForm.get('isIndividual')?.invalid &&
+          myForm.get('isIndividual')?.touched
+        "
+        style="color: red"
+      >
+        Is Individual is required.
+      </div>
+    </div>
+  </div>
+    <div class="field grid">
+    <label
+      for="vedobRegNp"
+      class="col-5 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >VEDOBReg Np:<span style="color: red">&nbsp; *</span>
+    </label>
+    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
+      <p-calendar
+        formControlName="vedobRegNp"
+        [(ngModel)]="myForm.value.vedobRegNp"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('vedobRegNp')?.invalid &&
+            myForm.get('vedobRegNp')?.touched
+        }"
+        appendTo="body"
+      ></p-calendar>
+      <div
+        *ngIf="
+          myForm.get('vedobRegNp')?.invalid &&
+          myForm.get('vedobRegNp')?.touched
+        "
+        style="color: red"
+      >
+        VEDOBReg Np is required.
+      </div>
+    </div>
+    <label
+      for="entityDob"
+      class="col-5 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Entity's DOB/DOR:<span style="color: red">&nbsp; *</span>
+    </label>
+    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
+      <p-calendar
+        formControlName="entityDob"
+        [(ngModel)]="myForm.value.entityDob"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('entityDob')?.invalid &&
+            myForm.get('entityDob')?.touched
+        }"
+        appendTo="body"
+      ></p-calendar>
+      <div
+        *ngIf="
+          myForm.get('entityDob')?.invalid &&
+          myForm.get('entityDob')?.touched
+        "
+        style="color: red"
+      >
+        Entity's DOB/DOR is required.
+      </div>
+    </div>
+    </div>
+    <div class="field grid">
+
+    </div>
+</form>

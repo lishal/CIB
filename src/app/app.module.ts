@@ -103,7 +103,7 @@ import { InnerValuatorComponent } from './Components/Setup/valuator/valuator/val
     DepartmentComponent,
     RoleComponent,
     BackupComponent,
-    InnerValuatorComponent
+    InnerValuatorComponent,
   ],
   imports: [
     BrowserModule,
