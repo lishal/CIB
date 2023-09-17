@@ -1,15 +1,14 @@
-import { Component , OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { ValuatorService } from 'src/app/Services/Setup/valuator.service';
 import { AddValuatorComponent } from './add/add.component';
 
-
 @Component({
   selector: 'app-inner-valuator',
   templateUrl: './valuator.component.html',
   styleUrls: ['./valuator.component.css'],
-  providers: [ MessageService, DialogService],
+  providers: [MessageService, DialogService],
 })
 export class InnerValuatorComponent implements OnInit {
   isLoading: boolean = false;
@@ -21,7 +20,7 @@ export class InnerValuatorComponent implements OnInit {
     private messageService: MessageService
   ) {}
 
-  addData(){
+  addData() {
     this.ref = this.dialogService.open(AddValuatorComponent, {
       header: `Add Valuator`,
       width: '90%',
@@ -32,7 +31,16 @@ export class InnerValuatorComponent implements OnInit {
     });
   }
   ngOnInit(): void {
-    this.data=[{test:'test',test2:'test2'}]
+    this.data = [
+      {
+        test: 'test',
+        test2: 'test2',
+        id: [
+          {
+            name: 'test',
+          },
+        ],
+      },
+    ];
   }
-
 }

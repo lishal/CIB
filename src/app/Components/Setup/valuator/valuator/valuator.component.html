@@ -42,32 +42,36 @@
     <ng-template pTemplate="header">
       <tr>
         <th></th>
-        <th pSortableColumn="vettype">
-          VETType
-        </th>
+        <th pSortableColumn="vettype">VETType</th>
         <th pSortableColumn="vename">VEName</th>
-        <th pSortableColumn="vedobref" >VEDOBReg</th>
-        <th pSortableColumn="veaddress" >VEAddressLine1</th>
-        <th pSortableColumn="enlisted" >
-          EnlistedOn
-        </th>
+        <th pSortableColumn="vedobref">VEDOBReg</th>
+        <th pSortableColumn="veaddress">VEAddressLine1</th>
+        <th pSortableColumn="enlisted">EnlistedOn</th>
         <th pSortableColumn="agmenddate">AgmEndDate</th>
-        <th pSortableColrumn="isactive" >
-          isActive
-        </th>
-        <th pSortableColrumn="status">
-          Status
-        </th>
+        <th pSortableColrumn="isactive">isActive</th>
+        <th pSortableColrumn="status">Status</th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-data  let-expanded="expanded">
-      <tr style="white-space: nowrap;" >
+    <ng-template pTemplate="body" let-data let-expanded="expanded">
+      <tr style="white-space: nowrap">
         <td>
-            <button type="button" class="h-2rem w-2rem" pButton pRipple [pRowToggler]="data" [class]="expanded ? ' p-button-rounded p-button-danger ' : ' p-button-rounded p-button-success ' " [icon]="expanded ? 'fa-solid fa-minus' : 'fa-solid fa-plus'"></button>
+          <button
+            type="button"
+            class="h-2rem w-2rem"
+            pButton
+            pRipple
+            [pRowToggler]="data"
+            [class]="
+              expanded
+                ? ' p-button-rounded p-button-danger '
+                : ' p-button-rounded p-button-success '
+            "
+            [icon]="expanded ? 'fa-solid fa-minus' : 'fa-solid fa-plus'"
+          ></button>
         </td>
-        <td>{{data?.test}}</td>
-        <td>{{data?.test2}}</td>
-        <td>{{data?.test2}}</td>
+        <td>{{ data?.test }}</td>
+        <td>{{ data?.test2 }}</td>
+        <td>{{ data?.test2 }}</td>
         <td>test</td>
         <td>test</td>
         <td>test</td>
@@ -76,46 +80,69 @@
       </tr>
     </ng-template>
     <ng-template pTemplate="rowexpansion" let-data>
-        <tr>
-            <td colspan="7">
-                <div class="p-3">
-                    <p-table [value]="data.id" dataKey="id">
-                        <ng-template pTemplate="header">
-                            <tr>
-                                <th pSortableColumn="documenttype">Document Type </th>
-                                <th pSortableColumn="description">Description </th>
-                                <th pSortableColumn="receivedOn">Received On </th>
-                                <th pSortableColumn="expiresOn">Expires On  </th>
-                                <th pSortableColumn="renewalType">Renewal Type </th>
-                                <th pSortableColumn="createdBy">Created_By </th>
-                                <th pSortableColumn="createdOn">Created_On </th>
-                                <th pSortableColumn="updatedBy">Updated_By </th>
-                                <th pSortableColumn="updatedOn">Updated_On </th>
-                            </tr>
-                        </ng-template>
-                        <ng-template pTemplate="body" let-data>
-                            <tr>
-                                <td>{{ data?.name }}</td>
-                                <td>{{ data?.name }}</td>
-                                <td>{{ data?.name }}</td>
-                                <td>{{ data?.name }}</td>
-                                <td>{{ data?.name }}</td>
-                                <td>{{ data?.name }}</td>
-                                <td>{{ data?.name }}</td>
-                                <td>{{ data?.name }}</td>
-                                <td>{{ data?.name }}</td>
-                                <td><p-button type="button" icon="fa-solid fa-plus"></p-button></td>
-                            </tr>
-                        </ng-template>
-                        <ng-template pTemplate="emptymessage">
-                            <tr>
-                                <td colspan="9">Sorry! No record found</td>
-                            </tr>
-                        </ng-template>
-                    </p-table>
-                </div>
-            </td>
-        </tr>
+      <tr>
+        <td colspan="7">
+          <div class="p-3">
+            <p-table [value]="data.id" dataKey="id">
+              <ng-template pTemplate="header">
+                <tr style="white-space: nowrap">
+                  <th>
+                    <button
+                      pButton
+                      pRipple
+                      icon="fa-solid fa-file"
+                      class="p-button-rounded p-button-secondary p-button-text"
+                    ></button>
+                    <button
+                      pButton
+                      pRipple
+                      icon="fa-solid fa-pen-to-square"
+                      class="p-button-rounded p-button-success p-button-text"
+                    ></button>
+                    <button
+                      pButton
+                      pRipple
+                      icon="fa-solid fa-trash"
+                      class="p-button-rounded p-button-danger p-button-text"
+                    ></button>
+                  </th>
+                  <th pSortableColumn="documenttype">Document Type</th>
+                  <th pSortableColumn="description">Description</th>
+                  <th pSortableColumn="receivedOn">Received On</th>
+                  <th pSortableColumn="expiresOn">Expires On</th>
+                  <th pSortableColumn="renewalType">Renewal Type</th>
+                  <th pSortableColumn="createdBy">Created_By</th>
+                  <th pSortableColumn="createdOn">Created_On</th>
+                  <th pSortableColumn="updatedBy">Updated_By</th>
+                  <th pSortableColumn="updatedOn">Updated_On</th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-data>
+                <tr style="white-space: nowrap">
+                  <td></td>
+                  <td>{{ data?.name }}</td>
+                  <td>{{ data?.name }}</td>
+                  <td>{{ data?.name }}</td>
+                  <td>{{ data?.name }}</td>
+                  <td>{{ data?.name }}</td>
+                  <td>{{ data?.name }}</td>
+                  <td>{{ data?.name }}</td>
+                  <td>{{ data?.name }}</td>
+                  <td>{{ data?.name }}</td>
+                </tr>
+                <tr>
+                  <td colspan="10">Add Document(s)</td>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="emptymessage">
+                <tr>
+                  <td colspan="10">Add Document(s)</td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </div>
+        </td>
+      </tr>
     </ng-template>
     <ng-template pTemplate="emptymessage">
       <tr>
@@ -124,5 +151,3 @@
     </ng-template>
   </p-table>
 </div>
-
-  
