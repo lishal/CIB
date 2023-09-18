@@ -31,6 +31,7 @@
           <p-button
             icon="fa-solid fa-arrow-up-right-from-square"
             styleClass="p-button-success mr-1"
+            (click)="exportExcel()"
           ></p-button>
           <p-button
             icon="fa-solid fa-circle-plus"
@@ -69,7 +70,7 @@
             [icon]="expanded ? 'fa-solid fa-minus' : 'fa-solid fa-plus'"
           ></button>
         </td>
-        <td>{{ data?.test }}</td>
+        <td>{{ data?.vettype }}</td>
         <td>{{ data?.test2 }}</td>
         <td>{{ data?.test2 }}</td>
         <td>test</td>
@@ -92,18 +93,22 @@
                       pRipple
                       icon="fa-solid fa-file"
                       class="p-button-rounded p-button-secondary p-button-text"
+                      (click)="viewData(data.vettype)"
+                      
                     ></button>
                     <button
                       pButton
                       pRipple
                       icon="fa-solid fa-pen-to-square"
                       class="p-button-rounded p-button-success p-button-text"
+                      (click)="editData(data.vettype)"
                     ></button>
                     <button
                       pButton
                       pRipple
                       icon="fa-solid fa-trash"
                       class="p-button-rounded p-button-danger p-button-text"
+                      (click)="deleteData(data.vettype)"
                     ></button>
                   </th>
                   <th pSortableColumn="documenttype">Document Type</th>
@@ -131,12 +136,12 @@
                   <td>{{ data?.name }}</td>
                 </tr>
                 <tr>
-                  <td colspan="10">Add Document(s)</td>
+                  <td colspan="10"><p-button label="Add Document(s)" (click)="addValuatorDocument()"></p-button></td>
                 </tr>
               </ng-template>
               <ng-template pTemplate="emptymessage">
                 <tr>
-                  <td colspan="10">Add Document(s)</td>
+                  <td colspan="10"><p-button label="Add Document(s)" (click)="addValuatorDocument()"></p-button></td>
                 </tr>
               </ng-template>
             </p-table>

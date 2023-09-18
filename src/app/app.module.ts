@@ -58,6 +58,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { ToastModule } from 'primeng/toast';
 import { InnerValuatorComponent } from './Components/Setup/valuator/valuator/valuator.component';
+import { RelationshipComponent } from './Components/Setup/valuator/relationship/relationship.component';
+import { DropdownModule } from 'primeng/dropdown';
 
 
 @NgModule({
@@ -104,6 +106,7 @@ import { InnerValuatorComponent } from './Components/Setup/valuator/valuator/val
     RoleComponent,
     BackupComponent,
     InnerValuatorComponent,
+    RelationshipComponent
   ],
   imports: [
     BrowserModule,
@@ -123,6 +126,7 @@ import { InnerValuatorComponent } from './Components/Setup/valuator/valuator/val
     HttpClientModule,
     DynamicDialogModule,
     ToastModule,
+    DropdownModule
   ],
   providers: [],
   bootstrap: [AppComponent],

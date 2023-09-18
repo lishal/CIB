@@ -5,14 +5,17 @@ import {
   FormGroup,
   FormBuilder,
   Validators,
+  
 } from '@angular/forms';
-import { DynamicDialogRef } from 'primeng/dynamicdialog';
+import { DynamicDialogRef,
+  DialogService,
+  DynamicDialogConfig, } from 'primeng/dynamicdialog';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { CommonModule } from '@angular/common';
-import { CalendarModule } from 'primeng/calendar';
 import { DropdownModule } from 'primeng/dropdown';
+import { CalendarModule } from 'primeng/calendar';
 
 interface Legal {
   name: String;
@@ -45,10 +48,11 @@ interface ActionStatus {
   name: String;
 }
 
+
 @Component({
-  selector: 'app-valuator-add',
-  templateUrl: './add.component.html',
-  styleUrls: ['./add.component.css'],
+  selector: 'app-valuator-edit',
+  templateUrl: './edit.component.html',
+  styleUrls: ['./edit.component.css'],
   imports: [
     ButtonModule,
     ReactiveFormsModule,
@@ -58,10 +62,12 @@ interface ActionStatus {
     DropdownModule,
     CalendarModule,
   ],
-  providers: [MessageService],
+  providers: [MessageService,DialogService],
   standalone: true,
 })
-export class AddValuatorComponent implements OnInit {
+export class EditValuatorComponent implements OnInit {
+  updated: boolean = false;
+  data: any[] = [];
   legalStatusList: Legal[] = [];
   companyRegNoIAList: CompanyRegNoIA[] = [];
   panDistrictList: PAN[] = [];
@@ -90,10 +96,13 @@ export class AddValuatorComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     public ref: DynamicDialogRef,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private dialogService: DynamicDialogConfig
   ) {}
 
   ngOnInit(): void {
+    this.data = [this.dialogService.data];
+    // this.data[0].  --> To fetch the data in the field
     this.myForm = this.fb.group({
       valuatorName: ['', Validators.required],
       isIndividual: ['', Validators.required],
@@ -152,8 +161,8 @@ export class AddValuatorComponent implements OnInit {
   onSubmit() {
     if (this.myForm.valid) {
       const formValues = this.myForm.value;
-      this.added = true;
-      this.ref.close([formValues, this.added]);
+      this.updated = true;
+      this.ref.close([formValues, this.updated]);
     } else {
       this.messageService.add({
         severity: 'error',

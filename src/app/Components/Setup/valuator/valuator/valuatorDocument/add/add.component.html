@@ -1,0 +1,166 @@
+<p-toast></p-toast>
+<form
+  [formGroup]="myForm"
+  class="addForm relative min-h-full"
+  style="margin-bottom: 3rem"
+>
+<div class="field grid">
+    <label
+      for="documentName"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Document Name: </label
+    >
+    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
+      <input
+        id="documentName"
+        type="text"
+        formControlName="documentName"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+    </div>
+    <label
+      for="documentType"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Document Type: <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
+      <input
+        id="documentType"
+        type="text"
+        formControlName="documentType"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('documentType')?.invalid &&
+            myForm.get('documentType')?.touched
+        }"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+      <div
+        *ngIf="
+          myForm.get('documentType')?.invalid &&
+          myForm.get('documentType')?.touched
+        "
+        style="color: red"
+      >
+      Document Type is required.
+      </div>
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="agreement"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Upload Agreement:
+    </label>
+    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
+      <input
+        id="agreement"
+        type="file"
+        formControlName="agreement"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+    </div>
+    <label
+      for="isRecurring"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Is Recurring <span style="color: red">&nbsp; *</span>
+    </label>
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <p-selectButton
+        [options]="stateOptions"
+        [style]="{ width: '10em' }"
+        formControlName="isRecurring"
+      ></p-selectButton>
+    </div>
+   </div>
+   <div class="field grid">
+    <label
+      for="receivedOn"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Received On:<span style="color: red">&nbsp; *</span>
+    </label>
+    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
+      <p-calendar
+        formControlName="receivedOn"
+        [(ngModel)]="myForm.value.receivedOn"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('receivedOn')?.invalid &&
+            myForm.get('receivedOn')?.touched
+        }"
+        appendTo="body"
+      ></p-calendar>
+      <div
+        *ngIf="
+          myForm.get('receivedOn')?.invalid &&
+          myForm.get('receivedOn')?.touched
+        "
+        style="color: red"
+      >
+        Received On is required.
+      </div>
+    </div>
+    <label
+      for="expireOn"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Expire On:<span style="color: red">&nbsp; *</span>
+    </label>
+    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
+      <p-calendar
+        formControlName="expireOn"
+        [(ngModel)]="myForm.value.expireOn"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('expireOn')?.invalid &&
+            myForm.get('expireOn')?.touched
+        }"
+        appendTo="body"
+      ></p-calendar>
+      <div
+        *ngIf="
+          myForm.get('expireOn')?.invalid && myForm.get('expireOn')?.touched
+        "
+        style="color: red"
+      >
+        Expire On is required.
+      </div>
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="provinceAddress"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Comment: <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-12 md:col-9 sm:col-8">
+      <textarea
+        id="comment"
+        type="text"
+        rows="3"
+        formControlName="comment"
+        style="resize: none"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      >
+      </textarea>
+    </div>
+  </div>
+</form>
+<div
+  class="btnGroup absolute z-1 flex mt-3 h-3rem bg-white justify-content-end pb-2"
+  style="bottom: 0px; width: 95%; margin-top: 3rem"
+>
+  <button
+    pButton
+    type="button"
+    label="Cancel"
+    class="p-button-raised p-button-text p-button-plain mr-2"
+    (click)="onCancel()"
+  ></button>
+  <button
+    pButton
+    type="button"
+    label="Submit"
+    class="p-button-raised p-button-info"
+    (click)="onSubmit()"
+  ></button>
+</div>
