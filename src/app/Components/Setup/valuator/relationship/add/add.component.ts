@@ -14,13 +14,22 @@ import { CommonModule } from '@angular/common';
 import { CalendarModule } from 'primeng/calendar';
 import { DropdownModule } from 'primeng/dropdown';
 
-interface Legal {
+interface Type {
   name: String;
 }
-interface CompanyRegNoIA {
+interface natureOfRelationship {
   name: String;
 }
 interface PAN {
+  name: String;
+}
+interface Gender {
+  name: String;
+}
+interface CitzIssuedDistrict {
+  name: String;
+}
+interface VoterIDIssuedDistrict {
   name: String;
 }
 interface Address1 {
@@ -32,12 +41,6 @@ interface District {
 interface Country {
   name: String;
 }
-interface SecurityType1 {
-  name: String;
-}
-interface SecurityType2 {
-  name: String;
-}
 interface GroupName {
   name: String;
 }
@@ -46,7 +49,7 @@ interface ActionStatus {
 }
 
 @Component({
-  selector: 'app-valuator-add',
+  selector: 'app-vrelationship-add',
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.css'],
   imports: [
@@ -61,31 +64,37 @@ interface ActionStatus {
   providers: [MessageService],
   standalone: true,
 })
-export class AddValuatorComponent implements OnInit {
-  legalStatusList: Legal[] = [];
-  companyRegNoIAList: CompanyRegNoIA[] = [];
+export class AddVRelationshipComponent implements OnInit {
+  myForm!: FormGroup;
+  stateOptions: any[] = [
+    { label: 'True', value: true },
+    { label: 'False', value: false },
+  ];
+  added: boolean = false;
+  relationshipTypeList: Type[] = [];
+  natureOfRelationshipList: natureOfRelationship[] = [];
   panDistrictList: PAN[] = [];
+  genderList: Gender[] = [];
+  citzIssuedDistrictList: CitzIssuedDistrict[] = [];
+  voterIdIssuedDistrictList: VoterIDIssuedDistrict[] = [];
   address1TypeList: Address1[] = [];
   districtList: District[] = [];
   countryList: Country[] = [];
-  securityType1List: SecurityType1[] = [];
-  securityType2List: SecurityType2[] = [];
   groupNameList: GroupName[] = [];
   actionStatusList: ActionStatus[] = [];
-  myForm!: FormGroup;
-  stateOptions: any[] = [
-    { label: 'False', value: false },
-    { label: 'True', value: true },
-  ];
-  vedobRegNp: Date | undefined;
-  entityDob: Date | undefined;
-  sExpiryDate1Np: Date | undefined;
-  sExpiryDate1: Date | undefined;
-  sExpiryDate2Np: Date | undefined;
-  sExpiryDate2: Date | undefined;
-  agmStartDate: Date | undefined;
-  agmEndDate: Date | undefined;
-  added: boolean = false;
+
+  dob: Date | undefined;
+  vrdobregNp: Date | undefined;
+  panIssuedDateNp: Date | undefined;
+  panIssuedDate: Date | undefined;
+  citizenshipIssuedDateNp: Date | undefined;
+  citizenshipIssuedDate: Date | undefined;
+  voterIssuedDateNp: Date | undefined; 
+  voterIssuedDate: Date | undefined; 
+  passportExpiryDate: Date | undefined; 
+  indianEmbassyRegNoDate: Date | undefined; 
+  dateOfLeaving: Date | undefined; 
+
   constructor(
     private fb: FormBuilder,
     public ref: DynamicDialogRef,
@@ -94,15 +103,34 @@ export class AddValuatorComponent implements OnInit {
 
   ngOnInit(): void {
     this.myForm = this.fb.group({
-      valuatorName: ['', Validators.required],
-      isIndividual: ['', Validators.required],
-      vedobRegNp: ['', Validators.required],
-      entityDob: ['', Validators.required],
-      legalStatus: [''],
-      companyRegNo: [''],
-      companyRegNoIA: [''],
+      valuatorRelationshipName: ['', Validators.required],
+      relationshipType: ['', Validators.required],
+      natureOfRelationship: ['', Validators.required],
+      percentageOfControl: [''],
+      vrdobregNp: ['', Validators.required],
+      dob: ['', Validators.required],
       pan: [''],
       panDistrict: [''],
+      panIssuedDateNp: [''],
+      panIssuedDate: [''],
+      gender: ['', Validators.required],
+      citizenshipNo: [''],
+      citzIssuedDistrict: [''],
+      citizenshipIssuedDateNp: [''],
+      citizenshipIssuedDate: [''],
+      voterId: [''],
+      voterIdIssuedDistrict: [''],
+      voterIssuedDateNp: [''],
+      voterIssuedDate: [''],
+      passport: [''],
+      passportExpiryDate: [''],
+      indianEmbassyRegNo: [''],
+      indianEmbassyRegNoDate: [''],
+      fatherName: [''],
+      grandFatherName: [''],
+      spouse1: [''],
+      spouse2: [''],
+      motherName: [''],
       address1Type: ['Address1', Validators.required],
       municipaltiy: ['', Validators.required],
       ward: [],
@@ -110,13 +138,12 @@ export class AddValuatorComponent implements OnInit {
       district: ['Disctrict', Validators.required],
       poBox: [],
       country: ['Country', Validators.required],
-      contactPerson: [],
-      telephoneNo1: ['', [Validators.pattern('^[0-9]*$')]],
-      telephoneNo2: ['', [Validators.pattern('^[0-9]*$')]],
-      fax1: [],
-      fax2: [],
-      mobileNo: ['', Validators.pattern('^[0-9]{10}$')],
-      mainEmail: [
+      telephoneNo1: ['', Validators.pattern('^[0-9]*$')],
+      telephoneNo2: ['', Validators.pattern('^[0-9]*$')],
+      fax1: [''],
+      fax2: [''],
+      mobileNo:['',Validators.pattern('^[0-9]{10}$')],
+      email: [
         'Test@gmail.com',
         [Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}')],
       ],
@@ -124,28 +151,11 @@ export class AddValuatorComponent implements OnInit {
         'Test@gmail.com',
         [Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}')],
       ],
-      securityType1: [],
-      securityType2: [],
-      securityAmount1: [
-        '0',
-        [Validators.required, Validators.pattern('^[0-9]*$')],
-      ],
-      securityAmount2: [
-        '0',
-        [Validators.required, Validators.pattern('^[0-9]*$')],
-      ],
-      sExpiryDate1Np: [],
-      sExpiryDate2Np: [],
-      sExpiryDate1: [],
-      sExpiryDate2: [],
-      reference: ['', Validators.required],
-      agmStartDate: ['', Validators.required],
-      agmEndDate: ['', Validators.required],
-      groupName: [],
-      isActive: [false],
-      citzDoc: [],
-      actionStatus: [],
-      comment: [],
+      dateOfLeaving:[],
+      groupName:[],
+      selectFile:[],
+      isActive:[true,Validators.required],
+      actionStatus:[],
     });
   }
   onSubmit() {

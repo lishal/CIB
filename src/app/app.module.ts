@@ -106,7 +106,7 @@ import { DropdownModule } from 'primeng/dropdown';
     RoleComponent,
     BackupComponent,
     InnerValuatorComponent,
-    RelationshipComponent
+    RelationshipComponent,
   ],
   imports: [
     BrowserModule,

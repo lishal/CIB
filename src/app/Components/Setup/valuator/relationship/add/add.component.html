@@ -6,162 +6,150 @@
 >
   <div class="field grid">
     <label
-      for="valuatorName"
+      for="valuatorRelationshipName"
       class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Valuator Name: <span style="color: red">&nbsp; *</span></label
+      >Valuator Relationship Name:
+      <span style="color: red">&nbsp; *</span></label
     >
     <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
       <input
-        id="valuatorName"
+        id="valuatorRelationshipName"
         type="text"
-        formControlName="valuatorName"
+        formControlName="valuatorRelationshipName"
         [ngClass]="{
           'invalid-input':
-            myForm.get('valuatorName')?.invalid &&
-            myForm.get('valuatorName')?.touched
+            myForm.get('valuatorRelationshipName')?.invalid &&
+            myForm.get('valuatorRelationshipName')?.touched
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
       <div
         *ngIf="
-          myForm.get('valuatorName')?.invalid &&
-          myForm.get('valuatorName')?.touched
+          myForm.get('valuatorRelationshipName')?.invalid &&
+          myForm.get('valuatorRelationshipName')?.touched
         "
         style="color: red"
       >
-        Valuator Name is required.
+        Valuator Relationship Name is required.
       </div>
     </div>
     <label
-      for="isIndividual"
+      for="relationshipType"
       class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Is Individual: <span style="color: red">&nbsp; *</span></label
+      >Type: <span style="color: red">&nbsp; *</span></label
     >
-    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
-      <input
-        id="isIndividual"
-        type="text"
-        formControlName="isIndividual"
-        [ngClass]="{
-          'invalid-input':
-            myForm.get('isIndividual')?.invalid &&
-            myForm.get('isIndividual')?.touched
-        }"
-        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-      />
-      <div
-        *ngIf="
-          myForm.get('isIndividual')?.invalid &&
-          myForm.get('isIndividual')?.touched
-        "
-        style="color: red"
-      >
-        Is Individual is required.
-      </div>
-    </div>
-  </div>
-  <div class="field grid">
-    <label
-      for="vedobRegNp"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >VEDOBReg Np:<span style="color: red">&nbsp; *</span>
-    </label>
-    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
-      <p-calendar
-        formControlName="vedobRegNp"
-        [(ngModel)]="myForm.value.vedobRegNp"
-        [ngClass]="{
-          'invalid-input':
-            myForm.get('vedobRegNp')?.invalid &&
-            myForm.get('vedobRegNp')?.touched
-        }"
-        appendTo="body"
-      ></p-calendar>
-      <div
-        *ngIf="
-          myForm.get('vedobRegNp')?.invalid && myForm.get('vedobRegNp')?.touched
-        "
-        style="color: red"
-      >
-        VEDOBReg Np is required.
-      </div>
-    </div>
-    <label
-      for="entityDob"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Entity's DOB/DOR:<span style="color: red">&nbsp; *</span>
-    </label>
-    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
-      <p-calendar
-        formControlName="entityDob"
-        [(ngModel)]="myForm.value.entityDob"
-        [ngClass]="{
-          'invalid-input':
-            myForm.get('entityDob')?.invalid && myForm.get('entityDob')?.touched
-        }"
-        appendTo="body"
-      ></p-calendar>
-      <div
-        *ngIf="
-          myForm.get('entityDob')?.invalid && myForm.get('entityDob')?.touched
-        "
-        style="color: red"
-      >
-        Entity's DOB/DOR is required.
-      </div>
-    </div>
-  </div>
-  <div class="field grid">
-    <label
-      for="legalStatus"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Legal Status:
-    </label>
     <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
       <p-dropdown
-        [options]="legalStatusList"
-        formControlName="legalStatus"
+        [options]="relationshipTypeList"
+        formControlName="relationshipType"
         optionLabel="name"
         optionValue="name"
         [filter]="true"
         filterBy="name"
         [showClear]="true"
-        placeholder="Select a Leagl Status"
+        placeholder="Select a Type"
       >
       </p-dropdown>
+      <div
+        *ngIf="
+          myForm.get('relationshipType')?.invalid &&
+          myForm.get('relationshipType')?.touched
+        "
+        style="color: red"
+      >
+        Type is required.
+      </div>
     </div>
   </div>
   <div class="field grid">
     <label
-      for="companyRegNo"
+      for="natureOfRelationship"
       class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Company Reg No:</label
+      >Nature Of Relationship: <span style="color: red">&nbsp; *</span></label
     >
-    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
-      <input
-        id="companyRegNo"
-        type="text"
-        formControlName="companyRegNo"
-        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-      />
-    </div>
-    <label
-      for="companyRegNoIA"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Compnay RegNo IA:
-    </label>
     <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
       <p-dropdown
-        [options]="companyRegNoIAList"
-        formControlName="companyRegNoIA"
+        [options]="natureOfRelationshipList"
+        formControlName="natureOfRelationship"
         optionLabel="name"
         optionValue="name"
         [filter]="true"
         filterBy="name"
         [showClear]="true"
-        placeholder="Select a Company Reg No IA"
+        placeholder="Select a Nature Of Relationship"
       >
       </p-dropdown>
+      <div
+        *ngIf="
+          myForm.get('natureOfRelationship')?.invalid &&
+          myForm.get('natureOfRelationship')?.touched
+        "
+        style="color: red"
+      >
+        Nature Of Relationship is required.
+      </div>
+    </div>
+    <label
+      for="percentageOfControl"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Percentage Of Control:
+    </label>
+    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
+      <input
+        id="percentageOfControl"
+        type="text"
+        formControlName="percentageOfControl"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="vrdobregNp"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >VRDOBReg NP:<span style="color: red">&nbsp; *</span>
+    </label>
+    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
+      <p-calendar
+        formControlName="vrdobregNp"
+        [(ngModel)]="myForm.value.vrdobregNp"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('vrdobregNp')?.invalid &&
+            myForm.get('vrdobregNp')?.touched
+        }"
+        appendTo="body"
+      ></p-calendar>
+      <div
+        *ngIf="
+          myForm.get('vrdobregNp')?.invalid && myForm.get('vrdobregNp')?.touched
+        "
+        style="color: red"
+      >
+        VRDOBReg Np is required.
+      </div>
+    </div>
+    <label
+      for="dob"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >DOB/DOR:<span style="color: red">&nbsp; *</span>
+    </label>
+    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
+      <p-calendar
+        formControlName="dob"
+        [(ngModel)]="myForm.value.dob"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('dob')?.invalid && myForm.get('dob')?.touched
+        }"
+        appendTo="body"
+      ></p-calendar>
+      <div
+        *ngIf="myForm.get('dob')?.invalid && myForm.get('dob')?.touched"
+        style="color: red"
+      >
+        DOB/DOR is required.
+      </div>
     </div>
   </div>
   <div class="field grid">
@@ -195,6 +183,313 @@
         placeholder="Select a PAN NO Issued District"
       >
       </p-dropdown>
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="panIssuedDateNp"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >PAN No Issued Date Np:
+    </label>
+    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
+      <p-calendar
+        formControlName="panIssuedDateNp"
+        [(ngModel)]="myForm.value.panIssuedDateNp"
+        appendTo="body"
+      ></p-calendar>
+    </div>
+    <label
+      for="panIssuedDate"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >PAN No Issued Date:
+    </label>
+    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
+      <p-calendar
+        formControlName="panIssuedDate"
+        [(ngModel)]="myForm.value.panIssuedDate"
+        appendTo="body"
+      ></p-calendar>
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="gender"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Gender: <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <p-dropdown
+        [options]="genderList"
+        formControlName="gender"
+        optionLabel="name"
+        optionValue="name"
+        [filter]="true"
+        filterBy="name"
+        [showClear]="true"
+        placeholder="Select a gender"
+      >
+      </p-dropdown>
+      <div
+        *ngIf="myForm.get('gender')?.invalid && myForm.get('gender')?.touched"
+        style="color: red"
+      >
+        Gender is required.
+      </div>
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="citizenshipNo"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Citizenship No:</label
+    >
+    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
+      <input
+        id="citizenshipNo"
+        type="text"
+        formControlName="citizenshipNo"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+    </div>
+    <label
+      for="citzIssuedDistrict"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >CitzNo Issued in District:
+    </label>
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <p-dropdown
+        [options]="citzIssuedDistrictList"
+        formControlName="citzIssuedDistrict"
+        optionLabel="name"
+        optionValue="name"
+        [filter]="true"
+        filterBy="name"
+        [showClear]="true"
+        placeholder="Select a CitzNo Issued in District"
+      >
+      </p-dropdown>
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="citizenshipIssuedDateNp"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Citizenship Issued Date Np:
+    </label>
+    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
+      <p-calendar
+        formControlName="citizenshipIssuedDateNp"
+        [(ngModel)]="myForm.value.citizenshipIssuedDateNp"
+        appendTo="body"
+      ></p-calendar>
+    </div>
+    <label
+      for="citizenshipIssuedDate"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Citizenship Issued Date:
+    </label>
+    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
+      <p-calendar
+        formControlName="citizenshipIssuedDate"
+        [(ngModel)]="myForm.value.citizenshipIssuedDate"
+        appendTo="body"
+      ></p-calendar>
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="voterId"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Voter ID:</label
+    >
+    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
+      <input
+        id="voterId"
+        type="text"
+        formControlName="voterId"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+    </div>
+    <label
+      for="voterIdIssuedDistrict"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Voter ID issued District:
+    </label>
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <p-dropdown
+        [options]="voterIdIssuedDistrictList"
+        formControlName="voterIdIssuedDistrict"
+        optionLabel="name"
+        optionValue="name"
+        [filter]="true"
+        filterBy="name"
+        [showClear]="true"
+        placeholder="Select a Voter ID Issued District"
+      >
+      </p-dropdown>
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="voterIssuedDateNp"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Voter Issued Date Np:
+    </label>
+    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
+      <p-calendar
+        formControlName="voterIssuedDateNp"
+        [(ngModel)]="myForm.value.voterIssuedDateNp"
+        appendTo="body"
+      ></p-calendar>
+    </div>
+    <label
+      for="voterIssuedDate"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Voter No Issued Date:
+    </label>
+    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
+      <p-calendar
+        formControlName="voterIssuedDate"
+        [(ngModel)]="myForm.value.voterIssuedDate"
+        appendTo="body"
+      ></p-calendar>
+    </div>
+  </div>
+  <div
+    class="flex justify-content-left align-items-center font-bold text-xl m-3"
+  >
+    Passport and Indian Registration Details
+  </div>
+  <hr class="mb-3" />
+  <div class="field grid">
+    <label
+      for="passport"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Passport:</label
+    >
+    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
+      <input
+        id="passport"
+        type="text"
+        formControlName="passport"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+    </div>
+    <label
+      for="passportExpiryDate"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Passport Expiry Date:
+    </label>
+    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
+      <p-calendar
+        formControlName="passportExpiryDate"
+        [(ngModel)]="myForm.value.passportExpiryDate"
+        appendTo="body"
+      ></p-calendar>
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="indianEmbassyRegNo"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Indian Embassy Reg No:</label
+    >
+    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
+      <input
+        id="indianEmbassyRegNo"
+        type="text"
+        formControlName="indianEmbassyRegNo"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+    </div>
+    <label
+      for="indianEmbassyRegNoDate"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Indian Embassy Reg No Date:
+    </label>
+    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
+      <p-calendar
+        formControlName="indianEmbassyRegNoDate"
+        [(ngModel)]="myForm.value.indianEmbassyRegNoDate"
+        appendTo="body"
+      ></p-calendar>
+    </div>
+  </div>
+  <div
+    class="flex justify-content-left align-items-center font-bold text-xl m-3"
+  >
+    Family Details
+  </div>
+  <hr class="mb-3" />
+  <div class="field grid">
+    <label
+      for="fatherName"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Father Name:</label
+    >
+    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
+      <input
+        id="fatherName"
+        type="text"
+        formControlName="fatherName"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+    </div>
+    <label
+      for="grandFatherName"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Grand Father Name:</label
+    >
+    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
+      <input
+        id="grandFatherName"
+        type="text"
+        formControlName="grandFatherName"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="spouse1"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Spouse 1:</label
+    >
+    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
+      <input
+        id="spouse1"
+        type="text"
+        formControlName="spouse1"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+    </div>
+    <label
+      for="spouse2"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Spouse 2:</label
+    >
+    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
+      <input
+        id="spouse2"
+        type="text"
+        formControlName="spouse2"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="motherName"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Mother Name:</label
+    >
+    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
+      <input
+        id="motherName"
+        type="text"
+        formControlName="motherName"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
     </div>
   </div>
   <div
@@ -289,6 +584,19 @@
   </div>
   <div class="field grid">
     <label
+      for="poBox"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >PO Box:
+    </label>
+    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
+      <input
+        id="poBox"
+        type="text"
+        formControlName="poBox"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+    </div>
+    <label
       for="district"
       class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
       >District: <span style="color: red">&nbsp; *</span></label
@@ -313,19 +621,6 @@
       >
         District is required.
       </div>
-    </div>
-    <label
-      for="poBox"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >PO Box:
-    </label>
-    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
-      <input
-        id="poBox"
-        type="text"
-        formControlName="poBox"
-        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-      />
     </div>
   </div>
   <div class="field grid">
@@ -357,24 +652,9 @@
   <div
     class="flex justify-content-left align-items-center font-bold text-xl m-3"
   >
-    Telephone and Email Details
+    Telephone/Email Details
   </div>
   <hr class="mb-3" />
-  <div class="field grid">
-    <label
-      for="contactPerson"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Contact Person:
-    </label>
-    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
-      <input
-        id="contactPerson"
-        type="text"
-        formControlName="contactPerson"
-        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-      />
-    </div>
-  </div>
   <div class="field grid">
     <label
       for="telephoneNo1"
@@ -480,25 +760,22 @@
   </div>
   <div class="field grid">
     <label
-      for="mainEmail"
+      for="email"
       class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Main Email:
+      >Email:
     </label>
     <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
       <input
-        id="mainEmail"
+        id="email"
         type="email"
-        formControlName="mainEmail"
+        formControlName="email"
         [ngClass]="{
-          'invalid-input': myForm.get('mainEmail')?.hasError('pattern')
+          'invalid-input': myForm.get('email')?.hasError('pattern')
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
-      <div
-        *ngIf="myForm.get('mainEmail')?.hasError('pattern')"
-        style="color: red"
-      >
-        Invalid Main Email Id
+      <div *ngIf="myForm.get('email')?.hasError('pattern')" style="color: red">
+        Invalid Email Id
       </div>
     </div>
     <label
@@ -524,267 +801,19 @@
       </div>
     </div>
   </div>
-  <div
-    class="flex justify-content-left align-items-center font-bold text-xl m-3"
-  >
-    Security Details
-  </div>
-  <hr class="mb-3" />
   <div class="field grid">
     <label
-      for="securityType1"
+      for="dateOfLeaving"
       class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Security Type 1:
-    </label>
-    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-      <p-dropdown
-        [options]="securityType1List"
-        formControlName="securityType1"
-        optionLabel="name"
-        optionValue="name"
-        [filter]="true"
-        filterBy="name"
-        [showClear]="true"
-        placeholder="Select a Security Type 1"
-      >
-      </p-dropdown>
-    </div>
-    <label
-      for="securityAmount1"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Security Amount 1: <span style="color: red">&nbsp; *</span>
-    </label>
-    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-      <input
-        id="securityAmount1"
-        type="text"
-        formControlName="securityAmount1"
-        [ngClass]="{
-          'invalid-input':
-            myForm.get('securityAmount1')?.invalid &&
-            myForm.get('securityAmount1')?.touched
-        }"
-        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-      />
-      <div
-        *ngIf="
-          myForm.get('securityAmount1')?.hasError('pattern');
-          else errorSecurityAmount1
-        "
-        style="color: red"
-      >
-        Invalid Security Amount 1
-      </div>
-      <ng-template #errorSecurityAmount1>
-        <div
-          *ngIf="
-            myForm.get('securityAmount1')?.invalid &&
-            myForm.get('securityAmount1')?.touched
-          "
-          style="color: red"
-        >
-          Security Amount 1 is required.
-        </div>
-      </ng-template>
-    </div>
-  </div>
-  <div class="field grid">
-    <label
-      for="sExpiryDate1Np"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Security Expiry Date 1 -NP:
+      >Date Of Leaving:
     </label>
     <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
       <p-calendar
-        formControlName="sExpiryDate1Np"
-        [(ngModel)]="myForm.value.sExpiryDate1Np"
+        formControlName="dateOfLeaving"
+        [(ngModel)]="myForm.value.dateOfLeaving"
         appendTo="body"
       ></p-calendar>
     </div>
-    <label
-      for="sExpiryDate1"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Security Expiry Date 1:
-    </label>
-    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
-      <p-calendar
-        formControlName="sExpiryDate1"
-        [(ngModel)]="myForm.value.sExpiryDate1"
-        appendTo="body"
-      ></p-calendar>
-    </div>
-  </div>
-  <div class="field grid">
-    <label
-      for="securityType2"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Security Type 2:
-    </label>
-    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-      <p-dropdown
-        [options]="securityType2List"
-        formControlName="securityType2"
-        optionLabel="name"
-        optionValue="name"
-        [filter]="true"
-        filterBy="name"
-        [showClear]="true"
-        placeholder="Select a Security Type 2"
-      >
-      </p-dropdown>
-    </div>
-    <label
-      for="securityAmount2"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Security Amount 2: <span style="color: red">&nbsp; *</span>
-    </label>
-    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-      <input
-        id="securityAmount2"
-        type="text"
-        formControlName="securityAmount2"
-        [ngClass]="{
-          'invalid-input':
-            myForm.get('securityAmount2')?.invalid &&
-            myForm.get('securityAmount2')?.touched
-        }"
-        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-      />
-      <div
-        *ngIf="
-          myForm.get('securityAmount2')?.hasError('pattern');
-          else errorSecurityAmount2
-        "
-        style="color: red"
-      >
-        Invalid Security Amount 2
-      </div>
-      <ng-template #errorSecurityAmount2>
-        <div
-          *ngIf="
-            myForm.get('securityAmount2')?.invalid &&
-            myForm.get('securityAmount2')?.touched
-          "
-          style="color: red"
-        >
-          Security Amount 2 is required.
-        </div>
-      </ng-template>
-    </div>
-  </div>
-  <div class="field grid">
-    <label
-      for="sExpiryDate2Np"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Security Expiry Date 2 -NP:
-    </label>
-    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
-      <p-calendar
-        formControlName="sExpiryDate2Np"
-        [(ngModel)]="myForm.value.sExpiryDate1Np"
-        appendTo="body"
-      ></p-calendar>
-    </div>
-    <label
-      for="sExpiryDate2"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Security Expiry Date 2:
-    </label>
-    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
-      <p-calendar
-        formControlName="sExpiryDate2"
-        [(ngModel)]="myForm.value.sExpiryDate1"
-        appendTo="body"
-      ></p-calendar>
-    </div>
-  </div>
-  <div
-    class="flex justify-content-left align-items-center font-bold text-xl m-3"
-  >
-    Valuator Enlistement Details
-  </div>
-  <hr class="mb-3" />
-  <div class="field grid">
-    <label
-      for="reference"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Reference#: <span style="color: red">&nbsp; *</span></label
-    >
-    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
-      <input
-        id="reference"
-        type="text"
-        formControlName="reference"
-        [ngClass]="{
-          'invalid-input':
-            myForm.get('reference')?.invalid && myForm.get('reference')?.touched
-        }"
-        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-      />
-      <div
-        *ngIf="
-          myForm.get('reference')?.invalid && myForm.get('reference')?.touched
-        "
-        style="color: red"
-      >
-        Reference is required.
-      </div>
-    </div>
-  </div>
-  <div class="field grid">
-    <label
-      for="agmStartDate"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Agm Start Date:<span style="color: red">&nbsp; *</span>
-    </label>
-    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
-      <p-calendar
-        formControlName="agmStartDate"
-        [(ngModel)]="myForm.value.agmStartDate"
-        [ngClass]="{
-          'invalid-input':
-            myForm.get('agmStartDate')?.invalid &&
-            myForm.get('agmStartDate')?.touched
-        }"
-        appendTo="body"
-      ></p-calendar>
-      <div
-        *ngIf="
-          myForm.get('agmStartDate')?.invalid &&
-          myForm.get('agmStartDate')?.touched
-        "
-        style="color: red"
-      >
-        Agm Start Date is required.
-      </div>
-    </div>
-    <label
-      for="agmEndDate"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Agm End Date:<span style="color: red">&nbsp; *</span>
-    </label>
-    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
-      <p-calendar
-        formControlName="agmEndDate"
-        [(ngModel)]="myForm.value.agmEndDate"
-        [ngClass]="{
-          'invalid-input':
-            myForm.get('agmEndDate')?.invalid &&
-            myForm.get('agmEndDate')?.touched
-        }"
-        appendTo="body"
-      ></p-calendar>
-      <div
-        *ngIf="
-          myForm.get('agmEndDate')?.invalid && myForm.get('agmEndDate')?.touched
-        "
-        style="color: red"
-      >
-        Agm End Date is required.
-      </div>
-    </div>
-  </div>
-  <div class="field grid">
     <label
       for="groupName"
       class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
@@ -799,10 +828,27 @@
         [filter]="true"
         filterBy="name"
         [showClear]="true"
-        placeholder="Select a Group Name"
+        placeholder="Select Group Name"
       >
       </p-dropdown>
     </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="selectFile"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Select File:
+    </label>
+    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
+      <input
+        id="selectFile"
+        type="file"
+        formControlName="selectFile"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+    </div>
+  </div>
+  <div class="field grid">
     <label
       for="isActive"
       class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
@@ -814,21 +860,6 @@
         [style]="{ width: '10em' }"
         formControlName="isActive"
       ></p-selectButton>
-    </div>
-  </div>
-  <div class="field grid">
-    <label
-      for="citzDoc"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >City/Reg Document:
-    </label>
-    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
-      <input
-        id="citzDoc"
-        type="file"
-        formControlName="citzDoc"
-        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-      />
     </div>
     <label
       for="actionStatus"
@@ -847,24 +878,6 @@
         placeholder="Select Action Status"
       >
       </p-dropdown>
-    </div>
-  </div>
-  <div class="field grid">
-    <label
-      for="provinceAddress"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Comment: <span style="color: red">&nbsp; *</span></label
-    >
-    <div class="col-12 md:col-9 sm:col-8">
-      <textarea
-        id="comment"
-        type="text"
-        rows="3"
-        formControlName="comment"
-        style="resize: none"
-        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-      >
-      </textarea>
     </div>
   </div>
 </form>

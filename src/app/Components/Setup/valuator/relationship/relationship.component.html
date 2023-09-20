@@ -45,7 +45,7 @@
           ></p-button>
           <p-button
             icon="fa-solid fa-circle-plus"
-            
+            (click)="addData()"
           ></p-button>
         </div>
       </div>
@@ -80,6 +80,7 @@
             pRipple
             icon="fa-solid fa-file"
             class="p-button-rounded p-button-secondary p-button-text "
+            (click)="viewData(data?.vreType)"
             
           ></button>
           <button
@@ -87,6 +88,7 @@
             pRipple
             icon="fa-solid fa-pen-to-square"
             class="p-button-rounded p-button-success p-button-text"
+            (click)="editData(data?.vreType)"
             
           ></button>
           <button
@@ -94,6 +96,7 @@
             pRipple
             icon="fa-solid fa-trash"
             class="p-button-rounded p-button-danger p-button-text"
+            (click)="deleteData(data?.vreType)"
             
           ></button>
         </td>

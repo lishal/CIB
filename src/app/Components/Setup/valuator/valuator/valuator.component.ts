@@ -77,7 +77,7 @@ export class InnerValuatorComponent implements OnInit {
   viewData(vettype: string){
     const viewData = this.data.find((data) => data.vettype === vettype);
     this.ref = this.dialogService.open(ViewValuatorComponent, {
-      header: `Edit valuator for ${vettype}`,
+      header: `View Valuator for ${vettype}`,
       width: '90%',
       height: '80%',
       contentStyle: { overflow: 'auto' },
@@ -89,7 +89,7 @@ export class InnerValuatorComponent implements OnInit {
   deleteData(vettype: string) {
     const deleteData = this.data.find((data) => data.vettype === vettype);
     this.ref = this.dialogService.open(DeleteValuatorComponent, {
-      header: `Delete Branch for ${vettype} id`,
+      header: `Delete Valuator for ${vettype} id`,
       width: '90%',
       height: '80%',
       contentStyle: { overflow: 'auto' },
