@@ -127,6 +127,21 @@ export class DashboardComponent implements OnInit {
         else if(this.currentRoute==="/dashboard/ciclReport"){
           this.topPanelLabel="cicl Report";
         }
+        else if(this.currentRoute==="/dashboard/valuator/valuatorDetail"){
+          this.topPanelLabel="Valuator";
+        }
+        else if(this.currentRoute==="/dashboard/valuator/relationship"){
+          this.topPanelLabel="Valuator Relationship";
+        }
+        else if(this.currentRoute==="/dashboard/lookup/lookup-dropdownHeader"){
+          this.topPanelLabel="Lookup List - Dropdown Header";
+        }
+        else if(this.currentRoute==="/dashboard/lookup/lookup-dropdownElement"){
+          this.topPanelLabel="Lookup List - Dropdown Element";
+        }
+        else if(this.currentRoute==="/dashboard/lookup/lookup-iffVersion"){
+          this.topPanelLabel="Lookup List - IFF Version";
+        }
 
     }); 
   }

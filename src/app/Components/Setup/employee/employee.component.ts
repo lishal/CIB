@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
-import { EmployeeService } from 'src/app/Services/Setup/employee.service';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { EmployeeService } from 'src/app/Services/Setup/employee.service';
 import { AddEmployeeComponent } from './add/add.component';
 import { ViewEmployeeComponent } from './view/view.component';
 import { EditEmployeeComponent } from './edit/edit.component';

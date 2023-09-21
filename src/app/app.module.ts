@@ -60,6 +60,9 @@ import { ToastModule } from 'primeng/toast';
 import { InnerValuatorComponent } from './Components/Setup/valuator/valuator/valuator.component';
 import { RelationshipComponent } from './Components/Setup/valuator/relationship/relationship.component';
 import { DropdownModule } from 'primeng/dropdown';
+import { DropdownHeaderComponent } from './Components/Setup/lookup-list/dropdown-header/dropdown-header.component';
+import { DropdownElementComponent } from './Components/Setup/lookup-list/dropdown-element/dropdown-element.component';
+import { IffVersionComponent } from './Components/Setup/lookup-list/iff-version/iff-version.component';
 
 
 @NgModule({
@@ -107,6 +110,9 @@ import { DropdownModule } from 'primeng/dropdown';
     BackupComponent,
     InnerValuatorComponent,
     RelationshipComponent,
+    DropdownHeaderComponent,
+    DropdownElementComponent,
+    IffVersionComponent,
   ],
   imports: [
     BrowserModule,

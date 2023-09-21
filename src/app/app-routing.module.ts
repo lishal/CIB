@@ -41,7 +41,10 @@ import { DepartmentComponent } from './Components/Setup/company/department/depar
 import { RoleComponent } from './Components/Setup/company/role/role.component';
 import { BackupComponent } from './Components/Setup/company/backup/backup.component';
 import { InnerValuatorComponent } from './Components/Setup/valuator/valuator/valuator.component';
-import {RelationshipComponent} from './Components/Setup/valuator/relationship/relationship.component'
+import { RelationshipComponent } from './Components/Setup/valuator/relationship/relationship.component';
+import { DropdownHeaderComponent } from './Components/Setup/lookup-list/dropdown-header/dropdown-header.component';
+import { DropdownElementComponent } from './Components/Setup/lookup-list/dropdown-element/dropdown-element.component';
+import { IffVersionComponent } from './Components/Setup/lookup-list/iff-version/iff-version.component';
 
 const routes: Routes = [
   {
@@ -83,17 +86,29 @@ const routes: Routes = [
         ],
       },
       { path: 'employee', component: EmployeeComponent },
-      { path: 'valuator', component: ValuatorComponent,children:[
-        {
-        path:'valuatorDetail',
-        component:InnerValuatorComponent
-        },
-        {
-          path:'relationship',
-          component:RelationshipComponent
-        }
-    ] },
-      { path: 'lookup', component: LookupListComponent },
+      {
+        path: 'valuator',
+        component: ValuatorComponent,
+        children: [
+          {
+            path: 'valuatorDetail',
+            component: InnerValuatorComponent,
+          },
+          {
+            path: 'relationship',
+            component: RelationshipComponent,
+          },
+        ],
+      },
+      {
+        path: 'lookup',
+        component: LookupListComponent,
+        children: [
+          { path: 'lookup-dropdownHeader', component: DropdownHeaderComponent },
+          { path: 'lookup-dropdownElement', component: DropdownElementComponent },
+          { path: 'lookup-iffVersion', component: IffVersionComponent },
+        ],
+      },
       { path: 'admanagement', component: AdManagementComponent },
       { path: 'security', component: SecurityComponent },
       { path: 'emailTemplates', component: EmailTemplatesComponent },
