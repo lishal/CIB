@@ -45,6 +45,11 @@ import { RelationshipComponent } from './Components/Setup/valuator/relationship/
 import { DropdownHeaderComponent } from './Components/Setup/lookup-list/dropdown-header/dropdown-header.component';
 import { DropdownElementComponent } from './Components/Setup/lookup-list/dropdown-element/dropdown-element.component';
 import { IffVersionComponent } from './Components/Setup/lookup-list/iff-version/iff-version.component';
+import { PermissionHeaderComponent } from './Components/Setup/security/permission-header/permission-header.component';
+import { PermissionByRoleComponent } from './Components/Setup/security/permission-by-role/permission-by-role.component';
+import { PermissionByEmployeeComponent } from './Components/Setup/security/permission-by-employee/permission-by-employee.component';
+import { AdPoolComponent } from './Components/Setup/ad-management/ad-pool/ad-pool.component';
+import { MapUserComponent } from './Components/Setup/ad-management/map-user/map-user.component';
 
 const routes: Routes = [
   {
@@ -105,12 +110,33 @@ const routes: Routes = [
         component: LookupListComponent,
         children: [
           { path: 'lookup-dropdownHeader', component: DropdownHeaderComponent },
-          { path: 'lookup-dropdownElement', component: DropdownElementComponent },
+          {
+            path: 'lookup-dropdownElement',
+            component: DropdownElementComponent,
+          },
           { path: 'lookup-iffVersion', component: IffVersionComponent },
         ],
       },
-      { path: 'admanagement', component: AdManagementComponent },
-      { path: 'security', component: SecurityComponent },
+      {
+        path: 'admanagement',
+        component: AdManagementComponent,
+        children: [
+          { path: 'adPool', component: AdPoolComponent },
+          { path: 'mapUserAD', component: MapUserComponent },
+        ],
+      },
+      {
+        path: 'security',
+        component: SecurityComponent,
+        children: [
+          { path: 'permissionHeader', component: PermissionHeaderComponent },
+          { path: 'permissionByRole', component: PermissionByRoleComponent },
+          {
+            path: 'permissionByEmployee',
+            component: PermissionByEmployeeComponent,
+          },
+        ],
+      },
       { path: 'emailTemplates', component: EmailTemplatesComponent },
       { path: 'smsTemplates', component: SmsTemplatesComponent },
       { path: 'popupMessage', component: PopupMessageComponent },

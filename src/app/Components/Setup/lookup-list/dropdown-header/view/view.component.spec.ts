@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ViewComponent } from './view.component';
+import { ViewLookupDropdownHeaderComponent } from './view.component';
 
-describe('ViewComponent', () => {
-  let component: ViewComponent;
-  let fixture: ComponentFixture<ViewComponent>;
+describe('ViewLookupDropdownHeaderComponent', () => {
+  let component: ViewLookupDropdownHeaderComponent;
+  let fixture: ComponentFixture<ViewLookupDropdownHeaderComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ViewComponent]
+      declarations: [ViewLookupDropdownHeaderComponent]
     });
-    fixture = TestBed.createComponent(ViewComponent);
+    fixture = TestBed.createComponent(ViewLookupDropdownHeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

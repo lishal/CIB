@@ -7,6 +7,7 @@ import { AddVRelationshipComponent } from './add/add.component';
 import { EditVRelationshipComponent } from './edit/edit.component';
 import { ViewVRelationshipComponent } from './view/view.component';
 import { DeleteVRelationshipComponent } from './delete/delete.component';
+
 interface SearchOption {
   name: String;
 }
@@ -17,9 +18,7 @@ interface SearchOption {
   styleUrls: ['./relationship.component.css'],
   providers: [MessageService, DialogService],
 })
-
-
-export class RelationshipComponent implements OnInit{
+export class RelationshipComponent implements OnInit {
   isLoading: boolean = false;
   data: any[] = [];
   ref: DynamicDialogRef | undefined;
@@ -79,7 +78,7 @@ export class RelationshipComponent implements OnInit{
       }
     });
   }
-  viewData(vreType: string){
+  viewData(vreType: string) {
     const viewData = this.data.find((data) => data.vreType === vreType);
     this.ref = this.dialogService.open(ViewVRelationshipComponent, {
       header: `View Valuator Relationship for ${vreType}`,
@@ -127,14 +126,14 @@ export class RelationshipComponent implements OnInit{
       { name: 'Asiya Javayant' },
       { name: 'Bernardo Dominic' },
       { name: 'Elwin Sharvill' },
-      { name: 'Ioni Bowcher'},
-      { name: 'Ivan Magalhaes'},
-      { name: 'test'},
-  ];
+      { name: 'Ioni Bowcher' },
+      { name: 'Ivan Magalhaes' },
+      { name: 'test' },
+    ];
     this.data = [
       {
         vreType: 'test',
-        vrName:'VRNAME',
+        vrName: 'VRNAME',
         test: 'test2',
         id: [
           {

@@ -1,0 +1,105 @@
+<p-toast></p-toast>
+<form [formGroup]="myForm" class="addForm relative min-h-full h-auto mb-3">
+  <div class="field grid">
+    <label
+      for="id"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >IFF Version: <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <input
+        id="id"
+        type="text"
+        formControlName="id"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('id')?.invalid && myForm.get('id')?.touched
+        }"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+      <div
+        *ngIf="myForm.get('id')?.invalid && myForm.get('id')?.touched"
+        style="color: red"
+      >
+        IFF Version is required.
+      </div>
+    </div>
+    <label
+      for="natureOfData"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Is Consumer File <span style="color: red">&nbsp; *</span>
+    </label>
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <p-selectButton
+        [options]="stateOptions"
+        [style]="{ width: '10em' }"
+        formControlName="natureOfData"
+      ></p-selectButton>
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="versionComment"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Version Comment: <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-12 md:col-9 sm:col-8">
+      <textarea
+        id="versionComment"
+        type="text"
+        rows="3"
+        formControlName="versionComment"
+        style="resize: none"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('versionComment')?.invalid &&
+            myForm.get('versionComment')?.touched
+        }"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      >
+      </textarea>
+      <div
+        *ngIf="
+          myForm.get('versionComment')?.invalid &&
+          myForm.get('versionComment')?.touched
+        "
+        style="color: red"
+      >
+        Version Comment is required.
+      </div>
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="isActive"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >is Active <span style="color: red">&nbsp; *</span>
+    </label>
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <p-selectButton
+        [options]="stateOptions"
+        [style]="{ width: '10em' }"
+        formControlName="isActive"
+      ></p-selectButton>
+    </div>
+  </div>
+</form>
+<div
+  class="btnGroup absolute z-1 flex mt-3 h-3rem bg-white justify-content-end pb-2"
+  style="bottom: 0px; width: 95%; margin-top: 3rem"
+>
+  <button
+    pButton
+    type="button"
+    label="Cancel"
+    class="p-button-raised p-button-text p-button-plain mr-2"
+    (click)="onCancel()"
+  ></button>
+  <button
+    pButton
+    type="button"
+    label="Submit"
+    class="p-button-raised p-button-info"
+    (click)="onSubmit()"
+  ></button>
+</div>

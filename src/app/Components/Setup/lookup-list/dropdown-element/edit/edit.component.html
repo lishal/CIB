@@ -1,0 +1,153 @@
+<p-toast></p-toast>
+<form [formGroup]="myForm" class="addForm relative min-h-full h-auto mb-3">
+  <div class="field grid">
+    <label
+      for="headingName"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Heading Name: <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <p-dropdown
+        [options]="headingNameList"
+        formControlName="headingName"
+        optionLabel="name"
+        optionValue="name"
+        [filter]="true"
+        filterBy="name"
+        [showClear]="true"
+        placeholder="Select a Heading Name"
+      >
+      </p-dropdown>
+      <div
+        *ngIf="
+          myForm.get('headingName')?.invalid &&
+          myForm.get('headingName')?.touched
+        "
+        style="color: red"
+      >
+        Heading Name is required.
+      </div>
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="elementHeading"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Element Heading: <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <input
+        id="elementHeading"
+        type="text"
+        formControlName="elementHeading"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('elementHeading')?.invalid &&
+            myForm.get('elementHeading')?.touched
+        }"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+      <div
+        *ngIf="
+          myForm.get('elementHeading')?.invalid &&
+          myForm.get('elementHeading')?.touched
+        "
+        style="color: red"
+      >
+        Element Heading is required.
+      </div>
+    </div>
+    <label
+      for="catalogueCode"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Catalogue Code: <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <input
+        id="catalogueCode"
+        type="text"
+        formControlName="catalogueCode"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('catalogueCode')?.invalid &&
+            myForm.get('catalogueCode')?.touched
+        }"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+      <div
+        *ngIf="
+          myForm.get('catalogueCode')?.invalid &&
+          myForm.get('catalogueCode')?.touched
+        "
+        style="color: red"
+      >
+        Catalogue Code is required.
+      </div>
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="description"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Element Description: <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-12 md:col-9 sm:col-8">
+      <textarea
+        id="description"
+        type="text"
+        rows="3"
+        formControlName="description"
+        style="resize: none"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('description')?.invalid &&
+            myForm.get('description')?.touched
+        }"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      >
+      </textarea>
+      <div
+        *ngIf="
+          myForm.get('description')?.invalid &&
+          myForm.get('description')?.touched
+        "
+        style="color: red"
+      >
+        Description is required.
+      </div>
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="isActive"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >is Active <span style="color: red">&nbsp; *</span>
+    </label>
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <p-selectButton
+        [options]="stateOptions"
+        [style]="{ width: '10em' }"
+        formControlName="isActive"
+      ></p-selectButton>
+    </div>
+  </div>
+</form>
+<div
+  class="btnGroup absolute z-1 flex mt-3 h-3rem bg-white justify-content-end pb-2"
+  style="bottom: 0px; width: 95%; margin-top: 3rem"
+>
+  <button
+    pButton
+    type="button"
+    label="Cancel"
+    class="p-button-raised p-button-text p-button-plain mr-2"
+    (click)="onCancel()"
+  ></button>
+  <button
+    pButton
+    type="button"
+    label="Submit"
+    class="p-button-raised p-button-info"
+    (click)="onSubmit()"
+  ></button>
+</div>

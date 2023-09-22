@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditComponent } from './edit.component';
+import { EditLookupDropdownHeaderComponent } from './edit.component';
 
-describe('EditComponent', () => {
-  let component: EditComponent;
-  let fixture: ComponentFixture<EditComponent>;
+describe('EditLookupDropdownHeaderComponent', () => {
+  let component: EditLookupDropdownHeaderComponent;
+  let fixture: ComponentFixture<EditLookupDropdownHeaderComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [EditComponent]
+      declarations: [EditLookupDropdownHeaderComponent]
     });
-    fixture = TestBed.createComponent(EditComponent);
+    fixture = TestBed.createComponent(EditLookupDropdownHeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

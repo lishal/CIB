@@ -1,0 +1,141 @@
+<head>
+  <link rel="stylesheet" href="https://cdn.quilljs.com/1.3.6/quill.snow.css" />
+</head>
+<p-toast></p-toast>
+<form
+  [formGroup]="myForm"
+  class="addForm relative min-h-full"
+  style="margin-bottom: 3rem"
+>
+  <div class="field grid">
+    <label
+      for="emailHeader"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Email Header: <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-6 md:col-9 sm:mb-1 sm:col-8">
+      <input
+        id="emailHeader"
+        type="text"
+        formControlName="emailHeader"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('emailHeader')?.invalid &&
+            myForm.get('emailHeader')?.touched
+        }"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+      <div
+        *ngIf="
+          myForm.get('emailHeader')?.invalid &&
+          myForm.get('emailHeader')?.touched
+        "
+        style="color: red"
+      >
+        Email Header is required.
+      </div>
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="templateName"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Template Name: <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <input
+        id="templateName"
+        type="text"
+        formControlName="templateName"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('templateName')?.invalid &&
+            myForm.get('templateName')?.touched
+        }"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+      <div
+        *ngIf="
+          myForm.get('templateName')?.invalid &&
+          myForm.get('templateName')?.touched
+        "
+        style="color: red"
+      >
+        Template Name is required.
+      </div>
+    </div>
+    <label
+      for="isBodyHtml"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Is Body HTML: <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <p-selectButton
+        [options]="stateOptions"
+        [style]="{ width: '10em' }"
+        formControlName="isBodyHtml"
+      ></p-selectButton>
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="ccEmail"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >CC Email (Comma Separated):
+    </label>
+    <div class="chips col-6 md:col-9 sm:mb-1 sm:col-8" style="border: 2px">
+      <p-chips
+        id="ccEmail"
+        formControlName="ccEmail"
+        separator=","
+        class="text-base text-color surface-overlay surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        [style]="{ width: '100%' }"
+      ></p-chips>
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      for="emailBody"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Email Body: <span style="color: red">&nbsp; *</span></label
+    >
+    <div class="col-6 md:col-9 sm:mb-1 sm:col-8">
+      <p-editor
+        id="emailBody"
+        formControlName="emailBody"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('emailBody')?.invalid && myForm.get('emailBody')?.touched
+        }"
+        [style]="{ height: '320px' }"
+      ></p-editor>
+      <div
+        *ngIf="
+          myForm.get('emailBody')?.invalid && myForm.get('emailBody')?.touched
+        "
+        style="color: red"
+      >
+        Email Body is required.
+      </div>
+    </div>
+  </div>
+</form>
+<div
+  class="btnGroup absolute z-1 flex mt-3 h-3rem bg-white justify-content-end pb-2"
+  style="bottom: 0px; width: 95%; margin-top: 3rem"
+>
+  <button
+    pButton
+    type="button"
+    label="Cancel"
+    class="p-button-raised p-button-text p-button-plain mr-2"
+    (click)="onCancel()"
+  ></button>
+  <button
+    pButton
+    type="button"
+    label="Submit"
+    class="p-button-raised p-button-info"
+    (click)="onSubmit()"
+  ></button>
+</div>

@@ -121,7 +121,7 @@ export class DropdownHeaderComponent implements OnInit {
       {
         headingName: 'heading',
         description: 'description',
-        isActive: 'isActive',
+        isActive: false,
       },
     ];
   }

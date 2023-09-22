@@ -1,0 +1,9 @@
+.security-heading {
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .security-main {
+    padding: 3px 6px;
+  }
+  

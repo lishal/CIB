@@ -142,6 +142,21 @@ export class DashboardComponent implements OnInit {
         else if(this.currentRoute==="/dashboard/lookup/lookup-iffVersion"){
           this.topPanelLabel="Lookup List - IFF Version";
         }
+        else if(this.currentRoute==="/dashboard/security/permissionHeader"){
+          this.topPanelLabel="Security - Permission Header";
+        }
+        else if(this.currentRoute==="/dashboard/security/permissionByRole"){
+          this.topPanelLabel="Security - Permission By Role";
+        }
+        else if(this.currentRoute==="/dashboard/security/permissionByEmployee"){
+          this.topPanelLabel="Security - Permission By Employee";
+        }
+        else if(this.currentRoute==="/dashboard/admanagement/adPool"){
+          this.topPanelLabel="AD Management - AD Pool";
+        }
+        else if(this.currentRoute==="/dashboard/admanagement/mapUserAD"){
+          this.topPanelLabel="AD Management - Map User to AD";
+        }
 
     }); 
   }

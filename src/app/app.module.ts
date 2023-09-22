@@ -63,7 +63,11 @@ import { DropdownModule } from 'primeng/dropdown';
 import { DropdownHeaderComponent } from './Components/Setup/lookup-list/dropdown-header/dropdown-header.component';
 import { DropdownElementComponent } from './Components/Setup/lookup-list/dropdown-element/dropdown-element.component';
 import { IffVersionComponent } from './Components/Setup/lookup-list/iff-version/iff-version.component';
-
+import { PermissionHeaderComponent } from './Components/Setup/security/permission-header/permission-header.component';
+import { PermissionByRoleComponent } from './Components/Setup/security/permission-by-role/permission-by-role.component';
+import { PermissionByEmployeeComponent } from './Components/Setup/security/permission-by-employee/permission-by-employee.component';
+import { AdPoolComponent } from './Components/Setup/ad-management/ad-pool/ad-pool.component';
+import { MapUserComponent } from './Components/Setup/ad-management/map-user/map-user.component';
 
 @NgModule({
   declarations: [
@@ -113,6 +117,11 @@ import { IffVersionComponent } from './Components/Setup/lookup-list/iff-version/
     DropdownHeaderComponent,
     DropdownElementComponent,
     IffVersionComponent,
+    PermissionHeaderComponent,
+    PermissionByRoleComponent,
+    PermissionByEmployeeComponent,
+    AdPoolComponent,
+    MapUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -137,4 +146,5 @@ import { IffVersionComponent } from './Components/Setup/lookup-list/iff-version/
   providers: [],
   bootstrap: [AppComponent],
 })
+
 export class AppModule {}

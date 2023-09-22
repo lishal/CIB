@@ -1,0 +1,80 @@
+<div class="card mt-3">
+    <p-table
+      #search
+      [value]="data"
+      loadingIcon="fa-solid fa-spinner fa-spin-pulse"
+      [loading]="isLoading"
+      [breakpoint]="'960px'"
+      [rows]="5"
+      [showCurrentPageReport]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [rowsPerPageOptions]="[5, 10, 25, 50]"
+      [paginator]="true"
+      [filterDelay]="0"
+      [globalFilterFields]="['id']"
+    >
+      <ng-template pTemplate="caption">
+        <div class="flex">
+          <p-columnFilter field="searchOption" class="w-3 ml-auto"  [showMenu]="false">
+              <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+                  <p-dropdown  [ngModel]="value" [options]="searchOption" placeholder="-- Select Option --" (onChange)="filter($event.value)" optionLabel="name">
+                      <ng-template let-option pTemplate="item">
+                          <div class="inline-block vertical-align-middle">
+                              <span class="ml-1 mt-1">{{ option.name }}</span>
+                          </div>
+                      </ng-template>
+                  </p-dropdown>
+              </ng-template>
+          </p-columnFilter>
+          <span class="p-input-icon-left w-3 ml-2">
+            <i class="fa-solid fa-search"></i>
+            <input
+              pInputText
+              type="text"
+              (input)="search.filterGlobal($any($event.target).value, 'contains')"
+              placeholder="Search here..."
+            />
+          </span>
+          <div class="btnGroup ml-1">
+            <p-button
+              icon="fa-solid fa-wrench"
+            ></p-button>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr style="white-space: nowrap;">
+          <th pSortableColumn="id">
+            Id
+          </th>
+          <th pSortableColumn="employee">Employee</th>
+          <th pSortableColumn="permission">Permission</th>
+          <th pSortableColumn="readOnly" >ReadOnly</th>
+          <th pSortableColumn="editOnly" >EditOnly</th>
+          <th pSortableColumn="createOnly" >CreateOnly</th>
+          <th pSortableColumn="deleteOnly" >
+            DeleteOnly
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-data>
+        <tr style="white-space: nowrap;">
+          <td>{{data?.id}}</td>
+          <td>{{data?.employee}}</td>
+          <td>{{data?.permission}}</td>
+          <td>{{data?.readOnly}}</td>
+          <td>{{data?.editOnly}}</td>
+          <td>{{data?.createOnly}}</td>
+          <td>{{data?.deleteOnly}}</td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="9" style="text-align: center">Sorry! No record found</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  
+    
+  

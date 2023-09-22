@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DeleteComponent } from './delete.component';
+import { DeleteLookupDropdownHeaderComponent } from './delete.component';
 
-describe('DeleteComponent', () => {
-  let component: DeleteComponent;
-  let fixture: ComponentFixture<DeleteComponent>;
+describe('DeleteLookupDropdownHeaderComponent', () => {
+  let component: DeleteLookupDropdownHeaderComponent;
+  let fixture: ComponentFixture<DeleteLookupDropdownHeaderComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [DeleteComponent]
+      declarations: [DeleteLookupDropdownHeaderComponent]
     });
-    fixture = TestBed.createComponent(DeleteComponent);
+    fixture = TestBed.createComponent(DeleteLookupDropdownHeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
