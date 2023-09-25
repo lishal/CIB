@@ -3,6 +3,8 @@
 @import "primeng/resources/primeng.css";
 @import "primeflex/primeflex.css";
 @import "@fortawesome/fontawesome-free/css/all.min.css";
+@import '~quill/dist/quill.core.css';
+@import '~quill/dist/quill.snow.css';
 :root {
   --cyan: #06b6d4;
   --white: #ffffff;

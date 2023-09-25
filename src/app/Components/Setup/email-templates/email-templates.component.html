@@ -52,12 +52,14 @@
               pRipple
               icon="fa-solid fa-pen-to-square"
               class="p-button-rounded p-button-success p-button-text"
+              (click)="editData(data?.templateName)"
             ></button>
             <button
               pButton
               pRipple
               icon="fa-solid fa-trash"
               class="p-button-rounded p-button-danger p-button-text"
+              (click)="deleteData(data?.templateName)"
             ></button>
           </td>
         <td>{{ data?.templateName }}</td>
