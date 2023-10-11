@@ -1,0 +1,81 @@
+<div
+  class="addForm relative min-h-full"
+  style="margin-bottom: 3rem"
+>
+<div class="field grid">
+  <label
+    for="subject"
+    class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+    >Subject: <span style="color: red">&nbsp; *</span></label
+  >
+  <div class="col-6 md:col-9 sm:mb-1 sm:col-8">
+    Data
+  </div>
+</div>
+<div class="field grid">
+  <label
+    for="attachment"
+    class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+    >Attachment:
+  </label>
+  <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
+   Data
+  </div>
+  <label
+    for="isActive"
+    class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+    >Is Active: <span style="color: red">&nbsp; *</span></label
+  >
+  <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+    Data
+  </div>
+</div>
+<div class="field grid">
+  <label
+    for="status"
+    class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+    >Status: <span style="color: red">&nbsp; *</span></label
+  >
+  <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+   Data
+  </div>
+  <label
+    for="showupto"
+    class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+    >Show Upto:<span style="color: red">&nbsp; *</span>
+  </label>
+  <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
+   Data
+  </div>
+</div>
+<div class="field grid">
+  <label
+    for="description"
+    class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+    >Email Body: <span style="color: red">&nbsp; *</span></label
+  >
+  <div class="col-6 md:col-9 sm:mb-1 sm:col-8">
+    Data
+  </div>
+</div>
+</div>
+<div
+  class="btnGroup absolute z-1 flex mt-3 h-3rem bg-white justify-content-end pb-2"
+  style="bottom: 0px; width: 95%; margin-top: 3rem"
+>
+  <button
+    pButton
+    type="button"
+    label="Cancel"
+    class="p-button-raised p-button-text p-button-plain mr-2"
+    (click)="onCancel()"
+  ></button>
+  <p-confirmPopup></p-confirmPopup>
+  <button
+    pButton
+    type="button"
+    label="Delete"
+    class="p-button-raised p-button-danger p-button-plain mr-2"
+    (click)="onDelete($event)"
+  ></button>
+</div>

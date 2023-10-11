@@ -1,1 +1,80 @@
-<p>popup-message works!</p>
+<div class="emailHeading">
+    <span class="text-3xl font-semibold">Popup Message</span>
+  </div>
+  <div class="card mt-3">
+      <p-toast></p-toast>
+    <p-table
+      #search
+      [value]="data"
+      loadingIcon="fa-solid fa-spinner fa-spin-pulse"
+      [loading]="isLoading"
+      [breakpoint]="'960px'"
+      [rows]="5"
+      [showCurrentPageReport]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [rowsPerPageOptions]="[5, 10, 25, 50]"
+      [paginator]="true"
+      [filterDelay]="0"
+      [globalFilterFields]="['subject']"
+    >
+      <ng-template pTemplate="caption">
+        <div class="flex">
+          <span class="p-input-icon-left ml-auto">
+            <i class="fa-solid fa-search"></i>
+            <input
+              pInputText
+              type="text"
+              (input)="search.filterGlobal($any($event.target).value, 'contains')"
+              placeholder="Search here..."
+            />
+          </span>
+          <div class="btnGroup ml-1">
+            <p-button
+              styleClass="p-button-success"
+              icon="fa-solid fa-circle-plus"
+              (click)="addData()"
+            ></p-button>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr style="white-space: nowrap">
+          <th></th>
+          <th pSortableColumn="subject">Subject</th>
+          <th pSortableColumn="isActive">isActive</th>
+          <th pSortableColumn="status">Status</th>
+          <th pSortableColumn="showupto">ShowUpto</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-data>
+        <tr style="white-space: nowrap">
+          <td >
+              <button
+                pButton
+                pRipple
+                icon="fa-solid fa-pen-to-square"
+                class="p-button-rounded p-button-success p-button-text"
+                (click)="editData(data?.subject)"
+              ></button>
+              <button
+                pButton
+                pRipple
+                icon="fa-solid fa-trash"
+                class="p-button-rounded p-button-danger p-button-text"
+                (click)="deleteData(data?.subject)"
+              ></button>
+            </td>
+          <td>{{ data?.subject }}</td>
+          <td>{{ data?.isActive }}</td>
+          <td>{{ data?.status }}</td>
+          <td>{{ data?.showupto }}</td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="9" style="text-align: center">Sorry! No record found</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  
