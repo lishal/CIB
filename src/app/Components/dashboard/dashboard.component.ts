@@ -266,6 +266,7 @@ export class DashboardComponent implements OnInit {
             title: 'Popup Message',
           },
         ];
+        this.router.navigate(['/dashboard/company/companyDetail'])
         this.displayRightPanel = false;
         break;
 

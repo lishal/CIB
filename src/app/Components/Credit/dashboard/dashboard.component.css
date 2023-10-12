@@ -1,0 +1,22 @@
+.displayData{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 10px;
+    padding-top: 10px;
+}
+.data{
+    text-align: right;
+    color: white;
+}
+.dataGreen{
+    text-align: right;
+    color: darkgreen;
+}
+.dataLightBlue{
+    text-align: right;
+    color: black;
+}
+.dataYellow{
+    text-align: right;
+    color: chocolate;
+}
