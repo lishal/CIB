@@ -9,7 +9,7 @@ import { Router  } from '@angular/router';
 export class DashboardComponent implements OnInit {
   currentRoute:string='';
   topPanelLabel: string = '';
-  constructor(router: Router,private primengConfig: PrimeNGConfig) { 
+  constructor(private router: Router,private primengConfig: PrimeNGConfig) { 
     router.events.subscribe((url:any) =>{
       this.currentRoute=router.url;
 
@@ -200,15 +200,16 @@ export class DashboardComponent implements OnInit {
     this.currentLeftPanel = content;
     switch (this.currentLeftPanel) {
       case 'Setup':
+        this.primengConfig.ripple = true;
         // console.log(this.route.url);
         this.topPanelLabel = 'Setup and Configuration';
         this.items = [
           {
             label: 'Company',
             icon: 'fa-solid fa-building',
-            routerLink: 'company/companyDetail',
+            routerLink: 'company',
             title: 'Company',
-      
+            command: () => this.companyRedirect(),
           },
           {
             label: 'Employee',
@@ -221,24 +222,30 @@ export class DashboardComponent implements OnInit {
             icon: 'fa-solid fa-user-doctor',
             routerLink: 'valuator',
             title: 'Valuator',
+            command: () => this.valuatorRedirect(),
           },
           {
             label: 'Lookup List',
             icon: 'fa-solid fa-gear',
             routerLink: 'lookup',
             title: 'Lookup List',
+            command: () => this.lookupRedirect(),
+            
           },
           {
             label: 'Security',
             icon: 'fa-solid fa-key',
             routerLink: 'security',
             title: 'Security',
+            command: () => this.securityRedirect(),
+            
           },
           {
             label: 'AD Management',
             icon: 'fa-solid fa-gears',
             routerLink: 'admanagement',
             title: 'AD Management',
+            command: () => this.admanagementRedirect(),
           },
           {
             label: 'Email Template(s)',
@@ -259,6 +266,7 @@ export class DashboardComponent implements OnInit {
             title: 'Popup Message',
           },
         ];
+        this.displayRightPanel = false;
         break;
 
       case 'Credit':
@@ -440,8 +448,26 @@ export class DashboardComponent implements OnInit {
             ],
           },
         ];
+        this.router.navigate(['/dashboard/creditDashboard'])
+        this.displayRightPanel = false;
         break;
     }
+    
+  }
+  companyRedirect(){
+    this.router.navigate(['/dashboard/company/companyDetail'])
+  }
+  valuatorRedirect(){
+    this.router.navigate(['/dashboard/valuator/valuatorDetail'])
+  }
+  lookupRedirect(){
+    this.router.navigate(['/dashboard/lookup/lookup-dropdownHeader'])
+  }
+  securityRedirect(){
+    this.router.navigate(['/dashboard/security/permissionHeader'])
+  }
+  admanagementRedirect(){
+    this.router.navigate(['/dashboard/admanagement/adPool'])
   }
 
   ngOnInit() {
@@ -452,8 +478,8 @@ export class DashboardComponent implements OnInit {
         label: 'Company',
         icon: 'fa-solid fa-building',
         routerLink: 'company',
-
         title: 'Company',
+        command: () => this.companyRedirect(),
       },
       {
         label: 'Employee',
@@ -466,29 +492,29 @@ export class DashboardComponent implements OnInit {
         label: 'Valuator',
         icon: 'fa-solid fa-user-doctor',
         routerLink: 'valuator',
-
         title: 'Valuator',
+        command: () => this.valuatorRedirect(),
       },
       {
         label: 'Lookup List',
         icon: 'fa-solid fa-gear',
         routerLink: 'lookup',
-
+        command: () => this.lookupRedirect(),
         title: 'Lookup List',
       },
       {
         label: 'Security',
         icon: 'fa-solid fa-key',
         routerLink: 'security',
-
         title: 'Security',
+        command: () => this.securityRedirect(),
       },
       {
         label: 'AD Management',
         icon: 'fa-solid fa-gears',
         routerLink: 'admanagement',
-
         title: 'AD Management',
+        command: () => this.admanagementRedirect(),
       },
       {
         label: 'Email Template(s)',
