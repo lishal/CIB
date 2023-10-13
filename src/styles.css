@@ -58,7 +58,7 @@
   padding: 8px 12px;
   position: relative;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: 700;
   background-color: transparent;
   border: none;
   transition: 0.2s ease-in-out;
@@ -155,10 +155,11 @@
   span {
   padding: 0.75rem 1.55rem;
   width: 260px;
-  font-weight: 600;
+  font-weight: 700;
   display: inline-flex;
   justify-content: flex-start;
   transition: 0.2s ease-in-out;
+  line-height: 1;
 }
 
 .leftSidePanel
@@ -406,4 +407,80 @@
 }
 .p-datatable .p-sortable-column:not(.p-highlight):hover .p-sortable-column-icon {
   color: var(--white);
+}
+.p-tabmenu .p-tabmenu-nav .p-tabmenuitem:not(.p-highlight):not(.p-disabled):hover .p-menuitem-link {
+  background: var(--cyanOnHover);
+  color: var(--white);
+}
+
+/* Paginator Bottom */
+.p-paginator {
+  margin: auto;
+  width: fit-content;
+  margin-top: 20px;
+  border-radius: 6px !important;
+  background: var(--cyan);
+  border:1px solid var(--cyanOnHover);
+  color: var(--cyanOnHover);
+}
+.p-paginator .p-paginator-pages .p-paginator-page{
+  color: var(--white);
+}
+
+.p-paginator .p-paginator-first, .p-paginator .p-paginator-prev, .p-paginator .p-paginator-next, .p-paginator .p-paginator-last,.p-paginator .p-paginator-current{
+  color: var(--white);
+}
+.p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+  background: var(--cyanOnHover);
+  border-color: var(--cyanOnHover);
+  color: var(--white);
+}
+
+.p-paginator .p-paginator-pages .p-paginator-page:not(.p-highlight):hover {
+  background: var(--cyanOnHover);
+  border-color: var(--cyanOnHover);
+  color: var(--white);
+}
+.p-paginator .p-paginator-first:not(.p-disabled):not(.p-highlight):hover, .p-paginator .p-paginator-prev:not(.p-disabled):not(.p-highlight):hover, .p-paginator .p-paginator-next:not(.p-disabled):not(.p-highlight):hover, .p-paginator .p-paginator-last:not(.p-disabled):not(.p-highlight):hover {
+  background: var(--cyanOnHover);
+  border-color: var(--cyanOnHover);
+  color: var(--white);
+}
+.p-link:focus {
+  box-shadow: none;
+}
+.p-paginator .p-dropdown{
+  background-color: var(--cyan);
+  border: 1px solid var(--cyanOnHover);
+}
+.p-dropdown:not(.p-disabled).p-focus{
+  box-shadow: none;
+  border: none;
+  transition: none;
+}
+.p-dropdown .p-dropdown-label, .p-dropdown .p-dropdown-trigger{
+  color: var(--white);
+}
+.p-dropdown:not(.p-disabled):hover{
+  border:1px solid var(--cyanOnHover);
+  background-color: var(--cyanOnHover);
+  transition: none;
+}
+.p-dropdown-panel {
+  background: var(--cyan);
+  color: var(--white);
+  border:1px solid var(--cyanOnHover);
+  border-radius: 6px;
+}
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight{
+  background: var(--cyanOnHover);
+  color: var(--white);
+}
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item{
+  color: var(--white);
+}
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item:not(.p-highlight):not(.p-disabled):hover {
+  background: var(--cyanOnHover);
+  color: var(--white);
+  border:1px solid var(--cyanOnHover);
 }
