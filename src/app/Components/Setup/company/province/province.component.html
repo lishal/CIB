@@ -1,3 +1,13 @@
+<div class="btnGroup-topbar">
+  <p-button
+    icon="fa-solid fa-arrow-up-right-from-square"
+    (click)="exportExcel()"
+  ></p-button>
+  <p-button
+    icon="fa-solid fa-circle-plus"
+    (click)="addData()"
+  ></p-button>
+</div>
 <div class="card mt-3">
   <p-table
     #search
@@ -14,44 +24,43 @@
     [globalFilterFields]="['provinceCode', 'provinceName']"
     [tableStyle]="{ 'min-width': '80rem' }"
   >
-    <ng-template pTemplate="caption">
-      <div class="flex">
-        <span class="p-input-icon-left ml-auto">
-          <i class="fa-solid fa-search"></i>
-          <input
-            pInputText
-            type="text"
-            (input)="search.filterGlobal($any($event.target).value, 'contains')"
-            placeholder="Search here..."
-          />
-        </span>
-        <div class="btnGroup ml-1">
-          <p-button
-            icon="fa-solid fa-arrow-up-right-from-square"
-            styleClass="p-button-success mr-1"
-            (click)="exportExcel()"
-          ></p-button>
-          <p-button
-            icon="fa-solid fa-circle-plus"
-            (click)="addData()"
-          ></p-button>
-        </div>
-      </div>
-    </ng-template>
     <ng-template pTemplate="header">
       <p-toast></p-toast>
       <tr>
-        <th style="width: 17%"></th>
-        <th pSortableColumn="provinceCode" style="width: 10%">ProvinceCode</th>
-        <th pSortableColumn="provinceName" style="width: 20%">ProvinceName</th>
-        <th pSortableColumn="email" style="width: 10%">Email</th>
-        <th pSortableColumn="provinceAddress" style="width: 20%">ProvinceAddress</th>
-        <th pSortableColumn="phoneNo" style="width: 20%">PhoneNo</th>
-        <th pSortableColumn="isActive" style="width: 20%">IsActive</th>
+        <th ></th>
+        <th pSortableColumn="provinceCode">ProvinceCode  <p-sortIcon field="provinceCode"></p-sortIcon></th>
+        <th pSortableColumn="provinceName">ProvinceName  <p-sortIcon field="provinceName"></p-sortIcon></th>
+        <th pSortableColumn="email">Email  <p-sortIcon field="email"></p-sortIcon></th>
+        <th pSortableColumn="provinceAddress" >ProvinceAddress  <p-sortIcon field="provinceAddress"></p-sortIcon></th>
+        <th pSortableColumn="phoneNo">PhoneNo  <p-sortIcon field="phoneNo"></p-sortIcon></th>
+        <th pSortableColumn="isActive">IsActive  <p-sortIcon field="isActive"></p-sortIcon></th>
       </tr>
+      <!-- <tr>
+        <th>
+        </th>
+          <th>
+            <input pInputText type="text" (input)="search.filter($event.target?.value, 'provinceCode', 'contains')"  placeholder="Search by Province Code" class="w-full">
+
+          </th>
+          <th>
+              <input pInputText type="text" (input)="search.filter($event.target?.value, 'provinceName', 'contains')" placeholder="Search by Province Name" class="w-full">
+          </th>
+          <th>
+              <input pInputText type="text" (input)="search.filter($event.target?.value, 'email', 'contains')"  placeholder="Search by Email" class="w-full">
+          </th>
+          <th>
+              <input pInputText type="text" (input)="search.filter($event.target?.value, 'provinceAddress', 'contains')"  placeholder="Search by Province Address" class="w-full">
+          </th>
+          <th>
+              <input pInputText type="text" (input)="search.filter($event.target?.value, 'phoneNo', 'contains')"  placeholder="Search by Phone Number" class="w-full">
+          </th>
+          <th>
+              <input pInputText type="text" (input)="search.filter($event.target?.value, 'isActive', 'contains')" placeholder="Search by Status" class="w-full">
+          </th>
+      </tr> -->
     </ng-template>
     <ng-template pTemplate="body" let-data>
-      <tr>
+      <tr style="white-space: nowrap">
         <td>
           <button
             pButton
