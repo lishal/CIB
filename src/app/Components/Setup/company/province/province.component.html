@@ -1,8 +1,12 @@
+<p-toast></p-toast>
 <div class="btnGroup-topbar">
-  <p-button
-    icon="fa-solid fa-arrow-up-right-from-square"
-    (click)="exportExcel()"
-  ></p-button>
+    <p-overlayPanel #op [styleClass]="'export'">
+      <ng-template pTemplate="content" >
+        <p class="exportButton" (click)="exportExcel(op)">Pdf</p>
+        <p class="exportButton" (click)="exportExcel(op)">Excel</p>
+      </ng-template>
+  </p-overlayPanel>
+  <p-button (click)="op.toggle($event)" icon="fa-solid fa-arrow-up-right-from-square"></p-button>
   <p-button
     icon="fa-solid fa-circle-plus"
     (click)="addData()"

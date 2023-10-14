@@ -7,6 +7,7 @@ import { AddProvinceComponent } from './add/add.component';
 import { MessageService } from 'primeng/api';
 import * as FileSaver from 'file-saver';
 import { DeleteProvinceComponent } from './delete/delete.component';
+import { OverlayPanel } from 'primeng/overlaypanel';
 
 @Component({
   selector: 'app-province',
@@ -177,7 +178,7 @@ export class ProvinceComponent implements OnInit, OnDestroy {
     });
   }
 
-  exportExcel() {
+  exportExcel(op: OverlayPanel) {
     import('xlsx').then((xlsx) => {
       const worksheet = xlsx.utils.json_to_sheet(this.data);
       const workbook = { Sheets: { data: worksheet }, SheetNames: ['data'] };
@@ -187,6 +188,8 @@ export class ProvinceComponent implements OnInit, OnDestroy {
       });
       this.saveAsExcelFile(excelBuffer, 'province');
     });
+    this.messageService.add({ severity: 'success', summary: 'Excel file downloaded successfully' });
+    op.hide();
   }
   saveAsExcelFile(buffer: any, fileName: string): void {
     let EXCEL_TYPE =
@@ -202,6 +205,7 @@ export class ProvinceComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+   
     // this.isLoading = true;
     // this.api.fetchData().subscribe(
     //   (response) => {

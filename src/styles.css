@@ -80,18 +80,19 @@
   .p-panelmenu
   .p-panelmenu-header
   .p-menuitem-link-active {
-  color: var(--dark) !important;
+    background-color: var(--cyanOnHover);
+  color: var(--white) !important;
 }
 
 .leftSidePanel .leftPanelContainer .p-panelmenu .p-panelmenu-header > a:hover {
   padding: 8px 14px;
-  background-color: var(--topnavbarHover) !important;
+  background-color: var(--cyanOnHover) !important;
   color: var(--white) !important;
   transition: 0.2s ease-in-out;
 }
 .leftSidePanel .leftPanelContainer .p-panelmenu .p-panelmenu-header > a span {
   margin-left: 12px;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .leftSidePanel
@@ -143,7 +144,8 @@
   .p-panelmenu-content
   .p-element
   .p-menuitem-link-active {
-  color: var(--dark) !important;
+    background-color: var(--cyanOnHover);
+  color: var(--white) !important;
 }
 .leftSidePanel
   .leftPanelContainer
@@ -158,7 +160,7 @@
   display: inline-flex;
   justify-content: flex-start;
   transition: 0.2s ease-in-out;
-  line-height: 1;
+  font-size: 14px;
 }
 
 .leftSidePanel
@@ -176,7 +178,7 @@
   .p-element
   .p-menuitem-link:hover {
   padding: 0px 2px;
-  background-color: var(--topnavbarHover) !important;
+  background-color: var(--cyanOnHover) !important;
   color: var(--white) !important;
   transition: padding 0.2s ease-in-out;
   /* color: var(--white) !important; */
@@ -188,18 +190,25 @@
 .rightSidePanel .p-sidebar {
   width: 15rem !important;
   overflow: hidden;
-  height: 90.5%;
+  height: 92%;
   top: 60px !important;
+  background-color: var(--cyan);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .rightSidePanel .p-sidebar-header span {
   width: 175px;
-  font-size: 18px;
+  font-size: 14px;
   text-transform: uppercase;
   text-align: center;
   cursor: default;
+  font-weight: 700;
+  color: var(--white);
 }
+.rightSidePanel .p-sidebar .p-sidebar-header .p-sidebar-close, .p-sidebar .p-sidebar-header .p-sidebar-icon {
+  color: var(--white);
+}
+
 
 /* .company-heading .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link {
   color: var(--lightDark) !important;
@@ -326,6 +335,7 @@
   border-radius: 6px;
   color: var(--dark);
   border: none;
+  padding: 0.7rem 0.5rem;
   
 }
 .p-tabmenu .p-tabmenu-nav .p-tabmenuitem.p-highlight .p-menuitem-link {
@@ -372,6 +382,24 @@
   background: var(--cyanOnHover);
   color: #ffffff;
   border-color: none;
+}
+.export {
+  background-color: var(--cyan) !important;
+  color: var(--white);
+  margin-top: 1px !important;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.export .p-overlaypanel-content {
+  padding: 0.5rem;
+}
+.export .exportButton{
+  display: flex;
+  width: 100%;
+  padding: 0.5rem;
+}
+.export .exportButton:hover{
+  background-color: var(--cyanOnHover) !important;
 }
 
 /* Table */
@@ -501,4 +529,17 @@
 .functionButton {
   width: 1.6rem !important;
   height: 2rem !important;
+}
+
+/* Scroolbar for table */
+.p-datatable>.p-datatable-wrapper::-webkit-scrollbar {
+  height: 5px;
+}
+.p-datatable>.p-datatable-wrapper::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px var(--cyan);
+  border-radius: 6px;
+}
+.p-datatable>.p-datatable-wrapper::-webkit-scrollbar-thumb{
+  background-color: var(--cyanOnHover);
+  border-radius: 6px;
 }

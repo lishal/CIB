@@ -19,7 +19,7 @@
   text-align: center;
   line-height: 60px;
   letter-spacing: 2px;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 700;
   transition: background-color 0.2s;
 }
@@ -29,7 +29,7 @@
   width: 60px;
   height: 60px;
   line-height: 60px;
-  font-size: 30px;
+  font-size: 24px;
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -38,7 +38,7 @@
   transition: background-color 0.2s;
 }
 .topnavbar .sideBar_button:hover {
-  background-color: var(--topnavbarHover);
+  background-color: var(--cyanOnHover);
 }
 .topnavbar .rightSide_button {
   display: inline-block;
@@ -47,7 +47,7 @@
   width: 60px;
   height: 60px;
   line-height: 60px;
-  font-size: 30px;
+  font-size: 24px;
   color: var(--white);
   border: none;
   background-color: transparent;
@@ -56,7 +56,7 @@
   transition: background-color 0.2s;
 }
 .topnavbar .rightSide_button:hover {
-  background-color: var(--topnavbarHover);
+  background-color: var(--cyanOnHover);
 }
 .topnavbar .profile {
   position: absolute;
@@ -73,8 +73,8 @@
 .topnavbar .profile .userBtn:hover,
 .notification .notificationBtn:hover {
   cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.2) !important;
-  color: var(--dark) !important;
+  background-color: var(--cyanOnHover) !important;
+  color: var(--white) !important;
   transition: all 0.2s ease-in-out;
 }
 .topnavbar .profile .userBtn i {
@@ -183,8 +183,8 @@
 }
 .topnavbar .search_icon:hover {
   cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.2) !important;
-  color: var(--dark) !important;
+  background-color: var(--cyanOnHover) !important;
+  color: var(--white) !important;
   transition: all 0.2s ease-in-out;
 }
 
@@ -229,17 +229,17 @@
 .rightSidePanel .rightSide_panel-content .rightpanel_content {
   display: flex;
   flex-direction: row;
-  padding: 8px 12px;
+  padding: 8px 0px;
   cursor: pointer;
   border-radius: 10px;
-  color: var(--lightDark);
+  color: var(--white);
   transition: 0.2s ease-in-out;
 }
 
 .rightSidePanel .rightSide_panel-content .rightpanel_content:hover {
-  background-color: var(--sidePanelHover);
-  color: var(--moderateDark);
-  padding: 8px 10px;
+  background-color: var(--cyanOnHover);
+  color: var(--white);
+  padding: 8px 2px;
   transition: 0.2s ease-in-out;
 }
 
@@ -257,6 +257,7 @@
   align-items: center;
   padding: 0px 6px;
   text-transform: uppercase;
+  color: var(--white);
 }
 
 .mainContainer {

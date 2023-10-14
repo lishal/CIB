@@ -68,6 +68,7 @@ import { PermissionByRoleComponent } from './Components/Setup/security/permissio
 import { PermissionByEmployeeComponent } from './Components/Setup/security/permission-by-employee/permission-by-employee.component';
 import { AdPoolComponent } from './Components/Setup/ad-management/ad-pool/ad-pool.component';
 import { MapUserComponent } from './Components/Setup/ad-management/map-user/map-user.component';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
 
 @NgModule({
   declarations: [
@@ -141,7 +142,8 @@ import { MapUserComponent } from './Components/Setup/ad-management/map-user/map-
     HttpClientModule,
     DynamicDialogModule,
     ToastModule,
-    DropdownModule
+    DropdownModule,
+    OverlayPanelModule
   ],
   providers: [],
   bootstrap: [AppComponent],
