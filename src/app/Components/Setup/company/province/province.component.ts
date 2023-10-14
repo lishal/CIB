@@ -32,6 +32,38 @@ export class ProvinceComponent implements OnInit, OnDestroy {
       provinceManagerEmailID: 'lbhari@gmail.com',
       isActive: true,
     },
+    {
+      provinceCode: 'bagmati',
+      provinceName: 'bagmati',
+      provinceAddress: 'bagmati',
+      phoneNo: '9867232598',
+      provinceManagerEmailID: 'lbhari@gmail.com',
+      isActive: true,
+    },
+    {
+      provinceCode: 'bagmati',
+      provinceName: 'bagmati',
+      provinceAddress: 'bagmati',
+      phoneNo: '9867232598',
+      provinceManagerEmailID: 'lbhari@gmail.com',
+      isActive: true,
+    },
+    {
+      provinceCode: 'bagmati',
+      provinceName: 'bagmati',
+      provinceAddress: 'bagmati',
+      phoneNo: '9867232598',
+      provinceManagerEmailID: 'lbhari@gmail.com',
+      isActive: true,
+    },
+    {
+      provinceCode: 'bagmati',
+      provinceName: 'bagmati',
+      provinceAddress: 'bagmati',
+      phoneNo: '9867232598',
+      provinceManagerEmailID: 'lbhari@gmail.com',
+      isActive: true,
+    },
   ];
   isLoading: boolean = false;
   ref: DynamicDialogRef | undefined;

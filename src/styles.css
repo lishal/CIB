@@ -27,8 +27,7 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family:Arial, sans-serif;
 }
 .p-password {
   width: 100% !important;
@@ -379,6 +378,8 @@
 .p-datatable .p-datatable-thead > tr > th {
   background-color: var(--cyan);
   color:var(--white);
+  text-transform: uppercase;
+  padding:10px 5px;
 }
 .p-datatable .p-sortable-column:not(.p-highlight):hover {
   background: var(--cyanOnHover);
@@ -412,6 +413,17 @@
   background: var(--cyanOnHover);
   color: var(--white);
 }
+.p-datatable .p-datatable-tbody > tr > td {
+  padding: 0.4rem 1rem;
+}
+
+/* Filter */
+ .filterSection th {
+  background-color: var(--white) !important;
+  color: var(--dark);
+  /* text-transform: uppercase; */
+  padding: 10px 5px;
+} 
 
 /* Paginator Bottom */
 .p-paginator {
@@ -483,4 +495,10 @@
   background: var(--cyanOnHover);
   color: var(--white);
   border:1px solid var(--cyanOnHover);
+}
+
+/* Table Button */
+.functionButton {
+  width: 1.6rem !important;
+  height: 2rem !important;
 }

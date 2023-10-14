@@ -30,34 +30,34 @@
         <th ></th>
         <th pSortableColumn="provinceCode">ProvinceCode  <p-sortIcon field="provinceCode"></p-sortIcon></th>
         <th pSortableColumn="provinceName">ProvinceName  <p-sortIcon field="provinceName"></p-sortIcon></th>
-        <th pSortableColumn="email">Email  <p-sortIcon field="email"></p-sortIcon></th>
+        <th pSortableColumn="provinceManagerEmailID">Email  <p-sortIcon field="provinceManagerEmailID"></p-sortIcon></th>
         <th pSortableColumn="provinceAddress" >ProvinceAddress  <p-sortIcon field="provinceAddress"></p-sortIcon></th>
         <th pSortableColumn="phoneNo">PhoneNo  <p-sortIcon field="phoneNo"></p-sortIcon></th>
         <th pSortableColumn="isActive">IsActive  <p-sortIcon field="isActive"></p-sortIcon></th>
       </tr>
-      <!-- <tr>
+       <tr class="filterSection">
         <th>
         </th>
-          <th>
-            <input pInputText type="text" (input)="search.filter($event.target?.value, 'provinceCode', 'contains')"  placeholder="Search by Province Code" class="w-full">
-
-          </th>
-          <th>
-              <input pInputText type="text" (input)="search.filter($event.target?.value, 'provinceName', 'contains')" placeholder="Search by Province Name" class="w-full">
-          </th>
-          <th>
-              <input pInputText type="text" (input)="search.filter($event.target?.value, 'email', 'contains')"  placeholder="Search by Email" class="w-full">
-          </th>
-          <th>
-              <input pInputText type="text" (input)="search.filter($event.target?.value, 'provinceAddress', 'contains')"  placeholder="Search by Province Address" class="w-full">
-          </th>
-          <th>
-              <input pInputText type="text" (input)="search.filter($event.target?.value, 'phoneNo', 'contains')"  placeholder="Search by Phone Number" class="w-full">
-          </th>
-          <th>
-              <input pInputText type="text" (input)="search.filter($event.target?.value, 'isActive', 'contains')" placeholder="Search by Status" class="w-full">
-          </th>
-      </tr> -->
+        <th>
+          <p-columnFilter type="text" field="provinceCode"></p-columnFilter>
+      </th>
+        <th>
+          <p-columnFilter type="text" field="provinceName"></p-columnFilter>
+      </th>
+        <th>
+          <p-columnFilter type="text" field="provinceManagerEmailID"></p-columnFilter>
+      </th>
+        <th>
+          <p-columnFilter type="text" field="provinceAddress"></p-columnFilter>
+      </th>
+        <th>
+          <p-columnFilter type="text" field="phoneNo"></p-columnFilter>
+      </th>
+        <th>
+          <p-columnFilter type="text" field="isActive"></p-columnFilter>
+      </th>
+          
+      </tr> 
     </ng-template>
     <ng-template pTemplate="body" let-data>
       <tr style="white-space: nowrap">
@@ -66,21 +66,21 @@
             pButton
             pRipple
             icon="fa-solid fa-file"
-            class="p-button-rounded p-button-secondary p-button-text mr-1"
+            class="functionButton p-button-rounded p-button-secondary p-button-text mr-1"
             (click)="showData(data.provinceCode)"
           ></button>
           <button
             pButton
             pRipple
             icon="fa-solid fa-pen-to-square"
-            class="p-button-rounded p-button-success p-button-text mr-1"
+            class="functionButton p-button-rounded p-button-success p-button-text mr-1"
             (click)="editData(data.provinceCode)"
           ></button>
           <button
             pButton
             pRipple
             icon="fa-solid fa-trash"
-            class="p-button-rounded p-button-danger p-button-text"
+            class="functionButton p-button-rounded p-button-danger p-button-text"
             (click)="deleteData(data.provinceCode)"
           ></button>
         </td>
