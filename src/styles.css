@@ -106,7 +106,7 @@
 
 .leftSidePanel .leftPanelContainer .p-panelmenu .p-panelmenu-icon {
   position: absolute;
-  right: 1px;
+  right: -2px;
   top: 9px;
   transform: rotate(90deg);
 }
@@ -154,15 +154,42 @@
   .p-element
   .p-menuitem-link
   span {
-  padding: 0.75rem 1.55rem;
-  width: 260px;
+  padding: 0.75rem 1.5rem;
+  max-width: 260px;
   font-weight: 700;
   display: inline-flex;
   justify-content: flex-start;
   transition: 0.2s ease-in-out;
   font-size: 14px;
-}
+  color: var(--white);
 
+}
+.leftSidePanel
+  .leftPanelContainer
+  .p-panelmenu
+  .p-panelmenu-content
+  .p-element
+  .p-menuitem-link:hover>span {
+    color: var(--white) !important;
+  }
+.leftSidePanel
+  .leftPanelContainer
+  .p-panelmenu
+  .p-panelmenu-content
+  .p-element
+  .p-menuitem-link .p-menuitem-icon{
+    width: 59px;
+    margin-right: 5px;
+  }
+.leftSidePanel
+  .leftPanelContainer
+  .p-panelmenu
+  .p-panelmenu-content
+  .p-element
+  .p-menuitem-link .p-menuitem-text{
+    width: 100%;
+    padding-left: 0px;
+  }
 .leftSidePanel
   .leftPanelContainer
   .p-panelmenu

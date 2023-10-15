@@ -277,7 +277,6 @@ export class DashboardComponent implements OnInit {
             label: 'Dashboard',
             icon: 'fa-solid fa-gauge',
             routerLink: 'creditDashboard',
-
             title: 'Dashboard',
           },
           {
@@ -336,49 +335,49 @@ export class DashboardComponent implements OnInit {
             items: [
               {
                 label: 'Clean Duplicate Entry',
-                // icon: 'fa-solid fa-database',
+                icon: 'fa-solid fa-database',
                 routerLink: 'cleanDuplicateEntry',
 
                 title: 'Clean Duplicate Entry',
               },
               {
                 label: 'Import Data From Other',
-                // icon: 'fa-solid fa-database',
+                icon: 'fa-solid fa-database',
                 routerLink: 'importDataFromOther',
 
                 title: 'Import Data From Other',
               },
               {
                 label: 'Import/Export CBS Data',
-                // icon: 'fa-solid fa-database',
+                icon: 'fa-solid fa-database',
                 routerLink: 'importExportCbsData',
 
                 title: 'Import/Export CBS Data',
               },
               {
                 label: 'Import via API',
-                // icon: 'fa-solid fa-database',
+                icon: 'fa-solid fa-database',
                 routerLink: 'importViaApi',
 
                 title: 'Import via API',
               },
               {
                 label: 'After Eligibility Data',
-                // icon: 'fa-solid fa-database',
+                icon: 'fa-solid fa-database',
                 routerLink: 'afterEligibilityData',
 
                 title: 'After Eligibility Data',
               },
               {
                 label: 'Internal Screening',
-                // icon: 'fa-solid fa-database',
+                icon: 'fa-solid fa-database',
                 routerLink: 'internalScreening',
 
                 title: 'Internal Screening',
               },
               {
                 label: 'Handle Matching',
-                // icon: 'fa-solid fa-database',
+                icon: 'fa-solid fa-database',
                 routerLink: 'handleMatching',
 
                 title: 'Handle Matching'
@@ -392,56 +391,56 @@ export class DashboardComponent implements OnInit {
             items: [
               {
                 label: 'Borrower/Guarantor Search',
-                // icon: 'fa-solid fa-bars',
+                icon: 'fa-solid fa-bars',
                 routerLink: 'guarantorSearch',
 
                 title: 'Borrower/Guarantor Search',
               },
               {
                 label: 'Valuator By Branch',
-                // icon: 'fa-solid fa-bars',
+                icon: 'fa-solid fa-bars',
                 routerLink: 'valuatorByBranch',
 
                 title: 'Valuator By Branch',
               },
               {
                 label: 'Performance Reports',
-                // icon: 'fa-solid fa-bars',
+                icon: 'fa-solid fa-bars',
                 routerLink: 'performanceReport',
 
                 title: 'Performance Reports',
               },
               {
                 label: 'Segment Report',
-                // icon: 'fa-solid fa-bars',
+                icon: 'fa-solid fa-bars',
                 routerLink: 'segmentReport',
 
                 title: 'Segment Report',
               },
               {
                 label: 'Non Compliance Reports',
-                // icon: 'fa-solid fa-bars',
+                icon: 'fa-solid fa-bars',
                 routerLink: 'nonComplianceReports',
 
                 title: 'Non Compliance Reports',
               },
               {
                 label: 'Valuator Reports',
-                // icon: 'fa-solid fa-bars',
+                icon: 'fa-solid fa-bars',
                 routerLink: 'valuatorReports',
 
                 title: 'Valuator Reports',
               },
               {
                 label: 'Other Reports',
-                // icon: 'fa-solid fa-bars',
+                icon: 'fa-solid fa-bars',
                 routerLink: 'otherReports',
 
                 title: 'Other Reports',
               },
               {
                 label: 'CICL Report',
-                // icon: 'fa-solid fa-bars',
+                icon: 'fa-solid fa-bars',
                 routerLink: 'ciclReport',
 
                 title: 'CICL Report',

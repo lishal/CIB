@@ -223,7 +223,7 @@
 }
 
 .sidepanelCloseOuter {
-  width: 67px;
+  width: 62px;
   transition: width 0.2s ease-in-out;
 }
 .sidepanelCloseOuter:hover{
