@@ -106,8 +106,8 @@
 
 .leftSidePanel .leftPanelContainer .p-panelmenu .p-panelmenu-icon {
   position: absolute;
-  right: 0;
-  top: 15px;
+  right: 1px;
+  top: 9px;
   transform: rotate(90deg);
 }
 .leftSidePanel .leftPanelContainer .p-panelmenu .p-panelmenu-content {

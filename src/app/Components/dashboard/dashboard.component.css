@@ -204,10 +204,10 @@
   padding-bottom: 4rem;
   white-space: nowrap;
 }
-.leftSidePanel .sidepanelCloseInner {
+/* .leftSidePanel .sidepanelCloseInner {
   display: none;
   transition: all 0.2s ease-in-out;
-}
+} */
 
 .topnavbar .toppanel_heading {
   position: absolute;
@@ -223,7 +223,11 @@
 }
 
 .sidepanelCloseOuter {
-  width: 0;
+  width: 67px;
+  transition: width 0.2s ease-in-out;
+}
+.sidepanelCloseOuter:hover{
+  width: 290px;
   transition: width 0.2s ease-in-out;
 }
 .rightSidePanel .rightSide_panel-content .rightpanel_content {
@@ -272,6 +276,6 @@
 }
 .sidePanelClosedContainer {
   position: absolute;
-  left: 0;
+  left: 70px;
   transition: all 0.2s ease-out;
 }
