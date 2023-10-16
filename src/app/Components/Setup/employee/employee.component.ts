@@ -172,8 +172,10 @@ export class EmployeeComponent implements OnInit {
     //   passwordExpiryPeriod: '10',
     // }]
 
+    // RouteConfigLoadEnd
+    // console.log(this.api)
 
-
+    // console.log(this.api);
     // this.isLoading = true;
     // this.api.fetchData().subscribe(
     //   (response) => {

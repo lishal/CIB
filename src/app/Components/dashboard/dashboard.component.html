@@ -1,13 +1,14 @@
 <div class="topnavbar flex">
-  <div class="brandname">
-    <span>CADUTILS</span>
-  </div>
+  <div [class.sidepanelCloseOuter]="isSidebarClosed">
   <button class="sideBar_button" (click)="toggleSidebar()">
     <i class="fa-solid fa-bars"></i>
   </button>
+  </div>
+  <div [class.sidepanelCloseOuter]="isSidebarClosed">
   <div class="toppanel_heading">
     <span>{{ topPanelLabel }}</span>
   </div>
+</div>
   <div class="profile">
     <div
       pRipple
@@ -72,12 +73,23 @@
   </button>
 </div>
 <div class="leftSidePanel" [class.sidepanelCloseOuter]="isSidebarClosed">
-  <p-panelMenu
-    class="leftPanelContainer"
-    [model]="items"
-    [class.sidepanelCloseInner]="isSidebarClosed"
-    [multiple]="false"
-  ></p-panelMenu>
+  <div *ngIf="!isSidebarClosed; else brandIcon">
+    <div class="brandname">
+      <span>CADUTILS</span>
+    </div>
+  </div>
+<ng-template #brandIcon>
+  <div class="brandIcon">
+    <i class="fa-solid fa-c"></i>
+  </div>
+</ng-template>
+ 
+    <p-panelMenu
+      class="leftPanelContainer"
+      [model]="items"
+      [class.sidepanelCloseInner]="isSidebarClosed"
+      [multiple]="false"
+    ></p-panelMenu>
 </div>
 <div class="rightSidePanel">
   <p-sidebar [(visible)]="displayRightPanel" position="right">
