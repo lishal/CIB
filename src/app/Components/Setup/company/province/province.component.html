@@ -27,6 +27,7 @@
     [filterDelay]="0"
     [globalFilterFields]="['provinceCode', 'provinceName']"
     [tableStyle]="{ 'min-width': '80rem' }"
+    styleClass ="p-datatable-gridlines"
   >
     <ng-template pTemplate="header">
       <p-toast></p-toast>
@@ -58,7 +59,7 @@
           <p-columnFilter type="text" field="phoneNo" [showClearButton]="false"></p-columnFilter>
       </th>
         <th>
-          <p-columnFilter type="text" field="isActive" ></p-columnFilter>
+          <p-columnFilter type="text" field="isActive" [showClearButton]="false" ></p-columnFilter>
       </th>
           
       </tr> 

@@ -444,7 +444,8 @@
   background-color: var(--cyan);
   color:var(--white);
   text-transform: uppercase;
-  padding:10px 5px;
+  padding:12px 6px;
+  text-align: center;
 }
 .p-datatable .p-sortable-column:not(.p-highlight):hover {
   background: var(--cyanOnHover);
@@ -479,7 +480,7 @@
   color: var(--white);
 }
 .p-datatable .p-datatable-tbody > tr > td {
-  padding: 0.4rem 1rem;
+  padding: 5px 10px
 }
 
 /* Filter */
@@ -487,8 +488,11 @@
   background-color: var(--white) !important;
   color: var(--dark);
   /* text-transform: uppercase; */
-  padding: 0.4rem 1rem !important;
+  padding: 5px 10px!important;
 } 
+.filterSection .p-inputtext{
+  padding: 5px 6px;
+}
 
 /* Paginator Bottom */
 .p-paginator {
@@ -499,6 +503,8 @@
   background: var(--cyan);
   border:1px solid var(--cyanOnHover);
   color: var(--cyanOnHover);
+  padding: 2px;
+  /* height: 2rem; */
 }
 .p-paginator .p-paginator-pages .p-paginator-page{
   color: var(--white);
