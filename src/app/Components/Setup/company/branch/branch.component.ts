@@ -6,7 +6,7 @@ import { ViewBranchComponent } from './view/view.component';
 import { DeleteBranchComponent } from './delete/delete.component';
 import { AddBranchComponent } from './add/add.component';
 import { MessageService } from 'primeng/api';
-
+import { OverlayPanel } from 'primeng/overlaypanel';
 import * as FileSaver from 'file-saver';
 
 @Component({
@@ -168,7 +168,7 @@ export class BranchComponent {
     // );
   }
 
-  exportExcel() {
+  exportExcel(op: OverlayPanel) {
     import('xlsx').then((xlsx) => {
       const worksheet = xlsx.utils.json_to_sheet(this.data);
       const workbook = { Sheets: { data: worksheet }, SheetNames: ['data'] };
@@ -178,6 +178,8 @@ export class BranchComponent {
       });
       this.saveAsExcelFile(excelBuffer, 'branch');
     });
+    this.messageService.add({ severity: 'success', summary: 'Excel file downloaded successfully' });
+    op.hide();
   }
   saveAsExcelFile(buffer: any, fileName: string): void {
     let EXCEL_TYPE =

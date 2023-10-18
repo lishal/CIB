@@ -25,12 +25,10 @@
     [rowsPerPageOptions]="[5, 10, 25, 50]"
     [paginator]="true"
     [filterDelay]="0"
-    [globalFilterFields]="['provinceCode', 'provinceName']"
     [tableStyle]="{ 'min-width': '80rem' }"
     styleClass ="p-datatable-gridlines"
   >
     <ng-template pTemplate="header">
-      <p-toast></p-toast>
       <tr>
         <th ></th>
         <th pSortableColumn="provinceCode">ProvinceCode  <p-sortIcon field="provinceCode"></p-sortIcon></th>

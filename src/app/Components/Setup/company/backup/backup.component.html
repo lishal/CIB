@@ -13,30 +13,34 @@
       [paginator]="true"
       [filterDelay]="0"
       [tableStyle]="{ 'min-width': '70rem' }"
+      styleClass ="p-datatable-gridlines"
     >
-      <ng-template pTemplate="caption">
-        <div class="flex">
-          <span class="p-input-icon-left ml-auto">
-            <i class="fa-solid fa-search"></i>
-            <input
-              pInputText
-              type="text"
-              (input)="
-              search.filterGlobal($any($event.target).value, 'contains')
-              "
-              placeholder="Search here..."
-            />
-          </span>
-        </div>
-      </ng-template>
       <ng-template pTemplate="header">
         <tr>
-          <th style="width: 10%">Ref</th>
-          <th style="width: 20%">Name</th>
-          <th style="width: 10%">Type</th>
-          <th style="width: 20%">Backup_on</th>
-          <th style="width: 20%">Backup_By</th>
-        </tr>      </ng-template>
+          <th pSortableColumn="ref">Ref<p-sortIcon field="ref"></p-sortIcon></th>
+          <th pSortableColumn="name">Name<p-sortIcon field="name"></p-sortIcon></th>
+          <th pSortableColumn="type">Type<p-sortIcon field="type"></p-sortIcon></th>
+          <th pSortableColumn="backup_on">Backup_on<p-sortIcon field="backup_on"></p-sortIcon></th>
+          <th pSortableColumn="backup_by">Backup_By<p-sortIcon field="backup_by"></p-sortIcon></th>
+        </tr>    
+        <tr class="filterSection">
+          <th>
+            <p-columnFilter type="text" field="ref"[showClearButton]="false"></p-columnFilter>
+        </th>
+          <th>
+            <p-columnFilter type="text" field="name" [showClearButton]="false"></p-columnFilter>
+        </th>
+          <th>
+            <p-columnFilter type="text" field="type" [showClearButton]="false"></p-columnFilter>
+        </th>
+          <th>
+            <p-columnFilter type="text" field="backup_on" [showClearButton]="false"></p-columnFilter>
+        </th>
+          <th>
+            <p-columnFilter type="text" field="backup_by" [showClearButton]="false"></p-columnFilter>
+          </th>            
+        </tr>   
+      </ng-template>
       <ng-template pTemplate="body" let-data> 
         <tr>
           <!-- <td>
@@ -74,7 +78,7 @@
       </ng-template>
       <ng-template pTemplate="emptymessage">
           <tr>
-              <td colspan="9" style="text-align: center;">Sorry! No record found </td>
+              <td colspan="6" style="text-align: center;">Sorry! No record found </td>
           </tr>
       </ng-template>
     </p-table>

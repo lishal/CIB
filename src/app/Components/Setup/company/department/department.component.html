@@ -1,4 +1,10 @@
 <p-toast></p-toast>
+<div class="btnGroup-topbar">
+<p-button
+  icon="fa-solid fa-circle-plus"
+  (click)="addData()"
+></p-button>
+</div>
 <div class="card mt-3">
     <p-table
       #search
@@ -12,62 +18,61 @@
       [rowsPerPageOptions]="[5, 10, 25, 50]"
       [paginator]="true"
       [filterDelay]="0"
-      [globalFilterFields]="['id', 'account_number']"
       [tableStyle]="{ 'min-width': '80rem' }"
+      styleClass ="p-datatable-gridlines"
     >
-      <ng-template pTemplate="caption">
-        <div class="flex">
-          <span class="p-input-icon-left ml-auto">
-            <i class="fa-solid fa-search"></i>
-            <input
-              pInputText
-              type="text"
-              (input)="
-              search.filterGlobal($any($event.target).value, 'contains')
-              "
-              placeholder="Search here..."
-            />
-          </span>
-          <div class="btnGroup ml-1">
-            <p-button
-              icon="fa-solid fa-circle-plus"
-              (click)="addData()"
-            ></p-button>
-          </div>
-        </div>
-      </ng-template>
       <ng-template pTemplate="header">
-        <tr>
-          <th style="width: 15%"></th>
-          <th pSortableColumn="id" style="width: 10%">DepartmentName</th>
-          <th pSortableColumn="uid" style="width: 20%">PhoneNo</th>
-          <th pSortableColumn="account_number" style="width: 10%">FaxNo</th>
-          <th pSortableColumn="iban" style="width: 20%">EmailID</th>
-          <th pSortableColumn="swift_bic" style="width: 20%">isActive</th>
+        <tr style="white-space: nowrap">
+          <th></th>
+          <th pSortableColumn="deptName">DepartmentName  <p-sortIcon field="deptName"></p-sortIcon></th>
+          <th pSortableColumn="phoneNo" >PhoneNo  <p-sortIcon field="phoneNo"></p-sortIcon></th>
+          <th pSortableColumn="faxno" >FaxNo  <p-sortIcon field="faxno"></p-sortIcon></th>
+          <th pSortableColumn="depemail" >EmailID  <p-sortIcon field="depemail"></p-sortIcon></th>
+          <th pSortableColumn="isActive">isActive <p-sortIcon field="isActive"></p-sortIcon></th>
         </tr>
+        <tr class="filterSection">
+          <th>
+          </th>
+          <th>
+            <p-columnFilter type="text" field="deptName"[showClearButton]="false"></p-columnFilter>
+        </th>
+          <th>
+            <p-columnFilter type="text" field="phoneNo" [showClearButton]="false"></p-columnFilter>
+        </th>
+          <th>
+            <p-columnFilter type="text" field="faxno" [showClearButton]="false"></p-columnFilter>
+        </th>
+          <th>
+            <p-columnFilter type="text" field="depemail" [showClearButton]="false"></p-columnFilter>
+        </th>
+          <th>
+            <p-columnFilter type="text" field="isActive" [showClearButton]="false"></p-columnFilter>
+        </th>
+            
+        </tr> 
       </ng-template>
       <ng-template pTemplate="body" let-data> 
-        <tr>
+        <tr style="white-space: nowrap">
           <td>
             <button
               pButton
               pRipple
               icon="fa-solid fa-file"
-              class="p-button-rounded p-button-secondary p-button-text mr-1"
+              class="functionButton p-button-rounded p-button-secondary p-button-text mr-1"
               (click)="showData(data.deptName)"
             ></button>
             <button
               pButton
               pRipple
               icon="fa-solid fa-pen-to-square"
-              class="p-button-rounded p-button-success p-button-text mr-1"
+              class="functionButton p-button-rounded p-button-success p-button-text mr-1"
               (click)="editData(data.deptName)"
             ></button>
             <button
               pButton
               pRipple
               icon="fa-solid fa-trash"
-              class="p-button-rounded p-button-danger p-button-text"
+              class="functionButton p-button-rounded p-button-danger p-button-text"
               (click)="deleteData(data.deptName)"
             ></button>
           </td>

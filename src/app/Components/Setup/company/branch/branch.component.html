@@ -1,5 +1,18 @@
+<p-toast></p-toast>
+<div class="btnGroup-topbar">
+    <p-overlayPanel #op [styleClass]="'export'">
+      <ng-template pTemplate="content" >
+        <p class="exportButton" (click)="exportExcel(op)">Pdf</p>
+        <p class="exportButton" (click)="exportExcel(op)">Excel</p>
+      </ng-template>
+  </p-overlayPanel>
+  <p-button (click)="op.toggle($event)" icon="fa-solid fa-arrow-up-right-from-square"></p-button>
+  <p-button
+    icon="fa-solid fa-circle-plus"
+    (click)="addData()"
+  ></p-button>
+</div>
 <div class="card mt-3">
-  <p-toast></p-toast>
   <p-table
     #search
     [value]="data"
@@ -12,74 +25,78 @@
     [rowsPerPageOptions]="[5, 10, 25, 50]"
     [paginator]="true"
     [filterDelay]="0"
-    [globalFilterFields]="['dataProviderBranchId', 'branchName']"
     [tableStyle]="{ 'min-width': '100rem' }"
+    styleClass ="p-datatable-gridlines"
   >
-    <ng-template pTemplate="caption">
-      <div class="flex">
-        <span class="p-input-icon-left ml-auto">
-          <i class="fa-solid fa-search"></i>
-          <input
-            pInputText
-            type="text"
-            (input)="search.filterGlobal($any($event.target).value, 'contains')"
-            placeholder="Search here..."
-          />
-        </span>
-        <div class="btnGroup ml-1">
-          <p-button
-            icon="fa-solid fa-arrow-up-right-from-square"
-            styleClass="p-button-success mr-1"
-            (click)="exportExcel()"
-          ></p-button>
-          <p-button
-            icon="fa-solid fa-circle-plus"
-            (click)="addData()"
-          ></p-button>
-        </div>
-      </div>
-    </ng-template>
     <ng-template pTemplate="header">
-      <tr>
-        <th style="width: 15%"></th>
-        <th pSortableColumn="dataProviderBranchId" style="width: 10%">
-          BranchCode
+      <p-toast></p-toast>
+      <tr style="white-space: nowrap">
+        <th></th>
+        <th pSortableColumn="dataProviderBranchId">
+          BranchCode <p-sortIcon field="dataProviderBranchId"></p-sortIcon></th>
+        <th pSortableColumn="branchName">BranchName <p-sortIcon field="branchName"></p-sortIcon></th>
+        <th pSortableColumn="provinceName">Province <p-sortIcon field="provinceName"></p-sortIcon></th>
+        <th pSortableColumn="district">District <p-sortIcon field="district"></p-sortIcon></th>
+        <th pSortableColumn="branchAddress">
+          BranchAddress <p-sortIcon field="branchAddress"></p-sortIcon>
         </th>
-        <th pSortableColumn="branchName" style="width: 20%">BranchName</th>
-        <th pSortableColumn="provinceName" style="width: 10%">Province</th>
-        <th pSortableColumn="district" style="width: 20%">District</th>
-        <th pSortableColumn="branchAddress" style="width: 20%">
-          BranchAddress
-        </th>
-        <th pSortableColumn="phoneNo" style="width: 20%">PhoneNo</th>
-        <th pSortableColrumn="performanceCutOff" style="width: 20%">
-          PerfCutOff
-        </th>
-        <th pSortableColumn="isActive" style="width: 20%">isActive</th>
+        <th pSortableColumn="phoneNo" >PhoneNo <p-sortIcon field="phoneNo"></p-sortIcon></th>
+        <th pSortableColumn="performanceCutOff">
+          PerfCutOff <p-sortIcon field="performanceCutOff"></p-sortIcon></th>
+        <th pSortableColumn="isActive">isActive <p-sortIcon field="isActive"></p-sortIcon></th>
       </tr>
+      <tr class="filterSection">
+        <th>
+        </th>
+        <th>
+          <p-columnFilter type="text" field="dataProviderBranchId"[showClearButton]="false"></p-columnFilter>
+      </th>
+        <th>
+          <p-columnFilter type="text" field="branchName" [showClearButton]="false"></p-columnFilter>
+      </th>
+        <th>
+          <p-columnFilter type="text" field="provinceName" [showClearButton]="false"></p-columnFilter>
+      </th>
+        <th>
+          <p-columnFilter type="text" field="district" [showClearButton]="false"></p-columnFilter>
+      </th>
+        <th>
+          <p-columnFilter type="text" field="branchAddress" [showClearButton]="false"></p-columnFilter>
+      </th>
+        <th>
+          <p-columnFilter type="text" field="phoneNo" [showClearButton]="false" ></p-columnFilter>
+      </th>
+        <th>
+          <p-columnFilter type="text" field="performanceCutOff" [showClearButton]="false" ></p-columnFilter>
+      </th>
+        <th>
+          <p-columnFilter type="text" field="isActive" [showClearButton]="false" ></p-columnFilter>
+      </th>
+          
+      </tr> 
     </ng-template>
     <ng-template pTemplate="body" let-data>
-      <tr>
+      <tr style="white-space: nowrap">
         <td>
           <button
             pButton
             pRipple
             icon="fa-solid fa-file"
-            class="p-button-rounded p-button-secondary p-button-text mr-1"
+            class="functionButton p-button-rounded p-button-secondary p-button-text mr-1"
             (click)="showData(data.dataProviderBranchId)"
           ></button>
           <button
             pButton
             pRipple
             icon="fa-solid fa-pen-to-square"
-            class="p-button-rounded p-button-success p-button-text mr-1"
+            class="functionButton p-button-rounded p-button-success p-button-text mr-1"
             (click)="editData(data.dataProviderBranchId)"
           ></button>
           <button
             pButton
             pRipple
             icon="fa-solid fa-trash"
-            class="p-button-rounded p-button-danger p-button-text"
+            class="functionButton p-button-rounded p-button-danger p-button-text"
             (click)="deleteData(data.dataProviderBranchId)"
           ></button>
         </td>
