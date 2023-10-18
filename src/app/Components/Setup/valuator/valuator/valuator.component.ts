@@ -8,6 +8,7 @@ import { ViewValuatorComponent } from './view/view.component';
 import { DeleteValuatorComponent } from './delete/delete.component';
 import * as FileSaver from 'file-saver';
 import { AddValuatorDocumentComponent } from './valuatorDocument/add/add.component';
+import { compileNgModule } from '@angular/compiler';
 
 @Component({
   selector: 'app-inner-valuator',
@@ -18,6 +19,7 @@ import { AddValuatorDocumentComponent } from './valuatorDocument/add/add.compone
 export class InnerValuatorComponent implements OnInit {
   isLoading: boolean = false;
   data: any[] = [];
+  documentData: any[] = [];
   ref: DynamicDialogRef | undefined;
   constructor(
     private api: ValuatorService,
@@ -124,10 +126,10 @@ export class InnerValuatorComponent implements OnInit {
       baseZIndex: 10000,
       maximizable: true,
     });
-    this.ref.onClose.subscribe((data: any) => {
-      if (data !== undefined) {
-        if (data[1] === true) {
-          this.data.push(data[0]);
+    this.ref.onClose.subscribe((documentData: any) => {
+      if (documentData !== undefined) {
+        if (documentData[1] === true) {
+          this.data[0].id.push(documentData[0]);
           this.messageService.add({
             severity: 'success',
             summary: 'Success',
@@ -135,6 +137,7 @@ export class InnerValuatorComponent implements OnInit {
           });
         }
       }
+      console.log(this.data)
     });
 
   }
@@ -169,7 +172,7 @@ export class InnerValuatorComponent implements OnInit {
         vettype:'VETType',
         id: [
           {
-            name: 'test',
+            documentName: 'test',
           },
         ],
       },

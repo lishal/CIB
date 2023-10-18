@@ -122,26 +122,29 @@
                   <th pSortableColumn="updatedOn">Updated_On</th>
                 </tr>
               </ng-template>
-              <ng-template pTemplate="body" let-data>
+              <ng-template pTemplate="body" let-documentData>
                 <tr style="white-space: nowrap">
                   <td></td>
-                  <td>{{ data?.name }}</td>
-                  <td>{{ data?.name }}</td>
-                  <td>{{ data?.name }}</td>
-                  <td>{{ data?.name }}</td>
-                  <td>{{ data?.name }}</td>
-                  <td>{{ data?.name }}</td>
-                  <td>{{ data?.name }}</td>
-                  <td>{{ data?.name }}</td>
-                  <td>{{ data?.name }}</td>
+                  <td>{{ documentData?.documentName }}</td>
+                  <td>{{ documentData?.documentName }}</td>
+                  <td>{{ documentData?.documentName }}</td>
+                  <td>{{ documentData?.documentName }}</td>
+                  <td>{{ documentData?.documentName }}</td>
+                  <td>{{ documentData?.documentName }}</td>
+                  <td>{{ documentData?.documentName }}</td>
+                  <td>{{ documentData?.documentName }}</td>
+                  <td>{{ documentData?.documentName }}</td>
                 </tr>
-                <tr>
+                
+              </ng-template>
+              <ng-template pTemplate="summary"> 
+                <tr class="documentFooter">
                   <td colspan="10"><p-button label="Add Document(s)" (click)="addValuatorDocument()"></p-button></td>
                 </tr>
               </ng-template>
               <ng-template pTemplate="emptymessage">
                 <tr>
-                  <td colspan="10"><p-button label="Add Document(s)" (click)="addValuatorDocument()"></p-button></td>
+                  <td colspan="10" style="text-align: center">Sorry! No record found</td>
                 </tr>
               </ng-template>
             </p-table>
