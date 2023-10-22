@@ -7,10 +7,7 @@ import { AddVRelationshipComponent } from './add/add.component';
 import { EditVRelationshipComponent } from './edit/edit.component';
 import { ViewVRelationshipComponent } from './view/view.component';
 import { DeleteVRelationshipComponent } from './delete/delete.component';
-
-interface SearchOption {
-  name: String;
-}
+import { OverlayPanel } from 'primeng/overlaypanel';
 
 @Component({
   selector: 'app-relationship',
@@ -22,7 +19,6 @@ export class RelationshipComponent implements OnInit {
   isLoading: boolean = false;
   data: any[] = [];
   ref: DynamicDialogRef | undefined;
-  searchOption: SearchOption[] = [];
   constructor(
     private api: ValuatorService,
     public dialogService: DialogService,
@@ -119,28 +115,46 @@ export class RelationshipComponent implements OnInit {
       }
     });
   }
-  ngOnInit(): void {
-    this.searchOption = [
-      { name: 'Amy Elsner' },
-      { name: 'Anna Fali' },
-      { name: 'Asiya Javayant' },
-      { name: 'Bernardo Dominic' },
-      { name: 'Elwin Sharvill' },
-      { name: 'Ioni Bowcher' },
-      { name: 'Ivan Magalhaes' },
-      { name: 'test' },
-    ];
+  ngOnInit(): void { 
     this.data = [
       {
         vreType: 'test',
         vrName: 'VRNAME',
+        valuator:'Valuator',
         test: 'test2',
-        id: [
-          {
-            name: 'test',
-          },
-        ],
+
       },
     ];
+  }
+  exportExcel(op: OverlayPanel) {
+    import('xlsx').then((xlsx) => {
+      const worksheet = xlsx.utils.json_to_sheet(this.data);
+      const workbook = { Sheets: { data: worksheet }, SheetNames: ['data'] };
+      const excelBuffer: any = xlsx.write(workbook, {
+        bookType: 'xlsx',
+        type: 'array',
+      });
+      this.saveAsExcelFile(excelBuffer, 'valuatorRelationship');
+    });
+    this.messageService.add({ severity: 'success', summary: 'Excel file downloaded successfully' });
+    op.hide();
+  }
+  saveAsExcelFile(buffer: any, fileName: string): void {
+    let EXCEL_TYPE =
+      'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+    let EXCEL_EXTENSION = '.xlsx';
+    const data: Blob = new Blob([buffer], {
+      type: EXCEL_TYPE,
+    });
+    FileSaver.saveAs(
+      data,
+      fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION
+    );
+  }
+
+  ngOnDestroy(): void {
+    if (this.ref) {
+      this.ref.close();
+    }
   }
 }

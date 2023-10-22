@@ -6,6 +6,7 @@ import { AddEmployeeComponent } from './add/add.component';
 import { ViewEmployeeComponent } from './view/view.component';
 import { EditEmployeeComponent } from './edit/edit.component';
 import { DeleteEmployeeComponent } from './delete/delete.component';
+import { OverlayPanel } from 'primeng/overlaypanel';
 
 import * as FileSaver from 'file-saver';
 @Component({
@@ -130,7 +131,7 @@ export class EmployeeComponent implements OnInit {
     });
   }
 
-  exportExcel() {
+  exportExcel(op: OverlayPanel) {
     import('xlsx').then((xlsx) => {
       const worksheet = xlsx.utils.json_to_sheet(this.data);
       const workbook = { Sheets: { data: worksheet }, SheetNames: ['data'] };
@@ -140,6 +141,8 @@ export class EmployeeComponent implements OnInit {
       });
       this.saveAsExcelFile(excelBuffer, 'employee');
     });
+    this.messageService.add({ severity: 'success', summary: 'Excel file downloaded successfully' });
+    op.hide();
   }
   saveAsExcelFile(buffer: any, fileName: string): void {
     let EXCEL_TYPE =

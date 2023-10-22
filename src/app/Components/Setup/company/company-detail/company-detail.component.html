@@ -7,6 +7,7 @@
     [rows]="5"
     [paginator]="true"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    styleClass ="p-datatable-gridlines"
   >
     <!-- 
      -->
@@ -17,29 +18,29 @@
     <ng-template pTemplate="header">
       <p-toast [ngClass]="'custom-toast'"></p-toast>
       <tr>
-        <th style="width: 15%"></th>
-        <th style="width: 30%">Company Name</th>
-        <th style="width: 10%">DPID</th>
-        <th style="width: 10%">Prev.DPID</th>
-        <th style="width: 20%">TradingSym</th>
-        <th style="width: 20%">SecretKey</th>
+        <th></th>
+        <th pSortableColumn="companyName">Company Name <p-sortIcon field="companyName"></p-sortIcon></th>
+        <th pSortableColumn="dataProviderId">DPID <p-sortIcon field="dataProviderId"></p-sortIcon></th>
+        <th pSortableColumn="prevDataProviderId">Prev.DPID <p-sortIcon field="prevDataProviderId"></p-sortIcon></th>
+        <th pSortableColumn="tradingSymbol">TradingSym <p-sortIcon field="tradingSymbol"></p-sortIcon></th>
+        <th pSortableColumn="secretKey">SecretKey <p-sortIcon field="secretKey"></p-sortIcon></th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-data>
-      <tr>
+      <tr style="white-space: nowrap;">
         <td>
           <button
             pButton
             pRipple
             icon="fa-solid fa-pen-to-square"
-            class="p-button-rounded p-button-success p-button-text mr-1"
+            class="functionButton p-button-rounded p-button-success p-button-text mr-1"
             (click)="editData(data.id)"
           ></button>
           <button
             pButton
             pRipple
             icon="fa-solid fa-file"
-            class="p-button-rounded p-button-secondary p-button-text"
+            class="functionButton p-button-rounded p-button-secondary p-button-text"
             (click)="showData(data.id)"
           ></button>
         </td>

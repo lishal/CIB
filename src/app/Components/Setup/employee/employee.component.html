@@ -1,8 +1,21 @@
 <div class="employeeHeading">
     <span class="text-3xl font-semibold">User Management</span>
 </div>
+<p-toast></p-toast>
+<div class="btnGroup-topbar">
+    <p-overlayPanel #op [styleClass]="'export'">
+      <ng-template pTemplate="content" >
+        <p class="exportButton" (click)="exportExcel(op)">Pdf</p>
+        <p class="exportButton" (click)="exportExcel(op)">Excel</p>
+      </ng-template>
+  </p-overlayPanel>
+  <p-button (click)="op.toggle($event)" icon="fa-solid fa-arrow-up-right-from-square"></p-button>
+  <p-button
+    icon="fa-solid fa-circle-plus"
+    (click)="addData()"
+  ></p-button>
+</div>
 <div class="card mt-3">
-  <p-toast></p-toast>
   <p-table
     #search
     [value]="data"
@@ -15,54 +28,62 @@
     [rowsPerPageOptions]="[5, 10, 25, 50]"
     [paginator]="true"
     [filterDelay]="0"
-    [globalFilterFields]="['loginidhremployee', 'fullname']"
-    [tableStyle]="{ 'min-width': '100rem' }"
+    [tableStyle]="{ 'min-width': '120rem' }"
+    styleClass ="p-datatable-gridlines"
   >
-    <ng-template pTemplate="caption">
-      <div class="flex">
-        <span class="p-input-icon-left ml-auto">
-          <i class="fa-solid fa-search"></i>
-          <input
-            pInputText
-            type="text"
-            (input)="search.filterGlobal($any($event.target).value, 'contains')"
-            placeholder="Search here..."
-          />
-        </span>
-        <div class="btnGroup ml-1">
-          <p-button
-            icon="fa-solid fa-arrow-up-right-from-square"
-            styleClass="p-button-success mr-1"
-            (click)="exportExcel()"
-          ></p-button>
-          <p-button
-            icon="fa-solid fa-circle-plus"
-            (click)="addData()"
-          ></p-button>
-        </div>
-      </div>
-    </ng-template>
     <ng-template pTemplate="header">
-      <tr>
+      <tr style="white-space: nowrap">
         <th></th>
         <th pSortableColumn="loginidhremployee">
-          LoginIDHREmployee
+          LoginIDHREmployee <p-sortIcon field="loginidhremployee"></p-sortIcon>
         </th>
-        <th pSortableColumn="fullname">FullName</th>
-        <th pSortableColumn="defaultBranch" >Branch</th>
-        <th pSortableColumn="roleName" >Role</th>
+        <th pSortableColumn="fullname">FullName <p-sortIcon field="fullname"></p-sortIcon></th>
+        <th pSortableColumn="defaultBranch" >Branch <p-sortIcon field="defaultBranch"></p-sortIcon></th>
+        <th pSortableColumn="roleName" >Role <p-sortIcon field="roleName"></p-sortIcon></th>
         <th pSortableColumn="emailAddress" >
-          EmailID
+          EmailID <p-sortIcon field="emailAddress"></p-sortIcon>
         </th>
-        <th pSortableColumn="defaultModule">DefaultModule</th>
-        <th pSortableColrumn="restrictAccessByBranch" >
-          RestrictByBranch
+        <th pSortableColumn="defaultModule">DefaultModule <p-sortIcon field="defaultModule"></p-sortIcon></th>
+        <th pSortableColumn="restrictAccessByBranch" >
+          RestrictByBranch <p-sortIcon field="restrictAccessByBranch"></p-sortIcon>
         </th>
-        <th pSortableColrumn="allowprovincebranch" >
-          AllowProvinceBranch
+        <th pSortableColumn="allowprovincebranch" >
+          AllowProvinceBranch <p-sortIcon field="allowprovincebranch"></p-sortIcon>
         </th>
-        <th pSortableColumn="isActive" >isActive</th>
+        <th pSortableColumn="isActive" >isActive <p-sortIcon field="isActive"></p-sortIcon></th>
       </tr>
+      <tr class="filterSection">
+        <th>
+        </th>
+        <th>
+          <p-columnFilter type="text" field="loginidhremployee"[showClearButton]="false"></p-columnFilter>
+      </th>
+        <th>
+          <p-columnFilter type="text" field="fullname" [showClearButton]="false"></p-columnFilter>
+      </th>
+        <th>
+          <p-columnFilter type="text" field="defaultBranch" [showClearButton]="false"></p-columnFilter>
+      </th>
+        <th>
+          <p-columnFilter type="text" field="roleName" [showClearButton]="false"></p-columnFilter>
+      </th>
+        <th>
+          <p-columnFilter type="text" field="emailAddress" [showClearButton]="false"></p-columnFilter>
+      </th>
+        <th>
+          <p-columnFilter type="text" field="defaultModule" [showClearButton]="false" ></p-columnFilter>
+      </th>
+        <th>
+          <p-columnFilter type="text" field="restrictAccessByBranch" [showClearButton]="false" ></p-columnFilter>
+      </th>
+        <th>
+          <p-columnFilter type="text" field="allowprovincebranch" [showClearButton]="false" ></p-columnFilter>
+      </th>
+        <th>
+          <p-columnFilter type="text" field="isActive" [showClearButton]="false" ></p-columnFilter>
+      </th>
+          
+      </tr> 
     </ng-template>
     <ng-template pTemplate="body" let-data>
       <tr style="white-space: nowrap;">
@@ -71,28 +92,28 @@
             pButton
             pRipple
             icon="fa-solid fa-key"
-            class="p-button-rounded p-button-warning p-button-text "
+            class="functionButton p-button-rounded p-button-warning p-button-text "
             (click)="showData(data.loginIdentifer)"
           ></button>
           <button
             pButton
             pRipple
             icon="fa-solid fa-file"
-            class="p-button-rounded p-button-secondary p-button-text "
+            class="functionButton p-button-rounded p-button-secondary p-button-text "
             (click)="showData(data.loginIdentifer)"
           ></button>
           <button
             pButton
             pRipple
             icon="fa-solid fa-pen-to-square"
-            class="p-button-rounded p-button-success p-button-text"
+            class="functionButton p-button-rounded p-button-success p-button-text"
             (click)="editData(data.loginIdentifer)"
           ></button>
           <button
             pButton
             pRipple
             icon="fa-solid fa-trash"
-            class="p-button-rounded p-button-danger p-button-text"
+            class="functionButton p-button-rounded p-button-danger p-button-text"
             (click)="deleteData(data.loginIdentifer)"
           ></button>
         </td>
@@ -106,6 +127,7 @@
         <td>{{ data?.restrictAccessByBranch }}</td>
         <td>{{ data?.isActive }}</td>
       </tr>
+      
     </ng-template>
     <ng-template pTemplate="emptymessage">
       <tr>

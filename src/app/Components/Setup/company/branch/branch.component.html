@@ -25,11 +25,10 @@
     [rowsPerPageOptions]="[5, 10, 25, 50]"
     [paginator]="true"
     [filterDelay]="0"
-    [tableStyle]="{ 'min-width': '100rem' }"
+    [tableStyle]="{ 'min-width': '80rem' }"
     styleClass ="p-datatable-gridlines"
   >
     <ng-template pTemplate="header">
-      <p-toast></p-toast>
       <tr style="white-space: nowrap">
         <th></th>
         <th pSortableColumn="dataProviderBranchId">

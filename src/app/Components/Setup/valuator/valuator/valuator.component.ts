@@ -8,7 +8,7 @@ import { ViewValuatorComponent } from './view/view.component';
 import { DeleteValuatorComponent } from './delete/delete.component';
 import * as FileSaver from 'file-saver';
 import { AddValuatorDocumentComponent } from './valuatorDocument/add/add.component';
-import { compileNgModule } from '@angular/compiler';
+import { OverlayPanel } from 'primeng/overlaypanel';
 
 @Component({
   selector: 'app-inner-valuator',
@@ -141,7 +141,7 @@ export class InnerValuatorComponent implements OnInit {
     });
 
   }
-  exportExcel() {
+  exportExcel(op:OverlayPanel) {
     import('xlsx').then((xlsx) => {
       const worksheet = xlsx.utils.json_to_sheet(this.data);
       const workbook = { Sheets: { data: worksheet }, SheetNames: ['data'] };
@@ -151,6 +151,8 @@ export class InnerValuatorComponent implements OnInit {
       });
       this.saveAsExcelFile(excelBuffer, 'Valuator');
     });
+    this.messageService.add({ severity: 'success', summary: 'Excel file downloaded successfully' });
+    op.hide();
   }
   saveAsExcelFile(buffer: any, fileName: string): void {
     let EXCEL_TYPE =

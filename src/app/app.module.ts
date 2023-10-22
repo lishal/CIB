@@ -143,7 +143,7 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
     DynamicDialogModule,
     ToastModule,
     DropdownModule,
-    OverlayPanelModule
+    OverlayPanelModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

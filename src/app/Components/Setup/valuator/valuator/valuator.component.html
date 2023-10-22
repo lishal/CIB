@@ -1,5 +1,18 @@
+<p-toast></p-toast>
+<div class="btnGroup-topbar">
+  <p-overlayPanel #op [styleClass]="'export'">
+    <ng-template pTemplate="content" >
+      <p class="exportButton" (click)="exportExcel(op)">Pdf</p>
+      <p class="exportButton" (click)="exportExcel(op)">Excel</p>
+    </ng-template>
+</p-overlayPanel>
+<p-button (click)="op.toggle($event)" icon="fa-solid fa-arrow-up-right-from-square"></p-button>
+<p-button
+  icon="fa-solid fa-circle-plus"
+  (click)="addData()"
+></p-button>
+</div>
 <div class="card mt-3">
-  <p-toast></p-toast>
   <p-table
     #search
     [value]="data"
@@ -12,46 +25,52 @@
     [rowsPerPageOptions]="[5, 10, 25, 50]"
     [paginator]="true"
     [filterDelay]="0"
-    [globalFilterFields]="['vettype', 'vename']"
-    [tableStyle]="{ 'min-width': '100rem' }"
+    [tableStyle]="{ 'min-width': '110rem' }"
     dataKey="id"
+    styleClass ="p-datatable-gridlines"
   >
-    <ng-template pTemplate="caption">
-      <div class="flex">
-        <span class="p-input-icon-left ml-auto">
-          <i class="fa-solid fa-search"></i>
-          <input
-            pInputText
-            type="text"
-            (input)="search.filterGlobal($any($event.target).value, 'contains')"
-            placeholder="Search here..."
-          />
-        </span>
-        <div class="btnGroup ml-1">
-          <p-button
-            icon="fa-solid fa-arrow-up-right-from-square"
-            styleClass="p-button-success mr-1"
-            (click)="exportExcel()"
-          ></p-button>
-          <p-button
-            icon="fa-solid fa-circle-plus"
-            (click)="addData()"
-          ></p-button>
-        </div>
-      </div>
-    </ng-template>
+
     <ng-template pTemplate="header">
-      <tr>
+      <tr style="white-space: nowrap">
         <th></th>
-        <th pSortableColumn="vettype">VETType</th>
-        <th pSortableColumn="vename">VEName</th>
-        <th pSortableColumn="vedobref">VEDOBReg</th>
-        <th pSortableColumn="veaddress">VEAddressLine1</th>
-        <th pSortableColumn="enlisted">EnlistedOn</th>
-        <th pSortableColumn="agmenddate">AgmEndDate</th>
-        <th pSortableColrumn="isactive">isActive</th>
-        <th pSortableColrumn="status">Status</th>
+        <th pSortableColumn="vettype">VETType <p-sortIcon field="vettype"></p-sortIcon></th>
+        <th pSortableColumn="vename">VEName <p-sortIcon field="vename"></p-sortIcon></th>
+        <th pSortableColumn="vedobref">VEDOBReg <p-sortIcon field="vedobref"></p-sortIcon></th>
+        <th pSortableColumn="veaddress">VEAddressLine1 <p-sortIcon field="veaddress"></p-sortIcon></th>
+        <th pSortableColumn="enlisted">EnlistedOn <p-sortIcon field="enlisted"></p-sortIcon></th>
+        <th pSortableColumn="agmenddate">AgmEndDate <p-sortIcon field="agmenddate"></p-sortIcon></th>
+        <th pSortableColumn="isactive">isActive <p-sortIcon field="isactive"></p-sortIcon></th>
+        <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
       </tr>
+      <tr class="filterSection">
+        <th>
+        </th>
+        <th>
+          <p-columnFilter type="text" field="vettype"[showClearButton]="false"></p-columnFilter>
+      </th>
+        <th>
+          <p-columnFilter type="text" field="vename" [showClearButton]="false"></p-columnFilter>
+      </th>
+        <th>
+          <p-columnFilter type="text" field="vedobref" [showClearButton]="false"></p-columnFilter>
+      </th>
+        <th>
+          <p-columnFilter type="text" field="veaddress" [showClearButton]="false"></p-columnFilter>
+      </th>
+        <th>
+          <p-columnFilter type="text" field="enlisted" [showClearButton]="false"></p-columnFilter>
+      </th>
+        <th>
+          <p-columnFilter type="text" field="agmenddate" [showClearButton]="false" ></p-columnFilter>
+      </th>
+      <th>
+        <p-columnFilter type="text" field="isActive" [showClearButton]="false" ></p-columnFilter>
+      </th>
+      <th>
+        <p-columnFilter type="text" field="status" [showClearButton]="false" ></p-columnFilter>
+    </th>
+          
+      </tr> 
     </ng-template>
     <ng-template pTemplate="body" let-data let-expanded="expanded">
       <tr style="white-space: nowrap">
@@ -87,12 +106,12 @@
             <p-table [value]="data.id" dataKey="id">
               <ng-template pTemplate="header">
                 <tr style="white-space: nowrap">
-                  <th>
+                  <th style="background-color: var(--white);">
                     <button
                       pButton
                       pRipple
                       icon="fa-solid fa-file"
-                      class="p-button-rounded p-button-secondary p-button-text"
+                      class="functionButton p-button-rounded p-button-secondary p-button-text"
                       (click)="viewData(data.vettype)"
                       
                     ></button>
@@ -100,27 +119,59 @@
                       pButton
                       pRipple
                       icon="fa-solid fa-pen-to-square"
-                      class="p-button-rounded p-button-success p-button-text"
+                      class="functionButton p-button-rounded p-button-success p-button-text"
                       (click)="editData(data.vettype)"
                     ></button>
                     <button
                       pButton
                       pRipple
                       icon="fa-solid fa-trash"
-                      class="p-button-rounded p-button-danger p-button-text"
+                      class="functionButton p-button-rounded p-button-danger p-button-text"
                       (click)="deleteData(data.vettype)"
                     ></button>
                   </th>
-                  <th pSortableColumn="documenttype">Document Type</th>
-                  <th pSortableColumn="description">Description</th>
-                  <th pSortableColumn="receivedOn">Received On</th>
-                  <th pSortableColumn="expiresOn">Expires On</th>
-                  <th pSortableColumn="renewalType">Renewal Type</th>
-                  <th pSortableColumn="createdBy">Created_By</th>
-                  <th pSortableColumn="createdOn">Created_On</th>
-                  <th pSortableColumn="updatedBy">Updated_By</th>
-                  <th pSortableColumn="updatedOn">Updated_On</th>
+                  <th pSortableColumn="documenttype">Document Type <p-sortIcon field="documenttype"></p-sortIcon></th>
+                  <th pSortableColumn="description">Description <p-sortIcon field="description"></p-sortIcon></th>
+                  <th pSortableColumn="receivedOn">Received On <p-sortIcon field="receivedOn"></p-sortIcon></th>
+                  <th pSortableColumn="expiresOn">Expires On <p-sortIcon field="expiresOn"></p-sortIcon></th>
+                  <th pSortableColumn="renewalType">Renewal Type <p-sortIcon field="renewalType"></p-sortIcon></th>
+                  <th pSortableColumn="createdBy">Created_By <p-sortIcon field="createdBy"></p-sortIcon></th>
+                  <th pSortableColumn="createdOn">Created_On <p-sortIcon field="createdOn"></p-sortIcon></th>
+                  <th pSortableColumn="updatedBy">Updated_By <p-sortIcon field="updatedBy"></p-sortIcon></th>
+                  <th pSortableColumn="updatedOn">Updated_On <p-sortIcon field="updatedOn"></p-sortIcon></th>
                 </tr>
+                <tr class="filterSection">
+                  <th>
+                  </th>
+                  <th>
+                    <p-columnFilter type="text" field="documenttype"[showClearButton]="false"></p-columnFilter>
+                </th>
+                  <th>
+                    <p-columnFilter type="text" field="description" [showClearButton]="false"></p-columnFilter>
+                </th>
+                  <th>
+                    <p-columnFilter type="text" field="receivedOn" [showClearButton]="false"></p-columnFilter>
+                </th>
+                  <th>
+                    <p-columnFilter type="text" field="expiresOn" [showClearButton]="false"></p-columnFilter>
+                </th>
+                  <th>
+                    <p-columnFilter type="text" field="renewalType" [showClearButton]="false"></p-columnFilter>
+                </th>
+                  <th>
+                    <p-columnFilter type="text" field="createdBy" [showClearButton]="false" ></p-columnFilter>
+                </th>
+                  <th>
+                    <p-columnFilter type="text" field="createdOn" [showClearButton]="false" ></p-columnFilter>
+                </th>
+                  <th>
+                    <p-columnFilter type="text" field="updatedBy" [showClearButton]="false" ></p-columnFilter>
+                </th>
+                  <th>
+                    <p-columnFilter type="text" field="updatedOn" [showClearButton]="false" ></p-columnFilter>
+                </th>
+                    
+                </tr> 
               </ng-template>
               <ng-template pTemplate="body" let-documentData>
                 <tr style="white-space: nowrap">

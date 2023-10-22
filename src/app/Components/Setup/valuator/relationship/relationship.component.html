@@ -1,5 +1,18 @@
+<p-toast></p-toast>
+<div class="btnGroup-topbar">
+    <p-overlayPanel #op [styleClass]="'export'">
+      <ng-template pTemplate="content" >
+        <p class="exportButton" (click)="exportExcel(op)">Pdf</p>
+        <p class="exportButton" (click)="exportExcel(op)">Excel</p>
+      </ng-template>
+  </p-overlayPanel>
+  <p-button (click)="op.toggle($event)" icon="fa-solid fa-arrow-up-right-from-square"></p-button>
+  <p-button
+    icon="fa-solid fa-circle-plus"
+    (click)="addData()"
+  ></p-button>
+</div>
 <div class="card mt-3">
-  <p-toast></p-toast>
   <p-table
     #search
     [value]="data"
@@ -12,65 +25,63 @@
     [rowsPerPageOptions]="[5, 10, 25, 50]"
     [paginator]="true"
     [filterDelay]="0"
-    [globalFilterFields]="['vreType', 'vrName','searchOption.name']"
     [tableStyle]="{ 'min-width': '100rem' }"
+    styleClass ="p-datatable-gridlines"
   >
-    <ng-template pTemplate="caption">
-      <div class="flex">
-        <p-columnFilter field="searchOption" class="w-3 ml-auto"  [showMenu]="false">
-            <ng-template pTemplate="filter" let-value let-filter="filterCallback">
-                <p-dropdown  [ngModel]="value" [options]="searchOption" placeholder="-- Select Option --" (onChange)="filter($event.value)" optionLabel="name">
-                    <ng-template let-option pTemplate="item">
-                        <div class="inline-block vertical-align-middle">
-                            <span class="ml-1 mt-1">{{ option.name }}</span>
-                        </div>
-                    </ng-template>
-                </p-dropdown>
-            </ng-template>
-        </p-columnFilter>
-        <span class="p-input-icon-left w-3 ml-2">
-          <i class="fa-solid fa-search"></i>
-          <input
-            pInputText
-            type="text"
-            (input)="search.filterGlobal($any($event.target).value, 'contains')"
-            placeholder="Search here..."
-          />
-        </span>
-        <div class="btnGroup ml-1">
-          <p-button
-            icon="fa-solid fa-arrow-up-right-from-square"
-            styleClass="p-button-success mr-1"
-            
-          ></p-button>
-          <p-button
-            icon="fa-solid fa-circle-plus"
-            (click)="addData()"
-          ></p-button>
-        </div>
-      </div>
-    </ng-template>
+
     <ng-template pTemplate="header">
       <tr style="white-space: nowrap;">
         <th></th>
         <th pSortableColumn="valuator">
-          Valuator
+          Valuator <p-sortIcon field="valuator"></p-sortIcon>
         </th>
-        <th pSortableColumn="vreType">VREType</th>
-        <th pSortableColumn="vrName" >VRName</th>
-        <th pSortableColumn="natureOfRelationship" >NatureOfRelationship</th>
+        <th pSortableColumn="vreType">VREType <p-sortIcon field="vreType"></p-sortIcon></th>
+        <th pSortableColumn="vrName" >VRName <p-sortIcon field="vrName"></p-sortIcon></th>
+        <th pSortableColumn="natureOfRelationship" >NatureOfRelationship <p-sortIcon field="natureOfRelationship"></p-sortIcon></th>
         <th pSortableColumn="vrAddressLine1" >
-          VRAddressLine1
+          VRAddressLine1 <p-sortIcon field="vrAddressLine1"></p-sortIcon>
         </th>
-        <th pSortableColumn="vrTelNo1">VRTelNo1</th>
-        <th pSortableColrumn="vrMobileNo" >
-          VRMobileNo
+        <th pSortableColumn="vrTelNo1">VRTelNo1 <p-sortIcon field="vrTelNo1"></p-sortIcon></th>
+        <th pSortableColumn="vrMobileNo" >
+          VRMobileNo <p-sortIcon field="vrMobileNo"></p-sortIcon>
         </th>
-        <th pSortableColrumn="isActive" >
-          IsActive
+        <th pSortableColumn="isActive" >
+          IsActive <p-sortIcon field="isActive"></p-sortIcon>
         </th>
-        <th pSortableColumn="status" >Status</th>
+        <th pSortableColumn="status" >Status <p-sortIcon field="status"></p-sortIcon></th>
       </tr>
+      <tr class="filterSection">
+        <th>
+        </th>
+        <th>
+          <p-columnFilter type="text" field="valuator"[showClearButton]="false"></p-columnFilter>
+      </th>
+        <th>
+          <p-columnFilter type="text" field="vreType" [showClearButton]="false"></p-columnFilter>
+      </th>
+        <th>
+          <p-columnFilter type="text" field="vrName" [showClearButton]="false"></p-columnFilter>
+      </th>
+        <th>
+          <p-columnFilter type="text" field="natureOfRelationship" [showClearButton]="false"></p-columnFilter>
+      </th>
+        <th>
+          <p-columnFilter type="text" field="vrAddressLine1" [showClearButton]="false"></p-columnFilter>
+      </th>
+        <th>
+          <p-columnFilter type="text" field="vrTelNo1" [showClearButton]="false" ></p-columnFilter>
+      </th>
+        <th>
+          <p-columnFilter type="text" field="vrMobileNo" [showClearButton]="false" ></p-columnFilter>
+      </th>
+        <th>
+          <p-columnFilter type="text" field="isActive" [showClearButton]="false" ></p-columnFilter>
+      </th>
+        <th>
+          <p-columnFilter type="text" field="status" [showClearButton]="false" ></p-columnFilter>
+      </th>
+          
+      </tr> 
     </ng-template>
     <ng-template pTemplate="body" let-data>
       <tr style="white-space: nowrap;">
@@ -79,7 +90,7 @@
             pButton
             pRipple
             icon="fa-solid fa-file"
-            class="p-button-rounded p-button-secondary p-button-text "
+            class="functionButton p-button-rounded p-button-secondary p-button-text "
             (click)="viewData(data?.vreType)"
             
           ></button>
@@ -87,7 +98,7 @@
             pButton
             pRipple
             icon="fa-solid fa-pen-to-square"
-            class="p-button-rounded p-button-success p-button-text"
+            class="functionButton p-button-rounded p-button-success p-button-text"
             (click)="editData(data?.vreType)"
             
           ></button>
@@ -95,14 +106,14 @@
             pButton
             pRipple
             icon="fa-solid fa-trash"
-            class="p-button-rounded p-button-danger p-button-text"
+            class="functionButton p-button-rounded p-button-danger p-button-text"
             (click)="deleteData(data?.vreType)"
             
           ></button>
         </td>
+        <td>{{data?.valuator}}</td>
         <td>{{data?.vreType}}</td>
         <td>{{data?.vrName}}</td>
-        <td>{{data?.test}}</td>
         <td>{{data?.test}}</td>
         <td>{{data?.test}}</td>
         <td>{{data?.test}}</td>
