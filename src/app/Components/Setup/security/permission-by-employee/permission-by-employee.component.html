@@ -1,3 +1,8 @@
+<div class="btnGroup-topbar">
+<p-button
+  icon="fa-solid fa-wrench"
+></p-button>
+</div>
 <div class="card mt-3">
     <p-table
       #search
@@ -11,51 +16,46 @@
       [rowsPerPageOptions]="[5, 10, 25, 50]"
       [paginator]="true"
       [filterDelay]="0"
-      [globalFilterFields]="['id']"
+      [tableStyle]="{ 'min-width': '80rem' }"
+      styleClass ="p-datatable-gridlines"
     >
-      <ng-template pTemplate="caption">
-        <div class="flex">
-          <p-columnFilter field="searchOption" class="w-3 ml-auto"  [showMenu]="false">
-              <ng-template pTemplate="filter" let-value let-filter="filterCallback">
-                  <p-dropdown  [ngModel]="value" [options]="searchOption" placeholder="-- Select Option --" (onChange)="filter($event.value)" optionLabel="name">
-                      <ng-template let-option pTemplate="item">
-                          <div class="inline-block vertical-align-middle">
-                              <span class="ml-1 mt-1">{{ option.name }}</span>
-                          </div>
-                      </ng-template>
-                  </p-dropdown>
-              </ng-template>
-          </p-columnFilter>
-          <span class="p-input-icon-left w-3 ml-2">
-            <i class="fa-solid fa-search"></i>
-            <input
-              pInputText
-              type="text"
-              (input)="search.filterGlobal($any($event.target).value, 'contains')"
-              placeholder="Search here..."
-            />
-          </span>
-          <div class="btnGroup ml-1">
-            <p-button
-              icon="fa-solid fa-wrench"
-            ></p-button>
-          </div>
-        </div>
-      </ng-template>
       <ng-template pTemplate="header">
         <tr style="white-space: nowrap;">
           <th pSortableColumn="id">
-            Id
+            Id <p-sortIcon field="id"></p-sortIcon>
           </th>
-          <th pSortableColumn="employee">Employee</th>
-          <th pSortableColumn="permission">Permission</th>
-          <th pSortableColumn="readOnly" >ReadOnly</th>
-          <th pSortableColumn="editOnly" >EditOnly</th>
-          <th pSortableColumn="createOnly" >CreateOnly</th>
+          <th pSortableColumn="employee">Employee <p-sortIcon field="employee"></p-sortIcon></th>
+          <th pSortableColumn="permission">Permission <p-sortIcon field="permission"></p-sortIcon></th>
+          <th pSortableColumn="readOnly" >ReadOnly <p-sortIcon field="readOnly"></p-sortIcon></th>
+          <th pSortableColumn="editOnly" >EditOnly <p-sortIcon field="editOnly"></p-sortIcon></th>
+          <th pSortableColumn="createOnly" >CreateOnly <p-sortIcon field="createOnly"></p-sortIcon></th>
           <th pSortableColumn="deleteOnly" >
-            DeleteOnly
+            DeleteOnly <p-sortIcon field="deleteOnly"></p-sortIcon>
           </th>
         </tr>
+        <tr class="filterSection">
+          <th>
+            <p-columnFilter type="text" field="id"[showClearButton]="false"></p-columnFilter>
+        </th>
+          <th>
+            <p-columnFilter type="text" field="employee" [showClearButton]="false"></p-columnFilter>
+        </th>
+          <th>
+            <p-columnFilter type="text" field="permission" [showClearButton]="false"></p-columnFilter>
+        </th>
+          <th>
+            <p-columnFilter type="text" field="readOnly" [showClearButton]="false"></p-columnFilter>
+        </th>
+          <th>
+            <p-columnFilter type="text" field="EditOnly" [showClearButton]="false"></p-columnFilter>
+        </th>
+          <th>
+            <p-columnFilter type="text" field="CreateOnly" [showClearButton]="false" ></p-columnFilter>
+        </th>
+          <th>
+            <p-columnFilter type="text" field="deleteOnly" [showClearButton]="false" ></p-columnFilter>
+        </th>            
+        </tr> 
       </ng-template>
       <ng-template pTemplate="body" let-data>
         <tr style="white-space: nowrap;">

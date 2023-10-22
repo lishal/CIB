@@ -1,3 +1,8 @@
+<div class="btnGroup-topbar">
+  <p-button
+  icon="fa-solid fa-wrench"
+></p-button>
+</div>
 <div class="card mt-3">
     <p-table
       #search
@@ -11,31 +16,30 @@
       [rowsPerPageOptions]="[5, 10, 25, 50]"
       [paginator]="true"
       [filterDelay]="0"
-      [globalFilterFields]="['loginId']"
+      [tableStyle]="{ 'min-width': '80rem' }"
+      styleClass ="p-datatable-gridlines"
     >
-      <ng-template pTemplate="caption">
-        <div class="flex">
-          <span class="p-input-icon-left ml-auto">
-            <i class="fa-solid fa-search"></i>
-            <input
-              pInputText
-              type="text"
-              (input)="search.filterGlobal($any($event.target).value, 'contains')"
-              placeholder="Search here..."
-            />
-          </span>
-          <div class="btnGroup ml-1">
-            <p-button icon="fa-solid fa-wrench"></p-button>
-          </div>
-        </div>
-      </ng-template>
       <ng-template pTemplate="header">
         <tr style="white-space: nowrap">
-          <th pSortableColumn="loginId">LoginID</th>
-          <th pSortableColumn="fullName">FullName</th>
-          <th pSortableColumn="emailId">EmailID</th>
-          <th pSortableColumn="branchName">BranchName</th>
+          <th pSortableColumn="loginId">LoginID <p-sortIcon field="loginId"></p-sortIcon></th>
+          <th pSortableColumn="fullName">FullName <p-sortIcon field="fullName"></p-sortIcon></th>
+          <th pSortableColumn="emailId">EmailID <p-sortIcon field="emailId"></p-sortIcon></th>
+          <th pSortableColumn="branchName">BranchName <p-sortIcon field="branchName"></p-sortIcon></th>
         </tr>
+        <tr class="filterSection">
+          <th>
+            <p-columnFilter type="text" field="loginId"[showClearButton]="false"></p-columnFilter>
+        </th>
+          <th>
+            <p-columnFilter type="text" field="fullName" [showClearButton]="false"></p-columnFilter>
+        </th>
+          <th>
+            <p-columnFilter type="text" field="emailId" [showClearButton]="false"></p-columnFilter>
+        </th>
+          <th>
+            <p-columnFilter type="text" field="branchName" [showClearButton]="false"></p-columnFilter>
+        </th>            
+        </tr> 
       </ng-template>
       <ng-template pTemplate="body" let-data>
         <tr style="white-space: nowrap">

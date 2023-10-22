@@ -11,34 +11,42 @@
       [rowsPerPageOptions]="[5, 10, 25, 50]"
       [paginator]="true"
       [filterDelay]="0"
-      [globalFilterFields]="['id']"
+      [tableStyle]="{ 'min-width': '80rem' }"
+    styleClass ="p-datatable-gridlines"
     >
-      <ng-template pTemplate="caption">
-        <div class="flex">
-          <span class="p-input-icon-left ml-auto">
-            <i class="fa-solid fa-search"></i>
-            <input
-              pInputText
-              type="text"
-              (input)="search.filterGlobal($any($event.target).value, 'contains')"
-              placeholder="Search here..."
-            />
-          </span>
-        </div>
-      </ng-template>
       <ng-template pTemplate="header">
         <tr style="white-space: nowrap;">
           <th pSortableColumn="id">
-            Id
+            Id <p-sortIcon field="id"></p-sortIcon>
           </th>
-          <th pSortableColumn="permissionhead">PermissionHead</th>
-          <th pSortableColumn="fonticon" >FontIcon</th>
-          <th pSortableColumn="isParent" >IsParent</th>
+          <th pSortableColumn="permissionhead">PermissionHead <p-sortIcon field="permissionhead"></p-sortIcon></th>
+          <th pSortableColumn="fonticon" >FontIcon <p-sortIcon field="fonticon"></p-sortIcon></th>
+          <th pSortableColumn="isParent" >IsParent <p-sortIcon field="isParent"></p-sortIcon></th>
           <th pSortableColumn="catCode" >
-            CatCode
+            CatCode <p-sortIcon field="catCode"></p-sortIcon>
           </th>
-          <th pSortableColumn="description">Description</th>
+          <th pSortableColumn="description">Description <p-sortIcon field="description"></p-sortIcon></th>
         </tr>
+        <tr class="filterSection">
+          <th>
+            <p-columnFilter type="text" field="id"[showClearButton]="false"></p-columnFilter>
+        </th>
+          <th>
+            <p-columnFilter type="text" field="permissionhead" [showClearButton]="false"></p-columnFilter>
+        </th>
+          <th>
+            <p-columnFilter type="text" field="fonticon" [showClearButton]="false"></p-columnFilter>
+        </th>
+          <th>
+            <p-columnFilter type="text" field="isParent" [showClearButton]="false"></p-columnFilter>
+        </th>
+          <th>
+            <p-columnFilter type="text" field="catCode" [showClearButton]="false"></p-columnFilter>
+        </th>
+          <th>
+            <p-columnFilter type="text" field="description" [showClearButton]="false" ></p-columnFilter>
+        </th>           
+        </tr> 
       </ng-template>
       <ng-template pTemplate="body" let-data>
         <tr style="white-space: nowrap;">
@@ -52,7 +60,7 @@
       </ng-template>
       <ng-template pTemplate="emptymessage">
         <tr>
-          <td colspan="9" style="text-align: center">Sorry! No record found</td>
+          <td colspan="6" style="text-align: center">Sorry! No record found</td>
         </tr>
       </ng-template>
     </p-table>

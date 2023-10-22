@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-interface SearchOption {
-  name: String;
-}
-
 @Component({
   selector: 'app-permission-by-role',
   templateUrl: './permission-by-role.component.html',
@@ -13,11 +9,8 @@ interface SearchOption {
 export class PermissionByRoleComponent implements OnInit {
   isLoading: boolean = false;
   data: any[] = [];
-  searchOption: SearchOption[] = [];
   ngOnInit(): void {
-    this.searchOption = [
-      { name: 'Admin' }
-  ];
+    
     this.data = [
       {
         id: 'id',

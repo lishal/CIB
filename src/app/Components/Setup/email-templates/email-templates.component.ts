@@ -4,6 +4,7 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { AddETemplatesComponent } from './add/add.component';
 import { EditETemplatesComponent } from './edit/edit.component';
 import { DeleteETemplatesComponent } from './delete/delete.component';
+
 @Component({
   selector: 'app-email-templates',
   templateUrl: './email-templates.component.html',

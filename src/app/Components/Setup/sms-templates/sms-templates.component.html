@@ -1,6 +1,12 @@
 <div class="emailHeading">
     <span class="text-3xl font-semibold">SMS Template</span>
   </div>
+  <div class="btnGroup-topbar">
+    <p-button
+    icon="fa-solid fa-circle-plus"
+    (click)="addData()"
+  ></p-button>
+</div>
   <div class="card mt-3">
       <p-toast></p-toast>
     <p-table
@@ -15,35 +21,29 @@
       [rowsPerPageOptions]="[5, 10, 25, 50]"
       [paginator]="true"
       [filterDelay]="0"
-      [globalFilterFields]="['templateName']"
+      [tableStyle]="{ 'min-width': '80rem' }"
+      styleClass ="p-datatable-gridlines"
     >
-      <ng-template pTemplate="caption">
-        <div class="flex">
-          <span class="p-input-icon-left ml-auto">
-            <i class="fa-solid fa-search"></i>
-            <input
-              pInputText
-              type="text"
-              (input)="search.filterGlobal($any($event.target).value, 'contains')"
-              placeholder="Search here..."
-            />
-          </span>
-          <div class="btnGroup ml-1">
-            <p-button
-              styleClass="p-button-success"
-              icon="fa-solid fa-circle-plus"
-              (click)="addData()"
-            ></p-button>
-          </div>
-        </div>
-      </ng-template>
       <ng-template pTemplate="header">
         <tr style="white-space: nowrap">
           <th></th>
-          <th pSortableColumn="templateName">TemplateName</th>
-          <th pSortableColumn="smsnumber">SMSNumber</th>
-          <th pSortableColumn="sms">SMS</th>
+          <th pSortableColumn="templateName">TemplateName <p-sortIcon field="templateName"></p-sortIcon></th>
+          <th pSortableColumn="smsnumber">SMSNumber <p-sortIcon field="smsnumber"></p-sortIcon></th>
+          <th pSortableColumn="sms">SMS <p-sortIcon field="sms"></p-sortIcon></th>
         </tr>
+        <tr class="filterSection">
+          <th>
+          </th>
+          <th>
+            <p-columnFilter type="text" field="templateName"[showClearButton]="false"></p-columnFilter>
+        </th>
+          <th>
+            <p-columnFilter type="text" field="smsnumber" [showClearButton]="false"></p-columnFilter>
+        </th>
+          <th>
+            <p-columnFilter type="text" field="sms" [showClearButton]="false"></p-columnFilter>
+        </th>
+        </tr> 
       </ng-template>
       <ng-template pTemplate="body" let-data>
         <tr style="white-space: nowrap">
@@ -52,14 +52,14 @@
                 pButton
                 pRipple
                 icon="fa-solid fa-pen-to-square"
-                class="p-button-rounded p-button-success p-button-text"
+                class="functionButton p-button-rounded p-button-success p-button-text"
                 (click)="editData(data?.templateName)"
               ></button>
               <button
                 pButton
                 pRipple
                 icon="fa-solid fa-trash"
-                class="p-button-rounded p-button-danger p-button-text"
+                class="functionButton p-button-rounded p-button-danger p-button-text"
                 (click)="deleteData(data?.templateName)"
               ></button>
             </td>
