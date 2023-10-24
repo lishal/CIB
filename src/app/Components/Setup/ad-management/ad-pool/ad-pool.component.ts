@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdPoolService } from 'src/app/Services/Setup/Ad-Management/ad-pool.service';
 
 @Component({
   selector: 'app-ad-pool',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ad-pool.component.css'],
 })
 export class AdPoolComponent implements OnInit {
+  constructor(private api:AdPoolService){}
   isLoading: boolean = false;
   data: any[] = [];
   ngOnInit(): void {

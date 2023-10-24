@@ -1,15 +1,25 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable,Inject } from '@angular/core';
 import { Observable } from 'rxjs';
+import { CIB_BASE_URL } from 'src/app/app-config.module';
+import {HttpClient} from '@angular/common/http'
+
+export interface OdataResponse{
+  value:any[]
+}
+// To make Generic
+
+// export interface OdataResponse <T>{
+//   value: T[]
+// }
+
 @Injectable({
   providedIn: 'root'
 })
 export class DepartmentService {
 
-  constructor(private http: HttpClient) {}
-
-  fetchData(): Observable<any> {
-    const apiUrl = 'https://random-data-api.com/api/v2/banks/?size=10';
-    return this.http.get(apiUrl);
+  constructor(private httpClient:HttpClient, @Inject(CIB_BASE_URL) private baseUrl:string) {}
+  
+  public getEmployeeData():Observable<OdataResponse>{ // If Generic: <OdataResponse<ModleName>> ex: <OdataResponse <Department>>
+    return this.httpClient.get<{value:any[]}>(`${this.baseUrl}/Products`); //If Generic: value : Department[]
   }
 }

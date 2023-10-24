@@ -69,6 +69,7 @@ import { PermissionByEmployeeComponent } from './Components/Setup/security/permi
 import { AdPoolComponent } from './Components/Setup/ad-management/ad-pool/ad-pool.component';
 import { MapUserComponent } from './Components/Setup/ad-management/map-user/map-user.component';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { AppConfigModule } from './app-config.module';
 
 @NgModule({
   declarations: [
@@ -125,6 +126,7 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
     MapUserComponent,
   ],
   imports: [
+    AppConfigModule,
     BrowserModule,
     AppRoutingModule,
     CardModule,

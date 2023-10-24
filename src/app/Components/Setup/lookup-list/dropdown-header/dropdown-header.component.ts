@@ -5,6 +5,7 @@ import { AddLookupDropdownHeaderComponent } from './add/add.component';
 import { EditLookupDropdownHeaderComponent } from './edit/edit.component';
 import { ViewLookupDropdownHeaderComponent } from './view/view.component';
 import { DeleteLookupDropdownHeaderComponent } from './delete/delete.component';
+import { DropdownHeaderService } from 'src/app/Services/Setup/Lookup-List/dropdown-header.service';
 
 @Component({
   selector: 'app-dropdown-header',
@@ -14,6 +15,7 @@ import { DeleteLookupDropdownHeaderComponent } from './delete/delete.component';
 })
 export class DropdownHeaderComponent implements OnInit {
   constructor(
+    public api: DropdownHeaderService,
     public dialogService: DialogService,
     private messageService: MessageService
   ) {}

@@ -17,7 +17,7 @@ import * as FileSaver from 'file-saver';
 })
 export class EmployeeComponent implements OnInit {
   constructor(
-    private api: EmployeeService,
+    public api: EmployeeService,
     public dialogService: DialogService,
     private messageService: MessageService
   ) {}
@@ -158,6 +158,12 @@ export class EmployeeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.api.getEmployeeData().subscribe((response) => {
+      console.log(response)
+      // Now you can work with the data as needed.
+    });
+    // console.log(this.api.getEmployeeData())
 
     // this.data=[{
     //   loginIdentifer: 'Test1',

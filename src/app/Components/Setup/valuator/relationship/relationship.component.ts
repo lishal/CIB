@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { ValuatorService } from 'src/app/Services/Setup/valuator.service';
+import { ValuatorRelationshipService } from 'src/app/Services/Setup/Valuator/valuator-relationship.service';
 import * as FileSaver from 'file-saver';
 import { AddVRelationshipComponent } from './add/add.component';
 import { EditVRelationshipComponent } from './edit/edit.component';
@@ -20,7 +20,7 @@ export class RelationshipComponent implements OnInit {
   data: any[] = [];
   ref: DynamicDialogRef | undefined;
   constructor(
-    private api: ValuatorService,
+    private api: ValuatorRelationshipService,
     public dialogService: DialogService,
     private messageService: MessageService
   ) {}

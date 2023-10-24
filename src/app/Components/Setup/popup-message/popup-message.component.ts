@@ -4,6 +4,7 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { DeletePopupComponent } from './delete/delete.component';
 import { EditPopupComponent } from './edit/edit.component';
 import { AddPopupComponent } from './add/add.component';
+import { PopupMessageService } from 'src/app/Services/Setup/popup-message.service';
 
 @Component({
   selector: 'app-popup-message',
@@ -16,6 +17,7 @@ export class PopupMessageComponent implements OnInit{
   data: any[] = [];
   ref: DynamicDialogRef | undefined;
   constructor(
+    private api: PopupMessageService,
     public dialogService: DialogService,
     private messageService: MessageService
   ) {}

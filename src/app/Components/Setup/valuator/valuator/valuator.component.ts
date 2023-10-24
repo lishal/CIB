@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { ValuatorService } from 'src/app/Services/Setup/valuator.service';
+import { ValuatorService } from 'src/app/Services/Setup/Valuator/valuator.service';
 import { AddValuatorComponent } from './add/add.component';
 import { EditValuatorComponent } from './edit/edit.component';
 import { ViewValuatorComponent } from './view/view.component';

@@ -4,6 +4,7 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { AddSTemplatesComponent } from './add/add.component';
 import { EditSTemplatesComponent } from './edit/edit.component';
 import { DeleteSTemplatesComponent } from './delete/delete.component';
+import { SmsTemplateService } from 'src/app/Services/Setup/sms-template.service';
 @Component({
   selector: 'app-sms-templates',
   templateUrl: './sms-templates.component.html',
@@ -15,6 +16,7 @@ export class SmsTemplatesComponent implements OnInit{
   data: any[] = [];
   ref: DynamicDialogRef | undefined;
   constructor(
+    private api: SmsTemplateService,
     public dialogService: DialogService,
     private messageService: MessageService
   ) {}

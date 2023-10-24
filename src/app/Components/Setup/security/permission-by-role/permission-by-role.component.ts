@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PermissionRoleService } from 'src/app/Services/Setup/Security/permission-role.service';
 
 @Component({
   selector: 'app-permission-by-role',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class PermissionByRoleComponent implements OnInit {
+  constructor(private api:PermissionRoleService){}
   isLoading: boolean = false;
   data: any[] = [];
   ngOnInit(): void {

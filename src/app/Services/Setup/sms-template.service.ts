@@ -11,13 +11,15 @@ export interface OdataResponse{
 // export interface OdataResponse <T>{
 //   value: T[]
 // }
+
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export class ProvinceService {
+export class SmsTemplateService {
+
   constructor(private httpClient:HttpClient, @Inject(CIB_BASE_URL) private baseUrl:string) {}
   
-  public getEmployeeData():Observable<OdataResponse>{ // If Generic: <OdataResponse<ModleName>> ex: <OdataResponse <Province>>
-    return this.httpClient.get<{value:any[]}>(`${this.baseUrl}/Products`); //If Generic: value : Province[]
+  public getEmployeeData():Observable<OdataResponse>{ // If Generic: <OdataResponse<ModleName>> ex: <OdataResponse <SmsTemplate>>
+    return this.httpClient.get<{value:any[]}>(`${this.baseUrl}/Products`); //If Generic: value : SmsTemplate[]
   }
 }

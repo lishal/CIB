@@ -5,6 +5,7 @@ import { AddLookupIffVersionComponent } from './add/add.component';
 import { EditLookupIffVersionComponent } from './edit/edit.component';
 import { ViewLookupIffVersionComponent } from './view/view.component';
 import { DeleteLookupIffVersionComponent } from './delete/delete.component';
+import { IffService } from 'src/app/Services/Setup/Lookup-List/iff.service';
 @Component({
   selector: 'app-iff-version',
   templateUrl: './iff-version.component.html',
@@ -13,6 +14,7 @@ import { DeleteLookupIffVersionComponent } from './delete/delete.component';
 })
 export class IffVersionComponent implements OnInit {
   constructor(
+    public api: IffService,
     public dialogService: DialogService,
     private messageService: MessageService
   ) {}

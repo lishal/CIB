@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PermissionEmployeeService } from 'src/app/Services/Setup/Security/permission-employee.service';
 
 @Component({
   selector: 'app-permission-by-employee',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./permission-by-employee.component.css']
 })
 export class PermissionByEmployeeComponent implements OnInit {
+  constructor(private api:PermissionEmployeeService){}
   isLoading: boolean = false;
   data: any[] = [];
   ngOnInit(): void {

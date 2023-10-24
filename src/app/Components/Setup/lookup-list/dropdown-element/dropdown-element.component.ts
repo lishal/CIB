@@ -5,6 +5,7 @@ import { EditLookupDropdownElementComponent } from './edit/edit.component';
 import { ViewLookupDropdownElementComponent } from './view/view.component';
 import { DeleteLookupDropdownElementComponent } from './delete/delete.component';
 import { AddLookupDropdownElementComponent } from './add/add.component';
+import { DropdownElementService } from 'src/app/Services/Setup/Lookup-List/dropdown-element.service';
 @Component({
   selector: 'app-dropdown-element',
   templateUrl: './dropdown-element.component.html',
@@ -13,6 +14,7 @@ import { AddLookupDropdownElementComponent } from './add/add.component';
 })
 export class DropdownElementComponent implements OnInit {
   constructor(
+    public api: DropdownElementService,
     public dialogService: DialogService,
     private messageService: MessageService
   ) {}
