@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ButtonModule } from 'primeng/button';
 import {
   ReactiveFormsModule,
   FormGroup,
@@ -13,6 +12,7 @@ import { MessageService } from 'primeng/api';
 import { CommonModule } from '@angular/common';
 import { CalendarModule } from 'primeng/calendar';
 import { DropdownModule } from 'primeng/dropdown';
+import { NepaliDatepickerModule } from 'nepali-datepicker-angular';
 
 interface Legal {
   name: String;
@@ -50,15 +50,17 @@ interface ActionStatus {
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.css'],
   imports: [
-    ButtonModule,
+    
     ReactiveFormsModule,
     SelectButtonModule,
     ToastModule,
     CommonModule,
     DropdownModule,
     CalendarModule,
+    NepaliDatepickerModule,
+
   ],
-  providers: [MessageService],
+  providers: [MessageService,],
   standalone: true,
 })
 export class AddValuatorComponent implements OnInit {
@@ -96,7 +98,7 @@ export class AddValuatorComponent implements OnInit {
     this.myForm = this.fb.group({
       valuatorName: ['', Validators.required],
       isIndividual: ['', Validators.required],
-      vedobRegNp: ['', Validators.required],
+      vedobRegNp: [''],
       entityDob: ['', Validators.required],
       legalStatus: [''],
       companyRegNo: [''],
@@ -151,8 +153,9 @@ export class AddValuatorComponent implements OnInit {
   onSubmit() {
     if (this.myForm.valid) {
       const formValues = this.myForm.value;
-      this.added = true;
-      this.ref.close([formValues, this.added]);
+      console.log(formValues.vedobRegNp);
+      // this.added = true;
+      // this.ref.close([formValues, this.added]);
     } else {
       this.messageService.add({
         severity: 'error',

@@ -67,16 +67,26 @@
       >VEDOBReg Np:<span style="color: red">&nbsp; *</span>
     </label>
     <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
-      <p-calendar
+      <ne-datepicker 
+      name="vedobRegNp"
+      language="en"
+      placeholder=""
+      [ngClass]="{
+        'invalid-input':
+          myForm.get('vedobRegNp')?.invalid &&
+          myForm.get('vedobRegNp')?.touched
+      }"
+      ></ne-datepicker>
+      <!-- <p-calendar
         formControlName="vedobRegNp"
-        [(ngModel)]="myForm.value.vedobRegNp"
+        
         [ngClass]="{
           'invalid-input':
             myForm.get('vedobRegNp')?.invalid &&
             myForm.get('vedobRegNp')?.touched
         }"
         appendTo="body"
-      ></p-calendar>
+      ></p-calendar> -->
       <div
         *ngIf="
           myForm.get('vedobRegNp')?.invalid && myForm.get('vedobRegNp')?.touched

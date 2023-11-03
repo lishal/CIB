@@ -27,6 +27,7 @@
     "file-saver": "^2.0.5",
     "file-saver-es": "^2.0.5",
     "font-awesome": "^4.7.0",
+    "nepali-datepicker-angular": "^1.0.1",
     "ngx-quill": "^22.1.0",
     "odata-data-source": "^16.4.0",
     "odata-query": "^7.0.4",
