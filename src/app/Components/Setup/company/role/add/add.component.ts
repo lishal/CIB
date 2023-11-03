@@ -60,7 +60,7 @@ export class AddRoleComponent implements OnInit {
       });
     }
   }
-  onCancle() {
+  onCancel() {
     this.ref.close();
   }
 }

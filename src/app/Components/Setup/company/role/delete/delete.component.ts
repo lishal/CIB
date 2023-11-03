@@ -39,7 +39,7 @@ export class DeleteRoleComponent implements OnInit {
       },
     });
   }
-  onCancle() {
+  onCancel() {
     this.ref.close();
   }
 }

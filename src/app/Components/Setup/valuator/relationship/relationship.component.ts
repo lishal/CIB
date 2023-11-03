@@ -28,11 +28,11 @@ export class RelationshipComponent implements OnInit {
   addData() {
     this.ref = this.dialogService.open(AddVRelationshipComponent, {
       header: `Add Valuator Relationship`,
-      width: '90%',
-      height: '90%',
+      width: '100%',
+      height: '100%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
-      maximizable: true,
+      maximizable: false,
     });
     this.ref.onClose.subscribe((data: any) => {
       if (data !== undefined) {
@@ -51,11 +51,11 @@ export class RelationshipComponent implements OnInit {
     const editData = this.data.find((data) => data.vreType === vreType);
     this.ref = this.dialogService.open(EditVRelationshipComponent, {
       header: `Edit Valuator Relationship for ${vreType}`,
-      width: '90%',
-      height: '90%',
+      width: '100%',
+      height: '100%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
-      maximizable: true,
+      maximizable: false,
       data: editData,
     });
     this.ref.onClose.subscribe((datas: any) => {
@@ -78,11 +78,11 @@ export class RelationshipComponent implements OnInit {
     const viewData = this.data.find((data) => data.vreType === vreType);
     this.ref = this.dialogService.open(ViewVRelationshipComponent, {
       header: `View Valuator Relationship for ${vreType}`,
-      width: '90%',
-      height: '80%',
+      width: '100%',
+      height: '100%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
-      maximizable: true,
+      maximizable: false,
       data: viewData,
     });
   }
@@ -90,11 +90,11 @@ export class RelationshipComponent implements OnInit {
     const deleteData = this.data.find((data) => data.vreType === vreType);
     this.ref = this.dialogService.open(DeleteVRelationshipComponent, {
       header: `Delete Valuator for ${vreType} id`,
-      width: '90%',
-      height: '80%',
+      width: '100%',
+      height: '100%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
-      maximizable: true,
+      maximizable: false,
       data: deleteData,
     });
     this.ref.onClose.subscribe((data: any) => {

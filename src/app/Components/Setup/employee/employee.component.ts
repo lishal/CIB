@@ -28,11 +28,11 @@ export class EmployeeComponent implements OnInit {
   addData() {
     this.ref = this.dialogService.open(AddEmployeeComponent, {
       header: `Add Staff`,
-      width: '90%',
-      height: '80%',
+      width: '100%',
+      height: '100%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
-      maximizable: true,
+      maximizable: false,
     });
     this.ref.onClose.subscribe((data: any) => {
       if (data !== undefined) {
@@ -54,11 +54,11 @@ export class EmployeeComponent implements OnInit {
     const displayData = this.data.find((data) => data.loginIdentifer === loginIdentifer);
     this.ref = this.dialogService.open(ViewEmployeeComponent, {
       header: `Detailed View of ${displayData.deptName}`,
-      width: '90%',
-      height: '80%',
+      width: '100%',
+      height: '100%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
-      maximizable: true,
+      maximizable: false,
       data: displayData,
     });
   }
@@ -66,11 +66,11 @@ export class EmployeeComponent implements OnInit {
     const editData = this.data.find((data) => data.loginIdentifer === loginIdentifer);
     this.ref = this.dialogService.open(EditEmployeeComponent, {
       header: `Edit department for ${loginIdentifer}`,
-      width: '90%',
-      height: '80%',
+      width: '100%',
+      height: '100%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
-      maximizable: true,
+      maximizable: false,
       data: editData,
     });
     this.ref.onClose.subscribe((datas: any) => {
@@ -105,11 +105,11 @@ export class EmployeeComponent implements OnInit {
     const deleteData = this.data.find((data) => data.loginIdentifer === loginIdentifer);
     this.ref = this.dialogService.open(DeleteEmployeeComponent, {
       header: `Delete Branch for ${loginIdentifer} id`,
-      width: '90%',
-      height: '80%',
+      width: '100%',
+      height: '100%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
-      maximizable: true,
+      maximizable: false,
       data: deleteData,
     });
     this.ref.onClose.subscribe((data: any) => {

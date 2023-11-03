@@ -16,7 +16,7 @@ export class ViewBranchComponent implements OnInit{
     ngOnInit() {
         this.data=[this.dialogService.data];
     }
-    onCancle() {
+    onCancel() {
       this.ref.close();
     }
 

@@ -28,24 +28,26 @@
           {{data[0]?.description}}
       </div>
   </div>
-    <div
-      class="btnGroup absolute bottom-0 right-0 flex mt-3 w-full justify-content-end pb-2"
-    >
-      <button
-        pButton
-        type="button"
-        label="Cancel"
-        class="p-button-raised p-button-text p-button-plain mr-2"
-        (click)="onCancle()"
-      ></button>
-      <p-confirmPopup></p-confirmPopup>
-    <button
-      pButton
-      type="button"
-      label="Delete"
-      class="p-button-raised p-button-danger p-button-plain mr-2"
-      (click)="onDelete($event)"
-    ></button>
-    </div>
   </div>
+  <div
+  class="btnGroup absolute z-1 flex mt-3 h-3rem bg-white justify-content-end pb-2"
+  style="bottom: 0px; width: 95%; margin-top: 3rem"
+>
+  <button
+    pButton
+    type="button"
+    label="Cancel"
+    class="p-button-raised p-button-text p-button-plain mr-2"
+    (click)="onCancel()"
+  ></button>
+
+<p-confirmPopup></p-confirmPopup>
+<button
+  pButton
+  type="button"
+  label="Delete"
+  class="p-button-raised p-button-danger p-button-plain mr-2"
+  (click)="onDelete($event)"
+></button>
+</div>
   

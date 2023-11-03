@@ -113,7 +113,7 @@ export class EditEmployeeComponent implements OnInit {
       });
     }
   }
-  onCancle() {
+  onCancel() {
     this.ref.close();
   }
 }

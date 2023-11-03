@@ -34,11 +34,11 @@ export class EmailTemplatesComponent implements OnInit {
   addData() {
     this.ref = this.dialogService.open(AddETemplatesComponent, {
       header: `Add HR Email Templates`,
-      width: '90%',
-      height: '80%',
+      width: '100%',
+      height: '100%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
-      maximizable: true,
+      maximizable: false,
     });
     this.ref.onClose.subscribe((data: any) => {
       if (data !== undefined) {
@@ -59,11 +59,11 @@ export class EmailTemplatesComponent implements OnInit {
     );
     this.ref = this.dialogService.open(EditETemplatesComponent, {
       header: `Edit Email Templates of ${templateName} `,
-      width: '90%',
-      height: '80%',
+      width: '100%',
+      height: '100%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
-      maximizable: true,
+      maximizable: false,
       data: editData,
     });
     this.ref.onClose.subscribe((datas: any) => {
@@ -86,11 +86,11 @@ export class EmailTemplatesComponent implements OnInit {
     const deleteData = this.data.find((data) => data.templateName === templateName);
     this.ref = this.dialogService.open(DeleteETemplatesComponent, {
       header: `DeleteEmail Templates for ${templateName} id`,
-      width: '90%',
-      height: '80%',
+      width: '100%',
+      height: '100%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
-      maximizable: true,
+      maximizable: false,
       data: deleteData,
     });
     this.ref.onClose.subscribe((data: any) => {

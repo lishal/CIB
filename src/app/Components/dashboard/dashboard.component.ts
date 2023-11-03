@@ -14,25 +14,25 @@ export class DashboardComponent implements OnInit {
       this.currentRoute=router.url;
 
         if(this.currentRoute==="/dashboard/company/companyDetail"){
-          this.topPanelLabel="Comapny Detail";
+          this.topPanelLabel="Comapny";
         }
         else if(this.currentRoute==="/dashboard/company"){
           this.topPanelLabel="Company";
         }
         else if(this.currentRoute==="/dashboard/company/province"){
-          this.topPanelLabel="Province";
+          this.topPanelLabel="Company - Province";
         }
         else if(this.currentRoute==="/dashboard/company/branch"){
-          this.topPanelLabel="Branch";
+          this.topPanelLabel="Company - Branch";
         }
         else if(this.currentRoute==="/dashboard/company/department"){
-          this.topPanelLabel="Department";
+          this.topPanelLabel="Company - Department";
         }
         else if(this.currentRoute==="/dashboard/company/role"){
-          this.topPanelLabel="Role";
+          this.topPanelLabel="Company - Role";
         }
         else if(this.currentRoute==="/dashboard/company/backup"){
-          this.topPanelLabel="Backup";
+          this.topPanelLabel="Company - Backup";
         }
         else if(this.currentRoute==="/dashboard/employee"){
           this.topPanelLabel="Employee";
@@ -131,7 +131,7 @@ export class DashboardComponent implements OnInit {
           this.topPanelLabel="Valuator";
         }
         else if(this.currentRoute==="/dashboard/valuator/relationship"){
-          this.topPanelLabel="Valuator Relationship";
+          this.topPanelLabel="valuator - Valuator Relationship";
         }
         else if(this.currentRoute==="/dashboard/lookup/lookup-dropdownHeader"){
           this.topPanelLabel="Lookup List - Dropdown Header";

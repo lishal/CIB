@@ -68,7 +68,7 @@ export class AddProvinceComponent implements OnInit {
       });
     }
   }
-  onCancle() {
+  onCancel() {
     this.ref.close();
   }
 }

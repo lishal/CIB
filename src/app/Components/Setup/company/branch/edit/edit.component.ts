@@ -185,7 +185,7 @@ export class EditBranchComponent implements OnInit {
       });
     }
   }
-  onCancle() {
+  onCancel() {
     this.ref.close();
   }
 }

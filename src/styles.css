@@ -660,3 +660,11 @@ color:#1D4ED8 !important;
   background-color: var(--white);
   padding: 5px !important;
 }
+
+/* dialog box */
+.p-dialog{
+  max-height: 100% !important;
+}
+.addForm{
+  min-height: auto !important;
+}

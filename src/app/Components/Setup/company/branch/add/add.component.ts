@@ -172,7 +172,7 @@ export class AddBranchComponent implements OnInit {
       });
     }
   }
-  onCancle() {
+  onCancel() {
     this.ref.close();
   }
 }

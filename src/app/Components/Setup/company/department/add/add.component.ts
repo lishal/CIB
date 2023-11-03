@@ -93,7 +93,7 @@ export class AddDepartmentComponent implements OnInit {
       });
     }
   }
-  onCancle() {
+  onCancel() {
     this.ref.close();
   }
 }

@@ -104,7 +104,7 @@ export class AddEmployeeComponent  implements OnInit{
       });
     }
   }
-  onCancle() {
+  onCancel() {
     this.ref.close();
   }
 

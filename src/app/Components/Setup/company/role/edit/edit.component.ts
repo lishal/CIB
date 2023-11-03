@@ -66,7 +66,7 @@ export class EditRoleComponent implements OnInit {
       });
     }
   }
-  onCancle() {
+  onCancel() {
     this.ref.close();
   }
 }

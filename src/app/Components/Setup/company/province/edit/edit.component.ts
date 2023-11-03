@@ -74,7 +74,7 @@ export class EditProvinceComponent implements OnInit {
       });
     }
   }
-  onCancle() {
+  onCancel() {
     this.ref.close();
   }
 }

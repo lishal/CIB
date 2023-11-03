@@ -30,7 +30,7 @@ export class DeleteEmployeeComponent  implements OnInit{
       },
     });
   }
-  onCancle() {
+  onCancel() {
     this.ref.close();
   }
 }

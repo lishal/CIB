@@ -100,7 +100,7 @@ export class EditDepartmentComponent implements OnInit {
       });
     }
   }
-  onCancle() {
+  onCancel() {
     this.ref.close();
   }
 }

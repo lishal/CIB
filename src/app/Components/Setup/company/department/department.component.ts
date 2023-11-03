@@ -26,11 +26,11 @@ export class DepartmentComponent implements OnInit, OnDestroy {
   addData() {
     this.ref = this.dialogService.open(AddDepartmentComponent, {
       header: `Add Department`,
-      width: '90%',
-      height: '80%',
+      width: '100%',
+      height: '100%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
-      maximizable: true,
+      maximizable: false,
     });
     this.ref.onClose.subscribe((data: any) => {
       if (data !== undefined) {
@@ -53,11 +53,11 @@ export class DepartmentComponent implements OnInit, OnDestroy {
     const displayData = this.data.find((data) => data.deptName === deptName);
     this.ref = this.dialogService.open(ViewDepartmentComponent, {
       header: `Detailed View of ${displayData.deptName}`,
-      width: '90%',
-      height: '80%',
+      width: '100%',
+      height: '100%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
-      maximizable: true,
+      maximizable: false,
       data: displayData,
     });
 
@@ -73,11 +73,11 @@ export class DepartmentComponent implements OnInit, OnDestroy {
     const editData = this.data.find((data) => data.deptName === deptName);
     this.ref = this.dialogService.open(EditDepartmentComponent, {
       header: `Edit department for ${deptName}`,
-      width: '90%',
-      height: '80%',
+      width: '100%',
+      height: '100%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
-      maximizable: true,
+      maximizable: false,
       data: editData,
     });
     this.ref.onClose.subscribe((datas: any) => {
@@ -113,11 +113,11 @@ export class DepartmentComponent implements OnInit, OnDestroy {
     const deleteData = this.data.find((data) => data.deptName === deptName);
     this.ref = this.dialogService.open(DeleteDepartmentComponent, {
       header: `Delete Branch for ${deptName} id`,
-      width: '90%',
-      height: '80%',
+      width: '100%',
+      height: '100%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
-      maximizable: true,
+      maximizable: false,
       data: deleteData,
     });
     this.ref.onClose.subscribe((data: any) => {

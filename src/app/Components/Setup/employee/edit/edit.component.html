@@ -318,22 +318,23 @@
     </ng-template>
     </div>
   </div>
-  <div
-    class="btnGroup absolute bottom-3 right-0 flex mt-3 w-full justify-content-end pb-2"
-  >
-    <button
-      pButton
-      type="button"
-      label="Cancel"
-      class="p-button-raised p-button-text p-button-plain mr-2"
-      (click)="onCancle()"
-    ></button>
-    <button
-      pButton
-      type="button"
-      label="Submit"
-      class="p-button-raised p-button-info"
-      (click)="onSubmit()"
-    ></button>
-  </div>
 </form>
+<div
+  class="btnGroup absolute z-1 flex mt-3 h-3rem bg-white justify-content-end pb-2"
+  style="bottom: 0px; width: 95%; margin-top: 3rem"
+>
+  <button
+    pButton
+    type="button"
+    label="Cancel"
+    class="p-button-raised p-button-text p-button-plain mr-2"
+    (click)="onCancel()"
+  ></button>
+  <button
+    pButton
+    type="button"
+    label="Submit"
+    class="p-button-raised p-button-info"
+    (click)="onSubmit()"
+  ></button>
+</div>

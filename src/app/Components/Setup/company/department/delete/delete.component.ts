@@ -30,7 +30,7 @@ export class DeleteDepartmentComponent  implements OnInit{
       },
     });
   }
-  onCancle() {
+  onCancel() {
     this.ref.close();
   }
 }

@@ -30,11 +30,11 @@ export class InnerValuatorComponent implements OnInit {
   addData() {
     this.ref = this.dialogService.open(AddValuatorComponent, {
       header: `Add Valuator`,
-      width: '90%',
-      height: '90%',
+      width: '100%',
+      height: '100%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
-      maximizable: true,
+      maximizable: false,
     });
     this.ref.onClose.subscribe((data: any) => {
       if (data !== undefined) {
@@ -53,11 +53,11 @@ export class InnerValuatorComponent implements OnInit {
     const editData = this.data.find((data) => data.vettype === vettype);
     this.ref = this.dialogService.open(EditValuatorComponent, {
       header: `Edit Valuator for ${vettype}`,
-      width: '90%',
-      height: '80%',
+      width: '100%',
+      height: '100%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
-      maximizable: true,
+      maximizable: false,
       data: editData,
     });
     this.ref.onClose.subscribe((datas: any) => {
@@ -80,11 +80,11 @@ export class InnerValuatorComponent implements OnInit {
     const viewData = this.data.find((data) => data.vettype === vettype);
     this.ref = this.dialogService.open(ViewValuatorComponent, {
       header: `View Valuator for ${vettype}`,
-      width: '90%',
-      height: '80%',
+      width: '100%',
+      height: '100%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
-      maximizable: true,
+      maximizable: false,
       data: viewData,
     });
   }
@@ -92,11 +92,11 @@ export class InnerValuatorComponent implements OnInit {
     const deleteData = this.data.find((data) => data.vettype === vettype);
     this.ref = this.dialogService.open(DeleteValuatorComponent, {
       header: `Delete Valuator for ${vettype} id`,
-      width: '90%',
-      height: '80%',
+      width: '100%',
+      height: '100%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
-      maximizable: true,
+      maximizable: false,
       data: deleteData,
     });
     this.ref.onClose.subscribe((data: any) => {
@@ -120,11 +120,11 @@ export class InnerValuatorComponent implements OnInit {
   addValuatorDocument(){
     this.ref = this.dialogService.open(AddValuatorDocumentComponent, {
       header: `Add Valuator Document`,
-      width: '90%',
-      height: '90%',
+      width: '100%',
+      height: '100%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
-      maximizable: true,
+      maximizable: false,
     });
     this.ref.onClose.subscribe((documentData: any) => {
       if (documentData !== undefined) {

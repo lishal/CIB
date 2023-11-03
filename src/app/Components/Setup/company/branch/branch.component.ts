@@ -46,11 +46,11 @@ export class BranchComponent {
   addData() {
     this.ref = this.dialogService.open(AddBranchComponent, {
       header: `Add Branch`,
-      width: '90%',
-      height: '80%',
+      width: '100%',
+      height: '100%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
-      maximizable: true,
+      maximizable: false,
     });
     this.ref.onClose.subscribe((data: any) => {
       if (data !== undefined) {
@@ -70,11 +70,11 @@ export class BranchComponent {
     const displayData = this.data.find((data) => data.dataProviderBranchId === dataProviderBranchId);
     this.ref = this.dialogService.open(ViewBranchComponent, {
       header: `Detailed View of ${displayData.dataProviderBranchId}`,
-      width: '90%',
-      height: '80%',
+      width: '100%',
+      height: '100%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
-      maximizable: true,
+      maximizable: false,
       data: displayData,
     });
   }
@@ -84,11 +84,11 @@ export class BranchComponent {
     );
     this.ref = this.dialogService.open(EditBranchComponent, {
       header: `Edit Branch of ${dataProviderBranchId} `,
-      width: '90%',
-      height: '80%',
+      width: '100%',
+      height: '100%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
-      maximizable: true,
+      maximizable: false,
       data: editData,
     });
     this.ref.onClose.subscribe((datas: any) => {
@@ -127,11 +127,11 @@ export class BranchComponent {
     const deleteData = this.data.find((data) => data.dataProviderBranchId === dataProviderBranchId);
     this.ref = this.dialogService.open(DeleteBranchComponent, {
       header: `Delete Branch for ${dataProviderBranchId} id`,
-      width: '90%',
-      height: '80%',
+      width: '100%',
+      height: '100%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
-      maximizable: true,
+      maximizable: false,
       data: deleteData,
     });
     this.ref.onClose.subscribe((data: any) => {

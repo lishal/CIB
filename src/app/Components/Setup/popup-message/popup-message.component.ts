@@ -35,11 +35,11 @@ export class PopupMessageComponent implements OnInit{
   addData() {
     this.ref = this.dialogService.open(AddPopupComponent, {
       header: `Add Popup Message`,
-      width: '90%',
-      height: '80%',
+      width: '100%',
+      height: '100%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
-      maximizable: true,
+      maximizable: false,
     });
     this.ref.onClose.subscribe((data: any) => {
       if (data !== undefined) {
@@ -60,11 +60,11 @@ export class PopupMessageComponent implements OnInit{
     );
     this.ref = this.dialogService.open(EditPopupComponent, {
       header: `Edit Popup Message of ${subject} `,
-      width: '90%',
-      height: '80%',
+      width: '100%',
+      height: '100%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
-      maximizable: true,
+      maximizable: false,
       data: editData,
     });
     this.ref.onClose.subscribe((datas: any) => {
@@ -87,11 +87,11 @@ export class PopupMessageComponent implements OnInit{
     const deleteData = this.data.find((data) => data.subject === subject);
     this.ref = this.dialogService.open(DeletePopupComponent, {
       header: `Delete Popup Message for ${subject} id`,
-      width: '90%',
-      height: '80%',
+      width: '100%',
+      height: '100%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
-      maximizable: true,
+      maximizable: false,
       data: deleteData,
     });
     this.ref.onClose.subscribe((data: any) => {
