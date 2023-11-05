@@ -4,6 +4,7 @@ import { CompanyDetailService } from '../../../../Services/Setup/Company/company
 import { ViewComponent } from './view/view.component';
 import { EditComponent } from './edit/edit.component';
 import { MessageService } from 'primeng/api';
+import { OverlayPanel } from 'primeng/overlaypanel';
 @Component({
   selector: 'app-company-detail',
   templateUrl: './company-detail.component.html',
@@ -40,11 +41,11 @@ export class CompanyDetailComponent implements OnInit, OnDestroy {
     const displayData = this.data.find((data) => data.id === id);
     this.ref = this.dialogService.open(ViewComponent, {
       header: `View Company`,
-      width: '75%',
-      height: '80%',
+      width: '100%',
+      height: '100%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
-      maximizable: true,
+      maximizable: false,
       data: displayData,
     });
   }
@@ -53,11 +54,11 @@ export class CompanyDetailComponent implements OnInit, OnDestroy {
     const editData = this.data.find((data) => data.id === id);
     this.ref = this.dialogService.open(EditComponent, {
       header: `Edit Company`,
-      width: '75%',
-      height: '80%',
+      width: '100%',
+      height: '100%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
-      maximizable: true,
+      maximizable: false,
       data: editData,
     });
 

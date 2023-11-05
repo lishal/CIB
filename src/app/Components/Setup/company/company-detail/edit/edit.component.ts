@@ -96,7 +96,7 @@ export class EditComponent implements OnInit {
       });
     }
   }
-  onCancle() {
+  onCancel() {
     this.ref.close();
   }
   // selectProduct(product: Product) {

@@ -668,3 +668,18 @@ color:#1D4ED8 !important;
 .addForm{
   min-height: auto !important;
 }
+
+/* Table Action */
+.actionMenu :hover{
+  cursor: pointer;
+}
+.actionItem:hover{
+  cursor: pointer;
+}
+.actionItem{
+  text-transform: capitalize;
+  width: 100%;
+}
+.actionOverlay .p-overlaypanel-content {
+  padding: 0.5rem 0.3rem;
+}
