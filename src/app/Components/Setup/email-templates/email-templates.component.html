@@ -40,22 +40,24 @@
     </ng-template>
     <ng-template pTemplate="body" let-data>
       <tr style="white-space: nowrap">
-        <td >
-            <button
-              pButton
-              pRipple
-              icon="fa-solid fa-pen-to-square"
-              class="functionButton p-button-rounded p-button-success p-button-text"
-              (click)="editData(data?.templateName)"
-            ></button>
-            <button
-              pButton
-              pRipple
-              icon="fa-solid fa-trash"
-              class="functionButton p-button-rounded p-button-danger p-button-text"
-              (click)="deleteData(data?.templateName)"
-            ></button>
-          </td>
+        <td class="actionMenu flex justify-content-center align-items-center" >
+          <p-overlayPanel #setting [styleClass]="'actionOverlay'">
+            <ng-template pTemplate="content" >
+              <!-- <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center" (click)="showData(data.templateName)">
+               <i class="fa-solid fa-file mr-2"></i> View
+              </div> -->
+              <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center" (click)="editData(data.templateName)">
+                <i class="fa-solid fa-pen-to-square mr-2"></i> Edit
+              </div>
+              <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center" (click)="deleteData(data.templateName)">
+                <i class="fa-solid  fa-trash mr-2"></i> Delete
+              </div>
+             </ng-template>  
+          </p-overlayPanel>
+          <div pRipple class="action border-circle w-2rem h-2rem flex justify-content-center align-items-center" (click)="setting.toggle($event)">
+            <i class="fa-solid fa-gear"></i>
+          </div>
+        </td>
         <td>{{ data?.templateName }}</td>
         <td>{{ data?.emailHeader }}</td>
       </tr>
