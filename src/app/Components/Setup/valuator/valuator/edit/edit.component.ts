@@ -85,7 +85,7 @@ export class EditValuatorComponent implements OnInit {
     { label: 'False', value: false },
     { label: 'True', value: true },
   ];
-  vedobRegNp: any;
+  vedobRegNp: any="";
   entityDob: Date | undefined;
   sExpiryDate1Np: any;
   sExpiryDate1AD: any="";
@@ -183,8 +183,7 @@ export class EditValuatorComponent implements OnInit {
     this.sExpiryDate2AD=adDate
   }
   invalidvedobRegNp(){
-    const formValues = this.myForm.value;
-    if(formValues.vedobRegNp===""){
+    if(this.vedobRegNp===""){
       this.vedobRegNpError=true
     }
     else{
