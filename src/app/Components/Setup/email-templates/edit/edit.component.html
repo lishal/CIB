@@ -22,15 +22,6 @@
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
-      <div
-        *ngIf="
-          myForm.get('emailHeader')?.invalid &&
-          myForm.get('emailHeader')?.touched
-        "
-        style="color: red"
-      >
-        Email Header is required.
-      </div>
     </div>
   </div>
   <div class="field grid">
@@ -51,15 +42,6 @@
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
-      <div
-        *ngIf="
-          myForm.get('templateName')?.invalid &&
-          myForm.get('templateName')?.touched
-        "
-        style="color: red"
-      >
-        Template Name is required.
-      </div>
     </div>
     <label
       for="isBodyHtml"
@@ -106,14 +88,6 @@
         }"
         [style]="{ height: '320px' }"
       ></p-editor>
-      <div
-        *ngIf="
-          myForm.get('emailBody')?.invalid && myForm.get('emailBody')?.touched
-        "
-        style="color: red"
-      >
-        Email Body is required.
-      </div>
     </div>
   </div>
 </form>
