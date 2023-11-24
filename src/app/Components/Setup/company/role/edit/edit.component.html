@@ -18,14 +18,6 @@
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
-      <div
-        *ngIf="
-          myForm.get('roleName')?.invalid && myForm.get('roleName')?.touched
-        "
-        style="color: red"
-      >
-        Role Name is required.
-      </div>
     </div>
     <label
     for="systemDefined"
@@ -61,17 +53,9 @@
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       >
       </textarea>
-      <div
-        *ngIf="
-          myForm.get('description')?.invalid &&
-          myForm.get('description')?.touched
-        "
-        style="color: red"
-      >
-        Description is required.
-      </div>
     </div>
     </div>
+  
 </form>
 <div
   class="btnGroup absolute z-1 flex mt-3 h-3rem bg-white justify-content-end pb-2"

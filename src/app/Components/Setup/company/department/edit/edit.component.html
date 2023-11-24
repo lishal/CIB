@@ -17,14 +17,6 @@
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
-      <div
-        *ngIf="
-          myForm.get('deptName')?.invalid && myForm.get('deptName')?.touched
-        "
-        style="color: red"
-      >
-        Dept Name is required.
-      </div>
     </div>
   </div>
   <div class="field grid">
@@ -44,14 +36,6 @@
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
-      <div
-        *ngIf="
-          myForm.get('shortName')?.invalid && myForm.get('shortName')?.touched
-        "
-        style="color: red"
-      >
-        Short Name is required.
-      </div>
     </div>
     <label
       for="parentIdentifer"
@@ -90,15 +74,6 @@
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
-      <div
-        *ngIf="
-          myForm.get('deptAddress')?.invalid &&
-          myForm.get('deptAddress')?.touched
-        "
-        style="color: red"
-      >
-        Dept Address is required.
-      </div>
     </div>
     <label
       for="phoneNo"
@@ -116,7 +91,7 @@
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
-      <div
+      <!-- <div
         *ngIf="myForm.get('phoneNo')?.hasError('pattern'); else phoneElse"
         style="color: red"
       >
@@ -131,7 +106,7 @@
         >
           Phone No is required.
         </div>
-      </ng-template>
+      </ng-template> -->
     </div>
   </div>
   <div class="field grid">
@@ -192,15 +167,6 @@
         }"
         appendTo="body"
       ></p-calendar>
-      <div
-        *ngIf="
-          myForm.get('establishedDate')?.invalid &&
-          myForm.get('establishedDate')?.touched
-        "
-        style="color: red"
-      >
-        Established Date is required.
-      </div>
     </div>
   </div>
   <div class="field grid">
@@ -220,7 +186,7 @@
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
-      <div
+      <!-- <div
         *ngIf="myForm.get('depemail')?.hasError('pattern'); else elseEmail"
         style="color: red"
       >
@@ -235,7 +201,7 @@
         >
           Email Id is required.
         </div>
-      </ng-template>
+      </ng-template> -->
     </div>
   </div>
   <div class="field grid">
@@ -281,15 +247,8 @@
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
-      <div
-        *ngIf="myForm.get('deptfun')?.invalid && myForm.get('deptfun')?.touched"
-        style="color: red"
-      >
-        Dept Function is required.
-      </div>
     </div>
   </div>
-
   <div class="field grid">
     <label
       for="isActive"

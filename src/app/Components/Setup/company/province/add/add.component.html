@@ -18,15 +18,6 @@
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
-      <div
-        *ngIf="
-          myForm.get('provinceCode')?.invalid &&
-          myForm.get('provinceCode')?.touched
-        "
-        style="color: red"
-      >
-        Province Code is required.
-      </div>
     </div>
     <label
       for="provinceName"
@@ -45,15 +36,6 @@
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
-      <div
-        *ngIf="
-          myForm.get('provinceName')?.invalid &&
-          myForm.get('provinceName')?.touched
-        "
-        style="color: red"
-      >
-        Province Name is required.
-      </div>
     </div>
   </div>
   <div class="field grid">
@@ -77,15 +59,6 @@
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       >
       </textarea>
-      <div
-        *ngIf="
-          myForm.get('provinceAddress')?.invalid &&
-          myForm.get('provinceAddress')?.touched
-        "
-        style="color: red"
-      >
-        Province Address is required.
-      </div>
     </div>
   </div>
   <div class="field grid">
@@ -105,12 +78,6 @@
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
-      <div
-        *ngIf="myForm.get('phoneNo')?.hasError('pattern')"
-        style="color: red"
-      >
-        Invalid Phone No.
-      </div>
     </div>
     <label
       for="provinceManagerEmailID"
@@ -129,16 +96,6 @@
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
-      <div
-        *ngIf="
-          (myForm.get('provinceManagerEmailID')?.invalid &&
-            myForm.get('provinceManagerEmailID')?.touched) ||
-          myForm.get('provinceManagerEmailID')?.hasError('pattern')
-        "
-        style="color: red"
-      >
-        Invalid province Manager Email Id.
-      </div>
     </div>
   </div>
   <div class="field grid">

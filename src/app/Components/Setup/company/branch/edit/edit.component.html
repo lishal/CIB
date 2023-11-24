@@ -18,14 +18,6 @@
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
-      <div
-        *ngIf="
-          myForm.get('branchName')?.invalid && myForm.get('branchName')?.touched
-        "
-        style="color: red"
-      >
-        Branch Name is required.
-      </div>
     </div>
     <label
       for="branchNameNepali"
@@ -59,15 +51,6 @@
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
-      <div
-        *ngIf="
-          myForm.get('dataProviderBranchId')?.invalid &&
-          myForm.get('dataProviderBranchId')?.touched
-        "
-        style="color: red"
-      >
-        Data Provider Branch ID is required.
-      </div>
     </div>
     <label
       for="previousDataProviderBranchId"
@@ -101,14 +84,6 @@
         placeholder="Select a district"
       >
       </p-dropdown>
-      <div
-        *ngIf="
-          myForm.get('district')?.invalid && myForm.get('district')?.touched
-        "
-        style="color: red"
-      >
-        District is required.
-      </div>
     </div>
     <label
       for="provinceName"
@@ -127,15 +102,6 @@
         placeholder="Select a province"
       >
       </p-dropdown>
-      <div
-        *ngIf="
-          myForm.get('provinceName')?.invalid &&
-          myForm.get('provinceName')?.touched
-        "
-        style="color: red"
-      >
-        Province is required.
-      </div>
     </div>
   </div>
   <div class="field grid">
@@ -159,15 +125,6 @@
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       >
       </textarea>
-      <div
-        *ngIf="
-          myForm.get('branchAddress')?.invalid &&
-          myForm.get('branchAddress')?.touched
-        "
-        style="color: red"
-      >
-        Branch Address is required.
-      </div>
     </div>
   </div>
   <div class="field grid">
@@ -187,12 +144,6 @@
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
-      <div
-        *ngIf="myForm.get('phoneNo')?.hasError('pattern')"
-        style="color: red"
-      >
-        Invalid Phone No.
-      </div>
     </div>
     <label
       for="branchManagerEmailId"
@@ -211,16 +162,7 @@
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
-      <div
-        *ngIf="
-          (myForm.get('branchManagerEmailId')?.invalid &&
-            myForm.get('branchManagerEmailId')?.touched) ||
-          myForm.get('branchManagerEmailId')?.hasError('pattern')
-        "
-        style="color: red"
-      >
-        Invalid Branch Manager Email Id.
-      </div>
+
     </div>
   </div>
   <div class="field grid">
@@ -241,15 +183,7 @@
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
-      <div
-        *ngIf="
-          myForm.get('performanceCutOff')?.invalid &&
-          myForm.get('performanceCutOff')?.touched
-        "
-        style="color: red"
-      >
-        Performance Cut Off is required.
-      </div>
+      
     </div>
     <label
       for="isActive"
