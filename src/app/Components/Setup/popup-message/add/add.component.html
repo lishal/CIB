@@ -22,15 +22,6 @@
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
-      <div
-        *ngIf="
-          myForm.get('subject')?.invalid &&
-          myForm.get('subject')?.touched
-        "
-        style="color: red"
-      >
-        Subject is required.
-      </div>
     </div>
   </div>
   <div class="field grid">
@@ -78,15 +69,6 @@
         placeholder="Select Status"
       >
       </p-dropdown>
-      <div
-        *ngIf="
-          myForm.get('status')?.invalid &&
-          myForm.get('status')?.touched
-        "
-        style="color: red"
-      >
-        Status is required.
-      </div>
     </div>
     <label
       for="showupto"
@@ -104,14 +86,6 @@
         }"
         appendTo="body"
       ></p-calendar>
-      <div
-        *ngIf="
-          myForm.get('showupto')?.invalid && myForm.get('showupto')?.touched
-        "
-        style="color: red"
-      >
-        Show Upto is required.
-      </div>
     </div>
   </div>
   <div class="field grid">
@@ -130,14 +104,7 @@
         }"
         [style]="{ height: '320px' }"
       ></p-editor>
-      <div
-        *ngIf="
-          myForm.get('description')?.invalid && myForm.get('description')?.touched
-        "
-        style="color: red"
-      >
-        Description is required.
-      </div>
+      
     </div>
   </div>
 </form>

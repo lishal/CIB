@@ -4,142 +4,109 @@
   class="addForm relative min-h-full"
   style="margin-bottom: 3rem"
 >
-<div class="field grid">
-  <label
-    for="subject"
-    class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-    >Subject: <span style="color: red">&nbsp; *</span></label
-  >
-  <div class="col-6 md:col-9 sm:mb-1 sm:col-8">
-    <input
-      id="subject"
-      type="text"
-      formControlName="subject"
-      [ngClass]="{
-        'invalid-input':
-          myForm.get('subject')?.invalid &&
-          myForm.get('subject')?.touched
-      }"
-      class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-    />
-    <div
-      *ngIf="
-        myForm.get('subject')?.invalid &&
-        myForm.get('subject')?.touched
-      "
-      style="color: red"
+  <div class="field grid">
+    <label
+      for="subject"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Subject: <span style="color: red">&nbsp; *</span></label
     >
-      Subject is required.
+    <div class="col-6 md:col-9 sm:mb-1 sm:col-8">
+      <input
+        id="subject"
+        type="text"
+        formControlName="subject"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('subject')?.invalid &&
+            myForm.get('subject')?.touched
+        }"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
     </div>
   </div>
-</div>
-<div class="field grid">
-  <label
-    for="attachment"
-    class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-    >Attachment:
-  </label>
-  <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
-    <input
-      id="attachment"
-      type="file"
-      formControlName="attachment"
-      class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-    />
-  </div>
-  <label
-    for="isActive"
-    class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-    >Is Active: <span style="color: red">&nbsp; *</span></label
-  >
-  <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-    <p-selectButton
-      [options]="stateOptions"
-      [style]="{ width: '10em' }"
-      formControlName="isActive"
-    ></p-selectButton>
-  </div>
-</div>
-<div class="field grid">
-  <label
-    for="status"
-    class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-    >Status: <span style="color: red">&nbsp; *</span></label
-  >
-  <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-    <p-dropdown
-      [options]="statusList"
-      formControlName="status"
-      optionLabel="name"
-      optionValue="name"
-      [filter]="true"
-      filterBy="name"
-      [showClear]="true"
-      placeholder="Select Status"
+  <div class="field grid">
+    <label
+      for="attachment"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Attachment:
+    </label>
+    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
+      <input
+        id="attachment"
+        type="file"
+        formControlName="attachment"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+    </div>
+    <label
+      for="isActive"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Is Active: <span style="color: red">&nbsp; *</span></label
     >
-    </p-dropdown>
-    <div
-      *ngIf="
-        myForm.get('status')?.invalid &&
-        myForm.get('status')?.touched
-      "
-      style="color: red"
-    >
-      Status is required.
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <p-selectButton
+        [options]="stateOptions"
+        [style]="{ width: '10em' }"
+        formControlName="isActive"
+      ></p-selectButton>
     </div>
   </div>
-  <label
-    for="showupto"
-    class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-    >Show Upto:<span style="color: red">&nbsp; *</span>
-  </label>
-  <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
-    <p-calendar
-      formControlName="showupto"
-      [(ngModel)]="myForm.value.showupto"
-      [ngClass]="{
-        'invalid-input':
-          myForm.get('showupto')?.invalid &&
-          myForm.get('showupto')?.touched
-      }"
-      appendTo="body"
-    ></p-calendar>
-    <div
-      *ngIf="
-        myForm.get('showupto')?.invalid && myForm.get('showupto')?.touched
-      "
-      style="color: red"
+  <div class="field grid">
+    <label
+      for="status"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Status: <span style="color: red">&nbsp; *</span></label
     >
-      Show Upto is required.
+    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
+      <p-dropdown
+        [options]="statusList"
+        formControlName="status"
+        optionLabel="name"
+        optionValue="name"
+        [filter]="true"
+        filterBy="name"
+        [showClear]="true"
+        placeholder="Select Status"
+      >
+      </p-dropdown>
+    </div>
+    <label
+      for="showupto"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Show Upto:<span style="color: red">&nbsp; *</span>
+    </label>
+    <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
+      <p-calendar
+        formControlName="showupto"
+        [(ngModel)]="myForm.value.showupto"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('showupto')?.invalid &&
+            myForm.get('showupto')?.touched
+        }"
+        appendTo="body"
+      ></p-calendar>
     </div>
   </div>
-</div>
-<div class="field grid">
-  <label
-    for="description"
-    class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-    >Email Body: <span style="color: red">&nbsp; *</span></label
-  >
-  <div class="col-6 md:col-9 sm:mb-1 sm:col-8">
-    <p-editor
-      id="description"
-      formControlName="description"
-      [ngClass]="{
-        'invalid-input':
-          myForm.get('description')?.invalid && myForm.get('description')?.touched
-      }"
-      [style]="{ height: '320px' }"
-    ></p-editor>
-    <div
-      *ngIf="
-        myForm.get('description')?.invalid && myForm.get('description')?.touched
-      "
-      style="color: red"
+  <div class="field grid">
+    <label
+      for="description"
+      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Email Body: <span style="color: red">&nbsp; *</span></label
     >
-      Description is required.
+    <div class="col-6 md:col-9 sm:mb-1 sm:col-8">
+      <p-editor
+        id="description"
+        formControlName="description"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('description')?.invalid && myForm.get('description')?.touched
+        }"
+        [style]="{ height: '320px' }"
+      ></p-editor>
+      
     </div>
   </div>
-</div>
 </form>
 <div
   class="btnGroup absolute z-1 flex mt-3 h-3rem bg-white justify-content-end pb-2"
