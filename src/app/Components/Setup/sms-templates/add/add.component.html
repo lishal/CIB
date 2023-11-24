@@ -22,15 +22,6 @@
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
-      <div
-        *ngIf="
-          myForm.get('templateName')?.invalid &&
-          myForm.get('templateName')?.touched
-        "
-        style="color: red"
-      >
-        Template Name is required.
-      </div>
     </div>
   </div>
   <div class="field grid">
@@ -67,15 +58,6 @@
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       ></textarea>
-      <div
-        *ngIf="
-          myForm.get('sms')?.invalid &&
-          myForm.get('sms')?.touched
-        "
-        style="color: red"
-      >
-        SMS is required.
-      </div>
     </div>
   </div>
 </form>
