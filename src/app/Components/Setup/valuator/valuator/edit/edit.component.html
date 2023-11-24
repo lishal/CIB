@@ -17,20 +17,11 @@
         formControlName="valuatorName"
         [ngClass]="{
           'invalid-input':
-            myForm.get('valuatorName')?.invalid &&
-            myForm.get('valuatorName')?.touched
+            (myForm.get('valuatorName')?.invalid &&
+            myForm.get('valuatorName')?.touched)
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
-      <div
-        *ngIf="
-          myForm.get('valuatorName')?.invalid &&
-          myForm.get('valuatorName')?.touched
-        "
-        style="color: red"
-      >
-        Valuator Name is required.
-      </div>
     </div>
     <label
       for="isIndividual"
@@ -42,22 +33,16 @@
         id="isIndividual"
         type="text"
         formControlName="isIndividual"
+       
+
         [ngClass]="{
           'invalid-input':
-            myForm.get('isIndividual')?.invalid &&
-            myForm.get('isIndividual')?.touched
+            (myForm.get('isIndividual')?.invalid &&
+            myForm.get('isIndividual')?.touched)
         }"
+
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
-      <div
-        *ngIf="
-          myForm.get('isIndividual')?.invalid &&
-          myForm.get('isIndividual')?.touched
-        "
-        style="color: red"
-      >
-        Is Individual is required.
-      </div>
     </div>
   </div>
   <div class="field grid">
@@ -67,24 +52,15 @@
       >VEDOBReg Np:<span style="color: red">&nbsp; *</span>
     </label>
     <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
-      <p-calendar
-        formControlName="vedobRegNp"
-        [(ngModel)]="myForm.value.vedobRegNp"
-        [ngClass]="{
-          'invalid-input':
-            myForm.get('vedobRegNp')?.invalid &&
-            myForm.get('vedobRegNp')?.touched
-        }"
-        appendTo="body"
-      ></p-calendar>
-      <div
-        *ngIf="
-          myForm.get('vedobRegNp')?.invalid && myForm.get('vedobRegNp')?.touched
-        "
-        style="color: red"
-      >
-        VEDOBReg Np is required.
-      </div>
+      <ne-datepicker 
+      (dateInBS)="vedobRegNpFun($event)"
+      dateIn="BS"
+      language="en"
+      placeholder=""
+      [isError]="vedobRegNpError"
+      (click)="invalidvedobRegNp()"
+      [date]="vedobRegNp"
+      ></ne-datepicker>
     </div>
     <label
       for="entityDob"
@@ -96,19 +72,12 @@
         formControlName="entityDob"
         [(ngModel)]="myForm.value.entityDob"
         [ngClass]="{
-          'invalid-input':
-            myForm.get('entityDob')?.invalid && myForm.get('entityDob')?.touched
+          'invalid-date > .p-calendar > .p-inputtext':
+           (myForm.get('entityDob')?.invalid && myForm.get('entityDob')?.touched)
         }"
         appendTo="body"
+        dateFormat="yy/mm/dd"
       ></p-calendar>
-      <div
-        *ngIf="
-          myForm.get('entityDob')?.invalid && myForm.get('entityDob')?.touched
-        "
-        style="color: red"
-      >
-        Entity's DOB/DOR is required.
-      </div>
     </div>
   </div>
   <div class="field grid">
@@ -221,15 +190,6 @@
         placeholder="Select a Address1 Type"
       >
       </p-dropdown>
-      <div
-        *ngIf="
-          myForm.get('address1Type')?.invalid &&
-          myForm.get('address1Type')?.touched
-        "
-        style="color: red"
-      >
-        Address1 Type is required.
-      </div>
     </div>
     <label
       for="municipaltiy"
@@ -248,23 +208,14 @@
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
-      <div
-        *ngIf="
-          myForm.get('municipaltiy')?.invalid &&
-          myForm.get('municipaltiy')?.touched
-        "
-        style="color: red"
-      >
-        Municipaltiy/VDC is required.
-      </div>
     </div>
   </div>
   <div class="field grid">
     <label
       for="ward"
       class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Ward: <span style="color: red">&nbsp; *</span></label
-    >
+      >Ward:
+    </label>
     <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
       <input
         id="ward"
@@ -305,14 +256,6 @@
         placeholder="Select a District"
       >
       </p-dropdown>
-      <div
-        *ngIf="
-          myForm.get('district')?.invalid && myForm.get('district')?.touched
-        "
-        style="color: red"
-      >
-        District is required.
-      </div>
     </div>
     <label
       for="poBox"
@@ -346,12 +289,6 @@
         placeholder="Select a Country"
       >
       </p-dropdown>
-      <div
-        *ngIf="myForm.get('country')?.invalid && myForm.get('country')?.touched"
-        style="color: red"
-      >
-        Country is required.
-      </div>
     </div>
   </div>
   <div
@@ -386,6 +323,11 @@
         id="telephoneNo1"
         type="text"
         formControlName="telephoneNo1"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('telephoneNo1')?.invalid &&
+            myForm.get('telephoneNo1')?.touched
+        }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
     </div>
@@ -399,8 +341,14 @@
         id="telephoneNo2"
         type="text"
         formControlName="telephoneNo2"
+        [ngClass]="{
+          'invalid-input':
+            myForm.get('telephoneNo2')?.invalid &&
+            myForm.get('telephoneNo2')?.touched
+        }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
+     
     </div>
   </div>
   <div class="field grid">
@@ -448,12 +396,7 @@
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
-      <div
-        *ngIf="myForm.get('mobileNo')?.hasError('pattern')"
-        style="color: red"
-      >
-        Invalid Mobile No.
-      </div>
+      
     </div>
   </div>
   <div class="field grid">
@@ -472,12 +415,7 @@
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
-      <div
-        *ngIf="myForm.get('mainEmail')?.hasError('pattern')"
-        style="color: red"
-      >
-        Invalid Main Email Id
-      </div>
+      
     </div>
     <label
       for="altEmail"
@@ -494,12 +432,7 @@
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
-      <div
-        *ngIf="myForm.get('altEmail')?.hasError('pattern')"
-        style="color: red"
-      >
-        Invalid Alternative Email Id
-      </div>
+      
     </div>
   </div>
   <div
@@ -544,26 +477,6 @@
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
-      <div
-        *ngIf="
-          myForm.get('securityAmount1')?.hasError('pattern');
-          else errorSecurityAmount1
-        "
-        style="color: red"
-      >
-        Invalid Security Amount 1
-      </div>
-      <ng-template #errorSecurityAmount1>
-        <div
-          *ngIf="
-            myForm.get('securityAmount1')?.invalid &&
-            myForm.get('securityAmount1')?.touched
-          "
-          style="color: red"
-        >
-          Security Amount 1 is required.
-        </div>
-      </ng-template>
     </div>
   </div>
   <div class="field grid">
@@ -573,11 +486,14 @@
       >Security Expiry Date 1 -NP:
     </label>
     <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
-      <p-calendar
-        formControlName="sExpiryDate1Np"
-        [(ngModel)]="myForm.value.sExpiryDate1Np"
-        appendTo="body"
-      ></p-calendar>
+      <ne-datepicker 
+      (dateInBS)="sExpiryDate1NpFun($event)"
+      (dateInAD)="sExpiryDate1NpToADFun($event)"
+      dateIn="BS"
+      language="en"
+      placeholder=""
+      [date]="sExpiryDate1Np"
+      ></ne-datepicker>
     </div>
     <label
       for="sExpiryDate1"
@@ -585,11 +501,15 @@
       >Security Expiry Date 1:
     </label>
     <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
-      <p-calendar
+      <input type="text" 
+      class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      readonly
+      [value]="sExpiryDate1AD ">
+      <!-- <p-calendar
         formControlName="sExpiryDate1"
         [(ngModel)]="myForm.value.sExpiryDate1"
         appendTo="body"
-      ></p-calendar>
+      ></p-calendar> -->
     </div>
   </div>
   <div class="field grid">
@@ -628,26 +548,6 @@
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
-      <div
-        *ngIf="
-          myForm.get('securityAmount2')?.hasError('pattern');
-          else errorSecurityAmount2
-        "
-        style="color: red"
-      >
-        Invalid Security Amount 2
-      </div>
-      <ng-template #errorSecurityAmount2>
-        <div
-          *ngIf="
-            myForm.get('securityAmount2')?.invalid &&
-            myForm.get('securityAmount2')?.touched
-          "
-          style="color: red"
-        >
-          Security Amount 2 is required.
-        </div>
-      </ng-template>
     </div>
   </div>
   <div class="field grid">
@@ -657,11 +557,14 @@
       >Security Expiry Date 2 -NP:
     </label>
     <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
-      <p-calendar
-        formControlName="sExpiryDate2Np"
-        [(ngModel)]="myForm.value.sExpiryDate1Np"
-        appendTo="body"
-      ></p-calendar>
+      <ne-datepicker 
+      (dateInBS)="sExpiryDate2NpFun($event)"
+      (dateInAD)="sExpiryDate2NpToADFun($event)"
+      dateIn="BS"
+      language="en"
+      placeholder=""
+      [date]="sExpiryDate2Np"
+      ></ne-datepicker>
     </div>
     <label
       for="sExpiryDate2"
@@ -669,11 +572,15 @@
       >Security Expiry Date 2:
     </label>
     <div class="col-5 md:col-3 sm:mb-1 sm:col-8">
-      <p-calendar
+      <input type="text" 
+      class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      readonly
+      [value]="sExpiryDate2AD ">
+      <!-- <p-calendar
         formControlName="sExpiryDate2"
-        [(ngModel)]="myForm.value.sExpiryDate1"
+        [(ngModel)]="myForm.value.sExpiryDate2"
         appendTo="body"
-      ></p-calendar>
+      ></p-calendar> -->
     </div>
   </div>
   <div
@@ -699,14 +606,6 @@
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
-      <div
-        *ngIf="
-          myForm.get('reference')?.invalid && myForm.get('reference')?.touched
-        "
-        style="color: red"
-      >
-        Reference is required.
-      </div>
     </div>
   </div>
   <div class="field grid">
@@ -720,21 +619,13 @@
         formControlName="agmStartDate"
         [(ngModel)]="myForm.value.agmStartDate"
         [ngClass]="{
-          'invalid-input':
+          'invalid-date > .p-calendar > .p-inputtext':
             myForm.get('agmStartDate')?.invalid &&
             myForm.get('agmStartDate')?.touched
         }"
         appendTo="body"
+        dateFormat="yy/mm/dd"
       ></p-calendar>
-      <div
-        *ngIf="
-          myForm.get('agmStartDate')?.invalid &&
-          myForm.get('agmStartDate')?.touched
-        "
-        style="color: red"
-      >
-        Agm Start Date is required.
-      </div>
     </div>
     <label
       for="agmEndDate"
@@ -746,20 +637,13 @@
         formControlName="agmEndDate"
         [(ngModel)]="myForm.value.agmEndDate"
         [ngClass]="{
-          'invalid-input':
+          'invalid-date > .p-calendar > .p-inputtext':
             myForm.get('agmEndDate')?.invalid &&
             myForm.get('agmEndDate')?.touched
         }"
         appendTo="body"
+        dateFormat="yy/mm/dd"
       ></p-calendar>
-      <div
-        *ngIf="
-          myForm.get('agmEndDate')?.invalid && myForm.get('agmEndDate')?.touched
-        "
-        style="color: red"
-      >
-        Agm End Date is required.
-      </div>
     </div>
   </div>
   <div class="field grid">
@@ -829,9 +713,9 @@
   </div>
   <div class="field grid">
     <label
-      for="provinceAddress"
+      for="comment"
       class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Comment: <span style="color: red">&nbsp; *</span></label
+      >Comment:</label
     >
     <div class="col-12 md:col-9 sm:col-8">
       <textarea

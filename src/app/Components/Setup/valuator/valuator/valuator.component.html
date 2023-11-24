@@ -89,9 +89,9 @@
             [icon]="expanded ? 'fa-solid fa-minus' : 'fa-solid fa-plus'"
           ></button>
         </td>
-        <td>{{ data?.vettype }}</td>
-        <td>{{ data?.test2 }}</td>
-        <td>{{ data?.test2 }}</td>
+        <td>{{ data?.isIndividual }}</td>
+        <td>{{ data?.valuatorName }}</td>
+        <td>{{ data?.companyRegNo }}</td>
         <td>test</td>
         <td>test</td>
         <td>test</td>
@@ -109,13 +109,13 @@
                   <th class="actionMenu flex justify-content-center align-items-center" >
                     <p-overlayPanel #setting [styleClass]="'actionOverlay'">
                       <ng-template pTemplate="content" >
-                        <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center" (click)="viewData(data.vettype)">
+                        <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center" (click)="viewData(data.valuatorName)">
                          <i class="fa-solid fa-file mr-2"></i> View
                         </div>
-                        <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center" (click)="editData(data.vettype)">
+                        <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center" (click)="editData(data.valuatorName)">
                           <i class="fa-solid fa-pen-to-square mr-2"></i> Edit
                         </div>
-                        <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center" (click)="deleteData(data.vettype)">
+                        <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center" (click)="deleteData(data.valuatorName)">
                           <i class="fa-solid  fa-trash mr-2"></i> Delete
                         </div>
                        </ng-template>  

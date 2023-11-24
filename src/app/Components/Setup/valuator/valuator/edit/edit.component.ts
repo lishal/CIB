@@ -16,6 +16,7 @@ import { MessageService } from 'primeng/api';
 import { CommonModule } from '@angular/common';
 import { DropdownModule } from 'primeng/dropdown';
 import { CalendarModule } from 'primeng/calendar';
+import { NepaliDatepickerModule } from 'nepali-datepicker-angular';
 
 interface Legal {
   name: String;
@@ -61,6 +62,7 @@ interface ActionStatus {
     CommonModule,
     DropdownModule,
     CalendarModule,
+    NepaliDatepickerModule
   ],
   providers: [MessageService,DialogService],
   standalone: true,
@@ -83,15 +85,16 @@ export class EditValuatorComponent implements OnInit {
     { label: 'False', value: false },
     { label: 'True', value: true },
   ];
-  vedobRegNp: Date | undefined;
+  vedobRegNp: any;
   entityDob: Date | undefined;
-  sExpiryDate1Np: Date | undefined;
-  sExpiryDate1: Date | undefined;
-  sExpiryDate2Np: Date | undefined;
-  sExpiryDate2: Date | undefined;
+  sExpiryDate1Np: any;
+  sExpiryDate1AD: any="";
+  sExpiryDate2Np: any;
+  sExpiryDate2AD: any="";
   agmStartDate: Date | undefined;
   agmEndDate: Date | undefined;
   added: boolean = false;
+  vedobRegNpError:boolean=false;
   public np: any;
   constructor(
     private fb: FormBuilder,
@@ -106,7 +109,7 @@ export class EditValuatorComponent implements OnInit {
     this.myForm = this.fb.group({
       valuatorName: ['', Validators.required],
       isIndividual: ['', Validators.required],
-      vedobRegNp: ['', Validators.required],
+      vedobRegNp: [],
       entityDob: ['', Validators.required],
       legalStatus: [''],
       companyRegNo: [''],
@@ -121,8 +124,8 @@ export class EditValuatorComponent implements OnInit {
       poBox: [],
       country: ['Country', Validators.required],
       contactPerson: [],
-      telephoneNo1: [],
-      telephoneNo2: [],
+      telephoneNo1: ['', [Validators.pattern('^[0-9]*$')]],
+      telephoneNo2: ['', [Validators.pattern('^[0-9]*$')]],
       fax1: [],
       fax2: [],
       mobileNo: ['', Validators.pattern('^[0-9]{10}$')],
@@ -146,8 +149,8 @@ export class EditValuatorComponent implements OnInit {
       ],
       sExpiryDate1Np: [],
       sExpiryDate2Np: [],
-      sExpiryDate1: [],
-      sExpiryDate2: [],
+      sExpiryDate1AD: [],
+      sExpiryDate2AD: [],
       reference: ['', Validators.required],
       agmStartDate: ['', Validators.required],
       agmEndDate: ['', Validators.required],
@@ -157,6 +160,36 @@ export class EditValuatorComponent implements OnInit {
       actionStatus: [],
       comment: [],
     });
+    this.vedobRegNp=this.data[0].vedobRegNp
+    this.sExpiryDate1Np=this.data[0].sExpiryDate1Np
+    this.sExpiryDate2Np=this.data[0].sExpiryDate2Np
+    this.sExpiryDate1AD=this.data[0].sExpiryDate1AD
+    this.sExpiryDate2AD=this.data[0].sExpiryDate2AD
+  }
+  vedobRegNpFun(npdate:any){
+    this.vedobRegNp=npdate;
+    
+  }
+  sExpiryDate1NpFun(npdate:any){
+    this.sExpiryDate1Np=npdate
+  }
+  sExpiryDate1NpToADFun(adDate:any){
+    this.sExpiryDate1AD=adDate
+  }
+  sExpiryDate2NpFun(npdate:any){
+    this.sExpiryDate2Np=npdate
+  }
+  sExpiryDate2NpToADFun(adDate:any){
+    this.sExpiryDate2AD=adDate
+  }
+  invalidvedobRegNp(){
+    const formValues = this.myForm.value;
+    if(formValues.vedobRegNp===""){
+      this.vedobRegNpError=true
+    }
+    else{
+      this.vedobRegNpError=false;
+    }
   }
   onSubmit() {
     if (this.myForm.valid) {

@@ -22,6 +22,7 @@
   --topnavbarcolor1: #4b6cb7;
   --topnavbarcolor2: #182848;
   --topnavbarHover: #23252a;
+  --borderError: #e24c4c;
 }
 
 * {
@@ -337,7 +338,51 @@
 }
 
 .invalid-input {
-  border-color: red !important;
+  display: flex;
+  border: 1px solid;
+  border-radius: 6px;
+  border-color: var(--borderError) !important;
+}
+.invalid-date > .p-calendar > .p-inputtext{
+  border-color: var(--borderError) !important;
+
+}
+
+/* Nepali Calender Design */
+.nepali-date-picker .datepicker__container {
+  width: 408px !important;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1) !important;
+  border: 0 none !important;
+  border-radius: 6px !important;
+
+}
+.nepali-date-picker .datepicker__options-container {
+  padding: 0.5rem !important;
+  font-weight: 600 !important;
+  line-height: 3rem !important;
+  background-color: var(--white) !important;
+  justify-content: space-between !important;
+
+}
+.nepali-date-picker .prev-month, .nepali-date-picker .next-month {
+  padding: 0;
+  width: 3rem !important;
+  background: var(--white) !important;
+  line-height: 3rem !important;
+  height: 3rem !important;
+}
+.nepali-date-picker .datepicker__container__select {
+  color: #495057 !important;
+}
+.nepali-date-picker .datepicker__days-container {
+  justify-content: space-between !important;
+  color: #495057 !important;
+  font-size: 1rem !important;
+  padding: 0.5rem !important;
+}
+.nepali-date-picker .np_datepicker_input {
+  color: #495057 !important;
+  font-size: 1rem !important;
 }
 
 /* Dropdown */

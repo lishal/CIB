@@ -49,10 +49,10 @@ export class InnerValuatorComponent implements OnInit {
       }
     });
   }
-  editData(vettype: string) {
-    const editData = this.data.find((data) => data.vettype === vettype);
+  editData(valuatorName: string) {
+    const editData = this.data.find((data) => data.valuatorName === valuatorName);
     this.ref = this.dialogService.open(EditValuatorComponent, {
-      header: `Edit Valuator for ${vettype}`,
+      header: `Edit Valuator for ${valuatorName}`,
       width: '100%',
       height: '100%',
       contentStyle: { overflow: 'auto' },
@@ -64,7 +64,7 @@ export class InnerValuatorComponent implements OnInit {
       if (datas !== undefined) {
         if (datas[1] === true) {
           const index = this.data.findIndex(
-            (data) => data.loginIdentifer === vettype
+            (data) => data.valuatorName === valuatorName
           );
           // this.data[index].vettype = datas[0].vettype;  -->Update the value in DB
           this.messageService.add({
@@ -167,17 +167,17 @@ export class InnerValuatorComponent implements OnInit {
     );
   }
   ngOnInit(): void {
-    this.data = [
-      {
-        test: 'test',
-        test2: 'test2',
-        vettype:'VETType',
-        id: [
-          {
-            documentName: 'test',
-          },
-        ],
-      },
-    ];
+    // this.data = [
+    //   {
+    //     test: 'test',
+    //     test2: 'test2',
+    //     vettype:'VETType',
+    //     id: [
+    //       {
+    //         documentName: 'test',
+    //       },
+    //     ],
+    //   },
+    // ];
   }
 }

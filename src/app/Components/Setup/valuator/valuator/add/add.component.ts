@@ -50,7 +50,6 @@ interface ActionStatus {
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.css'],
   imports: [
-    
     ReactiveFormsModule,
     SelectButtonModule,
     ToastModule,
@@ -79,15 +78,26 @@ export class AddValuatorComponent implements OnInit {
     { label: 'False', value: false },
     { label: 'True', value: true },
   ];
-  vedobRegNp: Date | undefined;
+  vedobRegNp: any;
   entityDob: Date | undefined;
-  sExpiryDate1Np: Date | undefined;
-  sExpiryDate1: Date | undefined;
-  sExpiryDate2Np: Date | undefined;
-  sExpiryDate2: Date | undefined;
+  sExpiryDate1Np: any;
+  sExpiryDate1AD: any="";
+  sExpiryDate2Np: any;
+  sExpiryDate2AD: any="";
   agmStartDate: Date | undefined;
   agmEndDate: Date | undefined;
   added: boolean = false;
+  // valuatorNameError:boolean=false;
+  // isIndividualError:boolean=false;
+  vedobRegNpError:boolean=false;
+  // entityDobError:boolean=false;
+  // address1TypeError:boolean=false;
+  // municipaltiyError:boolean=false;
+  // securityAmount1Error:boolean=false;
+  // securityAmount2Error:boolean=false;
+  // referenceError:boolean=false;
+  // agmStartDateError:boolean=false;
+  // agmEndDateError:boolean=false;
   constructor(
     private fb: FormBuilder,
     public ref: DynamicDialogRef,
@@ -98,7 +108,7 @@ export class AddValuatorComponent implements OnInit {
     this.myForm = this.fb.group({
       valuatorName: ['', Validators.required],
       isIndividual: ['', Validators.required],
-      vedobRegNp: [''],
+      vedobRegNp: [],
       entityDob: ['', Validators.required],
       legalStatus: [''],
       companyRegNo: [''],
@@ -138,8 +148,8 @@ export class AddValuatorComponent implements OnInit {
       ],
       sExpiryDate1Np: [],
       sExpiryDate2Np: [],
-      sExpiryDate1: [],
-      sExpiryDate2: [],
+      sExpiryDate1AD: [],
+      sExpiryDate2AD: [],
       reference: ['', Validators.required],
       agmStartDate: ['', Validators.required],
       agmEndDate: ['', Validators.required],
@@ -149,19 +159,74 @@ export class AddValuatorComponent implements OnInit {
       actionStatus: [],
       comment: [],
     });
+  }  
+  vedobRegNpFun(npdate:any){
+    this.vedobRegNp=npdate;
+    
   }
-  onSubmit() {
-    if (this.myForm.valid) {
+  sExpiryDate1NpFun(npdate:any){
+    this.sExpiryDate1Np=npdate
+  }
+  sExpiryDate1NpToADFun(adDate:any){
+    this.sExpiryDate1AD=adDate
+  }
+  sExpiryDate2NpFun(npdate:any){
+    this.sExpiryDate2Np=npdate
+  }
+  sExpiryDate2NpToADFun(adDate:any){
+    this.sExpiryDate2AD=adDate
+  }
+  onSubmit() {   
+    if (this.myForm.valid && this.vedobRegNp!=undefined) {
       const formValues = this.myForm.value;
-      console.log(formValues.vedobRegNp);
-      // this.added = true;
-      // this.ref.close([formValues, this.added]);
+      this.myForm.value.vedobRegNp=this.vedobRegNp
+      this.myForm.value.sExpiryDate1Np=this.sExpiryDate1Np
+      this.myForm.value.sExpiryDate1AD=this.sExpiryDate1AD
+      this.myForm.value.sExpiryDate2Np=this.sExpiryDate2Np
+      this.myForm.value.sExpiryDate2AD=this.sExpiryDate2AD
+      this.added = true;
+      this.ref.close([formValues, this.added]);
+      
     } else {
+      // const formValues = this.myForm.value;
+      // console.log(formValues )
+      // if(formValues.valuatorName===""){
+      //   this.valuatorNameError=true;
+      // }
+      // if(formValues.vedobRegNp===""){
+      //   this.vedobRegNpError=true;
+      // }
+      // if(formValues.isIndividual===""){
+      //   this.isIndividualError=true
+      // }
+      // if(formValues.entityDob===""){
+      //   this.entityDobError=true
+      // }
       this.messageService.add({
         severity: 'error',
         summary: 'Error',
         detail: 'Please check all the fields',
       });
+    }
+    
+  }
+  // isIndividualOnchange(){
+  //   const formValues = this.myForm.value;
+  //   if(formValues.isIndividual===""){
+  //     this.isIndividualError=true
+  //   }
+  //   else{
+  //     this.isIndividualError=false;
+  //   }
+    
+  // }
+  invalidvedobRegNp(){
+    const formValues = this.myForm.value;
+    if(formValues.vedobRegNp===""){
+      this.vedobRegNpError=true
+    }
+    else{
+      this.vedobRegNpError=false;
     }
   }
   onCancel() {
