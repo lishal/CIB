@@ -18,14 +18,6 @@
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
-      <div
-        *ngIf="
-          myForm.get('loginIdentifer')?.invalid && myForm.get('branchName')?.touched
-        "
-        style="color: red"
-      >
-      Login Identifer is required.
-      </div>
     </div>
   </div>
   <div class="field grid">
@@ -46,15 +38,6 @@
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
-      <div
-        *ngIf="
-          myForm.get('fullname')?.invalid &&
-          myForm.get('fullname')?.touched
-        "
-        style="color: red"
-      >
-        Full name is required.
-      </div>
     </div>
     <label
       for="staffCode"
@@ -73,15 +56,6 @@
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
-      <div
-        *ngIf="
-          myForm.get('staffCode')?.invalid &&
-          myForm.get('staffCode')?.touched
-        "
-        style="color: red"
-      >
-        Staff Code is required.
-      </div>
     </div>
     
   </div>
@@ -103,14 +77,6 @@
         placeholder="Select a department"
       >
       </p-dropdown>
-      <div
-        *ngIf="
-          myForm.get('department')?.invalid && myForm.get('department')?.touched
-        "
-        style="color: red"
-      >
-        Department is required.
-      </div>
     </div>
     <label
       for="defaultBranch"
@@ -129,15 +95,6 @@
         placeholder="Select a Branch"
       >
       </p-dropdown>
-      <div
-        *ngIf="
-          myForm.get('defaultBranch')?.invalid &&
-          myForm.get('defaultBranch')?.touched
-        "
-        style="color: red"
-      >
-        Branch is required.
-      </div>
     </div>
   </div>
   <div class="field grid">
@@ -157,7 +114,7 @@
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
-      <div
+      <!-- <div
         *ngIf="myForm.get('emailAddress')?.hasError('pattern'); else elseEmail"
         style="color: red"
       >
@@ -172,7 +129,7 @@
         >
           Email Id is required.
         </div>
-      </ng-template>
+      </ng-template> -->
     </div>
     <label
     for="roleName"
@@ -191,15 +148,6 @@
       placeholder="Select a Role"
     >
     </p-dropdown>
-    <div
-      *ngIf="
-        myForm.get('roleName')?.invalid &&
-        myForm.get('roleName')?.touched
-      "
-      style="color: red"
-    >
-      Role is required.
-    </div>
   </div>
   </div>
 <div class="field grid">
@@ -246,15 +194,6 @@
       placeholder="Select a Module"
     >
     </p-dropdown>
-    <div
-      *ngIf="
-        myForm.get('defaultModule')?.invalid &&
-        myForm.get('defaultModule')?.touched
-      "
-      style="color: red"
-    >
-      Module is required.
-    </div>
   </div>
     <label
       for="enableChangeType"
@@ -300,7 +239,7 @@
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
-      <div
+      <!-- <div
         *ngIf="myForm.get('passwordExpiryPeriod')?.hasError('pattern'); else elsephone"
         style="color: red"
       >
@@ -315,7 +254,7 @@
         >
             Password Expiry Period is required.
         </div>
-    </ng-template>
+    </ng-template> -->
     </div>
   </div>
 </form>
