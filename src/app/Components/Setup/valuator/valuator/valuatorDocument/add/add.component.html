@@ -35,15 +35,6 @@
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
-      <div
-        *ngIf="
-          myForm.get('documentType')?.invalid &&
-          myForm.get('documentType')?.touched
-        "
-        style="color: red"
-      >
-      Document Type is required.
-      </div>
     </div>
   </div>
   <div class="field grid">
@@ -90,15 +81,6 @@
         }"
         appendTo="body"
       ></p-calendar>
-      <div
-        *ngIf="
-          myForm.get('receivedOn')?.invalid &&
-          myForm.get('receivedOn')?.touched
-        "
-        style="color: red"
-      >
-        Received On is required.
-      </div>
     </div>
     <label
       for="expireOn"
@@ -116,14 +98,6 @@
         }"
         appendTo="body"
       ></p-calendar>
-      <div
-        *ngIf="
-          myForm.get('expireOn')?.invalid && myForm.get('expireOn')?.touched
-        "
-        style="color: red"
-      >
-        Expire On is required.
-      </div>
     </div>
   </div>
   <div class="field grid">
