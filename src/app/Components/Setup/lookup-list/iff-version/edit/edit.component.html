@@ -17,12 +17,6 @@
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
-      <div
-        *ngIf="myForm.get('id')?.invalid && myForm.get('id')?.touched"
-        style="color: red"
-      >
-        IFF Version is required.
-      </div>
     </div>
     <label
       for="natureOfData"
@@ -58,15 +52,6 @@
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       >
       </textarea>
-      <div
-        *ngIf="
-          myForm.get('versionComment')?.invalid &&
-          myForm.get('versionComment')?.touched
-        "
-        style="color: red"
-      >
-        Version Comment is required.
-      </div>
     </div>
   </div>
   <div class="field grid">

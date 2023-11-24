@@ -18,15 +18,7 @@
         placeholder="Select a Heading Name"
       >
       </p-dropdown>
-      <div
-        *ngIf="
-          myForm.get('headingName')?.invalid &&
-          myForm.get('headingName')?.touched
-        "
-        style="color: red"
-      >
-        Heading Name is required.
-      </div>
+
     </div>
   </div>
   <div class="field grid">
@@ -47,15 +39,6 @@
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
-      <div
-        *ngIf="
-          myForm.get('elementHeading')?.invalid &&
-          myForm.get('elementHeading')?.touched
-        "
-        style="color: red"
-      >
-        Element Heading is required.
-      </div>
     </div>
     <label
       for="catalogueCode"
@@ -74,15 +57,6 @@
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
-      <div
-        *ngIf="
-          myForm.get('catalogueCode')?.invalid &&
-          myForm.get('catalogueCode')?.touched
-        "
-        style="color: red"
-      >
-        Catalogue Code is required.
-      </div>
     </div>
   </div>
   <div class="field grid">
@@ -106,15 +80,6 @@
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       >
       </textarea>
-      <div
-        *ngIf="
-          myForm.get('description')?.invalid &&
-          myForm.get('description')?.touched
-        "
-        style="color: red"
-      >
-        Description is required.
-      </div>
     </div>
   </div>
   <div class="field grid">
