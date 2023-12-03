@@ -24,33 +24,33 @@
     <ng-template pTemplate="header">
       <tr>
         <th ></th>
-        <th pSortableColumn="roleName">RoleName<p-sortIcon field="roleName"></p-sortIcon></th>
-        <th pSortableColumn="description">Description <p-sortIcon field="description"></p-sortIcon></th>
+        <th pSortableColumn="NAME">RoleName<p-sortIcon field="NAME"></p-sortIcon></th>
+        <th pSortableColumn="DESCRIPTION">Description <p-sortIcon field="DESCRIPTION"></p-sortIcon></th>
       </tr>
       <tr class="filterSection">
         <th>
         </th>
         <th>
-          <p-columnFilter type="text" field="roleName"[showClearButton]="false"></p-columnFilter>
+          <p-columnFilter type="text" field="NAME"[showClearButton]="false"></p-columnFilter>
       </th>
         <th>
-          <p-columnFilter type="text" field="description"[showClearButton]="false"></p-columnFilter>
+          <p-columnFilter type="text" field="DESCRIPTION"[showClearButton]="false"></p-columnFilter>
       </th>
           
       </tr> 
     </ng-template>
-    <ng-template pTemplate="body" let-data>
+    <ng-template pTemplate="body" let-data >
       <tr style="white-space: nowrap">
         <td class="actionMenu flex justify-content-center align-items-center" >
           <p-overlayPanel #setting [styleClass]="'actionOverlay'">
             <ng-template pTemplate="content" >
-              <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center" (click)="showData(data.roleName)">
+              <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center" (click)="showData(data.Id)">
                <i class="fa-solid fa-file mr-2"></i> View
               </div>
-              <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center" (click)="editData(data.roleName)">
+              <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center" (click)="editData(data.Id)">
                 <i class="fa-solid fa-pen-to-square mr-2"></i> Edit
               </div>
-              <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center" (click)="deleteData(data.roleName)">
+              <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center" (click)="deleteData(data.Id)">
                 <i class="fa-solid  fa-trash mr-2"></i> Delete
               </div>
              </ng-template>  
@@ -59,8 +59,8 @@
             <i class="fa-solid fa-gear"></i>
           </div>
         </td>
-        <td>{{ data?.roleName }}</td>
-        <td>{{ data?.description }}</td>
+        <td>{{ data?.NAME }}</td>
+        <td>{{ data?.DESCRIPTION }}</td>
       </tr>
     </ng-template>
     <ng-template pTemplate="emptymessage">

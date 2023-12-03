@@ -10,6 +10,7 @@
   <p-button
     icon="fa-solid fa-circle-plus"
     (click)="addData()"
+    *ngIf="!isLoading"
   ></p-button>
 </div>
 <div class="card mt-3">
@@ -94,14 +95,14 @@
             <i class="fa-solid fa-gear"></i>
           </div>
         </td>
-        <td>{{ data?.dataProviderBranchId }}</td>
-        <td>{{ data?.branchName }}</td>
-        <td>{{ data?.provinceName }}</td>
-        <td>{{ data?.district }}</td>
-        <td>{{ data?.branchAddress }}</td>
-        <td>{{ data?.phoneNo }}</td>
-        <td>{{ data?.performanceCutOff }}</td>
-        <td>{{ data?.isActive }}</td>
+        <td>{{ data?.SOLID }}</td>
+        <td>{{ data?.NAME }}</td>
+        <td>-</td>
+        <td>{{ data?.DISTRICT }}</td>
+        <td>{{ data?.ADDRESS }}</td>
+        <td>{{ data?.PHONE }}</td>
+        <td>{{ data?.CUTOFF }}</td>
+        <td>{{ data?.ACTIVE }}</td>
       </tr>
     </ng-template>
     <ng-template pTemplate="emptymessage">

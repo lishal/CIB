@@ -10,11 +10,11 @@
       <input
         id="roleName"
         type="text"
-        formControlName="roleName"
+        formControlName="NAME"
         [ngClass]="{
           'invalid-input':
-            myForm.get('roleName')?.invalid &&
-            myForm.get('roleName')?.touched
+            myForm.get('NAME')?.invalid &&
+            myForm.get('NAME')?.touched
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
@@ -28,7 +28,7 @@
     <p-selectButton
       [options]="stateOptions"
       [style]="{ width: '10em' }"
-      formControlName="systemDefined"
+      formControlName="ACTIVE"
     ></p-selectButton>
   </div>
   </div>
@@ -43,12 +43,12 @@
         id="description"
         type="text"
         rows="5"
-        formControlName="description"
+        formControlName="DESCRIPTION"
         style="resize: none"
         [ngClass]="{
           'invalid-input':
-            myForm.get('description')?.invalid &&
-            myForm.get('description')?.touched
+            myForm.get('DESCRIPTION')?.invalid &&
+            myForm.get('DESCRIPTION')?.touched
         }"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       >

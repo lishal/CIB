@@ -17,24 +17,8 @@ import * as FileSaver from 'file-saver';
 })
 export class BranchComponent {
   data: any[] = [
-    {
-      accountMonitoring: false,
-      branchAddress: 'test',
-      branchManagerEmailId: 'lbhari188@gmail.com',
-      branchName: 'test',
-      branchNameNepali: 'test',
-      dataProviderBranchId: 'test',
-      district: 'Sindhuli',
-      insurance: false,
-      isActive: true,
-      pendingDocument: true,
-      performanceCutOff: 'test',
-      phoneNo: '1234567890',
-      previousDataProviderBranchId: 'test',
-      provinceName: 'Karnali',
-      stockInspection: true,
-    },
   ];
+  clusterData:any;
   isLoading: boolean = false;
   ref: DynamicDialogRef | undefined;
   constructor(
@@ -51,6 +35,7 @@ export class BranchComponent {
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
       maximizable: false,
+      data:this.clusterData
     });
     this.ref.onClose.subscribe((data: any) => {
       if (data !== undefined) {
@@ -155,17 +140,31 @@ export class BranchComponent {
     });
   }
   ngOnInit(): void {
-    // this.isLoading = true;
-    // this.api.fetchData().subscribe(
-    //   (response) => {
-    //     this.data = response;
-    //     this.isLoading = false;
-    //   },
-    //   (error) => {
-    //     console.log(error);
-    //     this.isLoading = false;
-    //   }
-    // );
+    this.isLoading = true;
+    this.api.getBranchData().subscribe(
+      (response) => {
+        this.data = response.value;
+        
+
+        this.api.getClusterData().subscribe((response)=>{
+          this.clusterData=response;
+         
+    
+        },(error)=>{
+          // console.log(error)
+        });
+        this.data = response.value;
+        this.isLoading = false;
+      },
+      (error) => {
+        console.log(error);
+        this.isLoading = false;
+      }
+    );
+    
+
+    
+    // console.log(this.api.getEmployeeData())
   }
 
   exportExcel(op: OverlayPanel) {

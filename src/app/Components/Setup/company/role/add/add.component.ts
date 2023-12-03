@@ -42,9 +42,9 @@ export class AddRoleComponent implements OnInit {
 
   ngOnInit(): void {
     this.myForm = this.fb.group({
-      roleName: ['', Validators.required],
-      description: ['', Validators.required],
-      systemDefined: [false, Validators.required],
+      NAME: ['', Validators.required],
+      DESCRIPTION: ['', Validators.required],
+      ACTIVE: [false, Validators.required],
     });
   }
   onSubmit() {

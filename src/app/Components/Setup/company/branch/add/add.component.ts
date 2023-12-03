@@ -6,19 +6,27 @@ import {
   FormBuilder,
   Validators,
 } from '@angular/forms';
-import { DynamicDialogRef } from 'primeng/dynamicdialog';
+import { DynamicDialogRef ,DialogService,DynamicDialogConfig} from 'primeng/dynamicdialog';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { CommonModule } from '@angular/common';
 import { DropdownModule } from 'primeng/dropdown';
 
+
 interface District {
-  name: String;
+  name:String;
+  idCluster: String;
+  idProvince:String;
+  idDistrict:String;
+  districtRefCode:String;
 }
 interface Province {
   name: String;
+  id:string;
 }
+
+
 
 @Component({
   selector: 'app-branch-add',
@@ -32,115 +40,73 @@ interface Province {
     CommonModule,
     DropdownModule,
   ],
-  providers: [MessageService],
+  providers: [MessageService,DialogService],
   standalone: true,
 })
 export class AddBranchComponent implements OnInit {
+  data:any[]=[];
   myForm!: FormGroup;
   stateOptions: any[] = [
     { label: 'False', value: false },
     { label: 'True', value: true },
   ];
   //District List
-  districtList: District[] = [
-    { name: 'Achham' },
-    { name: 'Arghakhanchi' },
-    { name: 'Baglung' },
-    { name: 'Baitadi' },
-    { name: 'Bajhang' },
-    { name: 'Bajura' },
-    { name: 'Banke' },
-    { name: 'Bara' },
-    { name: 'Bardiya' },
-    { name: 'Bhaktapur' },
-    { name: 'Bhojpur' },
-    { name: 'Chitwan' },
-    { name: 'Dadeldhura' },
-    { name: 'Dailekh' },
-    { name: 'Dang' },
-    { name: 'Darchula' },
-    { name: 'Dhading' },
-    { name: 'Dhankuta' },
-    { name: 'Dhanusa' },
-    { name: 'Dolakha' },
-    { name: 'Dolpa' },
-    { name: 'Doti' },
-    { name: 'Gorkha' },
-    { name: 'Gulmi' },
-    { name: 'Humla' },
-    { name: 'Ilam' },
-    { name: 'Jajarkot' },
-    { name: 'Jhapa' },
-    { name: 'Jumla' },
-    { name: 'Kailali' },
-    { name: 'Kalikot' },
-    { name: 'Kanchanpur' },
-    { name: 'Kapilvastu' },
-    { name: 'Kaski' },
-    { name: 'Kathmandu' },
-    { name: 'Kavrepalanchok' },
-    { name: 'Khotang' },
-    { name: 'Lalitpur' },
-    { name: 'Lamjung' },
-    { name: 'Mahottari' },
-    { name: 'Makawanpur' },
-    { name: 'Manang' },
-    { name: 'Morang' },
-    { name: 'Mugu' },
-    { name: 'Mustang' },
-    { name: 'Myagdi' },
-    { name: 'Nawalpur' },
-    { name: 'Nuwakot' },
-    { name: 'Okhaldhunga' },
-    { name: 'Palpa' },
-    { name: 'Panchthar' },
-    { name: 'Parasi' },
-    { name: 'Parbat' },
-    { name: 'Parsa' },
-    { name: 'Pyuthan' },
-    { name: 'Ramechhap' },
-    { name: 'Rasuwa' },
-    { name: 'Rautahat' },
-    { name: 'Rolpa' },
-    { name: 'Rukum' },
-    { name: 'Rukum' },
-    { name: 'Rupandehi' },
-    { name: 'Salyan' },
-    { name: 'Sankhuwasabha' },
-    { name: 'Saptari' },
-    { name: 'Sarlahi' },
-    { name: 'Sindhuli' },
-    { name: 'Sindhupalchok' },
-    { name: 'Siraha' },
-    { name: 'Solukhumbu' },
-    { name: 'Sunsari' },
-    { name: 'Surkhet' },
-    { name: 'Syangja' },
-    { name: 'Tanahu' },
-    { name: 'Taplejung' },
-    { name: 'Terhathum' },
-    { name: 'Udayapur' },
-  ];
+  districtList: District[] =[];
   district: string | undefined;
   //Province List
-  provinceList: Province[] = [{ name: 'Karnali' }, { name: 'Bagmati' }];
+  provinceList: Province[] = [];
   province: string | undefined;
 
+  currentProvinceIndex:any=0;
+
   added: boolean = false;
+
+
+
   constructor(
     private fb: FormBuilder,
     public ref: DynamicDialogRef,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private dialogService: DynamicDialogConfig,
   ) {}
 
+  provinceOnChange(){
+    let currentProvince=this.myForm.value.provinceName;
+    this.currentProvinceIndex= this.provinceList.findIndex(obj => obj.name === currentProvince);
+    this.setDristictList();
+  }
+
+  setDristictList(){
+    this.districtList=[];
+    this.data.map((data)=>{
+      
+      if(data.idProvince===this.provinceList[this.currentProvinceIndex].id){
+        this.districtList.push({"idCluster":data.idCluster,"idProvince":data.idProvince,"idDistrict":data.idDistrict,"name":data.districtName,"districtRefCode":data.districtRefCode})
+        
+      }
+      if(data.idProvince===undefined){
+        // console.log(data)
+      }
+    });
+  }
   ngOnInit(): void {
+    this.data = this.dialogService.data;
+    const provinceName = [...new Set(this.data.map(data =>data.provinceName))]
+    const provinceId = [...new Set(this.data.map(data =>data.idProvince))]
+    provinceName.forEach((element,index) => {
+      if(element!=undefined){
+        this.provinceList.push({'id':provinceId[index],'name':element})
+        this.provinceList.sort((a, b) => a.name.toString().localeCompare(b.name.toString()));
+      } 
+    });
+    this.setDristictList();
     this.myForm = this.fb.group({
       branchName: ['', Validators.required],
       branchNameNepali: [''],
       dataProviderBranchId: ['', Validators.required],
       previousDataProviderBranchId: [''],
-      district: ['Kathmandu', Validators.required],
-      provinceName: ['Bagmati', Validators.required],
+      district: [this.districtList[0].name, Validators.required],
+      provinceName: [this.provinceList[0].name, Validators.required],
 
       branchAddress: ['', Validators.required],
       phoneNo: ['', Validators.pattern('^[0-9]{10}$')],

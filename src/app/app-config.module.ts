@@ -19,7 +19,7 @@ export let CIB_BASE_URL = new InjectionToken<string>('CIB_BASE_URL');
   providers: [
     {
       provide: CIB_BASE_URL,
-      useValue: 'https://services.odata.org/V4/OData/OData.svc'
+      useValue: 'http://horizon.api.auth.technomax.com.np/api/auth'
     },
     provideHttpClient(),
   ],

@@ -48,9 +48,10 @@ export class EditRoleComponent implements OnInit {
   ngOnInit() {
     this.data = [this.dialogService.data];
     this.myForm = this.fb.group({
-      roleName: [this.data[0].roleName, Validators.required],
-      description: [this.data[0].description, Validators.required],
-      systemDefined: [this.data[0].systemDefined, Validators.required],
+      id:[this.data[0].Id],
+      roleName: [this.data[0].NAME, Validators.required],
+      description: [this.data[0].DESCRIPTION, Validators.required],
+      isActive: [this.data[0].ACTIVE, Validators.required],
     });
   }
   onSubmit() {

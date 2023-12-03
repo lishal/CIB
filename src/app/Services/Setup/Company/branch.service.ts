@@ -18,7 +18,10 @@ export class BranchService {
 
   constructor(private httpClient:HttpClient, @Inject(CIB_BASE_URL) private baseUrl:string) {}
   
-  public getEmployeeData():Observable<OdataResponse>{ // If Generic: <OdataResponse<ModleName>> ex: <OdataResponse <Branch>>
-    return this.httpClient.get<{value:any[]}>(`${this.baseUrl}/Products`); //If Generic: value : Branch[]
+  public getBranchData():Observable<OdataResponse>{ // If Generic: <OdataResponse<ModleName>> ex: <OdataResponse <Branch>>
+    return this.httpClient.get<{value:any[]}>(`${this.baseUrl}/branch/GetAll?`); //If Generic: value : Branch[]
+  }
+  public getClusterData():Observable<OdataResponse>{
+    return this.httpClient.get<{value:any[]}>(`${this.baseUrl}/dropdown/GetClusterProvinceDistrict`);
   }
 }

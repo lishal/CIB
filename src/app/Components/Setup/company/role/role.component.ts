@@ -28,25 +28,39 @@ export class RoleComponent implements OnInit, OnDestroy {
       baseZIndex: 10000,
       maximizable: true,
     });
-    this.ref.onClose.subscribe((data: any) => {
-      if (data !== undefined) {
-        if (data[1] === true) {
-          this.data.push(data[0]);
-          this.messageService.add({
-            severity: 'success',
-            summary: 'Success',
-            detail: 'Data added successfully',
-          });
+    this.ref.onClose.subscribe((innerData: any) => {
+      if (innerData !== undefined) {
+        if (innerData[1] === true) {
+          this.isLoading = true;
+          this.api.addRoleData(innerData[0]).subscribe(
+            () => {
+              this.data=[...this.data,innerData[0]];
+              this.messageService.add({
+                severity: 'success',
+                summary: 'Success',
+                detail: 'Data added successfully',
+              });
+              this.isLoading = false;
+            },
+            () => {
+              this.messageService.add({
+                severity: 'error',
+                summary: 'Error',
+                detail: 'Something went wrong',
+              });
+              this.isLoading = false;
+            }
+          );
         }
       }
     });
   }
 
 
-  showData(roleName: string) {
-    const displayData = this.data.find((data) => data.roleName === roleName);
+  showData(Id: string) {
+    const displayData = this.data.find((data) => data.Id === Id);
     this.ref = this.dialogService.open(ViewRoleComponent, {
-      header: `Detailed View of ${displayData.roleName}`,
+      header: `Detailed View of ${displayData.NAME}`,
       width: '80%',
       height: '80%',
       contentStyle: { overflow: 'auto' },
@@ -63,10 +77,10 @@ export class RoleComponent implements OnInit, OnDestroy {
 
     // });
   }
-  editData(roleName: string) {
-    const editData = this.data.find((data) => data.roleName === roleName);
+  editData(Id: string) {
+    const editData = this.data.find((data) => data.Id === Id);
     this.ref = this.dialogService.open(EditRoleComponent, {
-      header: `Edit role for ${roleName} id`,
+      header: `Edit role for ${editData.NAME} id`,
       width: '80%',
       height: '80%',
       contentStyle: { overflow: 'auto' },
@@ -74,28 +88,46 @@ export class RoleComponent implements OnInit, OnDestroy {
       maximizable: true,
       data: editData,
     });
-    this.ref.onClose.subscribe((datas: any) => {
-      if (datas !== undefined) {
-        if (datas[1] === true) {
-          const index = this.data.findIndex(
-            (data) => data.roleName === roleName
+    this.ref.onClose.subscribe((innerData: any) => {
+      if (innerData !== undefined) {
+        if (innerData[1] === true) {
+            
+          this.isLoading = true;
+          // console.log(innerData[0])
+          this.api.updateRoleData(innerData[0]).subscribe(
+            (response) => {
+              console.log(response)
+              const index = this.data.findIndex(
+                (data) => data.Id === Id
+              );
+              this.data[index].NAME = innerData[0].NAME;
+              this.data[index].DESCRIPTION = innerData[0].DESCRIPTION;
+              this.data[index].ACTIVE = innerData[0].ACTIVE;
+              this.messageService.add({
+                severity: 'success',
+                summary: 'Success',
+                detail: 'Data Updated successfully',
+              });
+              this.isLoading = false;
+            },
+            (error) => {
+              console.log(error)
+              this.messageService.add({
+                severity: 'error',
+                summary: 'Error',
+                detail: 'Something went wrong',
+              });
+              this.isLoading = false;
+            }
           );
-          this.data[index].roleName = datas[0].roleName;
-          this.data[index].description = datas[0].description;
-          this.data[index].systemDefined = datas[0].systemDefined;
-          this.messageService.add({
-            severity: 'success',
-            summary: 'Success',
-            detail: 'Data updated successfully',
-          });
         }
       }
     });
   }
-  deleteData(roleName: string) {
-    const deleteData = this.data.find((data) => data.roleName === roleName);
+  deleteData(Id: string) {
+    const deleteData = this.data.find((data) => data.Id === Id);
     this.ref = this.dialogService.open(DeleteRoleComponent, {
-      header: `Delete Branch for ${roleName}`,
+      header: `Delete Branch for ${deleteData.NAME}`,
       width: '80%',
       height: '80%',
       contentStyle: { overflow: 'auto' },
@@ -103,18 +135,34 @@ export class RoleComponent implements OnInit, OnDestroy {
       maximizable: true,
       data: deleteData,
     });
-    this.ref.onClose.subscribe((data: any) => {
-      if (data === 'accepted') {
+    this.ref.onClose.subscribe((innerData: any) => {
+      if (innerData === 'accepted') {
         const index = this.data.findIndex(
-          (data) => data.dataProviderBranchId === roleName
+          (data) => data.Id === Id
         );
-        this.data.splice(index, 1);
-        this.messageService.add({
-          severity: 'success',
-          summary: 'Success',
-          detail: 'Data deleted successfully',
-        });
-      } else if (data === 'rejected') {
+        this.isLoading = true;
+          this.api.deleteRoleData(this.data[index]).subscribe(
+            (response) => {
+              
+              this.data.splice(index, 1);
+              this.messageService.add({
+                severity: 'success',
+                summary: 'Success',
+                detail: 'Data deleted successfully',
+              });
+              this.isLoading = false;
+            },
+            (error) => {
+              console.log(error)
+              this.messageService.add({
+                severity: 'error',
+                summary: 'Error',
+                detail: 'Something went wrong',
+              });
+              this.isLoading = false;
+            }
+          );
+      } else if (innerData === 'rejected') {
         this.messageService.add({
           severity: 'error',
           summary: 'Rejected',
@@ -124,19 +172,21 @@ export class RoleComponent implements OnInit, OnDestroy {
     });
   }
   ngOnInit(): void {
-    // this.isLoading = true;
+    // this.data=[{'NAME':'TEST', 'DESCRIPTION':'DESC'},{'NAME':'TEST', 'DESCRIPTION':'DESC'},{'NAME':'TEST', 'DESCRIPTION':'DESC'}]
+    this.isLoading = true;
 
-    // this.api.fetchData().subscribe(
-    //   (response) => {
-    //     this.data = response;
-    //     this.isLoading = false;
-    //     // console.log(this.data)
-    //   },
-    //   (error) => {
-    //     console.log(error);
-    //     this.isLoading = false;
-    //   }
-    // );
+    
+    this.api.getRoleData().subscribe(
+      (response) => {
+        this.data = response.value;
+        this.isLoading = false;
+        // console.log(this.data);
+      },
+      (error) => {
+        console.log(error);
+        this.isLoading = false;
+      }
+    );
   }
   ngOnDestroy(): void {
     if (this.ref) {

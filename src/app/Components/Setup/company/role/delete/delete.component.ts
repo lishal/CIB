@@ -25,6 +25,7 @@ export class DeleteRoleComponent implements OnInit {
   data: any[] = [];
   ngOnInit() {
     this.data = [this.dialogService.data];
+    console.log(this.data)
   }
   onDelete(event: Event) {
     this.confirmationService.confirm({
