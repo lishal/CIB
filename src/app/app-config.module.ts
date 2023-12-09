@@ -19,7 +19,7 @@ export let CIB_BASE_URL = new InjectionToken<string>('CIB_BASE_URL');
   providers: [
     {
       provide: CIB_BASE_URL,
-      useValue: 'http://horizon.api.auth.technomax.com.np/api/auth'
+      useValue: 'https://horizon.api.auth.technomax.com.np/api/auth'
     },
     provideHttpClient(),
   ],
