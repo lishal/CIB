@@ -20,6 +20,7 @@ export class BranchComponent {
   ];
   clusterData:any;
   isLoading: boolean = false;
+  showAdd: boolean = false;
   ref: DynamicDialogRef | undefined;
   constructor(
     private api: BranchService,
@@ -139,31 +140,38 @@ export class BranchComponent {
       }
     });
   }
-  ngOnInit(): void {
+  updateData(){
     this.isLoading = true;
     this.api.getBranchData().subscribe(
       (response) => {
         this.data = response.value;
-        
-
+        this.isLoading = false;
         this.api.getClusterData().subscribe((response)=>{
           this.clusterData=response;
-         
-    
-        },(error)=>{
-          // console.log(error)
-        });
-        this.data = response.value;
-        this.isLoading = false;
+          this.showAdd=true
+          
+        },()=>{
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: 'Internal Server Error!',
+          });
+          this.showAdd=false;
+        });  
+        
       },
-      (error) => {
-        console.log(error);
+      () => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: 'Internal Server Error!',
+        });
         this.isLoading = false;
       }
     );
-    
-
-    
+  }
+  ngOnInit(): void {
+  this.updateData();
     // console.log(this.api.getEmployeeData())
   }
 

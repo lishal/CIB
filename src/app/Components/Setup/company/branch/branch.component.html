@@ -10,7 +10,7 @@
   <p-button
     icon="fa-solid fa-circle-plus"
     (click)="addData()"
-    *ngIf="!isLoading"
+    *ngIf="showAdd"
   ></p-button>
 </div>
 <div class="card mt-3">
@@ -32,45 +32,45 @@
     <ng-template pTemplate="header">
       <tr style="white-space: nowrap">
         <th></th>
-        <th pSortableColumn="dataProviderBranchId">
-          BranchCode <p-sortIcon field="dataProviderBranchId"></p-sortIcon></th>
-        <th pSortableColumn="branchName">BranchName <p-sortIcon field="branchName"></p-sortIcon></th>
+        <th pSortableColumn="SOLID">
+          BranchCode <p-sortIcon field="SOLID"></p-sortIcon></th>
+        <th pSortableColumn="NAME">BranchName <p-sortIcon field="NAME"></p-sortIcon></th>
         <th pSortableColumn="provinceName">Province <p-sortIcon field="provinceName"></p-sortIcon></th>
-        <th pSortableColumn="district">District <p-sortIcon field="district"></p-sortIcon></th>
-        <th pSortableColumn="branchAddress">
-          BranchAddress <p-sortIcon field="branchAddress"></p-sortIcon>
+        <th pSortableColumn="DISTRICT">District <p-sortIcon field="DISTRICT"></p-sortIcon></th>
+        <th pSortableColumn="ADDRESS">
+          BranchAddress <p-sortIcon field="ADDRESS"></p-sortIcon>
         </th>
-        <th pSortableColumn="phoneNo" >PhoneNo <p-sortIcon field="phoneNo"></p-sortIcon></th>
-        <th pSortableColumn="performanceCutOff">
-          PerfCutOff <p-sortIcon field="performanceCutOff"></p-sortIcon></th>
-        <th pSortableColumn="isActive">isActive <p-sortIcon field="isActive"></p-sortIcon></th>
+        <th pSortableColumn="PHONE" >PhoneNo <p-sortIcon field="PHONE"></p-sortIcon></th>
+        <th pSortableColumn="CUTOFF">
+          PerfCutOff <p-sortIcon field="CUTOFF"></p-sortIcon></th>
+        <th pSortableColumn="ACTIVE">isActive <p-sortIcon field="ACTIVE"></p-sortIcon></th>
       </tr>
       <tr class="filterSection">
         <th>
         </th>
         <th>
-          <p-columnFilter type="text" field="dataProviderBranchId"[showClearButton]="false"></p-columnFilter>
+          <p-columnFilter type="text" field="SOLID"[showClearButton]="false"></p-columnFilter>
       </th>
         <th>
-          <p-columnFilter type="text" field="branchName" [showClearButton]="false"></p-columnFilter>
+          <p-columnFilter type="text" field="NAME" [showClearButton]="false"></p-columnFilter>
       </th>
         <th>
           <p-columnFilter type="text" field="provinceName" [showClearButton]="false"></p-columnFilter>
       </th>
         <th>
-          <p-columnFilter type="text" field="district" [showClearButton]="false"></p-columnFilter>
+          <p-columnFilter type="text" field="DISTRICT" [showClearButton]="false"></p-columnFilter>
       </th>
         <th>
-          <p-columnFilter type="text" field="branchAddress" [showClearButton]="false"></p-columnFilter>
+          <p-columnFilter type="text" field="ADDRESS" [showClearButton]="false"></p-columnFilter>
       </th>
         <th>
-          <p-columnFilter type="text" field="phoneNo" [showClearButton]="false" ></p-columnFilter>
+          <p-columnFilter type="text" field="PHONE" [showClearButton]="false" ></p-columnFilter>
       </th>
         <th>
-          <p-columnFilter type="text" field="performanceCutOff" [showClearButton]="false" ></p-columnFilter>
+          <p-columnFilter type="text" field="CUTOFF" [showClearButton]="false" ></p-columnFilter>
       </th>
         <th>
-          <p-columnFilter type="text" field="isActive" [showClearButton]="false" ></p-columnFilter>
+          <p-columnFilter type="text" field="ACTIVE" [showClearButton]="false" ></p-columnFilter>
       </th>
           
       </tr> 

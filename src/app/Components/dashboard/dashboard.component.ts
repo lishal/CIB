@@ -178,7 +178,7 @@ export class DashboardComponent implements OnInit {
   }
 
   toggleSidebar() {
-    this.isSidebarClosed = !this.isSidebarClosed;
+    this.isSidebarClosed = !this.isSidebarClosed;   
     
   }
   
@@ -201,7 +201,6 @@ export class DashboardComponent implements OnInit {
     switch (this.currentLeftPanel) {
       case 'Setup':
         this.primengConfig.ripple = true;
-        // console.log(this.route.url);
         this.topPanelLabel = 'Setup and Configuration';
         this.items = [
           {
@@ -472,7 +471,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.primengConfig.ripple = true;
-    
+    // this.companyRedirect()
     this.items = [
       {
         label: 'Company',

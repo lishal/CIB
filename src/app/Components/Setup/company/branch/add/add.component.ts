@@ -71,8 +71,8 @@ export class AddBranchComponent implements OnInit {
   ) {}
 
   provinceOnChange(){
-    let currentProvince=this.myForm.value.provinceName;
-    this.currentProvinceIndex= this.provinceList.findIndex(obj => obj.name === currentProvince);
+    let currentProvince=this.myForm.value.provinceId;
+    this.currentProvinceIndex= this.provinceList.findIndex(obj => obj.id === currentProvince);
     this.setDristictList();
   }
 
@@ -106,7 +106,7 @@ export class AddBranchComponent implements OnInit {
       dataProviderBranchId: ['', Validators.required],
       previousDataProviderBranchId: [''],
       district: [this.districtList[0].name, Validators.required],
-      provinceName: [this.provinceList[0].name, Validators.required],
+      provinceId: [this.provinceList[0].id, Validators.required],
 
       branchAddress: ['', Validators.required],
       phoneNo: ['', Validators.pattern('^[0-9]{10}$')],

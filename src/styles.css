@@ -594,7 +594,7 @@
   align-items: center;
 }
 .p-datatable    .p-paginator-bottom{
-  height: 2.5rem !important;
+  height: auto !important;
   padding: 0px;
 }
 .p-dropdown:not(.p-disabled).p-focus{
