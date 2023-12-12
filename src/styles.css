@@ -28,7 +28,7 @@
 * {
   margin: 0;
   padding: 0;
-  font-family:Arial, sans-serif;
+  font-family:"Poppins", sans-serif;
 }
 .p-password {
   width: 100% !important;
@@ -64,7 +64,7 @@
   padding: 12px 6px;
   position: relative;
   cursor: pointer;
-  font-weight: 700;
+  font-weight: 600;
   background-color: transparent;
   border: none;
   transition: 0.2s ease-in-out;
@@ -99,7 +99,7 @@
 }
 .leftSidePanel .leftPanelContainer .p-panelmenu .p-panelmenu-header > a span {
   margin-left: 12px;
-  font-size: 14px;
+  font-size: 0.8rem;
 
 }
 
@@ -164,11 +164,11 @@
   span {
   padding: 12px 6px;
   max-width: 260px;
-  font-weight: 700;
+  font-weight: 500;
   display: inline-flex;
   justify-content: flex-start;
   transition: 0.2s ease-in-out;
-  font-size: 14px;
+  font-size: 0.8rem;
   color: var(--white);
 
 }
@@ -235,11 +235,11 @@
 
 .rightSidePanel .p-sidebar-header span {
   width: 175px;
-  font-size: 14px;
+  font-size: 0.8rem;
   text-transform: uppercase;
   text-align: center;
   cursor: default;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--white);
 }
 .rightSidePanel .p-sidebar .p-sidebar-header .p-sidebar-close, .p-sidebar .p-sidebar-header .p-sidebar-icon {
@@ -418,6 +418,7 @@
   border: none;
   /* padding: 0.7rem 0.5rem; */
   padding: 12px 6px;
+  font-weight: 500;
   
 }
 .p-tabmenu .p-tabmenu-nav .p-tabmenuitem.p-highlight .p-menuitem-link {
@@ -491,7 +492,8 @@
   text-transform: uppercase;
   padding:12px 6px;
   text-align: center;
-  font-size: 14px;
+  font-size: 0.8rem;
+  font-weight: 500;
 }
 .p-datatable .p-sortable-column:not(.p-highlight):hover {
   background: var(--cyanOnHover);
@@ -527,7 +529,7 @@
 }
 .p-datatable .p-datatable-tbody > tr > td {
   padding: 5px 10px;
-  font-size: 14px;
+  font-size: 0.8rem;
 }
 
 /* Filter */
@@ -724,6 +726,7 @@ color:#1D4ED8 !important;
 .actionItem{
   text-transform: capitalize;
   width: 100%;
+  font-size: 0.8rem;
 }
 .actionOverlay .p-overlaypanel-content {
   padding: 0.5rem 0.3rem;

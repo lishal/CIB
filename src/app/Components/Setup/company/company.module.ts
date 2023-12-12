@@ -33,6 +33,9 @@ import { CompanyComponent } from './company.component';
     OverlayPanelModule,
     ToastModule,
     TabMenuModule,
+  ],
+  exports:[
+    
   ]
 })
 export class CompanyModule { }

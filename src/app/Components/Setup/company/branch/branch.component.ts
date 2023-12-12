@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { BranchService } from '../../../../Services/Setup/Company/branch.service';
+import { BranchService, request } from '../../../../Services/Setup/Company/branch.service';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { EditBranchComponent } from './edit/edit.component';
 import { ViewBranchComponent } from './view/view.component';
@@ -8,6 +8,7 @@ import { AddBranchComponent } from './add/add.component';
 import { MessageService } from 'primeng/api';
 import { OverlayPanel } from 'primeng/overlaypanel';
 import * as FileSaver from 'file-saver';
+import { TableLazyLoadEvent } from 'primeng/table';
 
 @Component({
   selector: 'app-branch',
@@ -15,9 +16,15 @@ import * as FileSaver from 'file-saver';
   styleUrls: ['./branch.component.css'],
   providers: [DialogService, MessageService],
 })
-export class BranchComponent {
-  data: any[] = [
-  ];
+export class BranchComponent implements OnInit,OnDestroy{
+  data: any[] = [];
+  request:request={
+    first:0,
+    rows:5,
+    sortField:'',
+    sortOrder:1
+  }
+  totalRecords:number=0;
   clusterData:any;
   isLoading: boolean = false;
   showAdd: boolean = false;
@@ -140,40 +147,44 @@ export class BranchComponent {
       }
     });
   }
-  updateData(){
-    this.isLoading = true;
-    this.api.getBranchData().subscribe(
-      (response) => {
-        this.data = response.value;
-        this.isLoading = false;
-        this.api.getClusterData().subscribe((response)=>{
-          this.clusterData=response;
-          this.showAdd=true
-          
-        },()=>{
-          this.messageService.add({
-            severity: 'error',
-            summary: 'Error',
-            detail: 'Internal Server Error!',
-          });
-          this.showAdd=false;
-        });  
-        
-      },
-      () => {
-        this.messageService.add({
-          severity: 'error',
-          summary: 'Error',
-          detail: 'Internal Server Error!',
-        });
-        this.isLoading = false;
-      }
-    );
+  getClusterData(){
+    this.api.getClusterData().subscribe((response)=>{
+      this.clusterData=response;
+      this.showAdd=true
+    },()=>{
+      this.messageService.add({
+      severity: 'error',
+      summary: 'Error',
+      detail: 'Internal Server Error!',
+    });
+    this.showAdd=false;
+  });  
+ 
   }
   ngOnInit(): void {
-  this.updateData();
-    // console.log(this.api.getEmployeeData())
+    this.getClusterData();
   }
+
+  getBranchData(){
+    setTimeout(() => {
+      this.isLoading=true;
+      this.api.getBranchData(this.request).subscribe((response)=>{
+        this.data=response.value;
+        this.totalRecords=response.count;
+        this.isLoading=false 
+      });
+    }, 0);
+  }
+
+  loadData($event:TableLazyLoadEvent){
+    this.request.first=$event.first || 0;
+    this.request.rows=$event.rows || 5;
+    this.request.sortField=$event.sortField || '';
+    this.request.sortOrder=$event.sortOrder || 1;
+    this.getBranchData();
+
+  }
+ 
 
   exportExcel(op: OverlayPanel) {
     import('xlsx').then((xlsx) => {
@@ -201,6 +212,7 @@ export class BranchComponent {
     );
   }
 
+  
   ngOnDestroy(): void {
     if (this.ref) {
       this.ref.close();

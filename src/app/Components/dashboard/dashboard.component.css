@@ -228,7 +228,7 @@
   line-height: 57px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .sidepanelCloseOuter {
@@ -295,6 +295,7 @@
   padding: 0px 6px;
   text-transform: uppercase;
   color: var(--white);
+  font-size: 0.8rem;
 }
 
 .mainContainer {
