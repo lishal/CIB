@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy,ViewChild } from '@angular/core';
 import { BranchService, request } from '../../../../Services/Setup/Company/branch.service';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { EditBranchComponent } from './edit/edit.component';
@@ -17,13 +17,33 @@ import { TableLazyLoadEvent } from 'primeng/table';
   providers: [DialogService, MessageService],
 })
 export class BranchComponent implements OnInit,OnDestroy{
+  @ViewChild('filterSOLID') filterSOLID!: OverlayPanel;
+  @ViewChild('filterNAME') filterNAME!: OverlayPanel;
+  @ViewChild('filterDISTRICT') filterDISTRICT!: OverlayPanel;
+  @ViewChild('filterADDRESS') filterADDRESS!: OverlayPanel;
+  @ViewChild('filterEMAIL') filterEMAIL!: OverlayPanel;
+  @ViewChild('filterCUTOFF') filterCUTOFF!: OverlayPanel;
   data: any[] = [];
   request:request={
     first:0,
     rows:5,
     sortField:'',
-    sortOrder:1
+    sortOrder:1,
+    filterRequest:[]
   }
+  toBeFiltered:any[]=[];
+  filterIconSOLID: string = 'fa-solid fa-filter';
+  filterLabelSOLID: string = '';
+  filterIconNAME: string = 'fa-solid fa-filter';
+  filterLabelNAME: string = '';
+  filterIconDISTRICT: string = 'fa-solid fa-filter';
+  filterLabelDISTRICT: string = '';
+  filterIconADDRESS: string = 'fa-solid fa-filter';
+  filterLabelADDRESS: string = '';
+  filterIconEMAIL: string = 'fa-solid fa-filter';
+  filterLabelEMAIL: string = '';
+  filterIconCUTOFF: string = 'fa-solid fa-filter';
+  filterLabelCUTOFF: string = '';
   totalRecords:number=0;
   clusterData:any;
   isLoading: boolean = false;
@@ -181,10 +201,464 @@ export class BranchComponent implements OnInit,OnDestroy{
     this.request.rows=$event.rows || 5;
     this.request.sortField=$event.sortField || '';
     this.request.sortOrder=$event.sortOrder || 1;
+    this.request.filterRequest=this.toBeFiltered || [];
     this.getBranchData();
 
   }
- 
+  
+  reset(fieldName:string,value:string){
+    const mode='reset';
+    value='';
+    if(fieldName==='SOLID'){
+      this.filterIconSOLID='fa-solid fa-filter';
+      this.filterLabelSOLID='';
+      this.filterSOLID.hide();
+    }
+    else if(fieldName==='NAME'){
+      this.filterIconNAME='fa-solid fa-filter';
+      this.filterLabelNAME='';
+      this.filterNAME.hide();
+    }
+    else if(fieldName==='DISTRICT'){
+      this.filterIconDISTRICT='fa-solid fa-filter';
+      this.filterLabelDISTRICT='';
+      this.filterDISTRICT.hide();
+    }
+    else if(fieldName==='ADDRESS'){
+      this.filterIconADDRESS='fa-solid fa-filter';
+      this.filterLabelADDRESS='';
+      this.filterADDRESS.hide();
+    }
+    else if(fieldName==='EMAIL'){
+      this.filterIconEMAIL='fa-solid fa-filter';
+      this.filterLabelEMAIL='';
+      this.filterEMAIL.hide();
+    }
+    else if(fieldName==='CUTOFF'){
+      this.filterIconCUTOFF='fa-solid fa-filter';
+      this.filterLabelCUTOFF='';
+      this.filterCUTOFF.hide();
+    }
+    const index = this.toBeFiltered.findIndex(data => data.fieldName === fieldName );
+    if (index === -1) {
+      this.toBeFiltered.push({'fieldName':fieldName,'mode':mode,'value':value});
+    } else {
+      this.toBeFiltered[index] = { ...this.toBeFiltered[index], ...{'fieldName':fieldName,'mode':mode,'value':value} };
+    }
+    this.request={
+      ...this.request,
+      first:0,
+      filterRequest:this.toBeFiltered
+    }
+    this.getBranchData()
+    // console.log(this.toBeFiltered)
+  }
+  equal(fieldName:string,value:string){
+    const mode='equal';
+    if(fieldName==='SOLID'){
+      this.filterIconSOLID='';
+      this.filterLabelSOLID='=';
+      this.filterSOLID.hide();
+    }
+    else if(fieldName==='NAME'){
+      this.filterIconNAME='';
+      this.filterLabelNAME='=';
+      this.filterNAME.hide();
+    }
+    else if(fieldName==='DISTRICT'){
+      this.filterIconDISTRICT='';
+      this.filterLabelDISTRICT='=';
+      this.filterDISTRICT.hide();
+    }
+    else if(fieldName==='ADDRESS'){
+      this.filterIconADDRESS='';
+      this.filterLabelADDRESS='=';
+      this.filterADDRESS.hide();
+    }
+    else if(fieldName==='EMAIL'){
+      this.filterIconEMAIL='';
+      this.filterLabelEMAIL='=';
+      this.filterEMAIL.hide()
+    }
+    else if(fieldName==='CUTOFF'){
+      this.filterIconCUTOFF='';
+      this.filterLabelCUTOFF='=';
+      this.filterCUTOFF.hide();
+    }
+    const index = this.toBeFiltered.findIndex(data => data.fieldName === fieldName );
+    if (index === -1) {
+      this.toBeFiltered.push({'fieldName':fieldName,'mode':mode,'value':value});
+    } else {
+      this.toBeFiltered[index] = { ...this.toBeFiltered[index], ...{'fieldName':fieldName,'mode':mode,'value':value} };
+    }
+    this.request={
+      ...this.request,
+      first:0,
+      filterRequest:this.toBeFiltered
+    }
+    this.getBranchData()
+    // console.log(this.toBeFiltered)
+  }
+  notEqual(fieldName:string,value:string){
+    const mode='notEqual';
+    if(fieldName==='SOLID'){
+      this.filterIconSOLID='';
+      this.filterLabelSOLID='!=';
+      this.filterSOLID.hide();
+    }
+    else if(fieldName==='NAME'){
+      this.filterIconNAME='';
+      this.filterLabelNAME='!=';
+      this.filterNAME.hide();
+    }
+    else if(fieldName==='DISTRICT'){
+      this.filterIconDISTRICT='';
+      this.filterLabelDISTRICT='!=';
+      this.filterDISTRICT.hide();
+    }
+    else if(fieldName==='ADDRESS'){
+      this.filterIconADDRESS='';
+      this.filterLabelADDRESS='!=';
+      this.filterADDRESS.hide();
+    }
+    else if(fieldName==='EMAIL'){
+      this.filterIconEMAIL='';
+      this.filterLabelEMAIL='!=';
+      this.filterEMAIL.hide();
+    }
+    else if(fieldName==='CUTOFF'){
+      this.filterIconCUTOFF='';
+      this.filterLabelCUTOFF='!=';
+      this.filterCUTOFF.hide();
+    }
+    const index = this.toBeFiltered.findIndex(data => data.fieldName === fieldName );
+    if (index === -1) {
+      this.toBeFiltered.push({'fieldName':fieldName,'mode':mode,'value':value});
+    } else {
+      this.toBeFiltered[index] = { ...this.toBeFiltered[index], ...{'fieldName':fieldName,'mode':mode,'value':value} };
+    }
+    this.request={
+      ...this.request,
+      first:0,
+      filterRequest:this.toBeFiltered
+    }
+    this.getBranchData()
+  }
+  greater(fieldName:string,value:string){
+    const mode='greater';
+    if(fieldName==='SOLID'){
+      this.filterIconSOLID='';
+      this.filterLabelSOLID='>';
+      this.filterSOLID.hide();
+    }
+    else if(fieldName==='NAME'){
+      this.filterIconNAME='';
+      this.filterLabelNAME='>';
+      this.filterNAME.hide();
+    }
+    else if(fieldName==='DISTRICT'){
+      this.filterIconDISTRICT='';
+      this.filterLabelDISTRICT='>';
+      this.filterDISTRICT.hide();
+    }
+    else if(fieldName==='ADDRESS'){
+      this.filterIconADDRESS='';
+      this.filterLabelADDRESS='>';
+      this.filterADDRESS.hide();
+    }
+    else if(fieldName==='EMAIL'){
+      this.filterIconEMAIL='';
+      this.filterLabelEMAIL='>';
+      this.filterEMAIL.hide();
+    }
+    else if(fieldName==='CUTOFF'){
+      this.filterIconCUTOFF='';
+      this.filterLabelCUTOFF='>';
+      this.filterCUTOFF.hide();
+    }
+    const index = this.toBeFiltered.findIndex(data => data.fieldName === fieldName );
+    if (index === -1) {
+      this.toBeFiltered.push({'fieldName':fieldName,'mode':mode,'value':value});
+    } else {
+      this.toBeFiltered[index] = { ...this.toBeFiltered[index], ...{'fieldName':fieldName,'mode':mode,'value':value} };
+    }
+    this.request={
+      ...this.request,
+      first:0,
+      filterRequest:this.toBeFiltered
+    }
+    this.getBranchData()
+  }
+  greaterEqual(fieldName:string,value:string){
+    const mode='greaterEqual';
+    if(fieldName==='SOLID'){
+      this.filterIconSOLID='';
+      this.filterLabelSOLID='>=';
+      this.filterSOLID.hide();
+    }
+    else if(fieldName==='NAME'){
+      this.filterIconNAME='';
+      this.filterLabelNAME='>=';
+      this.filterNAME.hide();
+    }
+    else if(fieldName==='DISTRICT'){
+      this.filterIconDISTRICT='';
+      this.filterLabelDISTRICT='>=';
+      this.filterDISTRICT.hide();
+    }
+    else if(fieldName==='ADDRESS'){
+      this.filterIconADDRESS='';
+      this.filterLabelADDRESS='>=';
+      this.filterADDRESS.hide();
+    }
+    else if(fieldName==='EMAIL'){
+      this.filterIconEMAIL='';
+      this.filterLabelEMAIL='>=';
+      this.filterEMAIL.hide();
+    }
+    else if(fieldName==='CUTOFF'){
+      this.filterIconCUTOFF='';
+      this.filterLabelCUTOFF='>=';
+      this.filterCUTOFF.hide();
+    }
+    const index = this.toBeFiltered.findIndex(data => data.fieldName === fieldName );
+    if (index === -1) {
+      this.toBeFiltered.push({'fieldName':fieldName,'mode':mode,'value':value});
+    } else {
+      this.toBeFiltered[index] = { ...this.toBeFiltered[index], ...{'fieldName':fieldName,'mode':mode,'value':value} };
+    }
+    this.request={
+      ...this.request,
+      first:0,
+      filterRequest:this.toBeFiltered
+    }
+    this.getBranchData()
+  }
+  less(fieldName:string,value:string){
+    const mode='less';
+    if(fieldName==='SOLID'){
+      this.filterIconSOLID='';
+      this.filterLabelSOLID='<';
+      this.filterSOLID.hide();
+    }
+    else if(fieldName==='NAME'){
+      this.filterIconNAME='';
+      this.filterLabelNAME='<';
+      this.filterNAME.hide();
+    }
+    else if(fieldName==='DISTRICT'){
+      this.filterIconDISTRICT='';
+      this.filterLabelDISTRICT='<';
+      this.filterDISTRICT.hide();
+    }
+    else if(fieldName==='ADDRESS'){
+      this.filterIconADDRESS='';
+      this.filterLabelADDRESS='<';
+      this.filterADDRESS.hide();
+    }
+    else if(fieldName==='EMAIL'){
+      this.filterIconEMAIL='';
+      this.filterLabelEMAIL='<';
+      this.filterEMAIL.hide();
+    }
+    else if(fieldName==='CUTOFF'){
+      this.filterIconCUTOFF='';
+      this.filterLabelCUTOFF='<';
+      this.filterCUTOFF.hide();
+    }
+    const index = this.toBeFiltered.findIndex(data => data.fieldName === fieldName );
+    if (index === -1) {
+      this.toBeFiltered.push({'fieldName':fieldName,'mode':mode,'value':value});
+    } else {
+      this.toBeFiltered[index] = { ...this.toBeFiltered[index], ...{'fieldName':fieldName,'mode':mode,'value':value} };
+    }
+    this.request={
+      ...this.request,
+      first:0,
+      filterRequest:this.toBeFiltered
+    }
+    this.getBranchData()
+  }
+  lessEqual(fieldName:string,value:string){
+    const mode='lessEqual';
+    if(fieldName==='SOLID'){
+      this.filterIconSOLID='';
+      this.filterLabelSOLID='<=';
+      this.filterSOLID.hide();
+    }
+    else if(fieldName==='NAME'){
+      this.filterIconNAME='';
+      this.filterLabelNAME='<=';
+      this.filterNAME.hide();
+    }
+    else if(fieldName==='DISTRICT'){
+      this.filterIconDISTRICT='';
+      this.filterLabelDISTRICT='<=';
+      this.filterDISTRICT.hide();
+    }
+    else if(fieldName==='ADDRESS'){
+      this.filterIconADDRESS='';
+      this.filterLabelADDRESS='<=';
+      this.filterADDRESS.hide();
+    }
+    else if(fieldName==='EMAIL'){
+      this.filterIconEMAIL='';
+      this.filterLabelEMAIL='<=';
+      this.filterEMAIL.hide();
+    }
+    else if(fieldName==='CUTOFF'){
+      this.filterIconCUTOFF='';
+      this.filterLabelCUTOFF='<=';
+      this.filterCUTOFF.hide();
+    }
+    const index = this.toBeFiltered.findIndex(data => data.fieldName === fieldName );
+    if (index === -1) {
+      this.toBeFiltered.push({'fieldName':fieldName,'mode':mode,'value':value});
+    } else {
+      this.toBeFiltered[index] = { ...this.toBeFiltered[index], ...{'fieldName':fieldName,'mode':mode,'value':value} };
+    }
+    this.request={
+      ...this.request,
+      first:0,
+      filterRequest:this.toBeFiltered
+    }
+    this.getBranchData()
+  }
+  starts(fieldName:string,value:string){
+    const mode='startsWith';
+    if(fieldName==='SOLID'){
+      this.filterIconSOLID='';
+      this.filterLabelSOLID='sw';
+      this.filterSOLID.hide();
+    }
+    else if(fieldName==='NAME'){
+      this.filterIconNAME='';
+      this.filterLabelNAME='sw';
+      this.filterNAME.hide();
+    }
+    else if(fieldName==='DISTRICT'){
+      this.filterIconDISTRICT='';
+      this.filterLabelDISTRICT='sw';
+      this.filterDISTRICT.hide();
+    }
+    else if(fieldName==='ADDRESS'){
+      this.filterIconADDRESS='';
+      this.filterLabelADDRESS='sw';
+      this.filterADDRESS.hide();
+    }
+    else if(fieldName==='EMAIL'){
+      this.filterIconEMAIL='';
+      this.filterLabelEMAIL='sw';
+      this.filterEMAIL.hide();
+    }
+    // else if(fieldName==='CUTOFF'){
+    //   this.filterIconCUTOFF='';
+    //   this.filterLabelCUTOFF='sw';
+    //   this.filterCUTOFF.hide();
+    // }
+    const index = this.toBeFiltered.findIndex(data => data.fieldName === fieldName );
+    if (index === -1) {
+      this.toBeFiltered.push({'fieldName':fieldName,'mode':mode,'value':value});
+    } else {
+      this.toBeFiltered[index] = { ...this.toBeFiltered[index], ...{'fieldName':fieldName,'mode':mode,'value':value} };
+    }
+    this.request={
+      ...this.request,
+      first:0,
+      filterRequest:this.toBeFiltered
+    }
+    this.getBranchData()
+  }
+  ends(fieldName:string,value:string){
+    const mode='endsWith';
+    if(fieldName==='SOLID'){
+      this.filterIconSOLID='';
+      this.filterLabelSOLID='ew';
+      this.filterSOLID.hide();
+    }
+    else if(fieldName==='NAME'){
+      this.filterIconNAME='';
+      this.filterLabelNAME='ew';
+      this.filterNAME.hide();
+    }
+    else if(fieldName==='DISTRICT'){
+      this.filterIconDISTRICT='';
+      this.filterLabelDISTRICT='ew';
+      this.filterDISTRICT.hide();
+    }
+    else if(fieldName==='ADDRESS'){
+      this.filterIconADDRESS='';
+      this.filterLabelADDRESS='ew';
+      this.filterADDRESS.hide();
+    }
+    else if(fieldName==='EMAIL'){
+      this.filterIconEMAIL='';
+      this.filterLabelEMAIL='ew';
+      this.filterEMAIL.hide();
+    }
+    // else if(fieldName==='CUTOFF'){
+    //   this.filterIconCUTOFF='';
+    //   this.filterLabelCUTOFF='ew';
+    //   this.filterCUTOFF.hide();
+    // }
+    const index = this.toBeFiltered.findIndex(data => data.fieldName === fieldName );
+    if (index === -1) {
+      this.toBeFiltered.push({'fieldName':fieldName,'mode':mode,'value':value});
+    } else {
+      this.toBeFiltered[index] = { ...this.toBeFiltered[index], ...{'fieldName':fieldName,'mode':mode,'value':value} };
+    }
+    this.request={
+      ...this.request,
+      first:0,
+      filterRequest:this.toBeFiltered
+    }
+    this.getBranchData()
+  }
+  contains(fieldName:string,value:string){
+    const mode='contains';
+    if(fieldName==='SOLID'){
+      this.filterIconSOLID='';
+      this.filterLabelSOLID='ss';
+      this.filterSOLID.hide();
+    }
+    else if(fieldName==='NAME'){
+      this.filterIconNAME='';
+      this.filterLabelNAME='ss';
+      this.filterNAME.hide();
+    }
+    else if(fieldName==='DISTRICT'){
+      this.filterIconDISTRICT='';
+      this.filterLabelDISTRICT='ss';
+      this.filterDISTRICT.hide();
+    }
+    else if(fieldName==='ADDRESS'){
+      this.filterIconADDRESS='';
+      this.filterLabelADDRESS='ss';
+      this.filterADDRESS.hide();
+    }
+    else if(fieldName==='EMAIL'){
+      this.filterIconEMAIL='';
+      this.filterLabelEMAIL='ss';
+      this.filterEMAIL.hide();
+    }
+    // else if(fieldName==='CUTOFF'){
+    //   this.filterIconCUTOFF='';
+    //   this.filterLabelCUTOFF='ss';
+    //   this.filterCUTOFF.hide();
+    // }
+    const index = this.toBeFiltered.findIndex(data => data.fieldName === fieldName );
+    if (index === -1) {
+      this.toBeFiltered.push({'fieldName':fieldName,'mode':mode,'value':value});
+    } else {
+      this.toBeFiltered[index] = { ...this.toBeFiltered[index], ...{'fieldName':fieldName,'mode':mode,'value':value} };
+    }
+    this.request={
+      ...this.request,
+      first:0,
+      filterRequest:this.toBeFiltered
+    }
+    this.getBranchData()
+  }
 
   exportExcel(op: OverlayPanel) {
     import('xlsx').then((xlsx) => {

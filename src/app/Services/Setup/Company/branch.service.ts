@@ -1,5 +1,5 @@
 import { Injectable,Inject } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable, filter, map } from 'rxjs';
 import { CIB_BASE_URL } from 'src/app/app-config.module';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
@@ -11,7 +11,9 @@ export interface request{
   first: number,
   rows: number,
   sortField:string | string[],
-  sortOrder:number
+  sortOrder:number,
+  filterRequest:any[]
+  
 
 }
 @Injectable({
@@ -22,8 +24,153 @@ export class BranchService {
   constructor(private httpClient:HttpClient, @Inject(CIB_BASE_URL) private baseUrl:string) {}
   
   getBranchData(request:request): Observable<{ count: number, value: any[] }> {
-    const {first,rows,sortField, sortOrder}=request
+    const {first,rows,sortField, sortOrder,filterRequest}=request
     let urlParams=`&skip=${first}&top=${rows}`;
+      // console.log(`less part`)
+    
+
+      filterRequest.forEach((items,index)=>{
+        switch (items.mode) {
+          case 'reset':
+            filterRequest.splice(index, 1);
+            break;
+    
+          case 'equal':
+            if(items.fieldName!='CUTOFF'){
+              if (urlParams.includes('$filter')) {
+                urlParams+=` AND (${items.fieldName} eq '${items.value}')`
+              }
+              else{
+                urlParams+=`&$filter=(${items.fieldName} eq '${items.value}')`
+              }
+            }
+            else{
+              if (urlParams.includes('$filter')) {
+                urlParams+=` AND (${items.fieldName} eq ${items.value})`
+              }
+              else{
+                urlParams+=`&$filter=(${items.fieldName} eq ${items.value})`
+              }
+            }
+              
+            break;
+          case 'notEqual':
+            if(items.fieldName!='CUTOFF'){
+              if (urlParams.includes('$filter')) {
+                urlParams+=` AND (${items.fieldName} ne '${items.value}')`
+              }
+              else{
+                urlParams+=`&$filter=(${items.fieldName} ne '${items.value}')`
+              }
+            }
+            else{
+              if (urlParams.includes('$filter')) {
+                urlParams+=` AND (${items.fieldName} ne ${items.value})`
+              }
+              else{
+                urlParams+=`&$filter=(${items.fieldName} ne ${items.value})`
+              }
+            }
+            break;
+          case 'greater':
+            if(items.fieldName!='CUTOFF'){
+              if (urlParams.includes('$filter')) {
+                urlParams+=` AND (${items.fieldName} gt '${items.value}')`
+              }
+              else{
+                urlParams+=`&$filter=(${items.fieldName} gt '${items.value}')`
+              }
+            }
+            else{
+              if (urlParams.includes('$filter')) {
+                urlParams+=` AND (${items.fieldName} gt ${items.value})`
+              }
+              else{
+                urlParams+=`&$filter=(${items.fieldName} gt ${items.value})`
+              }
+            }
+            break;
+          case 'greaterEqual':
+            if(items.fieldName!='CUTOFF'){
+              if (urlParams.includes('$filter')) {
+                urlParams+=` AND (${items.fieldName} ge '${items.value}')`
+              }
+              else{
+                urlParams+=`&$filter=(${items.fieldName} ge '${items.value}')`
+              }
+            }
+            else{
+              if (urlParams.includes('$filter')) {
+                urlParams+=` AND (${items.fieldName} ge ${items.value})`
+              }
+              else{
+                urlParams+=`&$filter=(${items.fieldName} ge ${items.value})`
+              }
+            }
+            break;
+          case 'less':
+            if(items.fieldName!='CUTOFF'){
+              if (urlParams.includes('$filter')) {
+                urlParams+=` AND (${items.fieldName} lt '${items.value}')`
+              }
+              else{
+                urlParams+=`&$filter=(${items.fieldName} lt '${items.value}')`
+              }
+            }
+            else{
+              if (urlParams.includes('$filter')) {
+                urlParams+=` AND (${items.fieldName} lt ${items.value})`
+              }
+              else{
+                urlParams+=`&$filter=(${items.fieldName} lt ${items.value})`
+              }
+            }
+            break;
+          case 'lessEqual':
+            if(items.fieldName!='CUTOFF'){
+              if (urlParams.includes('$filter')) {
+                urlParams+=` AND (${items.fieldName} le '${items.value}'))`
+              }
+              else{
+                urlParams+=`&$filter=(${items.fieldName} le '${items.value}')`
+              }
+            }
+            else{
+              if (urlParams.includes('$filter')) {
+                urlParams+=` AND (${items.fieldName} le ${items.value}))`
+              }
+              else{
+                urlParams+=`&$filter=(${items.fieldName} le ${items.value})`
+              }
+            }
+            break;
+          case 'startsWith':
+              if (urlParams.includes('$filter')) {
+                urlParams+=` AND startswith(${items.fieldName}, '${items.value}')`
+              }
+              else{
+                urlParams+=`&$filter=startswith(${items.fieldName}, '${items.value}')`
+              }
+            break;
+          case 'endsWith':
+              if (urlParams.includes('$filter')) {
+                urlParams+=` AND endswith(${items.fieldName}, '${items.value}')`
+              }
+              else{
+                urlParams+=`&$filter=endswith(${items.fieldName}, '${items.value}')`
+              }
+            break;
+          case 'contains':
+              if (urlParams.includes('$filter')) {
+                urlParams+=` AND contains(${items.fieldName}, '${items.value}')`
+              }
+              else{
+                urlParams+=`&$filter=contains(${items.fieldName}, '${items.value}')`
+              }
+            break;
+        }
+      })
+   
     if(sortField){
       urlParams+=`&$orderby=${sortField} ${sortOrder === 1?'asc':'desc'}`;
     }

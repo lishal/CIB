@@ -537,8 +537,63 @@
   background-color: var(--white) !important;
   color: var(--dark);
   /* text-transform: uppercase; */
-  padding: 5px 10px!important;
+  padding: 0px 0px!important;
 } 
+.p-overlaypanel .p-overlaypanel-content {
+  padding: 0.5rem !important;
+}
+
+.filterSection .filterItems{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.filterSection .filterItems button{
+  height: 1.5rem !important;
+  width: 1.5rem !important;
+  padding: 0px;
+  background-color: var(--cyan);
+  font-size: 14px;
+}
+.filterSection .filterItems button:hover{
+  background-color: var(--cyanOnHover);
+}
+/* .filterSection .filterItems .filterIcon .fa-solid{
+  font-size: 12px;
+} */
+.filterList{
+  min-width: 175px;
+    max-width: 175px;
+    position: absolute;
+    inset: 0px auto auto 0px;
+    margin: 0px;
+    margin-left: -5px;
+    transform: translate3d(0px, 36.5px, 0px);
+}
+.filterList button{
+  display: block;
+    width: 100%;
+    padding: 4px 4px;
+    clear: both;
+    font-weight: 400;
+    text-align: inherit;
+    text-decoration: none;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+    color: #495057;
+    font-size: 0.8rem;
+}
+.filterList button:hover{
+  cursor: pointer;
+}
+.notEqual
+
+.filterSection .filterItems button:hover{
+  
+  background-color: var(--cyanOnHover);
+}
 .filterSection .p-inputtext{
   padding: 5px 6px;
 }

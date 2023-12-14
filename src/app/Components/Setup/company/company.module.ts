@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
+import { InputTextModule } from 'primeng/inputtext';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { ToastModule } from 'primeng/toast';
 import { TabMenuModule } from 'primeng/tabmenu';
@@ -33,6 +34,7 @@ import { CompanyComponent } from './company.component';
     OverlayPanelModule,
     ToastModule,
     TabMenuModule,
+    InputTextModule
   ],
   exports:[
     
