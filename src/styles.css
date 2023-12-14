@@ -6,7 +6,7 @@
 @import '~quill/dist/quill.core.css';
 @import '~quill/dist/quill.snow.css';
 :root {
-  --cyan: #06b6d4;
+  --cyan: #269eb0;
   --cyanOnHover:#35bfd7;
   --white: #ffffff;
   --primary: #3b82f6;
@@ -23,6 +23,8 @@
   --topnavbarcolor2: #182848;
   --topnavbarHover: #23252a;
   --borderError: #e24c4c;
+  --tableBackgroundColor:#f2f4f8;
+  --tableTextColor:#67757c;
 }
 
 * {
@@ -491,10 +493,17 @@
   color:var(--white);
   text-transform: uppercase;
   padding:12px 6px;
-  text-align: center;
   font-size: 0.8rem;
   font-weight: 500;
+  position: relative;
 }
+.p-datatable .p-datatable-thead > tr > th .p-icon-wrapper {
+  position: absolute;
+  height: unset;
+  width: unset;
+  right: 2px;
+}
+
 .p-datatable .p-sortable-column:not(.p-highlight):hover {
   background: var(--cyanOnHover);
   color: var(--white);
@@ -530,12 +539,24 @@
 .p-datatable .p-datatable-tbody > tr > td {
   padding: 5px 10px;
   font-size: 0.8rem;
+ 
+}
+.p-datatable .p-datatable-tbody > tr{
+  background-color: var(--tableBackgroundColor);
+  color: var(--tableTextColor);
+}
+.p-datatable .p-datatable-tbody > tr:hover{
+  background-color: var(--cyan);
+  color: var(--white);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+
 }
 
 /* Filter */
- .filterSection th {
-  background-color: var(--white) !important;
-  color: var(--dark);
+ .filterSection {
+  background-color: var(--tableBackgroundColor) !important;
   /* text-transform: uppercase; */
   padding: 0px 0px!important;
 } 
@@ -548,13 +569,22 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  background-color: var(--white);
 }
 .filterSection .filterItems button{
-  height: 1.5rem !important;
-  width: 1.5rem !important;
+  font-size: small;
+  background: var(--cyan);
+  height: 1.2rem !important;
+  width: 1.2rem !important;
+  max-width: 1.2rem !important;
+  max-height: 1.2rem !important;
   padding: 0px;
-  background-color: var(--cyan);
-  font-size: 14px;
+}
+.filterSection .filterItems .p-button .p-button-label {
+  font-size: 0.9rem;
+}
+.filterSection .filterItems .p-button .p-button-icon {
+  font-size: 0.7rem;
 }
 .filterSection .filterItems button:hover{
   background-color: var(--cyanOnHover);
@@ -563,7 +593,6 @@
   font-size: 12px;
 } */
 .filterList{
-  min-width: 175px;
     max-width: 175px;
     position: absolute;
     inset: 0px auto auto 0px;
@@ -574,7 +603,7 @@
 .filterList button{
   display: block;
     width: 100%;
-    padding: 4px 4px;
+    padding: 0.4rem 1rem;
     clear: both;
     font-weight: 400;
     text-align: inherit;
@@ -582,8 +611,8 @@
     white-space: nowrap;
     background-color: transparent;
     border: 0;
-    color: #495057;
-    font-size: 0.8rem;
+    color: var(--lightDark);
+    font-size: 0.875rem;
 }
 .filterList button:hover{
   cursor: pointer;
@@ -596,6 +625,7 @@
 }
 .filterSection .p-inputtext{
   padding: 5px 6px;
+  border: none !important;
 }
 
 /* Paginator Bottom */
@@ -772,6 +802,11 @@ color:#1D4ED8 !important;
 }
 
 /* Table Action */
+.action{
+  background-color: var(--cyan);
+  color: var(--white);
+  border-radius: 4px;
+}
 .actionMenu :hover{
   cursor: pointer;
 }

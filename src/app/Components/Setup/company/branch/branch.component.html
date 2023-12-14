@@ -20,7 +20,7 @@
     loadingIcon="fa-solid fa-spinner fa-spin-pulse"
     [loading]="isLoading"
     [breakpoint]="'960px'"
-    [rows]="5"
+    [rows]="10"
     [showCurrentPageReport]="true"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
     [rowsPerPageOptions]="[5, 10, 25, 50]"
@@ -34,186 +34,44 @@
     (sortFunction)="loadData($event)"
   >
     <ng-template pTemplate="header">
-      <tr style="white-space: nowrap">
-        <th></th>
-        <th pSortableColumn="SOLID">
-          BranchCode <p-sortIcon field="SOLID"></p-sortIcon></th>
-        <th pSortableColumn="NAME">BranchName <p-sortIcon field="NAME"></p-sortIcon></th>
-        <th pSortableColumn="DISTRICT">District <p-sortIcon field="DISTRICT"></p-sortIcon></th>
-        <th pSortableColumn="ADDRESS">
+      <tr style="white-space: nowrap;">
+        <th style="width: 30px;"></th>
+        <th pSortableColumn="SOLID" style="width: 100px;">
+          SOLID <p-sortIcon field="SOLID"></p-sortIcon></th>
+        <th pSortableColumn="NAME" style="width: 250px;">Branch<p-sortIcon field="NAME"></p-sortIcon></th>
+        <th pSortableColumn="DISTRICT" style="width: 120px;">District <p-sortIcon field="DISTRICT"></p-sortIcon></th>
+        <th pSortableColumn="ADDRESS" style="width: auto;">
           BranchAddress <p-sortIcon field="ADDRESS"></p-sortIcon>
         </th>
-        <th pSortableColumn="EMAIL" >EMAIL <p-sortIcon field="EMAIL"></p-sortIcon></th>
-        <th pSortableColumn="CUTOFF">
+        <th pSortableColumn="EMAIL"  style="width: auto;">EMAIL <p-sortIcon field="EMAIL"></p-sortIcon></th>
+        <th pSortableColumn="CUTOFF"  style="width: 60px;">
           PLT% <p-sortIcon field="CUTOFF"></p-sortIcon></th>
       </tr>
-      <!-- <tr class="filterSection">
-        <th>
-        </th>
-        <th>
-          <p-columnFilter type="text" field="SOLID"[showClearButton]="false" ></p-columnFilter>
-      </th>
-        <th>
-          <p-columnFilter type="text" field="NAME" [showClearButton]="false"></p-columnFilter>
-      </th>
-        <th>
-          <p-columnFilter type="text" field="provinceName" [showClearButton]="false"></p-columnFilter>
-      </th>
-        <th>
-          <p-columnFilter type="text" field="DISTRICT" [showClearButton]="false"></p-columnFilter>
-      </th>
-        <th>
-          <p-columnFilter type="text" field="ADDRESS" [showClearButton]="false"></p-columnFilter>
-      </th>
-        <th>
-          <p-columnFilter type="text" field="PHONE" [showClearButton]="false" ></p-columnFilter>
-      </th>
-        <th>
-          <p-columnFilter type="text" field="CUTOFF" [showClearButton]="false" ></p-columnFilter>
-      </th>
-        <th>
-          <p-columnFilter type="text" field="ACTIVE" [showClearButton]="false" ></p-columnFilter>
-      </th>
-          
-      </tr>  -->
+
       <tr class="filterSection">
         <td></td>
-        <td> 
-          <div class="filterItems">
-            <input type="text" #inputFieldSOLID pInputText />
-            <p-button (click)="filterSOLID.toggle($event)" class="filterIcon" label="{{filterLabelSOLID}}" icon={{filterIconSOLID}}></p-button>
-            <p-overlayPanel #filterSOLID [styleClass]="'filterList'">
-              <ng-template pTemplate="content" >
-                <button (click)="reset('SOLID',inputFieldSOLID.value)" >reset</button>
-                <hr>
-                <button (click)="equal('SOLID',inputFieldSOLID.value)">equal</button>
-                <button class="notEqual" (click)="notEqual('SOLID',inputFieldSOLID.value)" >not equal</button>
-                <button (click)="greater('SOLID',inputFieldSOLID.value)" >greater than</button>
-                <button (click)="greaterEqual('SOLID',inputFieldSOLID.value)" >greater than / equal</button>
-                <button (click)="less('SOLID',inputFieldSOLID.value)" >less than</button>
-                <button (click)="lessEqual('SOLID',inputFieldSOLID.value)" >less than / equal</button>
-                <hr>
-                <button (click)="starts('SOLID',inputFieldSOLID.value)" >starts with</button>
-                <button (click)="ends('SOLID',inputFieldSOLID.value)" >ends with</button>
-                <button (click)="contains('SOLID',inputFieldSOLID.value)" >contains</button>
-              </ng-template>
-          </p-overlayPanel>
-          </div>
-       </td>
-       <td > 
-        <div class="filterItems">
-          <input type="text" #inputFieldNAME pInputText />
-          <p-button (click)="filterNAME.toggle($event)" class="filterIcon" label="{{filterLabelNAME}}" icon={{filterIconNAME}}></p-button>
-          <p-overlayPanel #filterNAME [styleClass]="'filterList'">
-            <ng-template pTemplate="content" >
-              <button (click)="reset('NAME',inputFieldNAME.value)" >reset</button>
-              <hr>
-              <button (click)="equal('NAME',inputFieldNAME.value)">equal</button>
-              <button class="notEqual" (click)="notEqual('NAME',inputFieldNAME.value)" >not equal</button>
-              <button (click)="greater('NAME',inputFieldNAME.value)" >greater than</button>
-              <button (click)="greaterEqual('NAME',inputFieldNAME.value)" >greater than / equal</button>
-              <button (click)="less('NAME',inputFieldNAME.value)" >less than</button>
-              <button (click)="lessEqual('NAME',inputFieldNAME.value)" >less than / equal</button>
-              <hr>
-              <button (click)="starts('NAME',inputFieldNAME.value)" >starts with</button>
-              <button (click)="ends('NAME',inputFieldNAME.value)" >ends with</button>
-              <button (click)="contains('NAME',inputFieldNAME.value)" >contains</button>
-            </ng-template>
-        </p-overlayPanel>
-        </div>  
-     </td>
         <td>
-          <div class="filterItems">
-            <input type="text" #inputFieldDISTRICT pInputText />
-          <p-button (click)="filterDISTRICT.toggle($event)" class="filterIcon" label="{{filterLabelDISTRICT}}" icon={{filterIconDISTRICT}}></p-button>
-          <p-overlayPanel #filterDISTRICT [styleClass]="'filterList'">
-            <ng-template pTemplate="content" >
-              <button (click)="reset('DISTRICT',inputFieldDISTRICT.value)" >reset</button>
-              <hr>
-              <button (click)="equal('DISTRICT',inputFieldDISTRICT.value)">equal</button>
-              <button class="notEqual" (click)="notEqual('DISTRICT',inputFieldDISTRICT.value)" >not equal</button>
-              <button (click)="greater('DISTRICT',inputFieldDISTRICT.value)" >greater than</button>
-              <button (click)="greaterEqual('DISTRICT',inputFieldDISTRICT.value)" >greater than / equal</button>
-              <button (click)="less('DISTRICT',inputFieldDISTRICT.value)" >less than</button>
-              <button (click)="lessEqual('DISTRICT',inputFieldDISTRICT.value)" >less than / equal</button>
-              <hr>
-              <button (click)="starts('DISTRICT',inputFieldDISTRICT.value)" >starts with</button>
-              <button (click)="ends('DISTRICT',inputFieldDISTRICT.value)" >ends with</button>
-              <button (click)="contains('DISTRICT',inputFieldDISTRICT.value)" >contains</button>
-            </ng-template>
-        </p-overlayPanel>
-          </div>
+          <app-custom-filter  fieldName="SOLID" fieldType="str" (data)="filter($event,'SOLID')"></app-custom-filter>
         </td>
         <td>
-          <div class="filterItems">
-            <input type="text" #inputFieldADDRESS pInputText />
-          <p-button (click)="filterADDRESS.toggle($event)" class="filterIcon" label="{{filterLabelADDRESS}}" icon={{filterIconADDRESS}}></p-button>
-          <p-overlayPanel #filterADDRESS [styleClass]="'filterList'">
-            <ng-template pTemplate="content" >
-              <button (click)="reset('ADDRESS',inputFieldADDRESS.value)" >reset</button>
-              <hr>
-              <button (click)="equal('ADDRESS',inputFieldADDRESS.value)">equal</button>
-              <button class="notEqual" (click)="notEqual('ADDRESS',inputFieldADDRESS.value)" >not equal</button>
-              <button (click)="greater('ADDRESS',inputFieldADDRESS.value)" >greater than</button>
-              <button (click)="greaterEqual('ADDRESS',inputFieldADDRESS.value)" >greater than / equal</button>
-              <button (click)="less('ADDRESS',inputFieldADDRESS.value)" >less than</button>
-              <button (click)="lessEqual('ADDRESS',inputFieldADDRESS.value)" >less than / equal</button>
-              <hr>
-              <button (click)="starts('ADDRESS',inputFieldADDRESS.value)" >starts with</button>
-              <button (click)="ends('ADDRESS',inputFieldADDRESS.value)" >ends with</button>
-              <button (click)="contains('ADDRESS',inputFieldADDRESS.value)" >contains</button>
-            </ng-template>
-        </p-overlayPanel>
-          </div>
+          <app-custom-filter  fieldName="NAME"  fieldType="str"(data)="filter($event,'NAME')"></app-custom-filter>
         </td>
         <td>
-          <div class="filterItems">
-            <input type="text" #inputFieldEMAIL pInputText />
-          <p-button (click)="filterEMAIL.toggle($event)" class="filterIcon" label="{{filterLabelEMAIL}}" icon={{filterIconEMAIL}}></p-button>
-          <p-overlayPanel #filterEMAIL [styleClass]="'filterList'">
-            <ng-template pTemplate="content" >
-              <button (click)="reset('EMAIL',inputFieldEMAIL.value)" >reset</button>
-              <hr>
-              <button (click)="equal('EMAIL',inputFieldEMAIL.value)">equal</button>
-              <button class="notEqual" (click)="notEqual('EMAIL',inputFieldEMAIL.value)" >not equal</button>
-              <button (click)="greater('EMAIL',inputFieldEMAIL.value)" >greater than</button>
-              <button (click)="greaterEqual('EMAIL',inputFieldEMAIL.value)" >greater than / equal</button>
-              <button (click)="less('EMAIL',inputFieldEMAIL.value)" >less than</button>
-              <button (click)="lessEqual('EMAIL',inputFieldEMAIL.value)" >less than / equal</button>
-              <hr>
-              <button (click)="starts('EMAIL',inputFieldEMAIL.value)" >starts with</button>
-              <button (click)="ends('EMAIL',inputFieldEMAIL.value)" >ends with</button>
-              <button (click)="contains('EMAIL',inputFieldEMAIL.value)" >contains</button>
-            </ng-template>
-        </p-overlayPanel>
-          </div>
+          <app-custom-filter  fieldName="DISTRICT"  fieldType="str"(data)="filter($event,'DISTRICT')"></app-custom-filter>
         </td>
         <td>
-          <div class="filterItems">
-            <input type="text" #inputFieldCUTOFF pInputText />
-          <p-button (click)="filterCUTOFF.toggle($event)" class="filterIcon" label="{{filterLabelCUTOFF}}" icon={{filterIconCUTOFF}}></p-button>
-          <p-overlayPanel #filterCUTOFF [styleClass]="'filterList'">
-            <ng-template pTemplate="content" >
-              <button (click)="reset('CUTOFF',inputFieldCUTOFF.value)" >reset</button>
-              <hr>
-              <button (click)="equal('CUTOFF',inputFieldCUTOFF.value)">equal</button>
-              <button class="notEqual" (click)="notEqual('CUTOFF',inputFieldCUTOFF.value)" >not equal</button>
-              <button (click)="greater('CUTOFF',inputFieldCUTOFF.value)" >greater than</button>
-              <button (click)="greaterEqual('CUTOFF',inputFieldCUTOFF.value)" >greater than / equal</button>
-              <button (click)="less('CUTOFF',inputFieldCUTOFF.value)" >less than</button>
-              <button (click)="lessEqual('CUTOFF',inputFieldCUTOFF.value)" >less than / equal</button>
-              <!-- <hr> -->
-              <!-- <button (click)="starts('CUTOFF',inputFieldCUTOFF.value)" >starts with</button>
-              <button (click)="ends('CUTOFF',inputFieldCUTOFF.value)" >ends with</button>
-              <button (click)="contains('CUTOFF',inputFieldCUTOFF.value)" >contains</button> -->
-            </ng-template>
-        </p-overlayPanel>
-          </div>
+          <app-custom-filter  fieldName="ADDRESS"  fieldType="str"(data)="filter($event,'ADDRESS')"></app-custom-filter>
+        </td>
+        <td>
+          <app-custom-filter  fieldName="EMAIL"  fieldType="str"(data)="filter($event,'EMAIL')"></app-custom-filter>
+        </td>
+        <td>
+          <app-custom-filter  fieldName="CUTOFF"  fieldType="int"(data)="filter($event,'CUTOFF')"></app-custom-filter>
         </td>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-data>
-      <tr style="white-space: nowrap">
+      <tr>
         <td class="actionMenu flex justify-content-center align-items-center" >
           <p-overlayPanel #setting [styleClass]="'actionOverlay'">
             <ng-template pTemplate="content" >
@@ -228,16 +86,16 @@
               </div>
              </ng-template>  
           </p-overlayPanel>
-          <div pRipple class="action border-circle w-2rem h-2rem flex justify-content-center align-items-center" (click)="setting.toggle($event)">
+          <div pRipple class="action w-2rem h-2rem flex justify-content-center align-items-center" (click)="setting.toggle($event)">
             <i class="fa-solid fa-gear"></i>
           </div>
         </td>
-        <td>{{ data?.SOLID }}</td>
-        <td>{{ data?.NAME }}</td>
-        <td>{{ data?.DISTRICT }}</td>
-        <td>{{ data?.ADDRESS }}</td>
-        <td>{{ data?.EMAIL }}</td>
-        <td>{{ data?.CUTOFF }}</td>
+        <td style="padding: 5px;">{{ data?.SOLID }}</td>
+        <td style="padding: 5px;">{{ data?.NAME }}</td>
+        <td style="padding: 5px;">{{ data?.DISTRICT }}</td>
+        <td style="padding: 5px;">{{ data?.ADDRESS }}</td>
+        <td style="padding: 5px;">{{ data?.EMAIL }}</td>
+        <td style="padding: 5px;">{{ data?.CUTOFF }}</td>
       </tr>
     </ng-template>
     <ng-template pTemplate="emptymessage">

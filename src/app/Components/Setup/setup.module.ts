@@ -22,7 +22,7 @@ import { PopupMessageModule } from './popup-message/popup-message.module';
     AdManagementModule,
     EmailTemplatesModule,
     SmsTemplatesModule,
-    PopupMessageModule
+    PopupMessageModule,
   ]
 })
 export class SetupModule { }

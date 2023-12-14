@@ -14,6 +14,7 @@ import { RoleComponent } from './role/role.component';
 import { BackupComponent } from './backup/backup.component';
 import { CompanyDetailComponent } from './company-detail/company-detail.component';
 import { CompanyComponent } from './company.component';
+import { CustomFilterComponent } from '../../custom-filter/custom-filter.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { CompanyComponent } from './company.component';
     RoleComponent,
     BackupComponent,
     CompanyDetailComponent,
-    CompanyComponent
+    CompanyComponent,
+    CustomFilterComponent
   ],
   imports: [
     CommonModule,
