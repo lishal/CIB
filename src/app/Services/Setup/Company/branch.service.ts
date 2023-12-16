@@ -1,20 +1,38 @@
 import { Injectable,Inject } from '@angular/core';
 import { Observable, filter, map } from 'rxjs';
 import { CIB_BASE_URL } from 'src/app/app-config.module';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders ,HttpResponse} from '@angular/common/http';
 
 export interface OdataResponse{
   value:any[]
 }
 
+export interface postBranch{
+  createdOn: string;
+  updatedOn: string;
+  createdBy: string;
+  updatedBy: string;
+  dpbranchid: string;
+  prevdpbranchid: string;
+  branchName: string;
+  branchAddress: string;
+  phoneNo: string;
+  branchNameNp: string;
+  bmemailId: string;
+  idDistrict: string;
+  performanceCutOff: number;
+  enableKsklinquiryViaAccountMonitoring: boolean;
+  enableKsklinquiryViaStockInspection: boolean;
+  enableKsklinquiryViaPendingDocument: boolean;
+  enableKsklinquiryViaInsurance: boolean;
+  isActive: boolean;
+}
 export interface request{
   first: number,
   rows: number,
   sortField:string | string[],
   sortOrder:number,
   filterRequest:any[]
-  
-
 }
 @Injectable({
   providedIn: 'root'
@@ -26,15 +44,11 @@ export class BranchService {
   getBranchData(request:request): Observable<{ count: number, value: any[] }> {
     const {first,rows,sortField, sortOrder,filterRequest}=request
     let urlParams=`&skip=${first}&top=${rows}`;
-      // console.log(`less part`)
-    
-
-      filterRequest.forEach((items,index)=>{
+    filterRequest.forEach((items,index)=>{
         switch (items.mode) {
           case 'reset':
             filterRequest.splice(index, 1);
             break;
-    
           case 'equal':
             if(items.fieldName!='CUTOFF'){
               if (urlParams.includes('$filter')) {
@@ -181,6 +195,13 @@ export class BranchService {
           return { count: response['@odata.count'], value: response.value };
         })
       );
+  }
+
+  postBranchData(data:postBranch):Observable<HttpResponse<any>>{ 
+    return this.httpClient.post<OdataResponse>(`${this.baseUrl}/branch`,data, { observe: 'response' });
+  }
+  public viewData(id:string):Observable<OdataResponse>{
+    return this.httpClient.get<{value:any[]}>(`${this.baseUrl}/branch/${id}`);
   }
  
   public getClusterData():Observable<OdataResponse>{

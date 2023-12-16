@@ -45,14 +45,14 @@
   box-shadow: inset 0 0 5px var(--white);
   border-radius: 10px;
 } */
-.leftSidePanel::-webkit-scrollbar {
+*::-webkit-scrollbar {
   width: 3px;
 }
-.leftSidePanel::-webkit-scrollbar-track {
+*::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px var(--cyan);
   border-radius: 6px;
 }
-.leftSidePanel::-webkit-scrollbar-thumb{
+*::-webkit-scrollbar-thumb{
   background-color: var(--cyanOnHover);
   border-radius: 6px;
 }
@@ -341,9 +341,8 @@
 
 .invalid-input {
   display: flex;
-  border: 1px solid;
+  border: 1px solid var(--borderError) !important;
   border-radius: 6px;
-  border-color: var(--borderError) !important;
 }
 .invalid-date > .p-calendar > .p-inputtext{
   border-color: var(--borderError) !important;
@@ -390,6 +389,13 @@
 /* Dropdown */
 .p-dropdown{
   display: flex !important;
+}
+.invalid-dropdown .p-dropdown{
+  width: 100%;
+  display: flex;
+  background-color: red I !important;
+  border: 1px solid  var(--borderError); 
+  border-radius: 6px;
 }
 
 /* Calender */
@@ -444,16 +450,18 @@
 /* Button Group */
 .btnGroup-topbar{
   border-radius: 6px;
-  margin-top: 1rem;
+  margin-top: 0.1rem;
   width: fit-content;
   background-color: var(--cyan);
 
 }
 .btnGroup-topbar .p-button{
   background-color: var(--cyan);
-  border: none;
-  width: 3rem;
-  height: 2.5rem;
+    border: none;
+    width: 2.5rem;
+    height: 2rem;
+    padding: 0.75rem;
+    font-size: 0.8rem;
 }
 .btnGroup-topbar .p-button:focus{
   box-shadow: none;
@@ -684,14 +692,14 @@
   height: auto !important;
   padding: 0px;
 }
-.p-dropdown:not(.p-disabled).p-focus{
+.p-paginator .p-dropdown:not(.p-disabled).p-focus{
   box-shadow: none;
   border: none;
   transition: none;
 }
 .p-dropdown .p-dropdown-panel {
-  max-height: 200px !important ;/* Set a max height for the dropdown */
-  overflow-y: auto;  /* Enable vertical scrolling */
+  max-height: 200px !important ;
+  overflow-y: auto;  
 }
 .p-element .p-dropdown .p-dropdown-trigger{
   color: #6c757d!important;
@@ -821,3 +829,154 @@ color:#1D4ED8 !important;
 .actionOverlay .p-overlaypanel-content {
   padding: 0.5rem 0.3rem;
 }
+ /* check Box */
+ .checkBox {
+  display: flex;
+  align-items: center;
+  height: 100%;
+ }
+ .checkBox>input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  width: 1.375em;
+  height: 1.375em;
+  background-color: #eaedf5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  
+ }
+ .checkBox>input[type="checkbox"]::after{
+  font-family: 'Font Awesome 5 Free';
+  content: "\f00c";
+  font-weight: 900;
+  color: white;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  background-color: #21c1d6;
+  border-color: #21c1d6;
+  border-radius: 4px;
+  display: none;
+ }
+ .checkBox>input[type="checkbox"]:checked:after{
+  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+ }
+
+ /* Dialog Box Settings */
+ .p-dialog .p-dialog-header {
+  background: #00acc1;
+    color: var(--white) !important;
+    padding: 1rem 1rem !important;
+ }
+ .p-dialog .p-dialog-header .p-dialog-title {
+  font-weight: 400;
+  font-size: 1.125rem;
+}
+.p-dialog .p-dialog-header .p-dialog-header-icon{
+  color: var(--white);
+}
+
+.p-dialog .p-dialog-header .p-dialog-header-icon:focus {
+    box-shadow:none;
+}
+.p-dialog .p-dialog-content {
+  color: #67757c;
+  padding: 1rem;
+}
+/* dialog box input label */
+.p-dialog .p-dialog-content .field{
+  margin-bottom: 0px !important;
+}
+.p-dialog .p-dialog-content .field > label {
+  font-size: 15px !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+}
+.p-dialog .p-dialog-content .field > .input{
+
+  height:2.245rem !important;
+}
+.p-dialog .p-dialog-content .field > .dropdown {
+  font-size: 0.837rem !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+}
+.p-dialog .p-dialog-content .field > .dropdown .p-inputtext  {
+    height: 2.245rem !important;
+    color: #444;
+    font-size: 0.837rem !important;
+}
+.p-dialog .p-dialog-content .field > .dropdown .p-dropdown-panel .p-dropdown-header{
+  padding: 6px !important;
+  color: #444 !important;
+  font-size: 0.837rem !important;
+}
+.p-dialog .p-dialog-content .field > .dropdown .p-dropdown-panel .p-dropdown-items{
+  padding: 0px !important;
+}
+.p-dialog .p-dialog-content .field > .dropdown .p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+  padding: 6px !important;
+  color: #444 !important;
+  font-size: 0.837rem !important;
+}
+.p-dialog .p-dialog-content .field > .dropdown .p-dropdown-panel .p-dropdown-items .p-dropdown-empty-message {
+  padding: 6px !important;
+  color: #444 !important;
+  font-size: 0.837rem !important;
+}
+.p-dialog .p-dialog-content .btnGroup{
+  bottom: 10px;
+  width: 97%;
+  padding: 4px;
+  /* padding: calc(var(1rem) - var(0.5rem) * .5); */
+}
+.p-dialog .p-dialog-content .btnGroup .closeBtn .p-button{
+  padding: 0.375rem 0.75rem;
+  margin: 0 0.375rem;
+  font-size: 0.9375rem;
+  border: none;
+  color: #FC4B6C !important;
+  background-color: #F9E7EB !important;
+}
+.p-dialog .p-dialog-content .btnGroup .closeBtn .p-button:hover {
+  background-color: #fc4b6c !important;
+  border-color: #fc4b6c;
+  color: #fff !important;
+  transition: none;
+}
+.p-dialog .p-dialog-content .btnGroup .submitBtn .p-button{
+  padding: 0.375rem 0.75rem;
+  /* margin: 0 0.75rem; */
+  font-size: 0.9375rem;
+  border: none;
+  color: #7460EE !important;
+  background-color: #A8EEF7 !important;
+}
+.p-dialog .p-dialog-content .btnGroup .submitBtn .p-button:hover {
+  background-color: #21c1d6 !important;
+  border-color: #21c1d6;
+  color: #fff !important;
+  transition: none;
+}
+.p-dialog .p-dialog-content .btnGroup .p-button .p-button-label{
+  font-weight: 500!important;
+}
+
+/* Readonly Input Field */
+
+.readonly{
+  background-color: #E9ECEF !important;
+  color:var(--tableTextColor) !important;
+}
+.readonly .p-dropdown{
+  background-color: #E9ECEF !important;
+  color:var(--tableTextColor) !important;
+  opacity: unset;
+} 

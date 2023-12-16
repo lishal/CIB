@@ -9,6 +9,7 @@ import { MessageService } from 'primeng/api';
 import { OverlayPanel } from 'primeng/overlaypanel';
 import * as FileSaver from 'file-saver';
 import { TableLazyLoadEvent } from 'primeng/table';
+import { LoadingService } from 'src/app/Services/loading.service';
 
 @Component({
   selector: 'app-branch',
@@ -16,7 +17,7 @@ import { TableLazyLoadEvent } from 'primeng/table';
   styleUrls: ['./branch.component.css'],
   providers: [DialogService, MessageService],
 })
-export class BranchComponent implements OnInit,OnDestroy{
+export class BranchComponent implements OnDestroy{
   data: any[] = [];
   request:request={
     first:0,
@@ -26,53 +27,61 @@ export class BranchComponent implements OnInit,OnDestroy{
     filterRequest:[]
   }
   toBeFiltered:any[]=[];
-
+  loadAddData:boolean=false
   totalRecords:number=0;
   clusterData:any;
-  isLoading: boolean = false;
-  showAdd: boolean = false;
+  viewDatas:any;
+  editDatas:any;
+  deleteDatas:any;
+  isLoading: boolean = true;
   ref: DynamicDialogRef | undefined;
   constructor(
     private api: BranchService,
     public dialogService: DialogService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    public loadingService:LoadingService
   ) {}
 
-  addData() {
-    this.ref = this.dialogService.open(AddBranchComponent, {
-      header: `Add Branch`,
-      width: '100%',
-      height: '100%',
-      contentStyle: { overflow: 'auto' },
-      baseZIndex: 10000,
-      maximizable: false,
-      data:this.clusterData
-    });
-    this.ref.onClose.subscribe((data: any) => {
-      if (data !== undefined) {
-        if (data[1] === true) {
-          this.data.push(data[0]);
+  async addData() {
+    this.loadingService.show();
+    await this.getClusterData();
+      this.ref = this.dialogService.open(AddBranchComponent, {
+        header: 'Branch : Add',
+        width: '100%',
+        height: '100%',
+        contentStyle: { overflow: 'auto' },
+        baseZIndex: 10000,
+        maximizable: false,
+        data:this.clusterData
+      });
+      this.ref.onClose.subscribe((data: any) => {
+        if (data===true) {
+          this.getBranchData();
           this.messageService.add({
             severity: 'success',
             summary: 'Success',
             detail: 'Data added successfully',
           });
         }
-      }
-    });
+        this.loadingService.hide();    
+      });
+     
   }
 
-  showData(dataProviderBranchId: string) {
-    const displayData = this.data.find((data) => data.dataProviderBranchId === dataProviderBranchId);
+  async showData(id: string) {
+    this.loadingService.show();
+    await this.viewData(id);
+    await this.getClusterData();
     this.ref = this.dialogService.open(ViewBranchComponent, {
-      header: `Detailed View of ${displayData.dataProviderBranchId}`,
+      header: `Branch : View - ${this.viewDatas.branchName}`,
       width: '100%',
       height: '100%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
       maximizable: false,
-      data: displayData,
+      data: [this.viewDatas,this.clusterData],
     });
+    this.loadingService.hide()
   }
   editData(dataProviderBranchId: string) {
     const editData = this.data.find(
@@ -150,34 +159,63 @@ export class BranchComponent implements OnInit,OnDestroy{
       }
     });
   }
-  getClusterData(){
-    this.api.getClusterData().subscribe((response)=>{
-      this.clusterData=response;
-      this.showAdd=true
-    },()=>{
+  async getClusterData(){
+    try {
+      const response = await this.api.getClusterData().toPromise();
+      this.clusterData = response;
+    }
+    catch{
       this.messageService.add({
-      severity: 'error',
-      summary: 'Error',
-      detail: 'Internal Server Error!',
-    });
-    this.showAdd=false;
-  });  
- 
+        severity: 'error',
+        summary: 'Error',
+        detail: 'Internal Server Error!',
+      });
+    }
   }
-  ngOnInit(): void {
-    this.getClusterData();
+  async viewData(id:string){
+    try {
+      const response = await this.api.viewData(id).toPromise();
+      this.viewDatas = response;
+    }
+    catch{
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Error',
+        detail: 'Internal Server Error!',
+      });
+    }
   }
-
-  getBranchData(){
-    setTimeout(() => {
-      this.isLoading=true;
-      this.api.getBranchData(this.request).subscribe((response)=>{
+  async getBranchData(){
+    this.isLoading=true;
+    try {
+      await this.api.getBranchData(this.request).subscribe((response)=>{
         this.data=response.value;
         this.totalRecords=response.count;
         this.isLoading=false 
       });
-    }, 0);
+    }
+    catch{
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Error',
+        detail: 'Internal Server Error!',
+      });
+      this.isLoading=false
+    }
+    
   }
+
+  // getBranchData(){
+  //   setTimeout(() => {
+  //     this.isLoading=true;
+  //     this.api.getBranchData(this.request).subscribe((response)=>{
+  //       this.data=response.value;
+  //       this.totalRecords=response.count;
+  //       this.isLoading=false 
+  //     });
+  //   }, 0);
+  //   console.log(this.data)
+  // }
 
   loadData($event:TableLazyLoadEvent){
     this.request.first=$event.first || 0;

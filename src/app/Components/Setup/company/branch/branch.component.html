@@ -10,23 +10,21 @@
   <p-button
     icon="fa-solid fa-circle-plus"
     (click)="addData()"
-    *ngIf="showAdd"
   ></p-button>
 </div>
-<div class="card mt-3">
+<div class="card mt-1">
   <p-table
     #search
     [value]="data"
     loadingIcon="fa-solid fa-spinner fa-spin-pulse"
     [loading]="isLoading"
-    [breakpoint]="'960px'"
     [rows]="10"
     [showCurrentPageReport]="true"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
     [rowsPerPageOptions]="[5, 10, 25, 50]"
     [paginator]="true"
     [customSort]="true"
-    [tableStyle]="{ 'min-width': '70rem' }"
+    [tableStyle]="{ 'max-width': '68rem'}"
     styleClass ="p-datatable-gridlines"
     [lazy]="true"
     (onLazyLoad)="loadData($event)"
@@ -40,11 +38,11 @@
           SOLID <p-sortIcon field="SOLID"></p-sortIcon></th>
         <th pSortableColumn="NAME" style="width: 250px;">Branch<p-sortIcon field="NAME"></p-sortIcon></th>
         <th pSortableColumn="DISTRICT" style="width: 120px;">District <p-sortIcon field="DISTRICT"></p-sortIcon></th>
-        <th pSortableColumn="ADDRESS" style="width: auto;">
-          BranchAddress <p-sortIcon field="ADDRESS"></p-sortIcon>
+        <th pSortableColumn="ADDRESS" style="width: auto">
+          BranchAddress <p-sortIcon field="ADDRESS" style="width: auto;"></p-sortIcon>
         </th>
-        <th pSortableColumn="EMAIL"  style="width: auto;">EMAIL <p-sortIcon field="EMAIL"></p-sortIcon></th>
-        <th pSortableColumn="CUTOFF"  style="width: 60px;">
+        <th pSortableColumn="EMAIL" style="width: auto">EMAIL <p-sortIcon field="EMAIL"></p-sortIcon></th>
+        <th pSortableColumn="CUTOFF" style="width: 60px;">
           PLT% <p-sortIcon field="CUTOFF"></p-sortIcon></th>
       </tr>
 
@@ -75,13 +73,13 @@
         <td class="actionMenu flex justify-content-center align-items-center" >
           <p-overlayPanel #setting [styleClass]="'actionOverlay'">
             <ng-template pTemplate="content" >
-              <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center" (click)="showData(data.dataProviderBranchId)">
+              <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center" (click)="showData(data.Id)">
                <i class="fa-solid fa-file mr-2"></i> View
               </div>
-              <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center" (click)="editData(data.dataProviderBranchId)">
+              <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center" (click)="editData(data.Id)">
                 <i class="fa-solid fa-pen-to-square mr-2"></i> Edit
               </div>
-              <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center" (click)="deleteData(data.dataProviderBranchId)">
+              <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center" (click)="deleteData(data.Id)">
                 <i class="fa-solid  fa-trash mr-2"></i> Delete
               </div>
              </ng-template>  
@@ -105,3 +103,4 @@
     </ng-template>
   </p-table>
 </div>
+<!-- <app-custom-loading></app-custom-loading> -->

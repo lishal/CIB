@@ -1,9 +1,5 @@
 .topnavbar {
-  /* background: linear-gradient(
-    -206deg,
-    var(--topnavbarcolor1) 5%,
-    var(--topnavbarcolor2) 100%
-  ); */
+
   background-color: var(--cyan);
   position: fixed;
   display: block;

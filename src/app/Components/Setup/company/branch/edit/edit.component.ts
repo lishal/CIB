@@ -140,7 +140,6 @@ export class EditBranchComponent implements OnInit {
 
   ngOnInit(): void {
     this.data = [this.dialogService.data];
-
     this.myForm = this.fb.group({
       branchName: [this.data[0].branchName, Validators.required],
       branchNameNepali: [this.data[0].branchNameNepali],

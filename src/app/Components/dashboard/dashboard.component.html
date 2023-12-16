@@ -1,3 +1,4 @@
+<app-custom-loading *ngIf="(loadingService.isLoading$ | async)"></app-custom-loading>
 <div class="topnavbar flex">
   <div [class.sidepanelCloseOuter]="isSidebarClosed">
   <button class="sideBar_button" (click)="toggleSidebar()">

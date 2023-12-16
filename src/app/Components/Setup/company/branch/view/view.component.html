@@ -1,156 +1,220 @@
-<div class="addForm relative min-h-full h-auto mb-3">
+<form class="addForm relative min-h-full h-auto mb-3" >
   <div class="field grid">
     <label
-      for="branchName"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      class="col-4 mb-1 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
       >Branch Name:</label
     >
-    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-      {{data[0].branchName}}
+    <div class="input col-8 md:col-4 sm:mb-1 sm:col-8">
+      <input
+        id="branchName"
+        type="text"
+        class="readonly h-full text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        readonly
+        placeholder="{{data[0].branchName}}"
+        />
     </div>
     <label
-      for="branchNameNepali"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Branch Name in Nepali:
+      class="col-4 mb-1 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Branch Name (Nepali):
     </label>
-    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-        {{data[0].branchNameNepali}}
+    <div class="input col-8 md:col-4 sm:mb-1 sm:col-8">
+      <input
+        id="branchNameNepali"
+        type="text"
+        class="readonly h-full  text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        readonly
+        placeholder="{{data[0].branchNameNp}}"
+        />
     </div>
   </div>
   <div class="field grid">
     <label
-      for="dataProviderBranchId"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Data Provider Branch Id:</label
+      class="col-4 mb-1 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Sol ID: </label
     >
-    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-        {{data[0].dataProviderBranchId}}
+    <div class="input col-8 md:col-4 sm:mb-1 sm:col-8">
+      <input
+        id="dataProviderBranchId"
+        type="text"
+        class="readonly h-full  text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        readonly
+        placeholder="{{data[0].dpbranchid}}"
+        />
     </div>
     <label
-      for="previousDataProviderBranchId"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Previous Data Provider Branch ID:
+      class="col-4 mb-1 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Previous Sol ID:
     </label>
-    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-        {{data[0].previousDataProviderBranchId}}
+    <div class="input col-8 md:col-4 sm:mb-1 sm:col-8">
+      <input
+        id="previousDataProviderBranchId"
+        type="text"
+        class="readonly h-full  text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        readonly
+        placeholder="{{data[0].prevdpbranchid}}"
+        />
     </div>
   </div>
   <div class="field grid">
     <label
-      for="district"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Cluster: </label
+    >
+    <div class="dropdown col-8 md:col-4 sm:mb-1 sm:col-8">
+      <p-dropdown
+      placeholder="{{clusterDetail[0].clusterName}}"
+        [disabled]="true"
+        class="readonly"
+      >
+      </p-dropdown>
+    </div>
+    <label
+      class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Province</label
+    >
+    <div class="dropdown col-8 md:col-4 sm:mb-1 sm:col-8">
+      <p-dropdown
+        [disabled]="true"
+        placeholder="{{clusterDetail[0].provinceName}}"
+        class="readonly"
+      >
+      </p-dropdown>
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
       >District:</label
+      
     >
-    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-        {{data[0].district}}
-    </div>
-    <label
-      for="provinceName"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Province Name:</label
-    >
-    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-        {{data[0].provinceName}}
+    <div class="dropdown col-8 md:col-4 sm:mb-1 sm:col-8">
+      <p-dropdown
+        placeholder="{{clusterDetail[0].districtName}}"
+        [disabled]="true"
+        class="readonly"
+      >
+      </p-dropdown>
     </div>
   </div>
   <div class="field grid">
     <label
-      for="branchAddress"
-      class="col-12 mb-2 md:col-3 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Branch Address:</label
+      class="col-8 mb-2 md:col-2 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Full Address </label
     >
-    <div class="col-12 md:col-9 sm:col-8">
-        {{data[0].branchAddress}}
+    <div class="col-16 md:col-10 sm:col-8">
+      <textarea
+        id="branchAddress"
+        class="readonly h-full  text-base  surface-overlay p-1 border-1 border-solid surface-border border-round  outline-none focus:border-primary w-full"
+        readonly
+        >{{data[0].branchAddress}}</textarea>
     </div>
   </div>
   <div class="field grid">
     <label
-      for="phoneNo"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
       >Phone No
     </label>
-    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-        {{data[0].phoneNo}}
+    <div class="input col-8 md:col-4 sm:mb-1 sm:col-8">
+      <input
+        id="phoneNo"
+        type="text"
+        class="readonly h-full  text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        readonly
+        placeholder="{{data[0].phoneNo}}"
+        />
     </div>
     <label
-      for="branchManagerEmailId"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Branch Manager EmailID </label
+      class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Email</label
     >
-    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-        {{data[0].branchManagerEmailId}}
+    <div class="input col-8 md:col-4 sm:mb-1 sm:col-8">
+      <input
+        id="branchManagerEmailId"
+        type="email"
+        class="readonly h-full  text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        readonly
+        placeholder="{{data[0].bmemailId}}"
+        />
+
     </div>
   </div>
   <div class="field grid">
     <label
-      for="performanceCutOff"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Performance Cut Off:</label
+      class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Performance Cut Off: </label
     >
-    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-        {{data[0].performanceCutOff}}
+    <div class="input col-8 md:col-4 sm:mb-1 sm:col-8">
+      <input
+        id="performanceCutOff"
+        type="number"
+        class="readonly h-full  text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        readonly
+        placeholder="{{data[0].performanceCutOff}}"
+        />
+      
     </div>
     <label
-      for="isActive"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >isActive:
+      class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >isActive 
     </label>
-    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-        {{data[0].isActive}}
-  </div>
-  </div>
-  <div
-    class="flex justify-content-center align-items-center font-bold text-xl m-3"
-  >
-    Enable KSKL Inquiry
-  </div>
-  <div class="field grid">
-    <label
-      for="accountMonitoring"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Account Monitoring:
-    </label>
-    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-        {{data[0].accountMonitoring}}
-    </div>
-    <label
-      for="stockInspection"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Stock Inspection:
-    </label>
-    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-        {{data[0].stockInspection}}
+    <div class="col-8 md:col-4 sm:mb-1 sm:col-8">
+      <div class="checkBox">
+        <input  type="checkbox" [checked]="data[0].isActive" disabled/>
+      </div>
     </div>
   </div>
   <div class="field grid">
     <label
-      for="pendingDocument"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Pending Document:
+      class="col-8 mb-2 md:col-2 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      ></label
+    >
+    <div class="col-16 md:col-10 sm:col-8">
+      <label style="text-align:left;color:#00acc1;font-weight:lighter; font-size: 1rem;">Enable KSKL Inquiry</label>
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Monitoring:
     </label>
-    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-        {{data[0].pendingDocument}}
+    <div class="col-8 md:col-4 sm:mb-1 sm:col-8">
+      <div class="checkBox">
+        <input type="checkbox" [checked]="data[0].enableKsklinquiryViaAccountMonitoring"  disabled />
+      </div>
     </div>
     <label
-      for="insurance"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Inspection:
+    </label>
+    <div class="col-8 md:col-4 sm:mb-1 sm:col-8">
+      <div class="checkBox">
+        <input type="checkbox" [checked]="data[0].enableKsklinquiryViaStockInspection" disabled />
+      </div>
+    </div>
+  </div>
+  <div class="field grid">
+    <label
+      class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
+      >Document:
+    </label>
+    <div class="col-8 md:col-4 sm:mb-1 sm:col-8">
+      <div class="checkBox">
+        <input type="checkbox" [checked]="data[0].enableKsklinquiryViaPendingDocument"  disabled />
+      </div>
+    </div>
+    <label
+      class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
       >Insurance: 
     </label>
-    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-        {{data[0].insurance}}
+    <div class="col-8 md:col-4 sm:mb-1 sm:col-8">
+      <div class="checkBox">
+        <input type="checkbox" [checked]="data[0].enableKsklinquiryViaInsurance"  disabled/>
+      </div>
     </div>
   </div>
- 
-</div>
+</form>
 <div
-  class="btnGroup absolute z-1 flex mt-3 h-3rem bg-white justify-content-end pb-2"
-  style="bottom: 0px; width: 95%; margin-top: 3rem"
+  class="btnGroup absolute z-1 flex h-2rem bg-white justify-content-end"
 >
-  <button
-    pButton
-    type="button"
-    label="Cancel"
-    class="p-button-raised p-button-text p-button-plain"
-    (click)="onCancel()"
-  ></button>
+  <p-button label="Close" class="closeBtn" (click)="onCancel()"></p-button>
 </div>
