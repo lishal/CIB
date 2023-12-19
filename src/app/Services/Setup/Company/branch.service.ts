@@ -197,11 +197,17 @@ export class BranchService {
       );
   }
 
-  postBranchData(data:postBranch):Observable<HttpResponse<any>>{ 
+  public postBranchData(data:postBranch):Observable<HttpResponse<any>>{ 
     return this.httpClient.post<OdataResponse>(`${this.baseUrl}/branch`,data, { observe: 'response' });
+  }
+  public editBranchData(data:postBranch,id:String):Observable<HttpResponse<any>>{ 
+    return this.httpClient.post<OdataResponse>(`${this.baseUrl}/branch/${id}`,data, { observe: 'response' });
   }
   public viewData(id:string):Observable<OdataResponse>{
     return this.httpClient.get<{value:any[]}>(`${this.baseUrl}/branch/${id}`);
+  }
+  public deleteData(id:string):Observable<HttpResponse<any>>{
+    return this.httpClient.delete<{value:any[]}>(`${this.baseUrl}/branch/${id}`,{ observe: 'response' });
   }
  
   public getClusterData():Observable<OdataResponse>{

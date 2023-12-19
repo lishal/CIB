@@ -60,7 +60,7 @@ export class BranchComponent implements OnDestroy{
           this.messageService.add({
             severity: 'success',
             summary: 'Success',
-            detail: 'Data added successfully',
+            detail: 'Data added successfully!',
           });
         }
         this.loadingService.hide();    
@@ -83,81 +83,65 @@ export class BranchComponent implements OnDestroy{
     });
     this.loadingService.hide()
   }
-  editData(dataProviderBranchId: string) {
-    const editData = this.data.find(
-      (data) => data.dataProviderBranchId === dataProviderBranchId
-    );
+  async editData(id: string) {
+    this.loadingService.show();
+    await this.viewData(id);
+    await this.getClusterData();
     this.ref = this.dialogService.open(EditBranchComponent, {
-      header: `Edit Branch of ${dataProviderBranchId} `,
+      header: `Branch : Edit - ${this.viewDatas.branchName} `,
       width: '100%',
       height: '100%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
       maximizable: false,
-      data: editData,
-    });
-    this.ref.onClose.subscribe((datas: any) => {
-      if (datas !== undefined) {
-        if (datas[1] === true) {
-          const index = this.data.findIndex(
-            (data) => data.dataProviderBranchId === dataProviderBranchId
-          );
-          this.data[index].branchName = datas[0].branchName;
-          this.data[index].branchNameNepali = datas[0].branchNameNepali;
-          this.data[index].dataProviderBranchId = datas[0].dataProviderBranchId;
-          this.data[index].previousDataProviderBranchId =
-            datas[0].previousDataProviderBranchId;
-          this.data[index].district = datas[0].district;
-          this.data[index].provinceName = datas[0].provinceName;
-          this.data[index].branchAddress = datas[0].branchAddress;
-          this.data[index].phoneNo = datas[0].phoneNo;
-          this.data[index].branchManagerEmailId = datas[0].branchManagerEmailId;
-          this.data[index].performanceCutOff = datas[0].performanceCutOff;
-          this.data[index].isActive = datas[0].isActive;
-          this.data[index].accountMonitoring = datas[0].accountMonitoring;
-          this.data[index].stockInspection = datas[0].stockInspection;
-          this.data[index].pendingDocument = datas[0].pendingDocument;
-          this.data[index].insurance = datas[0].insurance;
-          dataProviderBranchId = datas[0].dataProviderBranchId;
-          this.messageService.add({
-            severity: 'success',
-            summary: 'Success',
-            detail: 'Data updated successfully',
-          });
-        }
-      }
-    });
-  }
-  deleteData(dataProviderBranchId: string) {
-    const deleteData = this.data.find((data) => data.dataProviderBranchId === dataProviderBranchId);
-    this.ref = this.dialogService.open(DeleteBranchComponent, {
-      header: `Delete Branch for ${dataProviderBranchId} id`,
-      width: '100%',
-      height: '100%',
-      contentStyle: { overflow: 'auto' },
-      baseZIndex: 10000,
-      maximizable: false,
-      data: deleteData,
+      data: [this.viewDatas,this.clusterData]
     });
     this.ref.onClose.subscribe((data: any) => {
-      if (data === 'accepted') {
-        const index = this.data.findIndex(
-          (data) => data.dataProviderBranchId === dataProviderBranchId
-        );
-        this.data.splice(index, 1);
+      if (data===true) {
+        this.getBranchData();
         this.messageService.add({
           severity: 'success',
           summary: 'Success',
-          detail: 'Data deleted successfully',
-        });
-      } else if (data === 'rejected') {
-        this.messageService.add({
-          severity: 'error',
-          summary: 'Rejected',
-          detail: 'You have rejected',
+          detail: 'Data updated successfully!',
         });
       }
+      this.loadingService.hide();    
     });
+    this.loadingService.hide(); 
+  }
+  async deleteData(id: string) {
+    this.loadingService.show();
+    await this.viewData(id);
+    await this.getClusterData();
+    this.ref = this.dialogService.open(DeleteBranchComponent, {
+      header: `Branch : Delete - ${this.viewDatas.branchName}`,
+      width: '100%',
+      height: '100%',
+      contentStyle: { overflow: 'auto' },
+      baseZIndex: 10000,
+      maximizable: false,
+      data: [this.viewDatas,this.clusterData],
+    });
+    this.loadingService.hide()
+    // this.ref.onClose.subscribe((data: any) => {
+    //   if (data === 'accepted') {
+    //     const index = this.data.findIndex(
+    //       (data) => data.dataProviderBranchId === dataProviderBranchId
+    //     );
+    //     this.data.splice(index, 1);
+    //     this.messageService.add({
+    //       severity: 'success',
+    //       summary: 'Success',
+    //       detail: 'Data deleted successfully',
+    //     });
+    //   } else if (data === 'rejected') {
+    //     this.messageService.add({
+    //       severity: 'error',
+    //       summary: 'Rejected',
+    //       detail: 'You have rejected',
+    //     });
+    //   }
+    // });
   }
   async getClusterData(){
     try {
@@ -173,35 +157,30 @@ export class BranchComponent implements OnDestroy{
     }
   }
   async viewData(id:string){
-    try {
-      const response = await this.api.viewData(id).toPromise();
-      this.viewDatas = response;
-    }
-    catch{
-      this.messageService.add({
-        severity: 'error',
-        summary: 'Error',
-        detail: 'Internal Server Error!',
-      });
-    }
+      await this.api.viewData(id).subscribe((response)=>{
+        this.viewDatas = response;
+      },(error)=>{
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: 'Internal Server Error!',
+        });
+      });  
   }
   async getBranchData(){
     this.isLoading=true;
-    try {
       await this.api.getBranchData(this.request).subscribe((response)=>{
         this.data=response.value;
         this.totalRecords=response.count;
         this.isLoading=false 
+      },()=>{
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: 'Internal Server Error!',
+        });
+        this.isLoading=false
       });
-    }
-    catch{
-      this.messageService.add({
-        severity: 'error',
-        summary: 'Error',
-        detail: 'Internal Server Error!',
-      });
-      this.isLoading=false
-    }
     
   }
 

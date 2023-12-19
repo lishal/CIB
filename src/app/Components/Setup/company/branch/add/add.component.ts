@@ -171,23 +171,26 @@ export class AddBranchComponent implements OnInit {
           this.added=true;
           this.ref.close(this.added);
         }
-        else{
-          this.loading=false
-          this.messageService.add({
-            severity: 'error',
-            summary: 'Internal Server Error',
-            detail: 'Failed to add data!',
-          });
-          
+        else {
+          this.handleError('Failed to add data!');
         }
-      })
-    } else {
-      this.messageService.add({
-        severity: 'error',
-        summary: 'Error',
-        detail: 'Please check all the fields',
-      });
-    }
+      },
+      (error) => {
+        this.handleError('Server error occurred!');
+      }
+    );
+  }
+  else{
+    this.handleError('Please check all the fields!')
+  }
+}
+  private handleError(errorMessage: string) {
+    this.loading = false;
+    this.messageService.add({
+      severity: 'error',
+      summary: 'Internal Server Error',
+      detail: errorMessage,
+    });
   }
   onCancel() {
     this.ref.close();

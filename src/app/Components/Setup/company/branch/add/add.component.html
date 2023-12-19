@@ -82,9 +82,9 @@
         [filter]="true"
         filterBy="name"
         [showClear]="true"
-        placeholder="Select a Cluster"
         (onChange)="clusterOnChange()"
         [ngClass]="{ 'invalid-dropdown': myForm.get('selectedCluster')?.touched && myForm.get('selectedCluster')?.invalid }"
+        placeholder="Select a Cluster"
       >
       </p-dropdown>
     </div>
@@ -101,9 +101,9 @@
         [filter]="true"
         filterBy="name"
         [showClear]="true"
-        placeholder="Select a Province"
         (onChange)="provinceOnChange()"
         [ngClass]="{ 'invalid-dropdown': myForm.get('selectedProvince')?.touched && myForm.get('selectedProvince')?.invalid }"
+        placeholder="Select a Province"
       >
       </p-dropdown>
     </div>
@@ -122,8 +122,8 @@
         [filter]="true"
         filterBy="name"
         [showClear]="true"
-        placeholder="Select a district"
         [ngClass]="{ 'invalid-dropdown': myForm.get('selectedDistrict')?.touched && myForm.get('selectedDistrict')?.invalid }"
+        placeholder="Select a district"
       >
       </p-dropdown>
     </div>
@@ -144,7 +144,6 @@
             myForm.get('branchAddress')?.invalid &&
             myForm.get('branchAddress')?.touched
         }"
-        placeholder="Hello World"
         class="h-full text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       >
       </textarea>

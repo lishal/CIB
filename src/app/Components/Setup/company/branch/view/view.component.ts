@@ -20,6 +20,9 @@ export class ViewBranchComponent implements OnInit{
     ngOnInit() {
         this.data=this.dialogService.data;
         this.clusterDetail =[this.data[1].find((item:any)=>item.idDistrict===this.data[0].idDistrict)]
+        if(this.clusterDetail[0]===undefined){
+          this.clusterDetail[0]={clusterName:'-',provinceName:'-',districtName:'-'};
+        }    
     }
     onCancel() {
       this.ref.close();

@@ -6,7 +6,7 @@
 @import '~quill/dist/quill.core.css';
 @import '~quill/dist/quill.snow.css';
 :root {
-  --cyan: #269eb0;
+  --cyan: #00acc1;
   --cyanOnHover:#35bfd7;
   --white: #ffffff;
   --primary: #3b82f6;
@@ -871,7 +871,7 @@ color:#1D4ED8 !important;
 
  /* Dialog Box Settings */
  .p-dialog .p-dialog-header {
-  background: #00acc1;
+  background: var(--cyan);
     color: var(--white) !important;
     padding: 1rem 1rem !important;
  }
