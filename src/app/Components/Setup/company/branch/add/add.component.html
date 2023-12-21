@@ -1,232 +1,151 @@
 <p-toast></p-toast>
-  <div class="overlay" *ngIf="loading">
-    <div class="spinner-container">
-      <div class="spinner"></div>
-      <p>Loading...</p>
-    </div>
+<div class="overlay" *ngIf="loading">
+  <div class="spinner-container">
+    <div class="spinner"></div>
+    <p>Loading...</p>
   </div>
+</div>
 <form [formGroup]="myForm" class="addForm relative min-h-full h-auto mb-3" *ngIf="!loading">
   <div class="field grid">
-    <label
-      class="col-4 mb-1 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Branch Name: <span style="color: red">&nbsp; *</span></label
-    >
+    <label class="col-4 mb-1 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Branch
+      Name: <span style="color: red">&nbsp; *</span></label>
     <div class="input col-8 md:col-4 sm:mb-1 sm:col-8">
-      <input
-        id="branchName"
-        type="text"
-        formControlName="branchName"
-        [ngClass]="{
+      <input id="branchName" type="text" formControlName="branchName" [ngClass]="{
           'invalid-input':
             myForm.get('branchName')?.invalid &&
             myForm.get('branchName')?.touched
         }"
-        class="h-full text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-      />
+        class="h-full text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
     </div>
-    <label
-      class="col-4 mb-1 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Branch Name (Nepali):
+    <label class="col-4 mb-1 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Branch
+      Name (Nepali):
     </label>
     <div class="input col-8 md:col-4 sm:mb-1 sm:col-8">
-      <input
-        id="branchNameNepali"
-        type="text"
-        formControlName="branchNameNepali"
-        class="h-full text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-      />
+      <input id="branchNameNepali" type="text" formControlName="branchNameNepali"
+        class="h-full text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
     </div>
   </div>
   <div class="field grid">
-    <label
-      class="col-4 mb-1 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Sol ID: <span style="color: red">&nbsp; *</span></label
-    >
+    <label class="col-4 mb-1 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Sol
+      ID: <span style="color: red">&nbsp; *</span></label>
     <div class="input col-8 md:col-4 sm:mb-1 sm:col-8">
-      <input
-        id="dataProviderBranchId"
-        type="text"
-        formControlName="dataProviderBranchId"
-        [ngClass]="{
+      <input id="dataProviderBranchId" type="text" formControlName="dataProviderBranchId" [ngClass]="{
           'invalid-input':
             myForm.get('dataProviderBranchId')?.invalid &&
             myForm.get('dataProviderBranchId')?.touched
         }"
-        class="h-full text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-      />
+        class="h-full text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
     </div>
     <label
-      class="col-4 mb-1 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Previous Sol ID:
+      class="col-4 mb-1 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Previous
+      Sol ID:
     </label>
     <div class="input col-8 md:col-4 sm:mb-1 sm:col-8">
-      <input
-        id="previousDataProviderBranchId"
-        type="text"
-        formControlName="previousDataProviderBranchId"
-        class="h-full text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-      />
+      <input id="previousDataProviderBranchId" type="text" formControlName="previousDataProviderBranchId"
+        class="h-full text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
     </div>
   </div>
   <div class="field grid">
     <label
-      class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Cluster: <span style="color: red">&nbsp; *</span></label
-    >
+      class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Cluster:
+      <span style="color: red">&nbsp; *</span></label>
     <div class="dropdown col-8 md:col-4 sm:mb-1 sm:col-8">
-      <p-dropdown
-        [options]="cluster"
-        formControlName="selectedCluster"
-        optionLabel="name"
-        optionValue="id"
-        [filter]="true"
-        filterBy="name"
-        [showClear]="true"
-        (onChange)="clusterOnChange()"
+      <p-dropdown [options]="cluster" formControlName="selectedCluster" optionLabel="name" optionValue="id"
+        [filter]="true" filterBy="name" [showClear]="true" (onChange)="clusterOnChange()"
         [ngClass]="{ 'invalid-dropdown': myForm.get('selectedCluster')?.touched && myForm.get('selectedCluster')?.invalid }"
-        placeholder="Select a Cluster"
-      >
+        placeholder="Select a Cluster">
       </p-dropdown>
     </div>
     <label
-      class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Province <span style="color: red">&nbsp; *</span></label
-    >
+      class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Province
+      <span style="color: red">&nbsp; *</span></label>
     <div class="dropdown col-8 md:col-4 sm:mb-1 sm:col-8">
-      <p-dropdown
-        [options]="province"
-        formControlName="selectedProvince"
-        optionLabel="name"
-        optionValue="id"
-        [filter]="true"
-        filterBy="name"
-        [showClear]="true"
-        (onChange)="provinceOnChange()"
+      <p-dropdown [options]="province" formControlName="selectedProvince" optionLabel="name" optionValue="id"
+        [filter]="true" filterBy="name" [showClear]="true" (onChange)="provinceOnChange()"
         [ngClass]="{ 'invalid-dropdown': myForm.get('selectedProvince')?.touched && myForm.get('selectedProvince')?.invalid }"
-        placeholder="Select a Province"
-      >
+        placeholder="Select a Province">
       </p-dropdown>
     </div>
   </div>
   <div class="field grid">
     <label
-      class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >District: <span style="color: red">&nbsp; *</span></label
-    >
+      class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">District:
+      <span style="color: red">&nbsp; *</span></label>
     <div class="dropdown col-8 md:col-4 sm:mb-1 sm:col-8">
-      <p-dropdown
-        [options]="district"
-        formControlName="selectedDistrict"
-        optionLabel="name"
-        optionValue="id"
-        [filter]="true"
-        filterBy="name"
-        [showClear]="true"
+      <p-dropdown [options]="district" formControlName="selectedDistrict" optionLabel="name" optionValue="id"
+        [filter]="true" filterBy="name" [showClear]="true"
         [ngClass]="{ 'invalid-dropdown': myForm.get('selectedDistrict')?.touched && myForm.get('selectedDistrict')?.invalid }"
-        placeholder="Select a district"
-      >
+        placeholder="Select a district">
       </p-dropdown>
     </div>
   </div>
   <div class="field grid">
-    <label
-      class="col-8 mb-2 md:col-2 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Full Address  <span style="color: red">&nbsp; *</span></label
-    >
+    <label class="col-8 mb-2 md:col-2 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Full Address
+      <span style="color: red">&nbsp; *</span></label>
     <div class="col-16 md:col-10 sm:col-8">
-      <textarea
-        id="branchAddress"
-        type="text"
-        rows="1"
-        formControlName="branchAddress"
-        [ngClass]="{
+      <textarea id="branchAddress" type="text" rows="1" formControlName="branchAddress" [ngClass]="{
           'invalid-input':
             myForm.get('branchAddress')?.invalid &&
             myForm.get('branchAddress')?.touched
         }"
-        class="h-full text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-      >
+        class="h-full text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
       </textarea>
     </div>
   </div>
   <div class="field grid">
-    <label
-      class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Phone No
+    <label class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Phone
+      No
     </label>
     <div class="input col-8 md:col-4 sm:mb-1 sm:col-8">
-      <input
-        id="phoneNo"
-        type="text"
-        formControlName="phoneNo"
-        [ngClass]="{
+      <input id="phoneNo" type="text" formControlName="phoneNo" [ngClass]="{
           'invalid-input':
             myForm.get('phoneNo')?.invalid && myForm.get('phoneNo')?.touched
         }"
-        class="h-full text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-      />
+        class="h-full text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
     </div>
-    <label
-      class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Email <span style="color: red">&nbsp; *</span></label
-    >
+    <label class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Email
+      <span style="color: red">&nbsp; *</span></label>
     <div class="input col-8 md:col-4 sm:mb-1 sm:col-8">
-      <input
-        id="branchManagerEmailId"
-        type="email"
-        formControlName="branchManagerEmailId"
-        [ngClass]="{
+      <input id="branchManagerEmailId" type="email" formControlName="branchManagerEmailId" [ngClass]="{
           'invalid-input':
             myForm.get('branchManagerEmailId')?.invalid &&
             myForm.get('branchManagerEmailId')?.touched
         }"
-        class="h-full text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-      />
+        class="h-full text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
 
     </div>
   </div>
   <div class="field grid">
     <label
-      class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Performance Cut Off: <span style="color: red">&nbsp; *</span></label
-    >
+      class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Performance
+      Cut Off: <span style="color: red">&nbsp; *</span></label>
     <div class="input col-8 md:col-4 sm:mb-1 sm:col-8">
-      <input
-        id="performanceCutOff"
-        type="number"
-        formControlName="performanceCutOff"
-        [ngClass]="{
+      <input id="performanceCutOff" type="number" formControlName="performanceCutOff" [ngClass]="{
           'invalid-input':
             myForm.get('performanceCutOff')?.invalid &&
             myForm.get('performanceCutOff')?.touched
         }"
-        class="h-full text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-      />
-      
+        class="h-full text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
+
     </div>
     <label
-      class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >isActive 
+      class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">isActive
     </label>
     <div class="col-8 md:col-4 sm:mb-1 sm:col-8">
       <div class="checkBox">
-        <input  type="checkbox" formControlName="isActive" />
+        <input type="checkbox" formControlName="isActive" />
       </div>
     </div>
   </div>
   <div class="field grid">
-    <label
-      class="col-8 mb-2 md:col-2 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      ></label
-    >
+    <label class="col-8 mb-2 md:col-2 md:justify-content-end sm:justify-content-start font-bold sm:col-4"></label>
     <div class="col-16 md:col-10 sm:col-8">
       <label style="text-align:left;color:#00acc1;font-weight:lighter; font-size: 1rem;">Enable KSKL Inquiry</label>
     </div>
   </div>
   <div class="field grid">
     <label
-      class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Monitoring:
+      class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Monitoring:
     </label>
     <div class="col-8 md:col-4 sm:mb-1 sm:col-8">
       <div class="checkBox">
@@ -234,8 +153,7 @@
       </div>
     </div>
     <label
-      class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Inspection:
+      class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Inspection:
     </label>
     <div class="col-8 md:col-4 sm:mb-1 sm:col-8">
       <div class="checkBox">
@@ -245,8 +163,7 @@
   </div>
   <div class="field grid">
     <label
-      class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Document:
+      class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Document:
     </label>
     <div class="col-8 md:col-4 sm:mb-1 sm:col-8">
       <div class="checkBox">
@@ -254,8 +171,7 @@
       </div>
     </div>
     <label
-      class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Insurance: 
+      class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Insurance:
     </label>
     <div class="col-8 md:col-4 sm:mb-1 sm:col-8">
       <div class="checkBox">
@@ -264,9 +180,7 @@
     </div>
   </div>
 </form>
-<div
-  class="btnGroup absolute z-1 flex h-2rem bg-white justify-content-end"
->
+<div class="btnGroup absolute z-1 flex h-2rem bg-white justify-content-end">
   <p-button label="Close" class="closeBtn" (click)="onCancel()"></p-button>
   <p-button label="Submit" class="submitBtn" (click)="onSubmit()"></p-button>
 </div>

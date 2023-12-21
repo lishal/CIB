@@ -1,5 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { BranchService, request } from '../../../../Services/Setup/Company/branch.service';
+import {
+  BranchService,
+  request,
+} from '../../../../Services/Setup/Company/branch.service';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { EditBranchComponent } from './edit/edit.component';
 import { ViewBranchComponent } from './view/view.component';
@@ -17,55 +20,54 @@ import { LoadingService } from 'src/app/Services/loading.service';
   styleUrls: ['./branch.component.css'],
   providers: [DialogService, MessageService],
 })
-export class BranchComponent implements OnDestroy{
+export class BranchComponent implements OnDestroy {
   data: any[] = [];
-  request:request={
-    first:0,
-    rows:10,
-    sortField:'',
-    sortOrder:1,
-    filterRequest:[]
-  }
-  toBeFiltered:any[]=[];
-  loadAddData:boolean=false
-  totalRecords:number=0;
-  clusterData:any;
-  viewDatas:any;
-  editDatas:any;
-  deleteDatas:any;
+  request: request = {
+    first: 0,
+    rows: 10,
+    sortField: '',
+    sortOrder: 1,
+    filterRequest: [],
+  };
+  toBeFiltered: any[] = [];
+  loadAddData: boolean = false;
+  totalRecords: number = 0;
+  clusterData: any;
+  viewDatas: any;
+  editDatas: any;
+  deleteDatas: any;
   isLoading: boolean = true;
   ref: DynamicDialogRef | undefined;
   constructor(
     private api: BranchService,
     public dialogService: DialogService,
     private messageService: MessageService,
-    public loadingService:LoadingService
+    public loadingService: LoadingService
   ) {}
 
   async addData() {
     this.loadingService.show();
     await this.getClusterData();
-      this.ref = this.dialogService.open(AddBranchComponent, {
-        header: 'Branch : Add',
-        width: '100%',
-        height: '100%',
-        contentStyle: { overflow: 'auto' },
-        baseZIndex: 10000,
-        maximizable: false,
-        data:this.clusterData
-      });
-      this.ref.onClose.subscribe((data: any) => {
-        if (data===true) {
-          this.getBranchData();
-          this.messageService.add({
-            severity: 'success',
-            summary: 'Success',
-            detail: 'Data added successfully!',
-          });
-        }
-        this.loadingService.hide();    
-      });
-     
+    this.ref = this.dialogService.open(AddBranchComponent, {
+      header: 'Branch : Add',
+      width: '100%',
+      height: '100%',
+      contentStyle: { overflow: 'auto' },
+      baseZIndex: 10000,
+      maximizable: false,
+      data: this.clusterData,
+    });
+    this.ref.onClose.subscribe((data: any) => {
+      if (data === true) {
+        this.getBranchData();
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'Data added successfully!',
+        });
+      }
+      this.loadingService.hide();
+    });
   }
 
   async showData(id: string) {
@@ -79,9 +81,9 @@ export class BranchComponent implements OnDestroy{
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
       maximizable: false,
-      data: [this.viewDatas,this.clusterData],
+      data: [this.viewDatas, this.clusterData],
     });
-    this.loadingService.hide()
+    this.loadingService.hide();
   }
   async editData(id: string) {
     this.loadingService.show();
@@ -94,10 +96,10 @@ export class BranchComponent implements OnDestroy{
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
       maximizable: false,
-      data: [this.viewDatas,this.clusterData]
+      data: [this.viewDatas, this.clusterData],
     });
     this.ref.onClose.subscribe((data: any) => {
-      if (data===true) {
+      if (data === true) {
         this.getBranchData();
         this.messageService.add({
           severity: 'success',
@@ -105,9 +107,9 @@ export class BranchComponent implements OnDestroy{
           detail: 'Data updated successfully!',
         });
       }
-      this.loadingService.hide();    
+      this.loadingService.hide();
     });
-    this.loadingService.hide(); 
+    this.loadingService.hide();
   }
   async deleteData(id: string) {
     this.loadingService.show();
@@ -120,9 +122,9 @@ export class BranchComponent implements OnDestroy{
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
       maximizable: false,
-      data: [this.viewDatas,this.clusterData],
+      data: [this.viewDatas, this.clusterData],
     });
-    this.loadingService.hide()
+    this.loadingService.hide();
     // this.ref.onClose.subscribe((data: any) => {
     //   if (data === 'accepted') {
     //     const index = this.data.findIndex(
@@ -143,12 +145,11 @@ export class BranchComponent implements OnDestroy{
     //   }
     // });
   }
-  async getClusterData(){
+  async getClusterData() {
     try {
       const response = await this.api.getClusterData().toPromise();
       this.clusterData = response;
-    }
-    catch{
+    } catch {
       this.messageService.add({
         severity: 'error',
         summary: 'Error',
@@ -156,32 +157,37 @@ export class BranchComponent implements OnDestroy{
       });
     }
   }
-  async viewData(id:string){
-      await this.api.viewData(id).subscribe((response)=>{
+  async viewData(id: string) {
+    await this.api.viewData(id).subscribe(
+      (response) => {
         this.viewDatas = response;
-      },(error)=>{
+      },
+      (error) => {
         this.messageService.add({
           severity: 'error',
           summary: 'Error',
           detail: 'Internal Server Error!',
         });
-      });  
+      }
+    );
   }
-  async getBranchData(){
-    this.isLoading=true;
-      await this.api.getBranchData(this.request).subscribe((response)=>{
-        this.data=response.value;
-        this.totalRecords=response.count;
-        this.isLoading=false 
-      },()=>{
+  async getBranchData() {
+    this.isLoading = true;
+    await this.api.getBranchData(this.request).subscribe(
+      (response) => {
+        this.data = response.value;
+        this.totalRecords = response.count;
+        this.isLoading = false;
+      },
+      () => {
         this.messageService.add({
           severity: 'error',
           summary: 'Error',
           detail: 'Internal Server Error!',
         });
-        this.isLoading=false
-      });
-    
+        this.isLoading = false;
+      }
+    );
   }
 
   // getBranchData(){
@@ -190,37 +196,37 @@ export class BranchComponent implements OnDestroy{
   //     this.api.getBranchData(this.request).subscribe((response)=>{
   //       this.data=response.value;
   //       this.totalRecords=response.count;
-  //       this.isLoading=false 
+  //       this.isLoading=false
   //     });
   //   }, 0);
   //   console.log(this.data)
   // }
 
-  loadData($event:TableLazyLoadEvent){
-    this.request.first=$event.first || 0;
-    this.request.rows=$event.rows || 5;
-    this.request.sortField=$event.sortField || '';
-    this.request.sortOrder=$event.sortOrder || 1;
-    this.request.filterRequest=this.toBeFiltered || [];
+  loadData($event: TableLazyLoadEvent) {
+    this.request.first = $event.first || 0;
+    this.request.rows = $event.rows || 5;
+    this.request.sortField = $event.sortField || '';
+    this.request.sortOrder = $event.sortOrder || 1;
+    this.request.filterRequest = this.toBeFiltered || [];
     this.getBranchData();
   }
 
-  filter(data:any,fieldName:string){
-    const index = this.toBeFiltered.findIndex(data => data.fieldName === fieldName );
+  filter(data: any, fieldName: string) {
+    const index = this.toBeFiltered.findIndex(
+      (data) => data.fieldName === fieldName
+    );
     if (index === -1) {
       this.toBeFiltered.push(data);
     } else {
       this.toBeFiltered[index] = { ...this.toBeFiltered[index], ...data };
     }
-    this.request={
+    this.request = {
       ...this.request,
-      first:0,
-      filterRequest:this.toBeFiltered
-    }
-    this.getBranchData()
+      first: 0,
+      filterRequest: this.toBeFiltered,
+    };
+    this.getBranchData();
   }
-  
-  
 
   exportExcel(op: OverlayPanel) {
     import('xlsx').then((xlsx) => {
@@ -232,7 +238,10 @@ export class BranchComponent implements OnDestroy{
       });
       this.saveAsExcelFile(excelBuffer, 'branch');
     });
-    this.messageService.add({ severity: 'success', summary: 'Excel file downloaded successfully' });
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Excel file downloaded successfully',
+    });
     op.hide();
   }
   saveAsExcelFile(buffer: any, fileName: string): void {
@@ -248,11 +257,9 @@ export class BranchComponent implements OnDestroy{
     );
   }
 
-  
   ngOnDestroy(): void {
     if (this.ref) {
       this.ref.close();
     }
   }
-  
 }

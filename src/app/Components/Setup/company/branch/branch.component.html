@@ -1,36 +1,20 @@
 <p-toast></p-toast>
 <div class="btnGroup-topbar">
-    <p-overlayPanel #op [styleClass]="'export'">
-      <ng-template pTemplate="content" >
-        <p class="exportButton" (click)="exportExcel(op)">Pdf</p>
-        <p class="exportButton" (click)="exportExcel(op)">Excel</p>
-      </ng-template>
+  <p-overlayPanel #op [styleClass]="'export'">
+    <ng-template pTemplate="content">
+      <p class="exportButton" (click)="exportExcel(op)">Pdf</p>
+      <p class="exportButton" (click)="exportExcel(op)">Excel</p>
+    </ng-template>
   </p-overlayPanel>
   <p-button (click)="op.toggle($event)" icon="fa-solid fa-arrow-up-right-from-square"></p-button>
-  <p-button
-    icon="fa-solid fa-circle-plus"
-    (click)="addData()"
-  ></p-button>
+  <p-button icon="fa-solid fa-circle-plus" (click)="addData()"></p-button>
 </div>
 <div class="card mt-1">
-  <p-table
-    #search
-    [value]="data"
-    loadingIcon="fa-solid fa-spinner fa-spin-pulse"
-    [loading]="isLoading"
-    [rows]="10"
-    [showCurrentPageReport]="true"
-    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-    [rowsPerPageOptions]="[5, 10, 25, 50]"
-    [paginator]="true"
-    [customSort]="true"
-    [tableStyle]="{ 'max-width': '68rem'}"
-    styleClass ="p-datatable-gridlines"
-    [lazy]="true"
-    (onLazyLoad)="loadData($event)"
-    [totalRecords]="totalRecords"
-    (sortFunction)="loadData($event)"
-  >
+  <p-table #search [value]="data" loadingIcon="fa-solid fa-spinner fa-spin-pulse" [loading]="isLoading" [rows]="10"
+    [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [rowsPerPageOptions]="[5, 10, 25, 50]" [paginator]="true" [customSort]="true" [tableStyle]="{ 'min-width': '68rem'}"
+    styleClass="p-datatable-gridlines" [lazy]="true" (onLazyLoad)="loadData($event)" [totalRecords]="totalRecords"
+    (sortFunction)="loadData($event)">
     <ng-template pTemplate="header">
       <tr style="white-space: nowrap;">
         <th style="width: 30px;"></th>
@@ -49,42 +33,47 @@
       <tr class="filterSection">
         <td></td>
         <td>
-          <app-custom-filter  fieldName="SOLID" fieldType="str" (data)="filter($event,'SOLID')"></app-custom-filter>
+          <app-custom-filter fieldName="SOLID" fieldType="str" (data)="filter($event,'SOLID')"></app-custom-filter>
         </td>
         <td>
-          <app-custom-filter  fieldName="NAME"  fieldType="str"(data)="filter($event,'NAME')"></app-custom-filter>
+          <app-custom-filter fieldName="NAME" fieldType="str" (data)="filter($event,'NAME')"></app-custom-filter>
         </td>
         <td>
-          <app-custom-filter  fieldName="DISTRICT"  fieldType="str"(data)="filter($event,'DISTRICT')"></app-custom-filter>
+          <app-custom-filter fieldName="DISTRICT" fieldType="str"
+            (data)="filter($event,'DISTRICT')"></app-custom-filter>
         </td>
         <td>
-          <app-custom-filter  fieldName="ADDRESS"  fieldType="str"(data)="filter($event,'ADDRESS')"></app-custom-filter>
+          <app-custom-filter fieldName="ADDRESS" fieldType="str" (data)="filter($event,'ADDRESS')"></app-custom-filter>
         </td>
         <td>
-          <app-custom-filter  fieldName="EMAIL"  fieldType="str"(data)="filter($event,'EMAIL')"></app-custom-filter>
+          <app-custom-filter fieldName="EMAIL" fieldType="str" (data)="filter($event,'EMAIL')"></app-custom-filter>
         </td>
         <td>
-          <app-custom-filter  fieldName="CUTOFF"  fieldType="int"(data)="filter($event,'CUTOFF')"></app-custom-filter>
+          <app-custom-filter fieldName="CUTOFF" fieldType="int" (data)="filter($event,'CUTOFF')"></app-custom-filter>
         </td>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-data>
       <tr>
-        <td class="actionMenu flex justify-content-center align-items-center" >
+        <td class="actionMenu flex justify-content-center align-items-center">
           <p-overlayPanel #setting [styleClass]="'actionOverlay'">
-            <ng-template pTemplate="content" >
-              <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center" (click)="showData(data.Id)">
-               <i class="fa-solid fa-file mr-2"></i> View
+            <ng-template pTemplate="content">
+              <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center"
+                (click)="showData(data.Id)">
+                <i class="fa-solid fa-file mr-2"></i> View
               </div>
-              <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center" (click)="editData(data.Id)">
+              <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center"
+                (click)="editData(data.Id)">
                 <i class="fa-solid fa-pen-to-square mr-2"></i> Edit
               </div>
-              <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center" (click)="deleteData(data.Id)">
+              <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center"
+                (click)="deleteData(data.Id)">
                 <i class="fa-solid  fa-trash mr-2"></i> Delete
               </div>
-             </ng-template>  
+            </ng-template>
           </p-overlayPanel>
-          <div pRipple class="action w-2rem h-2rem flex justify-content-center align-items-center" (click)="setting.toggle($event)">
+          <div pRipple class="action w-2rem flex justify-content-center align-items-center"
+            (click)="setting.toggle($event)">
             <i class="fa-solid fa-gear"></i>
           </div>
         </td>

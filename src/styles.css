@@ -7,14 +7,13 @@
 @import '~quill/dist/quill.snow.css';
 :root {
   --cyan: #00acc1;
-  --cyanOnHover:#35bfd7;
+  --cyanOnHover:#269eb0;
   --white: #ffffff;
   --primary: #3b82f6;
   --success: #22c55e;
   --danger: #ff3d32;
   --lightDark: #6c757d;
   --moderateDark: #343a40;
-  --cyan: #01a1c1;
   --dark: #000000;
   --sidePanel: #292323;
   --sidePanellabel: #495057;
@@ -71,6 +70,7 @@
   border: none;
   transition: 0.2s ease-in-out;
   color: var(--white);
+  opacity: 0.6;
 }
 .leftSidePanel .leftPanelContainer .p-panelmenu .p-panelmenu-header > a:focus {
   box-shadow: none;
@@ -90,7 +90,8 @@
   .p-panelmenu-header
   .p-menuitem-link-active {
     background-color: var(--cyanOnHover);
-  color: var(--white) !important;
+    color: var(--white) !important;
+    opacity: 1;
 }
 
 .leftSidePanel .leftPanelContainer .p-panelmenu .p-panelmenu-header > a:hover {
@@ -98,6 +99,7 @@
   background-color: var(--cyanOnHover) !important;
   color: var(--white) !important;
   transition: 0.2s ease-in-out;
+  opacity: 1;
 }
 .leftSidePanel .leftPanelContainer .p-panelmenu .p-panelmenu-header > a span {
   margin-left: 12px;
@@ -414,12 +416,12 @@
   justify-content: center;
 }
 .p-tabmenu .p-tabmenu-nav{
-  padding-bottom: 2px;
-  border-bottom: 2px solid var(--cyan);
+  padding-bottom: 0px;
+  border-bottom: 0px;
   
 }
 .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link{
-  box-shadow: inset 0 0 0 0.1rem var(--cyan);
+  box-shadow: inset 0 0 0 0.05rem var(--cyan);
   margin: 0 5px 0px 0;
   border-radius: 6px;
   color: var(--dark);
@@ -814,6 +816,7 @@ color:#1D4ED8 !important;
   background-color: var(--cyan);
   color: var(--white);
   border-radius: 4px;
+  height: 21px;
 }
 .actionMenu :hover{
   cursor: pointer;
@@ -828,6 +831,9 @@ color:#1D4ED8 !important;
 }
 .actionOverlay .p-overlaypanel-content {
   padding: 0.5rem 0.3rem;
+}
+.action i{
+  font-size:10px
 }
  /* check Box */
  .checkBox {

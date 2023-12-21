@@ -1,23 +1,40 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { RoleService } from '../../../../Services/Setup/Company/role.service';
+import { Component, OnDestroy } from '@angular/core';
+import {
+  RoleService,
+  roleRequest,
+} from '../../../../Services/Setup/Company/role.service';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { EditRoleComponent } from './edit/edit.component';
 import { ViewRoleComponent } from './view/view.component';
 import { AddRoleComponent } from './add/add.component';
 import { MessageService } from 'primeng/api';
 import { DeleteRoleComponent } from './delete/delete.component';
+import { TableLazyLoadEvent } from 'primeng/table';
 
 @Component({
   selector: 'app-role',
   templateUrl: './role.component.html',
   styleUrls: ['./role.component.css'],
-  providers: [DialogService,MessageService],
+  providers: [DialogService, MessageService],
 })
-export class RoleComponent implements OnInit, OnDestroy {
+export class RoleComponent implements OnDestroy {
   data: any[] = [];
+  request: roleRequest = {
+    first: 0,
+    rows: 10,
+    sortField: '',
+    sortOrder: 1,
+    filterRequest: [],
+  };
+  totalRecords: number = 0;
+  toBeFiltered: any[] = [];
   isLoading: boolean = false;
   ref: DynamicDialogRef | undefined;
-  constructor(private api: RoleService, public dialogService: DialogService,private messageService: MessageService) {}
+  constructor(
+    private api: RoleService,
+    public dialogService: DialogService,
+    private messageService: MessageService
+  ) {}
 
   addData() {
     this.ref = this.dialogService.open(AddRoleComponent, {
@@ -34,7 +51,7 @@ export class RoleComponent implements OnInit, OnDestroy {
           this.isLoading = true;
           this.api.addRoleData(innerData[0]).subscribe(
             () => {
-              this.data=[...this.data,innerData[0]];
+              this.data = [...this.data, innerData[0]];
               this.messageService.add({
                 severity: 'success',
                 summary: 'Success',
@@ -55,7 +72,6 @@ export class RoleComponent implements OnInit, OnDestroy {
       }
     });
   }
-
 
   showData(Id: string) {
     const displayData = this.data.find((data) => data.Id === Id);
@@ -91,15 +107,12 @@ export class RoleComponent implements OnInit, OnDestroy {
     this.ref.onClose.subscribe((innerData: any) => {
       if (innerData !== undefined) {
         if (innerData[1] === true) {
-            
           this.isLoading = true;
           // console.log(innerData[0])
           this.api.updateRoleData(innerData[0]).subscribe(
             (response) => {
-              console.log(response)
-              const index = this.data.findIndex(
-                (data) => data.Id === Id
-              );
+              console.log(response);
+              const index = this.data.findIndex((data) => data.Id === Id);
               this.data[index].NAME = innerData[0].NAME;
               this.data[index].DESCRIPTION = innerData[0].DESCRIPTION;
               this.data[index].ACTIVE = innerData[0].ACTIVE;
@@ -111,7 +124,7 @@ export class RoleComponent implements OnInit, OnDestroy {
               this.isLoading = false;
             },
             (error) => {
-              console.log(error)
+              console.log(error);
               this.messageService.add({
                 severity: 'error',
                 summary: 'Error',
@@ -137,31 +150,28 @@ export class RoleComponent implements OnInit, OnDestroy {
     });
     this.ref.onClose.subscribe((innerData: any) => {
       if (innerData === 'accepted') {
-        const index = this.data.findIndex(
-          (data) => data.Id === Id
-        );
+        const index = this.data.findIndex((data) => data.Id === Id);
         this.isLoading = true;
-          this.api.deleteRoleData(this.data[index]).subscribe(
-            (response) => {
-              
-              this.data.splice(index, 1);
-              this.messageService.add({
-                severity: 'success',
-                summary: 'Success',
-                detail: 'Data deleted successfully',
-              });
-              this.isLoading = false;
-            },
-            (error) => {
-              console.log(error)
-              this.messageService.add({
-                severity: 'error',
-                summary: 'Error',
-                detail: 'Something went wrong',
-              });
-              this.isLoading = false;
-            }
-          );
+        this.api.deleteRoleData(this.data[index]).subscribe(
+          (response) => {
+            this.data.splice(index, 1);
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Success',
+              detail: 'Data deleted successfully',
+            });
+            this.isLoading = false;
+          },
+          (error) => {
+            console.log(error);
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Error',
+              detail: 'Something went wrong',
+            });
+            this.isLoading = false;
+          }
+        );
       } else if (innerData === 'rejected') {
         this.messageService.add({
           severity: 'error',
@@ -171,23 +181,49 @@ export class RoleComponent implements OnInit, OnDestroy {
       }
     });
   }
-  ngOnInit(): void {
-    // this.data=[{'NAME':'TEST', 'DESCRIPTION':'DESC'},{'NAME':'TEST', 'DESCRIPTION':'DESC'},{'NAME':'TEST', 'DESCRIPTION':'DESC'}]
+  async getRoleData() {
     this.isLoading = true;
-
-    
-    this.api.getRoleData().subscribe(
+    await this.api.getRoleData(this.request).subscribe(
       (response) => {
         this.data = response.value;
+        this.totalRecords = response.count;
         this.isLoading = false;
-        // console.log(this.data);
       },
-      (error) => {
-        console.log(error);
+      () => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: 'Internal Server Error!',
+        });
         this.isLoading = false;
       }
     );
   }
+  loadData($event: TableLazyLoadEvent) {
+    this.request.first = $event.first || 0;
+    this.request.rows = $event.rows || 5;
+    this.request.sortField = $event.sortField || '';
+    this.request.sortOrder = $event.sortOrder || 1;
+    this.request.filterRequest = this.toBeFiltered || [];
+    this.getRoleData();
+  }
+  filter(data: any, fieldName: string) {
+    const index = this.toBeFiltered.findIndex(
+      (data) => data.fieldName === fieldName
+    );
+    if (index === -1) {
+      this.toBeFiltered.push(data);
+    } else {
+      this.toBeFiltered[index] = { ...this.toBeFiltered[index], ...data };
+    }
+    this.request = {
+      ...this.request,
+      first: 0,
+      filterRequest: this.toBeFiltered,
+    };
+    this.getRoleData();
+  }
+
   ngOnDestroy(): void {
     if (this.ref) {
       this.ref.close();

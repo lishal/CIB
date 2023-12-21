@@ -1,66 +1,62 @@
 <p-toast></p-toast>
 <div class="btnGroup-topbar">
-<p-button
-  icon="fa-solid fa-circle-plus"
-  (click)="addData()"
-></p-button>
+  <p-button icon="fa-solid fa-circle-plus" (click)="addData()"></p-button>
 </div>
 <div class="card mt-3">
-  <p-table
-    #search
-    [value]="data"
-    loadingIcon="fa-solid fa-spinner fa-spin-pulse"
-    [loading]="isLoading"
-    [breakpoint]="'960px'"
-    [rows]="5"
-    [showCurrentPageReport]="true"
-    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-    [rowsPerPageOptions]="[5, 10, 25, 50]"
-    [paginator]="true"
-    [filterDelay]="0"
-    [tableStyle]="{ 'min-width': '70rem' }"
-    styleClass ="p-datatable-gridlines"
-  >
+  <p-table #search [value]="data" loadingIcon="fa-solid fa-spinner fa-spin-pulse" [loading]="isLoading" [rows]="10"
+    [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [rowsPerPageOptions]="[5, 10, 25, 50]" [paginator]="true" [customSort]="true" [tableStyle]="{ 'min-width': '68rem'}"
+    styleClass="p-datatable-gridlines" [lazy]="true" (onLazyLoad)="loadData($event)" [totalRecords]="totalRecords"
+    (sortFunction)="loadData($event)">
     <ng-template pTemplate="header">
       <tr>
-        <th ></th>
-        <th pSortableColumn="NAME">RoleName<p-sortIcon field="NAME"></p-sortIcon></th>
-        <th pSortableColumn="DESCRIPTION">Description <p-sortIcon field="DESCRIPTION"></p-sortIcon></th>
+        <th style="width: 30px;"></th>
+        <th style="width: 100px;" pSortableColumn="NAME">Name<p-sortIcon field="NAME"></p-sortIcon></th>
+        <th style="width: auto;" pSortableColumn="DESCRIPTION">Description <p-sortIcon field="DESCRIPTION"></p-sortIcon>
+        </th>
+        <th style="width: 80px;" pSortableColumn="ACTIVE">Active <p-sortIcon field="ACTIVE"></p-sortIcon></th>
       </tr>
       <tr class="filterSection">
-        <th>
-        </th>
-        <th>
-          <p-columnFilter type="text" field="NAME"[showClearButton]="false"></p-columnFilter>
-      </th>
-        <th>
-          <p-columnFilter type="text" field="DESCRIPTION"[showClearButton]="false"></p-columnFilter>
-      </th>
-          
-      </tr> 
+        <td></td>
+        <td>
+          <app-custom-filter fieldName="NAME" fieldType="str" (data)="filter($event,'NAME')"></app-custom-filter>
+        </td>
+        <td>
+          <app-custom-filter fieldName="DESCRIPTION" fieldType="str"
+            (data)="filter($event,'DESCRIPTION')"></app-custom-filter>
+        </td>
+        <td>
+          <app-custom-filter fieldName="ACTIVE" fieldType="str" (data)="filter($event,'ACTIVE')"></app-custom-filter>
+        </td>
+      </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-data >
+    <ng-template pTemplate="body" let-data>
       <tr style="white-space: nowrap">
-        <td class="actionMenu flex justify-content-center align-items-center" >
+        <td class="actionMenu flex justify-content-center align-items-center">
           <p-overlayPanel #setting [styleClass]="'actionOverlay'">
-            <ng-template pTemplate="content" >
-              <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center" (click)="showData(data.Id)">
-               <i class="fa-solid fa-file mr-2"></i> View
+            <ng-template pTemplate="content">
+              <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center"
+                (click)="showData(data.Id)">
+                <i class="fa-solid fa-file mr-2"></i> View
               </div>
-              <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center" (click)="editData(data.Id)">
+              <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center"
+                (click)="editData(data.Id)">
                 <i class="fa-solid fa-pen-to-square mr-2"></i> Edit
               </div>
-              <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center" (click)="deleteData(data.Id)">
+              <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center"
+                (click)="deleteData(data.Id)">
                 <i class="fa-solid  fa-trash mr-2"></i> Delete
               </div>
-             </ng-template>  
+            </ng-template>
           </p-overlayPanel>
-          <div pRipple class="action border-circle w-2rem h-2rem flex justify-content-center align-items-center" (click)="setting.toggle($event)">
+          <div pRipple class="action w-2rem flex justify-content-center align-items-center"
+            (click)="setting.toggle($event)">
             <i class="fa-solid fa-gear"></i>
           </div>
         </td>
         <td>{{ data?.NAME }}</td>
         <td>{{ data?.DESCRIPTION }}</td>
+        <td>{{ data?.ACTIVE }}</td>
       </tr>
     </ng-template>
     <ng-template pTemplate="emptymessage">
