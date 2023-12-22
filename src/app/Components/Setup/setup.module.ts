@@ -10,9 +10,7 @@ import { SmsTemplatesModule } from './sms-templates/sms-templates.module';
 import { PopupMessageModule } from './popup-message/popup-message.module';
 
 @NgModule({
-  declarations: [
-    
-  ],
+  declarations: [],
   imports: [
     CompanyModule,
     EmployeeModule,
@@ -23,6 +21,6 @@ import { PopupMessageModule } from './popup-message/popup-message.module';
     EmailTemplatesModule,
     SmsTemplatesModule,
     PopupMessageModule,
-  ]
+  ],
 })
-export class SetupModule { }
+export class SetupModule {}

@@ -1,14 +1,7 @@
 <div class="card mt-3">
-  <p-table
-    [value]="data"
-    styleClass="p-datatable-sm p-datatable-striped "
-    [showCurrentPageReport]="true"
-    [tableStyle]="{ 'min-width': '70rem' }"
-    [rows]="5"
-    [paginator]="true"
-    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-    styleClass ="p-datatable-gridlines"
-  >
+  <p-table [value]="data" styleClass="p-datatable-sm p-datatable-striped " [showCurrentPageReport]="true"
+    [tableStyle]="{ 'min-width': '70rem' }" [rows]="5" [paginator]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" styleClass="p-datatable-gridlines">
     <!-- 
      -->
     <!-- 
@@ -28,18 +21,21 @@
     </ng-template>
     <ng-template pTemplate="body" let-data>
       <tr style="white-space: nowrap;">
-        <td class="actionMenu flex justify-content-center align-items-center" >
+        <td class="actionMenu flex justify-content-center align-items-center">
           <p-overlayPanel #setting [styleClass]="'actionOverlay'">
-            <ng-template pTemplate="content" >
-              <div pRipple class="actionItem w-full h-2rem flex justify-content-center align-items-center" (click)="showData(data.id)">
-               <i class="fa-solid fa-file mr-2"></i> View
+            <ng-template pTemplate="content">
+              <div pRipple class="actionItem w-full h-2rem flex justify-content-center align-items-center"
+                (click)="showData(data.id)">
+                <i class="fa-solid fa-file mr-2"></i> View
               </div>
-              <div pRipple class="actionItem w-full h-2rem flex justify-content-center align-items-center" (click)="editData(data.id)">
+              <div pRipple class="actionItem w-full h-2rem flex justify-content-center align-items-center"
+                (click)="editData(data.id)">
                 <i class="fa-solid fa-pen-to-square mr-2"></i> Edit
               </div>
-             </ng-template>  
+            </ng-template>
           </p-overlayPanel>
-          <div pRipple class="action border-circle w-2rem h-2rem flex justify-content-center align-items-center" (click)="setting.toggle($event)">
+          <div pRipple class="action border-circle w-2rem h-2rem flex justify-content-center align-items-center"
+            (click)="setting.toggle($event)">
             <i class="fa-solid fa-gear"></i>
           </div>
         </td>

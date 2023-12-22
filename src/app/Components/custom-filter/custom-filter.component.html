@@ -1,23 +1,23 @@
 <div class="filterItems">
-    <input type="text" #inputField pInputText />
+  <input type="text" #inputField pInputText />
   <p-button (click)="filter.toggle($event)" class="filterIcon" label="{{filterLabel}}" icon="{{filterIcon}}"></p-button>
   <p-overlayPanel #filter [styleClass]="'filterList'">
-    <ng-template pTemplate="content" >
-        <button (click)="reset(fieldName,inputField.value)" >reset</button>
-        <hr>
-        <button (click)="equal(fieldName,inputField.value)">equal</button>
-      <button  (click)="notEqual(fieldName,inputField.value)">not equal</button>
+    <ng-template pTemplate="content">
+      <button (click)="reset(fieldName,inputField.value)">reset</button>
+      <hr>
+      <button (click)="equal(fieldName,inputField.value)">equal</button>
+      <button (click)="notEqual(fieldName,inputField.value)">not equal</button>
       <button (click)="greater(fieldName,inputField.value)">greater than</button>
       <button (click)="greaterEqual(fieldName,inputField.value)">greater than / equal</button>
       <button (click)="less(fieldName,inputField.value)">less than</button>
-      <button  (click)="lessEqual(fieldName,inputField.value)">less than / equal</button> 
-      
+      <button (click)="lessEqual(fieldName,inputField.value)">less than / equal</button>
+
       <div *ngIf="fieldType==='str'">
         <hr>
-          <button (click)="starts(fieldName,inputField.value)">starts with</button>
-          <button (click)="ends(fieldName,inputField.value)">ends with</button>
-          <button (click)="contains(fieldName,inputField.value)">contains</button>
+        <button (click)="starts(fieldName,inputField.value)">starts with</button>
+        <button (click)="ends(fieldName,inputField.value)">ends with</button>
+        <button (click)="contains(fieldName,inputField.value)">contains</button>
       </div>
     </ng-template>
-</p-overlayPanel>
-  </div>
+  </p-overlayPanel>
+</div>

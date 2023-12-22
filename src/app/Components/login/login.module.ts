@@ -8,16 +8,14 @@ import { PasswordModule } from 'primeng/password';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    LoginComponent
-  ],
+  declarations: [LoginComponent],
   imports: [
     CommonModule,
     CardModule,
     ButtonModule,
     InputTextModule,
     PasswordModule,
-    FormsModule
-  ]
+    FormsModule,
+  ],
 })
-export class LoginModule { }
+export class LoginModule {}

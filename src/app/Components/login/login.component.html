@@ -14,43 +14,20 @@
         Invalid credentials
       </div>
       <span class="p-float-label flex w-full mt-5">
-        <input
-          pInputText
-          id="username"
-          [(ngModel)]="username"
-          #usernameInput="ngModel"
-          [ngModelOptions]="{ standalone: true }"
-          [ngClass]="{
+        <input pInputText id="username" [(ngModel)]="username" #usernameInput="ngModel"
+          [ngModelOptions]="{ standalone: true }" [ngClass]="{
             'ng-invalid ng-dirty': isCredentialsFailed
-          }"
-        />
-        <label htmlFor="username" class="flex w-full text-lg mb-1"
-          >Username</label
-        >
+          }" />
+        <label htmlFor="username" class="flex w-full text-lg mb-1">Username</label>
       </span>
       <span class="p-float-label flex w-full mt-5">
-        <input
-          pInputText
-          id="password"
-          [(ngModel)]="password"
-          #passwordInput="ngModel"
-          [ngModelOptions]="{ standalone: true }"
-          type="password"
-          [ngClass]="{
+        <input pInputText id="password" [(ngModel)]="password" #passwordInput="ngModel"
+          [ngModelOptions]="{ standalone: true }" type="password" [ngClass]="{
             'ng-invalid ng-dirty': isCredentialsFailed
-          }"
-        />
-        <label htmlFor="password" class="flex w-full text-lg mb-1"
-          >Password</label
-        >
+          }" />
+        <label htmlFor="password" class="flex w-full text-lg mb-1">Password</label>
       </span>
-      <button
-        pButton
-        pRipple
-        label="Submit"
-        (click)="onLogin()"
-        class="p-button mt-3"
-      ></button>
+      <button pButton pRipple label="Submit" (click)="onLogin()" class="p-button mt-3"></button>
     </form>
   </p-card>
 </div>

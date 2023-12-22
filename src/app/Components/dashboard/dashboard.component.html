@@ -1,71 +1,42 @@
 <app-custom-loading *ngIf="(loadingService.isLoading$ | async)"></app-custom-loading>
 <div class="topnavbar flex">
   <div [class.sidepanelCloseOuter]="isSidebarClosed">
-  <button class="sideBar_button" (click)="toggleSidebar()">
-    <i class="fa-solid fa-bars"></i>
-  </button>
+    <button class="sideBar_button" (click)="toggleSidebar()">
+      <i class="fa-solid fa-bars"></i>
+    </button>
   </div>
   <div [class.sidepanelCloseOuter]="isSidebarClosed">
-  <div class="toppanel_heading">
-    <span>{{ topPanelLabel }}</span>
+    <div class="toppanel_heading">
+      <span>{{ topPanelLabel }}</span>
+    </div>
   </div>
-</div>
   <div class="profile">
-    <div
-      pRipple
-      class="userBtn border-circle w-2rem h-2rem flex"
-      (click)="profileToggle()"
-    >
+    <div pRipple class="userBtn border-circle w-2rem h-2rem flex" (click)="profileToggle()">
       <i class="fa-solid fa-user"></i>
     </div>
-    <p-overlay
-      [(visible)]="profileOverlay"
-      contentStyleClass="p-4 surface-overlay shadow-2 border-round"
-    >
+    <p-overlay [(visible)]="profileOverlay" contentStyleClass="p-4 surface-overlay shadow-2 border-round">
       <div class="userinfo">
         <span class="text-2xl">Admin</span>
         <span class="text-1xl">Admin@admin.com</span>
       </div>
       <div class="userSettings">
-        <p-button
-          label="Change Password"
-          styleClass="p-button-raised p-button-text"
-        ></p-button>
-        <p-button
-          label="Sign Out"
-          styleClass="p-button-raised p-button-text p-button-danger"
-        ></p-button>
+        <p-button label="Change Password" styleClass="p-button-raised p-button-text"></p-button>
+        <p-button label="Sign Out" styleClass="p-button-raised p-button-text p-button-danger"></p-button>
       </div>
     </p-overlay>
   </div>
   <div class="notification">
-    <div
-      pRipple
-      class="notificationBtn border-circle w-2rem h-2rem flex"
-      (click)="notificationToggle()"
-    >
+    <div pRipple class="notificationBtn border-circle w-2rem h-2rem flex" (click)="notificationToggle()">
       <i class="fa-solid fa-bell"></i>
     </div>
-    <p-overlay
-      [(visible)]="notificationOverlay"
-      contentStyleClass="p-4 surface-overlay shadow-2 border-round"
-    >
+    <p-overlay [(visible)]="notificationOverlay" contentStyleClass="p-4 surface-overlay shadow-2 border-round">
       Notifications here!
     </p-overlay>
   </div>
   <div class="search">
     <div class="search-bar flex flex-row">
-      <input
-        type="text"
-        name=""
-        placeholder="Search Here...."
-        class="search_field"
-      />
-      <button
-        pRipple
-        type="submit"
-        class="fa-solid fa-search search_icon border-circle flex"
-      ></button>
+      <input type="text" name="" placeholder="Search Here...." class="search_field" />
+      <button pRipple type="submit" class="fa-solid fa-search search_icon border-circle flex"></button>
     </div>
   </div>
 
@@ -79,39 +50,27 @@
       <span>CADUTILS</span>
     </div>
   </div>
-<ng-template #brandIcon>
-  <div class="brandIcon">
-    <i class="fa-solid fa-c"></i>
-  </div>
-</ng-template>
- 
-    <p-panelMenu
-      class="leftPanelContainer"
-      [model]="items"
-      [class.sidepanelCloseInner]="isSidebarClosed"
-      [multiple]="false"
-    ></p-panelMenu>
+  <ng-template #brandIcon>
+    <div class="brandIcon">
+      <i class="fa-solid fa-c"></i>
+    </div>
+  </ng-template>
+
+  <p-panelMenu class="leftPanelContainer" [model]="items" [class.sidepanelCloseInner]="isSidebarClosed"
+    [multiple]="false"></p-panelMenu>
 </div>
 <div class="rightSidePanel">
   <p-sidebar [(visible)]="displayRightPanel" position="right">
     <ng-template pTemplate="header"><span>contents</span></ng-template>
     <div class="rightSide_panel-content">
-      <div
-        class="rightpanel_content setup"
-        (click)="onClickRightPanel('Setup')"
-      >
+      <div class="rightpanel_content setup" (click)="onClickRightPanel('Setup')">
         <span class="content_icon fa-solid fa-wrench"> </span>
         <span class="content_label flex"> Setup </span>
       </div>
 
       <div class="rightSide_panel-content">
-        <div
-          class="rightpanel_content credit"
-          (click)="onClickRightPanel('Credit')"
-        >
-          <span
-            class="content_icon fa-solid fa-chart-simple flex-row"
-          >
+        <div class="rightpanel_content credit" (click)="onClickRightPanel('Credit')">
+          <span class="content_icon fa-solid fa-chart-simple flex-row">
           </span>
           <span class="content_label"> Credit Reporting </span>
         </div>

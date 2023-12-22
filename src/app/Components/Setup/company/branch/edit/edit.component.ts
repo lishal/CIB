@@ -19,6 +19,8 @@ import {
   BranchService,
   postBranch,
 } from 'src/app/Services/Setup/Company/branch.service';
+import { CustomLoadingModule } from 'src/app/Components/custom-loading/custom-loading.module';
+import { LoadingService } from 'src/app/Services/loading.service';
 
 interface Dropdown {
   id: string;
@@ -35,6 +37,7 @@ interface Dropdown {
     ToastModule,
     CommonModule,
     DropdownModule,
+    CustomLoadingModule,
   ],
   providers: [MessageService, DialogService],
   standalone: true,
@@ -42,7 +45,6 @@ interface Dropdown {
 export class EditBranchComponent implements OnInit {
   myForm!: FormGroup;
   data: any[] = [];
-  loading: boolean = false;
   updated: boolean = false;
   cluster: Dropdown[] | undefined;
   province: Dropdown[] | undefined;
@@ -74,7 +76,8 @@ export class EditBranchComponent implements OnInit {
     public ref: DynamicDialogRef,
     private messageService: MessageService,
     private dialogService: DynamicDialogConfig,
-    private api: BranchService
+    private api: BranchService,
+    public loadingService: LoadingService
   ) {}
   clusterOnChange() {
     this.province = this.getUniqueProvinces(
@@ -233,8 +236,7 @@ export class EditBranchComponent implements OnInit {
         this.myForm.value.insurance;
       this.serverForm.createdBy = this.data[0].createdBy;
       this.serverForm.createdOn = this.data[0].createdOn;
-      this.loading = true;
-      console.log(this.serverForm);
+      this.loadingService.show();
       this.api.editBranchData(this.serverForm, this.data[0].id).subscribe(
         (response) => {
           if (response.status === 200) {
@@ -253,7 +255,7 @@ export class EditBranchComponent implements OnInit {
     }
   }
   private handleError(errorMessage: string) {
-    this.loading = false;
+    this.loadingService.hide();
     this.messageService.add({
       severity: 'error',
       summary: 'Internal Server Error',

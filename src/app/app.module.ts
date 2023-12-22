@@ -9,11 +9,8 @@ import { CreditModule } from './Components/Credit/credit.module';
 import { LoginModule } from './Components/login/login.module';
 import { DashboardModule } from './Components/dashboard/dashboard.module';
 
-
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     AppConfigModule,
     BrowserModule,
@@ -22,11 +19,9 @@ import { DashboardModule } from './Components/dashboard/dashboard.module';
     SetupModule,
     CreditModule,
     LoginModule,
-    DashboardModule
-    
+    DashboardModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-
 export class AppModule {}

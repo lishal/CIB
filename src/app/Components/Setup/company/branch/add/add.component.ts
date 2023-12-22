@@ -19,6 +19,8 @@ import {
   BranchService,
   postBranch,
 } from 'src/app/Services/Setup/Company/branch.service';
+import { LoadingService } from 'src/app/Services/loading.service';
+import { CustomLoadingModule } from 'src/app/Components/custom-loading/custom-loading.module';
 
 interface Dropdown {
   id: string;
@@ -29,12 +31,14 @@ interface Dropdown {
   selector: 'app-branch-add',
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.css'],
+
   imports: [
     ButtonModule,
     ReactiveFormsModule,
     ToastModule,
     CommonModule,
     DropdownModule,
+    CustomLoadingModule,
   ],
 
   providers: [MessageService, DialogService],
@@ -43,7 +47,6 @@ interface Dropdown {
 export class AddBranchComponent implements OnInit {
   data: any[] = [];
   myForm!: FormGroup;
-  loading: boolean = false;
   cluster: Dropdown[] | undefined;
   province: Dropdown[] | undefined;
   district: Dropdown[] | undefined;
@@ -76,7 +79,8 @@ export class AddBranchComponent implements OnInit {
     public ref: DynamicDialogRef,
     private messageService: MessageService,
     private dialogService: DynamicDialogConfig,
-    private api: BranchService
+    private api: BranchService,
+    public loadingService: LoadingService
   ) {}
 
   clusterOnChange() {
@@ -140,6 +144,7 @@ export class AddBranchComponent implements OnInit {
     return uniqueDistrict;
   }
   ngOnInit(): void {
+    this.loadingService.hide();
     this.data = this.dialogService.data;
     this.cluster = this.getUniqueClusters().sort((a, b) =>
       a.name.toString().localeCompare(b.name.toString())
@@ -190,7 +195,7 @@ export class AddBranchComponent implements OnInit {
         this.myForm.value.pendingDocument;
       this.serverForm.enableKsklinquiryViaInsurance =
         this.myForm.value.insurance;
-      this.loading = true;
+      this.loadingService.show();
       this.api.postBranchData(this.serverForm).subscribe(
         (response) => {
           if (response.status === 200) {
@@ -209,7 +214,7 @@ export class AddBranchComponent implements OnInit {
     }
   }
   private handleError(errorMessage: string) {
-    this.loading = false;
+    this.loadingService.hide();
     this.messageService.add({
       severity: 'error',
       summary: 'Internal Server Error',

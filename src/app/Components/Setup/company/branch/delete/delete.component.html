@@ -1,10 +1,6 @@
 <p-toast></p-toast>
-<div class="overlay" *ngIf="loading">
-  <div class="spinner-container">
-    <div class="spinner"></div>
-    <p>Loading...</p>
-  </div>
-</div>
+<app-custom-loading *ngIf="(loadingService.isLoading$ | async)"></app-custom-loading>
+
 <div class="field grid">
   <label class="col-4 mb-1 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Branch
     Name:</label>

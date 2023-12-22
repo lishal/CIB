@@ -1,78 +1,77 @@
 <p-toast></p-toast>
+<app-custom-loading *ngIf="(loadingService.isLoading$ | async)"></app-custom-loading>
 <form [formGroup]="myForm" class="addForm relative min-h-full h-auto mb-3">
   <div class="field grid">
-    <label
-      for="roleName"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Role Name: <span style="color: red">&nbsp; *</span></label
-    >
-    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-      <input
-        id="roleName"
-        type="text"
-        formControlName="NAME"
-        [ngClass]="{
+    <label class="col-4 mb-1 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Role
+      Name: <span style="color: red">&nbsp; *</span></label>
+    <div class="input col-8 md:col-4 sm:mb-1 sm:col-8">
+      <input id="roleName" type="text" formControlName="NAME" [ngClass]="{
           'invalid-input':
             myForm.get('NAME')?.invalid &&
             myForm.get('NAME')?.touched
         }"
-        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-      />
+        class="h-full text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
     </div>
-    <label
-    for="systemDefined"
-    class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-    >Is System Defined: <span style="color: red">&nbsp; *</span>
-  </label>
-  <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-    <p-selectButton
-      [options]="stateOptions"
-      [style]="{ width: '10em' }"
-      formControlName="ACTIVE"
-    ></p-selectButton>
-  </div>
+    <label class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Mark
+      As Admin
+    </label>
+    <div class="col-8 md:col-4 sm:mb-1 sm:col-8">
+      <div class="checkBox">
+        <input type="checkbox" />
+      </div>
+    </div>
   </div>
   <div class="field grid">
-    <label
-      for="description"
-      class="col-12 mb-2 md:col-3 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Description <span style="color: red">&nbsp; *</span></label
-    >
-    <div class="col-12 md:col-9 sm:col-8">
-      <textarea
-        id="description"
-        type="text"
-        rows="5"
-        formControlName="DESCRIPTION"
-        style="resize: none"
-        [ngClass]="{
+    <label class="col-8 mb-2 md:col-2 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Description:
+      <span style="color: red">&nbsp; *</span></label>
+    <div class="col-16 md:col-10 sm:col-8">
+      <textarea id="DESCRIPTION" type="text" rows="2" formControlName="DESCRIPTION" [ngClass]="{
           'invalid-input':
             myForm.get('DESCRIPTION')?.invalid &&
             myForm.get('DESCRIPTION')?.touched
         }"
-        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-      >
+        class="h-full text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
       </textarea>
     </div>
+  </div>
+  <div class="field grid">
+    <label class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">
+      Allow Edit
+    </label>
+    <div class="col-8 md:col-4 sm:mb-1 sm:col-8">
+      <div class="checkBox">
+        <input type="checkbox" />
+      </div>
     </div>
-  
+    <label class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">
+      Allow Delete
+    </label>
+    <div class="col-8 md:col-4 sm:mb-1 sm:col-8">
+      <div class="checkBox">
+        <input type="checkbox" />
+      </div>
+    </div>
+  </div>
+  <div class="field grid" style="margin-top: 10px;">
+    <label class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">
+      Is System Defined
+    </label>
+    <div class="col-8 md:col-4 sm:mb-1 sm:col-8">
+      <div class="checkBox">
+        <input type="checkbox" />
+      </div>
+    </div>
+    <label class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">
+      IsActive
+    </label>
+    <div class="col-8 md:col-4 sm:mb-1 sm:col-8">
+      <div class="checkBox">
+        <input type="checkbox" formControlName="ACTIVE" />
+      </div>
+    </div>
+  </div>
 </form>
-<div
-  class="btnGroup absolute z-1 flex mt-3 h-3rem bg-white justify-content-end pb-2"
-  style="bottom: 0px; width: 95%; margin-top: 3rem"
->
-  <button
-    pButton
-    type="button"
-    label="Cancel"
-    class="p-button-raised p-button-text p-button-plain mr-2"
-    (click)="onCancel()"
-  ></button>
-  <button
-    pButton
-    type="button"
-    label="Submit"
-    class="p-button-raised p-button-info"
-    (click)="onSubmit()"
-  ></button>
+<div class="btnGroup absolute z-1 flex h-2rem bg-white justify-content-end">
+  <p-button label="Close" class="closeBtn" (click)="onCancel()"></p-button>
+  <p-button label="Submit" class="submitBtn" (click)="onSubmit()"></p-button>
 </div>

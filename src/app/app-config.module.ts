@@ -11,15 +11,15 @@
 //   ]
 // };
 
-import { NgModule,InjectionToken } from '@angular/core';
-import{provideHttpClient} from '@angular/common/http'
+import { NgModule, InjectionToken } from '@angular/core';
+import { provideHttpClient } from '@angular/common/http';
 
 export let CIB_BASE_URL = new InjectionToken<string>('CIB_BASE_URL');
 @NgModule({
   providers: [
     {
       provide: CIB_BASE_URL,
-      useValue: 'https://horizon.api.auth.technomax.com.np/api/auth'
+      useValue: 'https://horizon.api.auth.technomax.com.np/api/auth',
     },
     provideHttpClient(),
   ],

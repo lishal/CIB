@@ -1,11 +1,6 @@
 <p-toast></p-toast>
-<div class="overlay" *ngIf="loading">
-  <div class="spinner-container">
-    <div class="spinner"></div>
-    <p>Loading...</p>
-  </div>
-</div>
-<form [formGroup]="myForm" class="addForm relative min-h-full h-auto mb-3" *ngIf="!loading">
+<app-custom-loading *ngIf="(loadingService.isLoading$ | async)"></app-custom-loading>
+<form [formGroup]="myForm" class="addForm relative min-h-full h-auto mb-3">
   <div class="field grid">
     <label class="col-4 mb-1 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Branch
       Name: <span style="color: red">&nbsp; *</span></label>

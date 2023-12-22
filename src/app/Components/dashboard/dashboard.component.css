@@ -5,7 +5,7 @@
   display: block;
   height: 60px;
   width: 100%;
-  box-shadow: 0 0px 0px 2px rgba(0,0,0,.2);
+  box-shadow: 0 0px 0px 2px rgba(0, 0, 0, .2);
 }
 
 .topnavbar .sideBar_button {
@@ -22,9 +22,11 @@
   text-align: center;
   transition: background-color 0.2s;
 }
+
 .topnavbar .sideBar_button:hover {
   background-color: var(--cyanOnHover);
 }
+
 .topnavbar .rightSide_button {
   display: inline-block;
   position: absolute;
@@ -40,9 +42,11 @@
   cursor: pointer;
   transition: background-color 0.2s;
 }
+
 .topnavbar .rightSide_button:hover {
   background-color: var(--cyanOnHover);
 }
+
 .topnavbar .profile {
   position: absolute;
   right: 65px;
@@ -51,10 +55,12 @@
   align-items: center;
   background-color: transparent;
 }
+
 .topnavbar .profile .userBtn {
   color: var(--white);
   background-color: transparent !important;
 }
+
 .topnavbar .profile .userBtn:hover,
 .notification .notificationBtn:hover {
   cursor: pointer;
@@ -62,6 +68,7 @@
   color: var(--white) !important;
   transition: all 0.2s ease-in-out;
 }
+
 .topnavbar .profile .userBtn i {
   width: 100%;
   height: 100%;
@@ -69,6 +76,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .topnavbar .notification {
   position: absolute;
   right: 105px;
@@ -77,12 +85,14 @@
   align-items: center;
   background-color: transparent;
 }
+
 .topnavbar .notification .notificationBtn {
   display: flex;
   justify-content: center;
   align-items: center;
   color: var(--white);
 }
+
 .topnavbar .search {
   position: absolute;
   height: 100%;
@@ -109,15 +119,18 @@
   &:focus-within {
     width: 100%;
     border: 2px solid var(--white);
+
     .search_field {
       opacity: 1;
       position: absolute;
       left: 0;
       width: calc(100% - var(--size));
     }
+
     .search_field::placeholder {
       color: var(--white);
     }
+
     .search_icon {
       display: flex;
       display: flex;
@@ -130,9 +143,11 @@
     }
   }
 }
+
 .topnavbar .search-bar:focus-within {
   height: 50px;
 }
+
 .topnavbar .search_field {
   flex-grow: 1 !important;
   font-size: 1.5rem;
@@ -153,6 +168,7 @@
     outline: 0;
   }
 }
+
 .topnavbar .search_icon {
   background-color: var(--cyan);
   display: flex;
@@ -166,6 +182,7 @@
   margin-left: auto;
   /* margin-top: 6px; */
 }
+
 .topnavbar .search_icon:hover {
   cursor: pointer;
   background-color: var(--cyanOnHover) !important;
@@ -190,6 +207,7 @@
   white-space: nowrap;
   overflow-x: hidden;
 }
+
 .leftSidePanel .brandname {
   position: fixed;
   display: flex;
@@ -206,7 +224,7 @@
   font-size: 18px;
   font-weight: 700;
   transition: background-color 0.2s;
-  z-index:1;
+  z-index: 1;
 }
 
 /* .leftSidePanel .sidepanelCloseInner {
@@ -231,23 +249,28 @@
   width: 55px !important;
   transition: width 0.2s ease-in-out;
 }
-.sidepanelCloseOuter:hover{
-  width: 250px !important ;
+
+.sidepanelCloseOuter:hover {
+  width: 250px !important;
   transition: width 0.2s ease-in-out;
 }
+
 .sidepanelCloseOuter .brandname {
   width: 55px !important;
   transition: width 0.2s ease-in-out;
 }
-.sidepanelCloseOuter .sideBar_button{
+
+.sidepanelCloseOuter .sideBar_button {
   left: 55px !important;
   transition: left 0.2s ease-in-out;
 }
+
 .sidepanelCloseOuter .toppanel_heading {
   left: 115px;
   transition: left 0.2s ease-in-out;
 }
-.sidepanelCloseOuter .brandIcon{
+
+.sidepanelCloseOuter .brandIcon {
   position: fixed;
   height: 60px;
   width: 55px;
@@ -284,6 +307,7 @@
   height: 25px;
   width: 25px;
 }
+
 .rightSidePanel .rightSide_panel-content .rightpanel_content .content_label {
   display: flex;
   justify-content: center;
@@ -304,6 +328,7 @@
   transition: all 0.2s ease-in;
   z-index: -1;
 }
+
 .sidePanelClosedContainer {
   position: absolute;
   left: 55px;

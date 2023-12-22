@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { CIB_BASE_URL } from 'src/app/app-config.module';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Role } from 'src/app/models/RoleModel';
 
 export interface roleRequest {
@@ -12,9 +12,20 @@ export interface roleRequest {
   filterRequest: any[];
 }
 
-export interface OdataResponse<T> {
-  value: T[];
+export interface OdataResponse {
+  value: any[];
 }
+
+export interface postRole {
+  createdOn: string;
+  updatedOn: string;
+  createdBy: string;
+  updatedBy: string;
+  roleName: string;
+  description: string;
+  isActive: true;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -115,30 +126,35 @@ export class RoleService {
         })
       );
   }
-  public addRoleData(data: any): Observable<OdataResponse<Role>> {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
+  public postRoleData(data: postRole): Observable<HttpResponse<any>> {
+    return this.httpClient.post<OdataResponse>(`${this.baseUrl}/role`, data, {
+      observe: 'response',
     });
+  }
+  // public postRoleData(data: any): Observable<OdataResponse<Role>> {
+  //   const headers = new HttpHeaders({
+  //     'Content-Type': 'application/json',
+  //   });
 
-    return this.httpClient.post<OdataResponse<Role>>(
-      `${this.baseUrl}/role`,
-      data,
-      { headers }
-    );
-  }
-  public updateRoleData(data: any): Observable<OdataResponse<Role>> {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-    });
+  //   return this.httpClient.post<OdataResponse<Role>>(
+  //     `${this.baseUrl}/role`,
+  //     data,
+  //     { headers }
+  //   );
+  // }
+  // public updateRoleData(data: any): Observable<OdataResponse<Role>> {
+  //   const headers = new HttpHeaders({
+  //     'Content-Type': 'application/json',
+  //   });
 
-    return this.httpClient.put<OdataResponse<Role>>(
-      `${this.baseUrl}/role/${data.id}`,
-      data
-    );
-  }
-  public deleteRoleData(data: any): Observable<OdataResponse<Role>> {
-    return this.httpClient.delete<OdataResponse<Role>>(
-      `${this.baseUrl}/role/${data.Id}`
-    );
-  }
+  //   return this.httpClient.put<OdataResponse<Role>>(
+  //     `${this.baseUrl}/role/${data.id}`,
+  //     data
+  //   );
+  // }
+  // public deleteRoleData(data: any): Observable<OdataResponse<Role>> {
+  //   return this.httpClient.delete<OdataResponse<Role>>(
+  //     `${this.baseUrl}/role/${data.Id}`
+  //   );
+  // }
 }

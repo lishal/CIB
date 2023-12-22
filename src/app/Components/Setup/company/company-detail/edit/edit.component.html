@@ -4,28 +4,19 @@
       <div class="grid">
         <div class="col-12">
           <div class="field grid">
-            <label
-              for="companyName"
-              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
-              >Company Name <span style="color: red">&nbsp; *</span></label
-            >
+            <label for="companyName"
+              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center font-bold">Company
+              Name <span style="color: red">&nbsp; *</span></label>
             <div class="col-12 md:col-7">
-              <input
-                id="companyName"
-                type="text"
+              <input id="companyName" type="text"
                 class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-                formControlName="companyName"
-                [ngClass]="{
+                formControlName="companyName" [ngClass]="{
                   'invalid-input': myForm.get('companyName')?.invalid
-                }"
-              />
-              <div
-                *ngIf="
+                }" />
+              <div *ngIf="
                   myForm.get('companyName')?.invalid &&
                   myForm.get('companyName')?.touched
-                "
-                style="color: red"
-              >
+                " style="color: red">
                 Company Name is required.
               </div>
             </div>
@@ -33,29 +24,20 @@
         </div>
         <div class="col-12">
           <div class="field grid">
-            <label
-              for="abbreveration"
-              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
-              >Abbreveration <span style="color: red">&nbsp; *</span></label
-            >
+            <label for="abbreveration"
+              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center font-bold">Abbreveration
+              <span style="color: red">&nbsp; *</span></label>
             <div class="col-12 md:col-7">
-              <input
-                id="abbreveration"
-                type="text"
+              <input id="abbreveration" type="text"
                 class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-                formControlName="abbreveration"
-                [ngClass]="{
+                formControlName="abbreveration" [ngClass]="{
                   'invalid-input': myForm.get('abbreveration')?.invalid
-                }"
-              />
-              <div
-                *ngIf="
+                }" />
+              <div *ngIf="
                   (myForm.get('abbreveration')?.invalid &&
                     myForm.get('abbreveration')?.touched) ||
                   myForm.get('abbreveration')?.value === ''
-                "
-                style="color: red"
-              >
+                " style="color: red">
                 Abbreveration is required.
               </div>
             </div>
@@ -63,30 +45,21 @@
         </div>
         <div class="col-12">
           <div class="field grid">
-            <label
-              for="dataProviderId"
-              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
-              >Data Provider ID <span style="color: red">&nbsp; *</span></label
-            >
+            <label for="dataProviderId"
+              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center font-bold">Data
+              Provider ID <span style="color: red">&nbsp; *</span></label>
             <div class="col-12 md:col-7">
-              <input
-                id="dataProviderId"
-                type="number"
+              <input id="dataProviderId" type="number"
                 class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-                formControlName="dataProviderId"
-                [ngClass]="{
+                formControlName="dataProviderId" [ngClass]="{
                   'invalid-input': myForm.get('dataProviderId')?.invalid
-                }"
-              />
-              <div
-                *ngIf="
+                }" />
+              <div *ngIf="
                   (myForm.get('dataProviderId')?.invalid &&
                     myForm.get('dataProviderId')?.touched) ||
                   myForm.get('dataProviderId')?.value === '' ||
                   myForm.get('dataProviderId')?.hasError('pattern')
-                "
-                style="color: red"
-              >
+                " style="color: red">
                 Invalid Data Provider Id.
               </div>
             </div>
@@ -94,25 +67,16 @@
         </div>
         <div class="col-12">
           <div class="field grid">
-            <label
-              for="prevDataProviderId"
-              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
-              >Prev Data Provider ID</label
-            >
+            <label for="prevDataProviderId"
+              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center font-bold">Prev Data
+              Provider ID</label>
             <div class="col-12 md:col-7">
-              <input
-                id="prevDataProviderId"
-                type="number"
+              <input id="prevDataProviderId" type="number"
                 class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-                formControlName="prevDataProviderId"
-                [ngClass]="{
+                formControlName="prevDataProviderId" [ngClass]="{
                   'invalid-input': myForm.get('prevDataProviderId')?.invalid
-                }"
-              />
-              <div
-                *ngIf="myForm.get('prevDataProviderId')?.hasError('pattern')"
-                style="color: red"
-              >
+                }" />
+              <div *ngIf="myForm.get('prevDataProviderId')?.hasError('pattern')" style="color: red">
                 Invalid Prev Data Provider Id.
               </div>
             </div>
@@ -120,36 +84,25 @@
         </div>
         <div class="col-12">
           <div class="field grid">
-            <label
-              for="tradingSymbol"
-              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
-              >Trading Symbol</label
-            >
+            <label for="tradingSymbol"
+              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center font-bold">Trading
+              Symbol</label>
             <div class="col-12 md:col-7">
-              <input
-                id="tradingSymbol"
-                type="text"
+              <input id="tradingSymbol" type="text"
                 class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-                formControlName="tradingSymbol"
-              />
+                formControlName="tradingSymbol" />
             </div>
           </div>
         </div>
         <div class="col-12">
           <div class="field grid">
-            <label
-              for="secretKey"
-              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
-              >Secret Key</label
-            >
+            <label for="secretKey"
+              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center font-bold">Secret
+              Key</label>
             <div class="col-12 md:col-7">
-              <input
-                id="secretKey"
-                type="text"
+              <input id="secretKey" type="text"
                 class="surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-                style="background-color: lightgray !important"
-                formControlName="secretKey"
-              />
+                style="background-color: lightgray !important" formControlName="secretKey" />
             </div>
           </div>
         </div>
@@ -159,33 +112,20 @@
       <div class="grid">
         <div class="col-12">
           <div class="field grid">
-            <label
-              for="firstname4"
-              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
-              >Select Profile Photo</label
-            >
+            <label for="firstname4"
+              class="col-12 mb-2 md:col-5 md:mb-0 md:justify-content-end sm:justify-content-center font-bold">Select
+              Profile Photo</label>
             <div class="col-12 md:col-7">
-              <input
-                id="firstname4"
-                type="file"
+              <input id="firstname4" type="file"
                 class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-                (change)="handleImage($event)"
-              />
-              <img
-                *ngIf="selectedImageUrl"
-                [src]="selectedImageUrl"
-                height="180"
-                width="auto"
-                alt="Selected Image"
-              />
+                (change)="handleImage($event)" />
+              <img *ngIf="selectedImageUrl" [src]="selectedImageUrl" height="180" width="auto" alt="Selected Image" />
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div
-      class="field col-12 mt-3 md:col-12 flex justify-content-center align-item-center font-bold text-lg"
-    >
+    <div class="field col-12 mt-3 md:col-12 flex justify-content-center align-item-center font-bold text-lg">
       Disbale Validation of CIB
     </div>
 
@@ -193,48 +133,33 @@
       <div class="grid">
         <div class="col-12">
           <div class="field grid">
-            <label
-              for="companyName"
-              class="col-12 mb-2 md:col-8 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
-              >RepaymentFrq Validation?
-              <span style="color: red">&nbsp; *</span></label
-            >
+            <label for="companyName"
+              class="col-12 mb-2 md:col-8 md:mb-0 md:justify-content-end sm:justify-content-center font-bold">RepaymentFrq
+              Validation?
+              <span style="color: red">&nbsp; *</span></label>
             <div class="col-12 md:col-4">
-              <p-selectButton
-                [options]="stateOptions"
-                [style]="{ width: '10em' }"
-                formControlName="repaymentFrq"
-              ></p-selectButton>
+              <p-selectButton [options]="stateOptions" [style]="{ width: '10em' }"
+                formControlName="repaymentFrq"></p-selectButton>
             </div>
           </div>
           <div class="field grid">
-            <label
-              for="companyName"
-              class="col-12 mb-2 md:col-8 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
-              >Installment Amt Validation?
-              <span style="color: red">&nbsp; *</span></label
-            >
+            <label for="companyName"
+              class="col-12 mb-2 md:col-8 md:mb-0 md:justify-content-end sm:justify-content-center font-bold">Installment
+              Amt Validation?
+              <span style="color: red">&nbsp; *</span></label>
             <div class="col-12 md:col-4">
-              <p-selectButton
-                [options]="stateOptions"
-                [style]="{ width: '10em' }"
-                formControlName="installmentAmt"
-              ></p-selectButton>
+              <p-selectButton [options]="stateOptions" [style]="{ width: '10em' }"
+                formControlName="installmentAmt"></p-selectButton>
             </div>
           </div>
           <div class="field grid">
-            <label
-              for="companyName"
-              class="col-12 mb-2 md:col-8 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
-              >InstallmentOverdue Validation?
-              <span style="color: red">&nbsp; *</span></label
-            >
+            <label for="companyName"
+              class="col-12 mb-2 md:col-8 md:mb-0 md:justify-content-end sm:justify-content-center font-bold">InstallmentOverdue
+              Validation?
+              <span style="color: red">&nbsp; *</span></label>
             <div class="col-12 md:col-4">
-              <p-selectButton
-                [options]="stateOptions"
-                [style]="{ width: '10em' }"
-                formControlName="installmentOverdue"
-              ></p-selectButton>
+              <p-selectButton [options]="stateOptions" [style]="{ width: '10em' }"
+                formControlName="installmentOverdue"></p-selectButton>
             </div>
           </div>
         </div>
@@ -244,72 +169,44 @@
       <div class="grid">
         <div class="col-12">
           <div class="field grid">
-            <label
-              for="companyName"
-              class="col-12 mb-2 md:col-8 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
-              >Installment Number Validation?
-              <span style="color: red">&nbsp; *</span></label
-            >
+            <label for="companyName"
+              class="col-12 mb-2 md:col-8 md:mb-0 md:justify-content-end sm:justify-content-center font-bold">Installment
+              Number Validation?
+              <span style="color: red">&nbsp; *</span></label>
             <div class="col-12 md:col-4">
-              <p-selectButton
-                [options]="stateOptions"
-                [style]="{ width: '10em' }"
-                formControlName="installmentNumber"
-              ></p-selectButton>
+              <p-selectButton [options]="stateOptions" [style]="{ width: '10em' }"
+                formControlName="installmentNumber"></p-selectButton>
             </div>
           </div>
           <div class="field grid">
-            <label
-              for="companyName"
-              class="col-12 mb-2 md:col-8 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
-              >Disbursed Amt/Date Validation?
-              <span style="color: red">&nbsp; *</span></label
-            >
+            <label for="companyName"
+              class="col-12 mb-2 md:col-8 md:mb-0 md:justify-content-end sm:justify-content-center font-bold">Disbursed
+              Amt/Date Validation?
+              <span style="color: red">&nbsp; *</span></label>
             <div class="col-12 md:col-4">
-              <p-selectButton
-                [options]="stateOptions"
-                [style]="{ width: '10em' }"
-                formControlName="disbursedAmtDate"
-              ></p-selectButton>
+              <p-selectButton [options]="stateOptions" [style]="{ width: '10em' }"
+                formControlName="disbursedAmtDate"></p-selectButton>
             </div>
           </div>
           <div class="field grid">
-            <label
-              for="companyName"
-              class="col-12 mb-2 md:col-8 md:mb-0 md:justify-content-end sm:justify-content-center font-bold"
-              >HighestCreditUsage Validation?
-              <span style="color: red">&nbsp; *</span></label
-            >
+            <label for="companyName"
+              class="col-12 mb-2 md:col-8 md:mb-0 md:justify-content-end sm:justify-content-center font-bold">HighestCreditUsage
+              Validation?
+              <span style="color: red">&nbsp; *</span></label>
             <div class="col-12 md:col-4">
-              <p-selectButton
-                [options]="stateOptions"
-                [style]="{ width: '10em' }"
-                formControlName="highestCreditUsage"
-              ></p-selectButton>
+              <p-selectButton [options]="stateOptions" [style]="{ width: '10em' }"
+                formControlName="highestCreditUsage"></p-selectButton>
             </div>
           </div>
         </div>
       </div>
     </div>
   </form>
-  <div
-  class="btnGroup absolute z-1 flex mt-3 h-3rem bg-white justify-content-end pb-2"
-  style="bottom: 0px; width: 95%; margin-top: 3rem"
->
-  <button
-    pButton
-    type="button"
-    label="Cancel"
-    class="p-button-raised p-button-text p-button-plain mr-2"
-    (click)="onCancel()"
-  ></button>
-  <button
-    pButton
-    type="button"
-    label="Submit"
-    class="p-button-raised p-button-info"
-    (click)="onSubmit()"
-  ></button>
-</div>
+  <div class="btnGroup absolute z-1 flex mt-3 h-3rem bg-white justify-content-end pb-2"
+    style="bottom: 0px; width: 95%; margin-top: 3rem">
+    <button pButton type="button" label="Cancel" class="p-button-raised p-button-text p-button-plain mr-2"
+      (click)="onCancel()"></button>
+    <button pButton type="button" label="Submit" class="p-button-raised p-button-info" (click)="onSubmit()"></button>
+  </div>
 
 </p-card>

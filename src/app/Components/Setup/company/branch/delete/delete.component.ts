@@ -12,6 +12,8 @@ import { BranchService } from 'src/app/Services/Setup/Company/branch.service';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { CommonModule } from '@angular/common';
+import { LoadingService } from 'src/app/Services/loading.service';
+import { CustomLoadingModule } from 'src/app/Components/custom-loading/custom-loading.module';
 @Component({
   selector: 'app-branch-delete',
   templateUrl: './delete.component.html',
@@ -23,6 +25,7 @@ import { CommonModule } from '@angular/common';
     DropdownModule,
     ToastModule,
     CommonModule,
+    CustomLoadingModule,
   ],
   standalone: true,
 })
@@ -32,7 +35,8 @@ export class DeleteBranchComponent implements OnInit {
     public ref: DynamicDialogRef,
     private confirmationService: ConfirmationService,
     private api: BranchService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    public loadingService: LoadingService
   ) {}
   data: any[] = [];
   loading: boolean = false;
@@ -59,7 +63,7 @@ export class DeleteBranchComponent implements OnInit {
       message: 'Are you sure that you want to delete?',
       icon: 'fa-solid fa-exclamation-triangle',
       accept: () => {
-        this.loading = true;
+        this.loadingService.show();
         this.deleteData(this.data[0].id);
       },
       reject: () => {
@@ -69,8 +73,6 @@ export class DeleteBranchComponent implements OnInit {
   }
 
   deleteData(id: string) {
-    this.loading = true;
-
     this.api.deleteData(id).subscribe(
       (response) => {
         if (response.status === 200) {
@@ -86,7 +88,7 @@ export class DeleteBranchComponent implements OnInit {
   }
 
   private handleError(errorMessage: string) {
-    this.loading = false;
+    this.loadingService.hide();
     this.messageService.add({
       severity: 'error',
       summary: 'Internal Server Error',

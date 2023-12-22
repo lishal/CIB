@@ -7,8 +7,8 @@ import { Router } from '@angular/router';
   templateUrl: './company.component.html',
   styleUrls: ['./company.component.css'],
 })
-export class CompanyComponent implements OnInit{
-  constructor(private router:Router){}
+export class CompanyComponent implements OnInit {
+  constructor(private router: Router) {}
   items: MenuItem[] | undefined;
   activeItem: MenuItem | undefined;
   ngOnInit() {
@@ -21,5 +21,4 @@ export class CompanyComponent implements OnInit{
       { label: 'Backup', routerLink: 'backup' },
     ];
   }
-
 }

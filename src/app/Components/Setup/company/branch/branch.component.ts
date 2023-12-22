@@ -228,7 +228,7 @@ export class BranchComponent implements OnDestroy {
     this.getBranchData();
   }
 
-  exportExcel(op: OverlayPanel) {
+  exportExcel(printDrop: OverlayPanel) {
     import('xlsx').then((xlsx) => {
       const worksheet = xlsx.utils.json_to_sheet(this.data);
       const workbook = { Sheets: { data: worksheet }, SheetNames: ['data'] };
@@ -242,7 +242,7 @@ export class BranchComponent implements OnDestroy {
       severity: 'success',
       summary: 'Excel file downloaded successfully',
     });
-    op.hide();
+    printDrop.hide();
   }
   saveAsExcelFile(buffer: any, fileName: string): void {
     let EXCEL_TYPE =

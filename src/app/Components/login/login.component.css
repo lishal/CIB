@@ -1,7 +1,8 @@
-  input:-webkit-autofill ~ label{
-    top:-10px;
+  input:-webkit-autofill~label {
+    top: -10px;
   }
-  .cbi-login-info{
+
+  .cbi-login-info {
     background-color: var(--cyan);
     color: var(--white);
   }

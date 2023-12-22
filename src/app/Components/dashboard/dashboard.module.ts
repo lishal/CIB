@@ -5,21 +5,17 @@ import { ButtonModule } from 'primeng/button';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { DashboardComponent } from './dashboard.component';
 import { SidebarModule } from 'primeng/sidebar';
-import { CustomLoadingComponent } from '../custom-loading/custom-loading.component';
-
-
+import { CustomLoadingModule } from '../custom-loading/custom-loading.module';
 
 @NgModule({
-  declarations: [
-    DashboardComponent,
-    CustomLoadingComponent
-  ],
+  declarations: [DashboardComponent],
   imports: [
     CommonModule,
     OverlayModule,
     ButtonModule,
     PanelMenuModule,
     SidebarModule,
-  ]
+    CustomLoadingModule,
+  ],
 })
-export class DashboardModule { }
+export class DashboardModule {}

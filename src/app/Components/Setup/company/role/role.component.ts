@@ -10,6 +10,7 @@ import { AddRoleComponent } from './add/add.component';
 import { MessageService } from 'primeng/api';
 import { DeleteRoleComponent } from './delete/delete.component';
 import { TableLazyLoadEvent } from 'primeng/table';
+import { LoadingService } from 'src/app/Services/loading.service';
 
 @Component({
   selector: 'app-role',
@@ -33,42 +34,28 @@ export class RoleComponent implements OnDestroy {
   constructor(
     private api: RoleService,
     public dialogService: DialogService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    public loadingService: LoadingService
   ) {}
 
   addData() {
     this.ref = this.dialogService.open(AddRoleComponent, {
       header: `Add Role`,
-      width: '80%',
-      height: '80%',
+      width: '100%',
+      height: '100%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
-      maximizable: true,
+      maximizable: false,
     });
-    this.ref.onClose.subscribe((innerData: any) => {
-      if (innerData !== undefined) {
-        if (innerData[1] === true) {
-          this.isLoading = true;
-          this.api.addRoleData(innerData[0]).subscribe(
-            () => {
-              this.data = [...this.data, innerData[0]];
-              this.messageService.add({
-                severity: 'success',
-                summary: 'Success',
-                detail: 'Data added successfully',
-              });
-              this.isLoading = false;
-            },
-            () => {
-              this.messageService.add({
-                severity: 'error',
-                summary: 'Error',
-                detail: 'Something went wrong',
-              });
-              this.isLoading = false;
-            }
-          );
-        }
+    this.ref.onClose.subscribe((data: any) => {
+      this.loadingService.hide();
+      if (data === true) {
+        this.getRoleData();
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'Data added successfully!',
+        });
       }
     });
   }
@@ -109,30 +96,30 @@ export class RoleComponent implements OnDestroy {
         if (innerData[1] === true) {
           this.isLoading = true;
           // console.log(innerData[0])
-          this.api.updateRoleData(innerData[0]).subscribe(
-            (response) => {
-              console.log(response);
-              const index = this.data.findIndex((data) => data.Id === Id);
-              this.data[index].NAME = innerData[0].NAME;
-              this.data[index].DESCRIPTION = innerData[0].DESCRIPTION;
-              this.data[index].ACTIVE = innerData[0].ACTIVE;
-              this.messageService.add({
-                severity: 'success',
-                summary: 'Success',
-                detail: 'Data Updated successfully',
-              });
-              this.isLoading = false;
-            },
-            (error) => {
-              console.log(error);
-              this.messageService.add({
-                severity: 'error',
-                summary: 'Error',
-                detail: 'Something went wrong',
-              });
-              this.isLoading = false;
-            }
-          );
+          // this.api.updateRoleData(innerData[0]).subscribe(
+          //   (response) => {
+          //     console.log(response);
+          //     const index = this.data.findIndex((data) => data.Id === Id);
+          //     this.data[index].NAME = innerData[0].NAME;
+          //     this.data[index].DESCRIPTION = innerData[0].DESCRIPTION;
+          //     this.data[index].ACTIVE = innerData[0].ACTIVE;
+          //     this.messageService.add({
+          //       severity: 'success',
+          //       summary: 'Success',
+          //       detail: 'Data Updated successfully',
+          //     });
+          //     this.isLoading = false;
+          //   },
+          //   (error) => {
+          //     console.log(error);
+          //     this.messageService.add({
+          //       severity: 'error',
+          //       summary: 'Error',
+          //       detail: 'Something went wrong',
+          //     });
+          //     this.isLoading = false;
+          //   }
+          // );
         }
       }
     });
@@ -152,26 +139,26 @@ export class RoleComponent implements OnDestroy {
       if (innerData === 'accepted') {
         const index = this.data.findIndex((data) => data.Id === Id);
         this.isLoading = true;
-        this.api.deleteRoleData(this.data[index]).subscribe(
-          (response) => {
-            this.data.splice(index, 1);
-            this.messageService.add({
-              severity: 'success',
-              summary: 'Success',
-              detail: 'Data deleted successfully',
-            });
-            this.isLoading = false;
-          },
-          (error) => {
-            console.log(error);
-            this.messageService.add({
-              severity: 'error',
-              summary: 'Error',
-              detail: 'Something went wrong',
-            });
-            this.isLoading = false;
-          }
-        );
+        // this.api.deleteRoleData(this.data[index]).subscribe(
+        //   (response) => {
+        //     this.data.splice(index, 1);
+        //     this.messageService.add({
+        //       severity: 'success',
+        //       summary: 'Success',
+        //       detail: 'Data deleted successfully',
+        //     });
+        //     this.isLoading = false;
+        //   },
+        //   (error) => {
+        //     console.log(error);
+        //     this.messageService.add({
+        //       severity: 'error',
+        //       summary: 'Error',
+        //       detail: 'Something went wrong',
+        //     });
+        //     this.isLoading = false;
+        //   }
+        // );
       } else if (innerData === 'rejected') {
         this.messageService.add({
           severity: 'error',

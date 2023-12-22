@@ -1,5 +1,20 @@
 <p-toast></p-toast>
 <div class="btnGroup-topbar">
+  <p-overlayPanel #printDrop [styleClass]="'export'">
+    <ng-template pTemplate="content">
+      <p class="exportButton">Html</p>
+      <p class="exportButton">Pdf</p>
+      <p class="exportButton">Excel</p>
+    </ng-template>
+  </p-overlayPanel>
+  <p-button (click)="printDrop.toggle($event)" class="printDropdown">
+    <ng-template pTemplate="content">
+      <ng-container>
+        <i class="fa-solid fa-print" style="margin-left: -5px;"></i>
+        <i class="fa-solid fa-angle-down" style="margin-left: 5px;"></i>
+      </ng-container>
+    </ng-template>
+  </p-button>
   <p-button icon="fa-solid fa-circle-plus" (click)="addData()"></p-button>
 </div>
 <div class="card mt-3">
