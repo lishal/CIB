@@ -91,4 +91,25 @@ export class CustomFilterComponent {
     this.data.emit({ fieldName: fieldName, mode: mode, value: value });
     this.filter.hide();
   }
+  resetBool(fieldName: string) {
+    const mode = 'resetBool';
+    this.filterIcon = 'fa-solid fa-filter';
+    this.filterLabel = '';
+    this.data.emit({ fieldName: fieldName, mode: mode, value: '' });
+    this.filter.hide();
+  }
+  boolTrue(fieldName: string) {
+    const mode = 'boolTrue';
+    this.filterIcon = '';
+    this.filterLabel = 'T';
+    this.data.emit({ fieldName: fieldName, mode: mode, value: true });
+    this.filter.hide();
+  }
+  boolFalse(fieldName: string) {
+    const mode = 'boolFalse';
+    this.filterIcon = '';
+    this.filterLabel = 'F';
+    this.data.emit({ fieldName: fieldName, mode: mode, value: false });
+    this.filter.hide();
+  }
 }

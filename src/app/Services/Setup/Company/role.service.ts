@@ -115,6 +115,23 @@ export class RoleService {
             urlParams += `&$filter=contains(${items.fieldName}, '${items.value}')`;
           }
           break;
+        case 'resetBool':
+          filterRequest.splice(index, 1);
+          break;
+        case 'boolTrue':
+          if (urlParams.includes('$filter')) {
+            urlParams += ` AND (${items.fieldName} eq ${items.value})`;
+          } else {
+            urlParams += `&$filter=(${items.fieldName} eq ${items.value})`;
+          }
+          break;
+        case 'boolFalse':
+          if (urlParams.includes('$filter')) {
+            urlParams += ` AND (${items.fieldName} eq ${items.value})`;
+          } else {
+            urlParams += `&$filter=(${items.fieldName} eq ${items.value})`;
+          }
+          break;
       }
     });
     const apiUrl = `${this.baseUrl}/role/GetAll/?$count=true${urlParams}`;
