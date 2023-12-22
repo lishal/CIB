@@ -68,7 +68,7 @@ export class RoleComponent implements OnDestroy {
     await this.viewData(Id);
     this.loadingService.hide();
     this.ref = this.dialogService.open(ViewRoleComponent, {
-      header: `Branch : View - ${this.innerData.roleName} `,
+      header: `Role : View - ${this.innerData.roleName} `,
       width: '100%',
       height: '100%',
       contentStyle: { overflow: 'auto' },
@@ -76,69 +76,65 @@ export class RoleComponent implements OnDestroy {
       maximizable: false,
       data: this.innerData,
     });
-
-    // this.ref.onClose.subscribe((product: Product) => {
-
-    // });
-
-    // this.ref.onMaximize.subscribe((value) => {
-
-    // });
   }
-  editData(Id: string) {
-    const editData = this.data.find((data) => data.Id === Id);
+  async editData(Id: string) {
+    this.loadingService.show();
+    await this.viewData(Id);
+    this.loadingService.hide();
     this.ref = this.dialogService.open(EditRoleComponent, {
-      header: `Edit role for ${editData.NAME} id`,
-      width: '80%',
-      height: '80%',
+      header: `Role : Edit - ${this.innerData.roleName} `,
+      width: '100%',
+      height: '100%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
-      maximizable: true,
-      data: editData,
+      maximizable: false,
+      data: this.innerData,
     });
-    this.ref.onClose.subscribe((innerData: any) => {
-      if (innerData !== undefined) {
-        if (innerData[1] === true) {
-          this.isLoading = true;
-          // console.log(innerData[0])
-          // this.api.updateRoleData(innerData[0]).subscribe(
-          //   (response) => {
-          //     console.log(response);
-          //     const index = this.data.findIndex((data) => data.Id === Id);
-          //     this.data[index].NAME = innerData[0].NAME;
-          //     this.data[index].DESCRIPTION = innerData[0].DESCRIPTION;
-          //     this.data[index].ACTIVE = innerData[0].ACTIVE;
-          //     this.messageService.add({
-          //       severity: 'success',
-          //       summary: 'Success',
-          //       detail: 'Data Updated successfully',
-          //     });
-          //     this.isLoading = false;
-          //   },
-          //   (error) => {
-          //     console.log(error);
-          //     this.messageService.add({
-          //       severity: 'error',
-          //       summary: 'Error',
-          //       detail: 'Something went wrong',
-          //     });
-          //     this.isLoading = false;
-          //   }
-          // );
-        }
-      }
-    });
+    // this.ref.onClose.subscribe((innerData: any) => {
+    //   if (innerData !== undefined) {
+    //     if (innerData[1] === true) {
+    //       this.isLoading = true;
+    // console.log(innerData[0])
+    // this.api.updateRoleData(innerData[0]).subscribe(
+    //   (response) => {
+    //     console.log(response);
+    //     const index = this.data.findIndex((data) => data.Id === Id);
+    //     this.data[index].NAME = innerData[0].NAME;
+    //     this.data[index].DESCRIPTION = innerData[0].DESCRIPTION;
+    //     this.data[index].ACTIVE = innerData[0].ACTIVE;
+    //     this.messageService.add({
+    //       severity: 'success',
+    //       summary: 'Success',
+    //       detail: 'Data Updated successfully',
+    //     });
+    //     this.isLoading = false;
+    //   },
+    //   (error) => {
+    //     console.log(error);
+    //     this.messageService.add({
+    //       severity: 'error',
+    //       summary: 'Error',
+    //       detail: 'Something went wrong',
+    //     });
+    //     this.isLoading = false;
+    //   }
+    // );
+    //     }
+    //   }
+    // });
   }
-  deleteData(Id: string) {
-    const deleteData = this.data.find((data) => data.Id === Id);
+  async deleteData(Id: string) {
+    this.loadingService.show();
+    await this.viewData(Id);
+    this.loadingService.hide();
     this.ref = this.dialogService.open(DeleteRoleComponent, {
-      header: `Delete Branch for ${deleteData.NAME}`,
-      width: '80%',
-      height: '80%',
+      header: `Role : Delete - ${this.innerData.roleName} `,
+      width: '100%',
+      height: '100%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
-      maximizable: true,
-      data: deleteData,
+      maximizable: false,
+      data: this.innerData,
     });
     this.ref.onClose.subscribe((innerData: any) => {
       if (innerData === 'accepted') {

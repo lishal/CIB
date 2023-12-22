@@ -134,30 +134,20 @@ export class RoleService {
   public viewRoleData(id: string): Observable<OdataResponse> {
     return this.httpClient.get<{ value: any[] }>(`${this.baseUrl}/role/${id}`);
   }
-  // public postRoleData(data: any): Observable<OdataResponse<Role>> {
-  //   const headers = new HttpHeaders({
-  //     'Content-Type': 'application/json',
-  //   });
-
-  //   return this.httpClient.post<OdataResponse<Role>>(
-  //     `${this.baseUrl}/role`,
-  //     data,
-  //     { headers }
-  //   );
-  // }
-  // public updateRoleData(data: any): Observable<OdataResponse<Role>> {
-  //   const headers = new HttpHeaders({
-  //     'Content-Type': 'application/json',
-  //   });
-
-  //   return this.httpClient.put<OdataResponse<Role>>(
-  //     `${this.baseUrl}/role/${data.id}`,
-  //     data
-  //   );
-  // }
-  // public deleteRoleData(data: any): Observable<OdataResponse<Role>> {
-  //   return this.httpClient.delete<OdataResponse<Role>>(
-  //     `${this.baseUrl}/role/${data.Id}`
-  //   );
-  // }
+  public deleteRoleData(id: string): Observable<HttpResponse<any>> {
+    return this.httpClient.delete<{ value: any[] }>(
+      `${this.baseUrl}/role/${id}`,
+      { observe: 'response' }
+    );
+  }
+  public editRoleData(
+    data: postRole,
+    id: String
+  ): Observable<HttpResponse<any>> {
+    return this.httpClient.post<OdataResponse>(
+      `${this.baseUrl}/role/${id}`,
+      data,
+      { observe: 'response' }
+    );
+  }
 }
