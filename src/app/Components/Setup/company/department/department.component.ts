@@ -10,6 +10,7 @@ import { MessageService } from 'primeng/api';
 import { AddDepartmentComponent } from './add/add.component';
 import { DeleteDepartmentComponent } from './delete/delete.component';
 import { TableLazyLoadEvent } from 'primeng/table';
+import { LoadingService } from 'src/app/Services/loading.service';
 
 @Component({
   selector: 'app-department',
@@ -33,12 +34,13 @@ export class DepartmentComponent implements OnInit, OnDestroy {
   constructor(
     private api: DepartmentService,
     public dialogService: DialogService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    public loadingService: LoadingService
   ) {}
 
   addData() {
     this.ref = this.dialogService.open(AddDepartmentComponent, {
-      header: `Add Department`,
+      header: `Department : Add`,
       width: '100%',
       height: '100%',
       contentStyle: { overflow: 'auto' },
@@ -46,18 +48,14 @@ export class DepartmentComponent implements OnInit, OnDestroy {
       maximizable: false,
     });
     this.ref.onClose.subscribe((data: any) => {
-      if (data !== undefined) {
-        if (data[1] === true) {
-          // const date = new Date(data[0].date);
-          // const newDate = date.toISOString().split('T')[0];
-          // data[0].date=newDate
-          this.data.push(data[0]);
-          this.messageService.add({
-            severity: 'success',
-            summary: 'Success',
-            detail: 'Data added successfully',
-          });
-        }
+      this.loadingService.hide();
+      if (data === true) {
+        this.getDepartmentData();
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'Data added successfully!',
+        });
       }
     });
   }

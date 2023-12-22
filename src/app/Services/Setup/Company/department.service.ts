@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { CIB_BASE_URL } from 'src/app/app-config.module';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 
 export interface OdataResponse {
   value: any[];
@@ -14,7 +14,20 @@ export interface request {
   sortOrder: number;
   filterRequest: any[];
 }
-
+export interface postDepartment {
+  createdOn: string;
+  updatedOn: string;
+  createdBy: string;
+  updatedBy: string;
+  departmentName: string;
+  departmentAddress: string;
+  doe: string;
+  faxNo: string;
+  phoneNo: string;
+  emailId: string;
+  abbr: string;
+  isActive: true;
+}
 @Injectable({
   providedIn: 'root',
 })
@@ -132,5 +145,16 @@ export class DepartmentService {
           return { count: response['@odata.count'], value: response.value };
         })
       );
+  }
+  public postDepartmentData(
+    data: postDepartment
+  ): Observable<HttpResponse<any>> {
+    return this.httpClient.post<OdataResponse>(
+      `${this.baseUrl}/department`,
+      data,
+      {
+        observe: 'response',
+      }
+    );
   }
 }
