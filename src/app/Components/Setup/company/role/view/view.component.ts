@@ -11,8 +11,8 @@ import { ButtonModule } from 'primeng/button';
   templateUrl: './view.component.html',
   styleUrls: ['./view.component.css'],
   providers: [DialogService],
-  imports:[ButtonModule],
-  standalone:true
+  imports: [ButtonModule],
+  standalone: true,
 })
 export class ViewRoleComponent implements OnInit {
   constructor(

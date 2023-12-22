@@ -11,6 +11,7 @@ import { MessageService } from 'primeng/api';
 import { DeleteRoleComponent } from './delete/delete.component';
 import { TableLazyLoadEvent } from 'primeng/table';
 import { LoadingService } from 'src/app/Services/loading.service';
+import { __awaiter } from 'tslib';
 
 @Component({
   selector: 'app-role',
@@ -27,6 +28,8 @@ export class RoleComponent implements OnDestroy {
     sortOrder: 1,
     filterRequest: [],
   };
+  innerData: any;
+  dataloaded: boolean = false;
   totalRecords: number = 0;
   toBeFiltered: any[] = [];
   isLoading: boolean = false;
@@ -40,7 +43,7 @@ export class RoleComponent implements OnDestroy {
 
   addData() {
     this.ref = this.dialogService.open(AddRoleComponent, {
-      header: `Add Role`,
+      header: `Role : Add`,
       width: '100%',
       height: '100%',
       contentStyle: { overflow: 'auto' },
@@ -60,16 +63,18 @@ export class RoleComponent implements OnDestroy {
     });
   }
 
-  showData(Id: string) {
-    const displayData = this.data.find((data) => data.Id === Id);
+  async showData(Id: string) {
+    this.loadingService.show();
+    await this.viewData(Id);
+    this.loadingService.hide();
     this.ref = this.dialogService.open(ViewRoleComponent, {
-      header: `Detailed View of ${displayData.NAME}`,
-      width: '80%',
-      height: '80%',
+      header: `Branch : View - ${this.innerData.roleName} `,
+      width: '100%',
+      height: '100%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
-      maximizable: true,
-      data: displayData,
+      maximizable: false,
+      data: this.innerData,
     });
 
     // this.ref.onClose.subscribe((product: Product) => {
@@ -168,9 +173,9 @@ export class RoleComponent implements OnDestroy {
       }
     });
   }
-  async getRoleData() {
+  getRoleData() {
     this.isLoading = true;
-    await this.api.getRoleData(this.request).subscribe(
+    this.api.getRoleData(this.request).subscribe(
       (response) => {
         this.data = response.value;
         this.totalRecords = response.count;
@@ -210,7 +215,24 @@ export class RoleComponent implements OnDestroy {
     };
     this.getRoleData();
   }
-
+  async viewData(id: string): Promise<any> {
+    return new Promise((resolve) => {
+      this.api.viewRoleData(id).subscribe(
+        (response) => {
+          this.innerData = response;
+          resolve(this.innerData);
+        },
+        (error) => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: 'Internal Server Error!',
+          });
+          this.loadingService.hide();
+        }
+      );
+    });
+  }
   ngOnDestroy(): void {
     if (this.ref) {
       this.ref.close();

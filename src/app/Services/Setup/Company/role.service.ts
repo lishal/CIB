@@ -131,6 +131,9 @@ export class RoleService {
       observe: 'response',
     });
   }
+  public viewRoleData(id: string): Observable<OdataResponse> {
+    return this.httpClient.get<{ value: any[] }>(`${this.baseUrl}/role/${id}`);
+  }
   // public postRoleData(data: any): Observable<OdataResponse<Role>> {
   //   const headers = new HttpHeaders({
   //     'Content-Type': 'application/json',

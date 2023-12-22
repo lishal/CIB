@@ -1,43 +1,66 @@
-
-<div form class="relative min-h-full h-auto mb-3">
+<div class="addForm relative min-h-full h-auto mb-3">
   <div class="field grid">
-    <label
-      for="roleName"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Role Name:</label
-    >
-    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-      {{data[0]?.NAME}}
+    <label class="col-4 mb-1 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Role
+      Name: <span style="color: red">&nbsp; *</span></label>
+    <div class="input col-8 md:col-4 sm:mb-1 sm:col-8">
+      <input id="roleName" type="text" formControlName="NAME" value="{{data[0].roleName}}" disabled
+        class="readonly text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
     </div>
-    <label
-    for="systemDefined"
-    class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-    >Is System Defined:
-  </label>
-  <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-    {{data[0]?.ACTIVE}}
-  </div>
+    <label class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Mark
+      As Admin
+    </label>
+    <div class="col-8 md:col-4 sm:mb-1 sm:col-8">
+      <div class="checkBox">
+        <input type="checkbox" disabled />
+      </div>
+    </div>
   </div>
   <div class="field grid">
-    <label
-      for="description"
-      class="col-12 mb-2 md:col-3 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Description</label
-    >
-    <div class="col-12 md:col-9 sm:col-8">
-        {{data[0]?.DESCRIPTION}}
+    <label class="col-8 mb-2 md:col-2 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Description:
+      <span style="color: red">&nbsp; *</span></label>
+    <div class="col-16 md:col-10 sm:col-8">
+      <textarea id="DESCRIPTION" type="text" rows="2" formControlName="DESCRIPTION" disabled
+        class="readonly text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">{{data[0].description}}
+      </textarea>
     </div>
+  </div>
+  <div class="field grid">
+    <label class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">
+      Allow Edit
+    </label>
+    <div class="col-8 md:col-4 sm:mb-1 sm:col-8">
+      <div class="checkBox">
+        <input type="checkbox" disabled />
+      </div>
+    </div>
+    <label class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">
+      Allow Delete
+    </label>
+    <div class="col-8 md:col-4 sm:mb-1 sm:col-8">
+      <div class="checkBox">
+        <input type="checkbox" disabled />
+      </div>
+    </div>
+  </div>
+  <div class="field grid" style="margin-top: 10px;">
+    <label class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">
+      Is System Defined
+    </label>
+    <div class="col-8 md:col-4 sm:mb-1 sm:col-8">
+      <div class="checkBox">
+        <input type="checkbox" disabled />
+      </div>
+    </div>
+    <label class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">
+      IsActive
+    </label>
+    <div class="col-8 md:col-4 sm:mb-1 sm:col-8">
+      <div class="checkBox">
+        <input type="checkbox" [checked]="data[0].isActive" disabled />
+      </div>
+    </div>
+  </div>
 </div>
-</div>
-<div
-  class="btnGroup absolute z-1 flex mt-3 h-3rem bg-white justify-content-end pb-2"
-  style="bottom: 0px; width: 95%; margin-top: 3rem"
->
-  <button
-    pButton
-    type="button"
-    label="Cancel"
-    class="p-button-raised p-button-text p-button-plain"
-    (click)="onCancel()"
-  ></button>
+<div class="btnGroup absolute z-1 flex h-2rem bg-white justify-content-end">
+  <p-button label="Close" class="closeBtn" (click)="onCancel()"></p-button>
 </div>

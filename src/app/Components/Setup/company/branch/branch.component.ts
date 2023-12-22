@@ -145,62 +145,61 @@ export class BranchComponent implements OnDestroy {
     //   }
     // });
   }
-  async getClusterData() {
-    try {
-      const response = await this.api.getClusterData().toPromise();
-      this.clusterData = response;
-    } catch {
-      this.messageService.add({
-        severity: 'error',
-        summary: 'Error',
-        detail: 'Internal Server Error!',
-      });
-    }
+  async getClusterData(): Promise<any> {
+    return new Promise((resolve) => {
+      this.api.getClusterData().subscribe(
+        (response) => {
+          this.clusterData = response;
+          resolve(this.clusterData);
+        },
+        (error) => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: 'Internal Server Error!',
+          });
+        }
+      );
+    });
   }
-  async viewData(id: string) {
-    await this.api.viewData(id).subscribe(
-      (response) => {
-        this.viewDatas = response;
-      },
-      (error) => {
-        this.messageService.add({
-          severity: 'error',
-          summary: 'Error',
-          detail: 'Internal Server Error!',
-        });
-      }
-    );
+  async viewData(id: string): Promise<any> {
+    return new Promise((resolve) => {
+      this.api.viewData(id).subscribe(
+        (response) => {
+          this.viewDatas = response;
+          resolve(this.viewDatas);
+        },
+        (error) => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: 'Internal Server Error!',
+          });
+        }
+      );
+    });
   }
-  async getBranchData() {
-    this.isLoading = true;
-    await this.api.getBranchData(this.request).subscribe(
-      (response) => {
-        this.data = response.value;
-        this.totalRecords = response.count;
-        this.isLoading = false;
-      },
-      () => {
-        this.messageService.add({
-          severity: 'error',
-          summary: 'Error',
-          detail: 'Internal Server Error!',
-        });
-        this.isLoading = false;
-      }
-    );
+  async getBranchData(): Promise<any> {
+    return new Promise((resolve) => {
+      this.isLoading = true;
+      this.api.getBranchData(this.request).subscribe(
+        (response) => {
+          this.data = response.value;
+          this.totalRecords = response.count;
+          this.isLoading = false;
+          resolve(this.data);
+        },
+        () => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: 'Internal Server Error!',
+          });
+          this.isLoading = false;
+        }
+      );
+    });
   }
-
-  // getBranchData(){
-  //   setTimeout(() => {
-  //     this.isLoading=true;
-  //     this.api.getBranchData(this.request).subscribe((response)=>{
-  //       this.data=response.value;
-  //       this.totalRecords=response.count;
-  //       this.isLoading=false
-  //     });
-  //   }, 0);
-  //   console.log(this.data)
-  // }
 
   loadData($event: TableLazyLoadEvent) {
     this.request.first = $event.first || 0;
