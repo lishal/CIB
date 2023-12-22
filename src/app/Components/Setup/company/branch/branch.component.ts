@@ -125,25 +125,18 @@ export class BranchComponent implements OnDestroy {
       data: [this.viewDatas, this.clusterData],
     });
     this.loadingService.hide();
-    // this.ref.onClose.subscribe((data: any) => {
-    //   if (data === 'accepted') {
-    //     const index = this.data.findIndex(
-    //       (data) => data.dataProviderBranchId === dataProviderBranchId
-    //     );
-    //     this.data.splice(index, 1);
-    //     this.messageService.add({
-    //       severity: 'success',
-    //       summary: 'Success',
-    //       detail: 'Data deleted successfully',
-    //     });
-    //   } else if (data === 'rejected') {
-    //     this.messageService.add({
-    //       severity: 'error',
-    //       summary: 'Rejected',
-    //       detail: 'You have rejected',
-    //     });
-    //   }
-    // });
+    this.ref.onClose.subscribe((data: any) => {
+      if (data === 'accepted') {
+        this.getBranchData();
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'Data Deleted successfully!',
+        });
+      }
+      this.loadingService.hide();
+    });
+    this.loadingService.hide();
   }
   async getClusterData(): Promise<any> {
     return new Promise((resolve) => {

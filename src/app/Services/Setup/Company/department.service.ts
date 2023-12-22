@@ -157,4 +157,9 @@ export class DepartmentService {
       }
     );
   }
+  public viewDepartmentData(id: string): Observable<OdataResponse> {
+    return this.httpClient.get<{ value: any[] }>(
+      `${this.baseUrl}/department/${id}`
+    );
+  }
 }

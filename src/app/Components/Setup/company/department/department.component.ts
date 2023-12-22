@@ -30,6 +30,7 @@ export class DepartmentComponent implements OnInit, OnDestroy {
   toBeFiltered: any[] = [];
   totalRecords: number = 0;
   isLoading: boolean = false;
+  innerData: any;
   ref: DynamicDialogRef | undefined;
   constructor(
     private api: DepartmentService,
@@ -60,16 +61,18 @@ export class DepartmentComponent implements OnInit, OnDestroy {
     });
   }
 
-  showData(deptName: string) {
-    const displayData = this.data.find((data) => data.deptName === deptName);
+  async showData(id: string) {
+    this.loadingService.show();
+    await this.viewData(id);
+    this.loadingService.hide();
     this.ref = this.dialogService.open(ViewDepartmentComponent, {
-      header: `Detailed View of ${displayData.deptName}`,
+      header: `Department : View - ${this.innerData.departmentName} `,
       width: '100%',
       height: '100%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
       maximizable: false,
-      data: displayData,
+      data: this.innerData,
     });
 
     // this.ref.onClose.subscribe((product: Product) => {
@@ -193,6 +196,23 @@ export class DepartmentComponent implements OnInit, OnDestroy {
       filterRequest: this.toBeFiltered,
     };
     this.getDepartmentData();
+  }
+  async viewData(id: string): Promise<any> {
+    return new Promise((resolve) => {
+      this.api.viewDepartmentData(id).subscribe(
+        (response) => {
+          this.innerData = response;
+          resolve(this.innerData);
+        },
+        (error) => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: 'Internal Server Error!',
+          });
+        }
+      );
+    });
   }
   ngOnInit(): void {
     // this.isLoading = true;

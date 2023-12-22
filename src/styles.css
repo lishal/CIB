@@ -1066,3 +1066,9 @@
   color: var(--tableTextColor) !important;
   opacity: unset;
 }
+
+.readonly .p-calendar {
+  background-color: #E9ECEF !important;
+  color: var(--tableTextColor) !important;
+  opacity: unset !important;
+}

@@ -1,144 +1,66 @@
-<div class=" relative min-h-full h-auto mb-3">
-  <div class="field grid">
-    <label
-      for="deptName"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Dept Name: <span style="color: red">&nbsp; *</span></label
-    >
-    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-      {{data[0].deptName}}
-    </div>
+<div class="field grid">
+  <label
+    class="col-4 mb-1 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Department
+    Name </label>
+  <div class="input col-8 md:col-4 sm:mb-1 sm:col-8">
+    <input id="departmentName" type="text" value="{{data[0].departmentName}}" disabled
+      class="readonly text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
   </div>
-  <div class="field grid">
-    <label
-      for="shortName"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Short Name: <span style="color: red">&nbsp; *</span></label
-    >
-    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-      {{data[0].shortName}}
-    </div>
-    <label
-      for="parentIdentifer"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Parent Identifier:
-    </label>
-    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-      {{data[0].parentIdentifer}}
-    </div>
+  <label class="col-4 mb-1 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Short
+    Name </label>
+  <div class="input col-8 md:col-4 sm:mb-1 sm:col-8">
+    <input id="abbr" type="text" value="{{data[0].abbr}}" disabled
+      class="readonly text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
   </div>
-  <div class="field grid">
-    <label
-      for="deptAddress"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Dept Address: <span style="color: red">&nbsp; *</span></label
-    >
-    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-      {{data[0].deptAddress}}
-    </div>
-    <label
-      for="phoneNo"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end font-bold sm:col-4"
-      >Phone No <span style="color: red">&nbsp; *</span>
-    </label>
-    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-      {{data[0].phoneNo}}
-    </div>
-  </div>
-  <div class="field grid">
-    <label
-      for="p-segHead"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Primary Seg-Head:
-    </label>
-    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-      {{data[0].psegHead}}
-    </div>
-    <label
-      for="s-segHead"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Secondary Seg-Head:
-    </label>
-    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-      {{data[0].ssegHead}}
-    </div>
-  </div>
-  <div class="field grid">
-    <label
-      for="faxno"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end font-bold sm:col-4"
-      >Fax Number:
-    </label>
-    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-      {{data[0].faxno}}
-    </div>
-    <label
-      for="establishedDate"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end font-bold sm:col-4"
-      >Date Of Established:<span style="color: red">&nbsp; *</span>
-    </label>
-    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-      {{data[0].establishedDate}}
-    </div>
-  </div>
-  <div class="field grid">
-    <label
-      for="depemail"
-      class="col-12 mb-2 md:col-3 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Email Address <span style="color: red">&nbsp; *</span></label
-    >
-    <div class="col-12 md:col-9 sm:col-8">
-      {{data[0].depemail}}
-    </div>
-  </div>
-  <div class="field grid">
-    <label
-      for="emailtopsh"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Email To PSH: <span style="color: red">&nbsp; *</span>
-    </label>
-    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-      {{data[0].emailtopsh}}
-    </div>
-    <label
-      for="emailtossh"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Email To SSH: <span style="color: red">&nbsp; *</span>
-    </label>
-    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-      {{data[0].emailtossh}}
-    </div>
-  </div>
-  <div class="field grid">
-    <label
-      for="deptfun"
-      class="col-12 mb-2 md:col-3 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >Dept Function <span style="color: red">&nbsp; *</span></label
-    >
-    <div class="col-12 md:col-9 sm:col-8">
-      {{data[0].deptfun}}
-    </div>
-  </div>
-  <div class="field grid">
-    <label
-      for="isActive"
-      class="col-6 mb-3 md:col-3 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4"
-      >isActive: <span style="color: red">&nbsp; *</span>
-    </label>
-    <div class="col-6 md:col-3 sm:mb-1 sm:col-8">
-      {{data[0].isActive}}
-    </div>
-    </div>
 </div>
-<div
-  class="btnGroup absolute z-1 flex mt-3 h-3rem bg-white justify-content-end pb-2"
-  style="bottom: 0px; width: 95%; margin-top: 3rem"
->
-  <button
-    pButton
-    type="button"
-    label="Cancel"
-    class="p-button-raised p-button-text p-button-plain"
-    (click)="onCancel()"
-  ></button>
+<div class="field grid">
+  <label class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Phone
+    No
+  </label>
+  <div class="input col-8 md:col-4 sm:mb-1 sm:col-8">
+    <input id="phoneNo" type="text" value="{{data[0].phoneNo}}" disabled
+      class="readonly text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
+  </div>
+  <label class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Email
+  </label>
+  <div class="input col-8 md:col-4 sm:mb-1 sm:col-8">
+    <input id="emailId" type="email" value="{{data[0].emailId}}" disabled
+      class="readonly text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
+  </div>
+</div>
+<div class="field grid">
+  <label class="col-8 mb-2 md:col-2 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Full Address
+  </label>
+  <div class="col-16 md:col-10 sm:col-8">
+    <textarea id="departmentAddress" type="text" rows="2" disabled
+      class="readonly text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">{{data[0].departmentAddress}}
+    </textarea>
+  </div>
+</div>
+<div class="field grid">
+  <label class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Fax
+    No
+  </label>
+  <div class="input col-8 md:col-4 sm:mb-1 sm:col-8">
+    <input id="faxNo" type="text" value="{{data[0].faxNo}}" disabled
+      class="readonly text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
+  </div>
+  <label class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">DOE
+  </label>
+  <div class="input col-8 md:col-4 sm:mb-1 sm:col-8">
+    <p-calendar [(ngModel)]="doe" class="readonly" [disabled]="true"></p-calendar>
+  </div>
+</div>
+<div class="field grid" style="margin-top: 5px;">
+  <label
+    class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">isActive:
+  </label>
+  <div class="col-8 md:col-4 sm:mb-1 sm:col-8">
+    <div class="checkBox">
+      <input type="checkbox" [checked]="data[0].isActive" disabled />
+    </div>
+  </div>
+</div>
+<div class="btnGroup absolute z-1 flex h-2rem bg-white justify-content-end">
+  <p-button label="Close" class="closeBtn" (click)="onCancel()"></p-button>
 </div>
