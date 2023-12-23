@@ -15,7 +15,7 @@ import { BackupComponent } from './backup/backup.component';
 import { CompanyDetailComponent } from './company-detail/company-detail.component';
 import { CompanyComponent } from './company.component';
 import { CustomFilterComponent } from '../../custom-filter/custom-filter.component';
-
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,8 @@ import { CustomFilterComponent } from '../../custom-filter/custom-filter.compone
     BackupComponent,
     CompanyDetailComponent,
     CompanyComponent,
-    CustomFilterComponent
+    CustomFilterComponent,
+    UserComponent,
   ],
   imports: [
     CommonModule,
@@ -36,10 +37,8 @@ import { CustomFilterComponent } from '../../custom-filter/custom-filter.compone
     OverlayPanelModule,
     ToastModule,
     TabMenuModule,
-    InputTextModule
+    InputTextModule,
   ],
-  exports:[
-    
-  ]
+  exports: [],
 })
-export class CompanyModule { }
+export class CompanyModule {}

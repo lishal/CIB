@@ -1,0 +1,136 @@
+<p-toast></p-toast>
+<div class="btnGroup-topbar">
+    <p-overlayPanel #printDrop [styleClass]="'export'">
+        <ng-template pTemplate="content">
+            <p class="exportButton">Html</p>
+            <p class="exportButton">Pdf</p>
+            <p class="exportButton">Excel</p>
+        </ng-template>
+    </p-overlayPanel>
+    <p-button (click)="printDrop.toggle($event)" class="printDropdown">
+        <ng-template pTemplate="content">
+            <ng-container>
+                <i class="fa-solid fa-print" style="margin-left: -5px;"></i>
+                <i class="fa-solid fa-angle-down" style="margin-left: 5px;"></i>
+            </ng-container>
+        </ng-template>
+    </p-button>
+    <p-button icon="fa-solid fa-circle-plus"></p-button>
+</div>
+<div class="card mt-1">
+    <p-table #search [value]="data" loadingIcon="fa-solid fa-spinner fa-spin-pulse" [loading]="isLoading" [rows]="10"
+        [showCurrentPageReport]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [rowsPerPageOptions]="[5, 10, 25, 50]" [paginator]="true" [customSort]="true"
+        [tableStyle]="{ 'min-width': '68rem'}" styleClass="p-datatable-gridlines" [lazy]="true"
+        (onLazyLoad)="loadData($event)" [totalRecords]="totalRecords" (sortFunction)="loadData($event)">
+        <ng-template pTemplate="header">
+            <tr style="white-space: nowrap;">
+                <th style="width: 30px;"></th>
+                <th pSortableColumn="LOGIN_ID" style="width: 100px;">
+                    LOGIN <p-sortIcon field="LOGIN_ID"></p-sortIcon></th>
+                <th pSortableColumn="FULL_NAME" style="width: 250px;">Fullname<p-sortIcon
+                        field="FULL_NAME"></p-sortIcon></th>
+                <th pSortableColumn="ROLE_NAME" style="width: 120px;">role <p-sortIcon field="ROLE_NAME"></p-sortIcon>
+                </th>
+                <th pSortableColumn="BRANCH_NAME" style="width: 120px;">
+                    branch <p-sortIcon field="BRANCH_NAME"></p-sortIcon>
+                </th>
+                <th pSortableColumn="ALLOW_CLUSTER_BRANCH" style="width: 80px">aclus <p-sortIcon
+                        field="ALLOW_CLUSTER_BRANCH"></p-sortIcon></th>
+                <th pSortableColumn="ALLOW_PROVINCE_BRANCH" style="width: 80px">aprov <p-sortIcon
+                        field="ALLOW_PROVINCE_BRANCH"></p-sortIcon></th>
+                <th pSortableColumn="ACCESS_BY_BRANCH" style="width: 80px">adist <p-sortIcon
+                        field="ACCESS_BY_BRANCH"></p-sortIcon></th>
+                <th pSortableColumn="EMAIL" style="width: auto">email <p-sortIcon field="EMAIL"></p-sortIcon></th>
+                <th pSortableColumn="MOBILE" style="width: 80px">mobile <p-sortIcon field="MOBILE"></p-sortIcon></th>
+                <th pSortableColumn="ACTIVE" style="width: 80px">active <p-sortIcon field="ACTIVE"></p-sortIcon></th>
+
+            </tr>
+            <tr class="filterSection">
+                <td></td>
+                <td>
+                    <app-custom-filter fieldName="LOGIN_ID" fieldType="str"
+                        (data)="filter($event,'LOGIN_ID')"></app-custom-filter>
+                </td>
+                <td>
+                    <app-custom-filter fieldName="FULL_NAME" fieldType="str"
+                        (data)="filter($event,'FULL_NAME')"></app-custom-filter>
+                </td>
+                <td>
+                    <app-custom-filter fieldName="ROLE_NAME" fieldType="str"
+                        (data)="filter($event,'ROLE_NAME')"></app-custom-filter>
+                </td>
+                <td>
+                    <app-custom-filter fieldName="BRANCH_NAME" fieldType="str"
+                        (data)="filter($event,'BRANCH_NAME')"></app-custom-filter>
+                </td>
+                <td>
+                    <app-custom-filter fieldName="ALLOW_CLUSTER_BRANCH" fieldType="bool"
+                        (data)="filter($event,'ALLOW_CLUSTER_BRANCH')"></app-custom-filter>
+                </td>
+                <td>
+                    <app-custom-filter fieldName="ALLOW_PROVINCE_BRANCH" fieldType="bool"
+                        (data)="filter($event,'ALLOW_PROVINCE_BRANCH')"></app-custom-filter>
+                </td>
+                <td>
+                    <app-custom-filter fieldName="ACCESS_BY_BRANCH" fieldType="bool"
+                        (data)="filter($event,'ACCESS_BY_BRANCH')"></app-custom-filter>
+                </td>
+                <td>
+                    <app-custom-filter fieldName="EMAIL" fieldType="str"
+                        (data)="filter($event,'EMAIL')"></app-custom-filter>
+                </td>
+                <td>
+                    <app-custom-filter fieldName="MOBILE" fieldType="str"
+                        (data)="filter($event,'MOBILE')"></app-custom-filter>
+                </td>
+                <td>
+                    <app-custom-filter fieldName="ACTIVE" fieldType="bool"
+                        (data)="filter($event,'ACTIVE')"></app-custom-filter>
+                </td>
+            </tr>
+
+        </ng-template>
+        <ng-template pTemplate="body" let-data>
+            <tr>
+                <td class="actionMenu flex justify-content-center align-items-center">
+                    <p-overlayPanel #setting [styleClass]="'actionOverlay'">
+                        <ng-template pTemplate="content">
+                            <!-- <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center"
+                                (click)="showData(data.Id)">
+                                <i class="fa-solid fa-file mr-2"></i> View
+                            </div>
+                            <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center"
+                                (click)="editData(data.Id)">
+                                <i class="fa-solid fa-pen-to-square mr-2"></i> Edit
+                            </div>
+                            <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center"
+                                (click)="deleteData(data.Id)">
+                                <i class="fa-solid  fa-trash mr-2"></i> Delete
+                            </div> -->
+                        </ng-template>
+                    </p-overlayPanel>
+                    <div pRipple class="action w-2rem flex justify-content-center align-items-center"
+                        (click)="setting.toggle($event)">
+                        <i class="fa-solid fa-gear"></i>
+                    </div>
+                </td>
+                <td style="padding: 5px;">{{ data?.LOGIN_ID }}</td>
+                <td style="padding: 5px;">{{ data?.FULL_NAME }}</td>
+                <td style="padding: 5px;">{{ data?.ROLE_NAME }} </td>
+                <td style="padding: 5px;">{{ data?.BRANCH_NAME }}</td>
+                <td style="padding: 5px;">{{ data?.ALLOW_CLUSTER_BRANCH }}</td>
+                <td style="padding: 5px;">{{ data?.ALLOW_PROVINCE_BRANCH }}</td>
+                <td style="padding: 5px;">{{ data?.ACCESS_BY_BRANCH }}</td>
+                <td style="padding: 5px;">{{ data?.EMAIL }}</td>
+                <td style="padding: 5px;">{{ data?.MOBILE }}</td>
+                <td style="padding: 5px;">{{ data?.ACTIVE }}</td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="11" style="text-align: center">Sorry! No record found</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

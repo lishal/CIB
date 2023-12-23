@@ -3,11 +3,11 @@ import {
   BranchService,
   request,
 } from '../../../../Services/Setup/Company/branch.service';
-import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { EditBranchComponent } from './edit/edit.component';
 import { ViewBranchComponent } from './view/view.component';
 import { DeleteBranchComponent } from './delete/delete.component';
 import { AddBranchComponent } from './add/add.component';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { MessageService } from 'primeng/api';
 import { OverlayPanel } from 'primeng/overlaypanel';
 import * as FileSaver from 'file-saver';
@@ -30,8 +30,8 @@ export class BranchComponent implements OnDestroy {
     filterRequest: [],
   };
   toBeFiltered: any[] = [];
-  loadAddData: boolean = false;
   totalRecords: number = 0;
+  loadAddData: boolean = false;
   clusterData: any;
   viewDatas: any;
   editDatas: any;

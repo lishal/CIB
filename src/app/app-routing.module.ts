@@ -50,6 +50,7 @@ import { PermissionByRoleComponent } from './Components/Setup/security/permissio
 import { PermissionByEmployeeComponent } from './Components/Setup/security/permission-by-employee/permission-by-employee.component';
 import { AdPoolComponent } from './Components/Setup/ad-management/ad-pool/ad-pool.component';
 import { MapUserComponent } from './Components/Setup/ad-management/map-user/map-user.component';
+import { UserComponent } from './Components/Setup/company/user/user.component';
 
 const routes: Routes = [
   {
@@ -87,6 +88,10 @@ const routes: Routes = [
           {
             path: 'backup',
             component: BackupComponent,
+          },
+          {
+            path: 'user',
+            component: UserComponent,
           },
         ],
       },

@@ -14,11 +14,12 @@ export class CompanyComponent implements OnInit {
   ngOnInit() {
     this.items = [
       { label: 'Company', routerLink: 'companyDetail' },
-      { label: 'Province', routerLink: 'province' },
+      // { label: 'Province', routerLink: 'province' },
       { label: 'Branch', routerLink: 'branch' },
       { label: 'Department', routerLink: 'department' },
       { label: 'Role', routerLink: 'role' },
-      { label: 'Backup', routerLink: 'backup' },
+      // { label: 'Backup', routerLink: 'backup' },
+      { label: 'User', routerLink: 'user' },
     ];
   }
 }

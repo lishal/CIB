@@ -1,9 +1,9 @@
-import { Injectable, Inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Inject, Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { CIB_BASE_URL } from 'src/app/app-config.module';
-import { HttpClient, HttpResponse } from '@angular/common/http';
 
-export interface roleRequest {
+export interface userRequest {
   first: number;
   rows: number;
   sortField: string | string[];
@@ -11,31 +11,16 @@ export interface roleRequest {
   filterRequest: any[];
 }
 
-export interface OdataResponse {
-  value: any[];
-}
-
-export interface postRole {
-  createdOn: string;
-  updatedOn: string;
-  createdBy: string;
-  updatedBy: string;
-  roleName: string;
-  description: string;
-  isActive: true;
-}
-
 @Injectable({
   providedIn: 'root',
 })
-export class RoleService {
+export class UserService {
   constructor(
     private httpClient: HttpClient,
     @Inject(CIB_BASE_URL) private baseUrl: string
   ) {}
-
-  getRoleData(
-    request: roleRequest
+  getUserData(
+    request: userRequest
   ): Observable<{ count: number; value: any[] }> {
     const { first, rows, sortField, sortOrder, filterRequest } = request;
     let urlParams = `&skip=${first}&top=${rows}`;
@@ -133,7 +118,7 @@ export class RoleService {
           break;
       }
     });
-    const apiUrl = `${this.baseUrl}/role/GetAll/?$count=true${urlParams}`;
+    const apiUrl = `${this.baseUrl}/user/GetAll/?$count=true${urlParams}`;
     return this.httpClient
       .get<{ '@odata.count': number; value: any[] }>(apiUrl)
       .pipe(
@@ -141,29 +126,5 @@ export class RoleService {
           return { count: response['@odata.count'], value: response.value };
         })
       );
-  }
-  public postRoleData(data: postRole): Observable<HttpResponse<any>> {
-    return this.httpClient.post<OdataResponse>(`${this.baseUrl}/role`, data, {
-      observe: 'response',
-    });
-  }
-  public viewRoleData(id: string): Observable<OdataResponse> {
-    return this.httpClient.get<{ value: any[] }>(`${this.baseUrl}/role/${id}`);
-  }
-  public deleteRoleData(id: string): Observable<HttpResponse<any>> {
-    return this.httpClient.delete<{ value: any[] }>(
-      `${this.baseUrl}/role/${id}`,
-      { observe: 'response' }
-    );
-  }
-  public editRoleData(
-    data: postRole,
-    id: String
-  ): Observable<HttpResponse<any>> {
-    return this.httpClient.post<OdataResponse>(
-      `${this.baseUrl}/role/${id}`,
-      data,
-      { observe: 'response' }
-    );
   }
 }
