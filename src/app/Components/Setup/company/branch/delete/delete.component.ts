@@ -66,9 +66,9 @@ export class DeleteBranchComponent implements OnInit {
         this.loadingService.show();
         this.deleteData(this.data[0].id);
       },
-      reject: () => {
-        this.ref.close('rejected');
-      },
+      // reject: () => {
+      //   this.ref.close('rejected');
+      // },
     });
   }
 
@@ -76,7 +76,7 @@ export class DeleteBranchComponent implements OnInit {
     this.api.deleteData(id).subscribe(
       (response) => {
         if (response.status === 200) {
-          this.ref.close();
+          this.ref.close('accepted');
         } else {
           this.handleError('Failed to delete data!');
         }

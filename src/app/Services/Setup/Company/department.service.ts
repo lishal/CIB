@@ -162,4 +162,20 @@ export class DepartmentService {
       `${this.baseUrl}/department/${id}`
     );
   }
+  public deleteDepartmentData(id: string): Observable<HttpResponse<any>> {
+    return this.httpClient.delete<{ value: any[] }>(
+      `${this.baseUrl}/department/${id}`,
+      { observe: 'response' }
+    );
+  }
+  public editDepartmentData(
+    data: postDepartment,
+    id: String
+  ): Observable<HttpResponse<any>> {
+    return this.httpClient.post<OdataResponse>(
+      `${this.baseUrl}/department/${id}`,
+      data,
+      { observe: 'response' }
+    );
+  }
 }

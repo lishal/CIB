@@ -5,19 +5,22 @@ import {
   FormGroup,
   FormBuilder,
   Validators,
-  NG_VALUE_ACCESSOR,
 } from '@angular/forms';
 import {
   DynamicDialogRef,
   DialogService,
   DynamicDialogConfig,
 } from 'primeng/dynamicdialog';
-import { SelectButtonModule } from 'primeng/selectbutton';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { CommonModule } from '@angular/common';
-import { DropdownModule } from 'primeng/dropdown';
 import { CalendarModule } from 'primeng/calendar';
+import { LoadingService } from 'src/app/Services/loading.service';
+import { CustomLoadingModule } from 'src/app/Components/custom-loading/custom-loading.module';
+import {
+  DepartmentService,
+  postDepartment,
+} from 'src/app/Services/Setup/Company/department.service';
 
 interface parentIdentifer {
   name: String;
@@ -30,11 +33,10 @@ interface parentIdentifer {
   imports: [
     ButtonModule,
     ReactiveFormsModule,
-    SelectButtonModule,
     ToastModule,
     CommonModule,
-    DropdownModule,
     CalendarModule,
+    CustomLoadingModule,
   ],
   providers: [MessageService, DialogService],
   standalone: true,
@@ -42,63 +44,86 @@ interface parentIdentifer {
 export class EditDepartmentComponent implements OnInit {
   myForm!: FormGroup;
   data: any[] = [];
-  stateOptions: any[] = [
-    { label: 'False', value: false },
-    { label: 'True', value: true },
-  ];
   updated: boolean = false;
-
-  //parentIdentifer List
-  parentIdentiferList: parentIdentifer[] = [];
-  parentIdentifer: string | undefined;
-
+  serverForm: postDepartment = {
+    createdOn: '',
+    updatedOn: new Date().toISOString(),
+    createdBy: '',
+    updatedBy: 'Lishal',
+    departmentName: '',
+    departmentAddress: '',
+    doe: '',
+    faxNo: '',
+    phoneNo: '',
+    emailId: '',
+    abbr: '',
+    isActive: true,
+  };
   constructor(
     private fb: FormBuilder,
     public ref: DynamicDialogRef,
     private messageService: MessageService,
-    private dialogService: DynamicDialogConfig
+    private dialogService: DynamicDialogConfig,
+    public loadingService: LoadingService,
+    private api: DepartmentService
   ) {}
 
   ngOnInit(): void {
     this.data = [this.dialogService.data];
     this.myForm = this.fb.group({
-      deptName: [this.data[0].deptName, Validators.required],
-      shortName: [this.data[0].shortName, Validators.required],
-      parentIdentifer: [this.data[0].parentIdentifer],
-      deptAddress: [this.data[0].deptAddress, Validators.required],
-      phoneNo: [
-        this.data[0].phoneNo,
-        [Validators.pattern('^[0-9]{10}$'), Validators.required],
-      ],
-      psegHead: [this.data[0].psegHead],
-      ssegHead: [this.data[0].ssegHead],
-      faxno: [this.data[0].faxno],
-      establishedDate: [this.data[0].establishedDate, Validators.required],
-      depemail: [
-        this.data[0].depemail,
+      departmentName: [this.data[0].departmentName, Validators.required],
+      abbr: [this.data[0].abbr, Validators.required],
+      departmentAddress: [this.data[0].departmentAddress, Validators.required],
+      phoneNo: [this.data[0].phoneNo, Validators.pattern(/^[+]?\d{0,19}$/)],
+      emailId: [
+        this.data[0].emailId,
         [
           Validators.required,
           Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}'),
         ],
       ],
-      emailtopsh: [this.data[0].emailtopsh, Validators.required],
-      emailtossh: [this.data[0].emailtossh, Validators.required],
-      isActive: [this.data[0].isActive, Validators.required],
-      deptfun: [this.data[0].deptfun, Validators.required],
+      faxNo: [this.data[0].faxNo],
+      doe: [new Date(this.data[0].doe), Validators.required],
+      isActive: [this.data[0].isActive],
     });
   }
   onSubmit() {
     if (this.myForm.valid) {
-      const formValues = this.myForm.value;
-      this.updated = true;
-      this.ref.close([formValues, this.updated]);
+      this.serverForm.departmentName = this.myForm.value.departmentName;
+      this.serverForm.abbr = this.myForm.value.abbr;
+      this.serverForm.departmentAddress = this.myForm.value.departmentAddress;
+      this.serverForm.phoneNo = this.myForm.value.phoneNo;
+      this.serverForm.emailId = this.myForm.value.emailId;
+      this.serverForm.faxNo = this.myForm.value.faxNo;
+      this.serverForm.doe = this.myForm.value.doe.toISOString();
+      this.serverForm.isActive = this.myForm.value.isActive;
+      this.serverForm.createdOn = this.myForm.value.createdOn;
+      this.serverForm.createdBy = this.myForm.value.createdBy;
+      this.loadingService.show();
+      this.api.editDepartmentData(this.serverForm, this.data[0].id).subscribe(
+        (response) => {
+          if (response.status === 200) {
+            this.updated = true;
+            this.ref.close(this.updated);
+          } else {
+            this.handleError('Failed to add data!');
+          }
+        },
+        (error) => {
+          this.handleError('Server error occurred!');
+        }
+      );
     } else {
-      this.messageService.add({
-        severity: 'error',
-        summary: 'Error',
-        detail: 'Please check all the fields',
-      });
+      this.handleError('Please check all the fields!');
     }
+  }
+  private handleError(errorMessage: string) {
+    this.loadingService.hide();
+    this.messageService.add({
+      severity: 'error',
+      summary: 'Internal Server Error',
+      detail: errorMessage,
+    });
   }
   onCancel() {
     this.ref.close();

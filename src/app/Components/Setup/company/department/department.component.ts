@@ -83,74 +83,57 @@ export class DepartmentComponent implements OnInit, OnDestroy {
 
     // });
   }
-  editData(deptName: string) {
-    const editData = this.data.find((data) => data.deptName === deptName);
+  async editData(id: string) {
+    this.loadingService.show();
+    await this.viewData(id);
+    this.loadingService.hide();
     this.ref = this.dialogService.open(EditDepartmentComponent, {
-      header: `Edit department for ${deptName}`,
+      header: `Department : View - ${this.innerData.departmentName}`,
       width: '100%',
       height: '100%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
       maximizable: false,
-      data: editData,
-    });
-    this.ref.onClose.subscribe((datas: any) => {
-      if (datas !== undefined) {
-        if (datas[1] === true) {
-          const index = this.data.findIndex(
-            (data) => data.deptName === deptName
-          );
-          this.data[index].deptName = datas[0].deptName;
-          this.data[index].shortName = datas[0].shortName;
-          this.data[index].parentIdentifer = datas[0].parentIdentifer;
-          this.data[index].deptAddress = datas[0].deptAddress;
-          this.data[index].phoneNo = datas[0].phoneNo;
-          this.data[index].psegHead = datas[0].psegHead;
-          this.data[index].ssegHead = datas[0].ssegHead;
-          this.data[index].faxno = datas[0].faxno;
-          this.data[index].establishedDate = datas[0].establishedDate;
-          this.data[index].depemail = datas[0].depemail;
-          this.data[index].emailtopsh = datas[0].emailtopsh;
-          this.data[index].emailtossh = datas[0].emailtossh;
-          this.data[index].deptfun = datas[0].deptfun;
-          this.data[index].isActive = datas[0].isActive;
-          this.messageService.add({
-            severity: 'success',
-            summary: 'Success',
-            detail: 'Data updated successfully',
-          });
-        }
-      }
-    });
-  }
-  deleteData(deptName: string) {
-    const deleteData = this.data.find((data) => data.deptName === deptName);
-    this.ref = this.dialogService.open(DeleteDepartmentComponent, {
-      header: `Delete Branch for ${deptName} id`,
-      width: '100%',
-      height: '100%',
-      contentStyle: { overflow: 'auto' },
-      baseZIndex: 10000,
-      maximizable: false,
-      data: deleteData,
+      data: this.innerData,
     });
     this.ref.onClose.subscribe((data: any) => {
-      if (data === 'accepted') {
-        const index = this.data.findIndex((data) => data.deptName === deptName);
-        this.data.splice(index, 1);
+      if (data === true) {
+        this.getDepartmentData();
         this.messageService.add({
           severity: 'success',
           summary: 'Success',
-          detail: 'Data deleted successfully',
-        });
-      } else if (data === 'rejected') {
-        this.messageService.add({
-          severity: 'error',
-          summary: 'Rejected',
-          detail: 'You have rejected',
+          detail: 'Data updated successfully!',
         });
       }
+      this.loadingService.hide();
     });
+    this.loadingService.hide();
+  }
+  async deleteData(id: string) {
+    this.loadingService.show();
+    await this.viewData(id);
+    this.loadingService.hide();
+    this.ref = this.dialogService.open(DeleteDepartmentComponent, {
+      header: `Department : Delete - ${this.innerData.departmentName} `,
+      width: '100%',
+      height: '100%',
+      contentStyle: { overflow: 'auto' },
+      baseZIndex: 10000,
+      maximizable: false,
+      data: this.innerData,
+    });
+    this.ref.onClose.subscribe((data: any) => {
+      if (data === 'accepted') {
+        this.getDepartmentData();
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'Data Deleted successfully!',
+        });
+      }
+      this.loadingService.hide();
+    });
+    this.loadingService.hide();
   }
   async getDepartmentData(): Promise<any> {
     return new Promise((resolve) => {
