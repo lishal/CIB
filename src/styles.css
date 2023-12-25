@@ -598,6 +598,10 @@
   background-color: var(--cyanOnHover);
 }
 
+.filterList button:hover {
+  background-color: var(--dropdownHover);
+}
+
 /* .filterSection .filterItems .filterIcon .fa-solid{
   font-size: 12px;
 } */
