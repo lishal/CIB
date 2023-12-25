@@ -8,6 +8,8 @@ import { LoadingService } from 'src/app/Services/loading.service';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { MessageService } from 'primeng/api';
 import * as FileSaver from 'file-saver';
+import { AddUserComponent } from './add/add.component';
+import { EditUserComponent } from './edit/edit.component';
 
 @Component({
   selector: 'app-user',
@@ -26,14 +28,163 @@ export class UserComponent {
   };
   toBeFiltered: any[] = [];
   totalRecords: number = 0;
-  isLoading: boolean = true;
+  isLoading: boolean = false;
   ref: DynamicDialogRef | undefined;
+  branchData: { id: number; name: string }[] = [];
+  departmentData: { id: number; name: string }[] = [];
+  roleData: { id: number; name: string }[] = [];
+  innerdata: any;
   constructor(
     private api: UserService,
     public dialogService: DialogService,
     private messageService: MessageService,
     public loadingService: LoadingService
   ) {}
+
+  async addData() {
+    this.loadingService.show();
+    await this.getBranchData();
+    await this.getDepartmentData();
+    await this.getRoleData();
+    this.loadingService.hide();
+    this.ref = this.dialogService.open(AddUserComponent, {
+      header: 'User : Add',
+      width: '100%',
+      height: '100%',
+      contentStyle: { overflow: 'auto' },
+      baseZIndex: 10000,
+      maximizable: false,
+      data: [this.branchData, this.departmentData, this.roleData],
+    });
+    this.ref.onClose.subscribe((data: any) => {
+      this.loadingService.hide();
+      if (data === true) {
+        this.getRoleData();
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'Data added successfully!',
+        });
+      }
+    });
+  }
+  async editData(id: string) {
+    this.loadingService.show();
+    await this.individualData(id);
+    await this.getBranchData();
+    await this.getDepartmentData();
+    await this.getRoleData();
+    this.loadingService.hide();
+    this.ref = this.dialogService.open(EditUserComponent, {
+      header: `User : Edit - ${this.innerdata.fullName} `,
+      width: '100%',
+      height: '100%',
+      contentStyle: { overflow: 'auto' },
+      baseZIndex: 10000,
+      maximizable: false,
+      data: [
+        this.branchData,
+        this.departmentData,
+        this.roleData,
+        this.innerdata,
+      ],
+    });
+    this.ref.onClose.subscribe((data: any) => {
+      if (data === true) {
+        this.getBranchData();
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'Data updated successfully!',
+        });
+      }
+      this.loadingService.hide();
+    });
+    this.loadingService.hide();
+  }
+  async individualData(id: string): Promise<any> {
+    return new Promise((resolve) => {
+      this.api.viewUserData(id).subscribe(
+        (response) => {
+          this.innerdata = response;
+          resolve(this.innerdata);
+        },
+        (error) => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: 'Internal Server Error!',
+          });
+        }
+      );
+    });
+  }
+  async getBranchData(): Promise<any> {
+    return new Promise((resolve) => {
+      this.api.getUserBranchData().subscribe(
+        (response) => {
+          response.value.map((item) => {
+            this.branchData.push({
+              id: item.Id,
+              name: item.NAME,
+            });
+          });
+          resolve(this.branchData);
+        },
+        () => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: 'Internal Server Error!',
+          });
+        }
+      );
+    });
+  }
+  async getDepartmentData(): Promise<any> {
+    return new Promise((resolve) => {
+      this.api.getUserDepartmentData().subscribe(
+        (response) => {
+          response.value.map((item) => {
+            this.departmentData.push({
+              id: item.Id,
+              name: item.NAME,
+            });
+          });
+          resolve(this.departmentData);
+        },
+        () => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: 'Internal Server Error!',
+          });
+        }
+      );
+    });
+  }
+  async getRoleData(): Promise<any> {
+    return new Promise((resolve) => {
+      this.api.getUserRoleData().subscribe(
+        (response) => {
+          response.value.map((item) => {
+            this.roleData.push({
+              id: item.Id,
+              name: item.NAME,
+            });
+          });
+          resolve(this.roleData);
+        },
+        () => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: 'Internal Server Error!',
+          });
+        }
+      );
+    });
+  }
 
   async getUserData(): Promise<any> {
     return new Promise((resolve) => {

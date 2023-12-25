@@ -15,7 +15,7 @@
             </ng-container>
         </ng-template>
     </p-button>
-    <p-button icon="fa-solid fa-circle-plus"></p-button>
+    <p-button icon="fa-solid fa-circle-plus" (click)="addData()"></p-button>
 </div>
 <div class="card mt-1">
     <p-table #search [value]="data" loadingIcon="fa-solid fa-spinner fa-spin-pulse" [loading]="isLoading" [rows]="10"
@@ -99,12 +99,12 @@
                             <!-- <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center"
                                 (click)="showData(data.Id)">
                                 <i class="fa-solid fa-file mr-2"></i> View
-                            </div>
+                            </div> -->
                             <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center"
                                 (click)="editData(data.Id)">
                                 <i class="fa-solid fa-pen-to-square mr-2"></i> Edit
                             </div>
-                            <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center"
+                            <!-- <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center"
                                 (click)="deleteData(data.Id)">
                                 <i class="fa-solid  fa-trash mr-2"></i> Delete
                             </div> -->

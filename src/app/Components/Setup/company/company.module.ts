@@ -16,7 +16,6 @@ import { CompanyDetailComponent } from './company-detail/company-detail.componen
 import { CompanyComponent } from './company.component';
 import { CustomFilterComponent } from '../../custom-filter/custom-filter.component';
 import { UserComponent } from './user/user.component';
-
 @NgModule({
   declarations: [
     BranchComponent,

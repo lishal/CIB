@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { CIB_BASE_URL } from 'src/app/app-config.module';
@@ -9,6 +9,31 @@ export interface userRequest {
   sortField: string | string[];
   sortOrder: number;
   filterRequest: any[];
+}
+export interface OdataResponse {
+  value: any[];
+}
+export interface postUser {
+  createdOn: string;
+  updatedOn: string;
+  createdBy: string;
+  updatedBy: string;
+  loginId: string;
+  staffCode: string;
+  fullName: string;
+  emailId: string;
+  idhrrole: string;
+  idbranch: string;
+  idhrdepartment: string;
+  accessByBranch: boolean;
+  isNewlyAdded: boolean;
+  mobileNo: string;
+  enableChangeType: boolean;
+  allowClusterBranch: boolean;
+  allowProvinceBranch: boolean;
+  passwordExpiryPeriod: Number;
+  isActive: boolean;
+  password: string;
 }
 
 @Injectable({
@@ -126,5 +151,34 @@ export class UserService {
           return { count: response['@odata.count'], value: response.value };
         })
       );
+  }
+  public getUserBranchData(): Observable<OdataResponse> {
+    return this.httpClient.get<OdataResponse>(`${this.baseUrl}/branch/GetAll`);
+  }
+  public getUserDepartmentData(): Observable<OdataResponse> {
+    return this.httpClient.get<OdataResponse>(
+      `${this.baseUrl}/department/GetAll`
+    );
+  }
+  public getUserRoleData(): Observable<OdataResponse> {
+    return this.httpClient.get<OdataResponse>(`${this.baseUrl}/role/GetAll`);
+  }
+  public postUserData(data: postUser): Observable<HttpResponse<any>> {
+    return this.httpClient.post<OdataResponse>(`${this.baseUrl}/user`, data, {
+      observe: 'response',
+    });
+  }
+  public editUserData(
+    data: postUser,
+    id: String
+  ): Observable<HttpResponse<any>> {
+    return this.httpClient.post<OdataResponse>(
+      `${this.baseUrl}/user/${id}`,
+      data,
+      { observe: 'response' }
+    );
+  }
+  public viewUserData(id: string): Observable<OdataResponse> {
+    return this.httpClient.get<{ value: any[] }>(`${this.baseUrl}/user/${id}`);
   }
 }

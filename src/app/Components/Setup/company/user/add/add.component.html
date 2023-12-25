@@ -1,0 +1,179 @@
+<p-toast></p-toast>
+<app-custom-loading *ngIf="(loadingService.isLoading$ | async)"></app-custom-loading>
+<form [formGroup]="myForm" class="addForm relative min-h-full h-auto mb-3">
+    <div class="field grid">
+        <label class="col-4 mb-1 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">
+            Login Identifier <span style="color: red">&nbsp; *</span></label>
+        <div class="input col-8 md:col-4 sm:mb-1 sm:col-8">
+            <input id="loginIdentifier" type="text" formControlName="loginId" [ngClass]="{
+                'invalid-input':
+                  myForm.get('loginId')?.invalid &&
+                  myForm.get('loginId')?.touched
+              }"
+                class="h-full text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
+        </div>
+    </div>
+    <div class="field grid">
+        <label
+            class="col-4 mb-1 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Full
+            Name <span style="color: red">&nbsp; *</span></label>
+        <div class="input col-8 md:col-4 sm:mb-1 sm:col-8">
+            <input id="fullName" type="text" formControlName="fullName" [ngClass]="{
+                'invalid-input':
+                  myForm.get('fullName')?.invalid &&
+                  myForm.get('fullName')?.touched
+              }"
+                class="h-full text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
+        </div>
+        <label
+            class="col-4 mb-1 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Staff
+            Code<span style="color: red">&nbsp; *</span>
+        </label>
+        <div class="input col-8 md:col-4 sm:mb-1 sm:col-8">
+            <input id="staffCode" type="text" formControlName="staffCode" [ngClass]="{
+                'invalid-input':
+                  myForm.get('staffCode')?.invalid &&
+                  myForm.get('staffCode')?.touched
+              }"
+                class="h-full text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
+        </div>
+    </div>
+    <div class="field grid">
+        <label
+            class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Default
+            Branch
+            <span style="color: red">&nbsp; *</span></label>
+        <div class="dropdown col-8 md:col-4 sm:mb-1 sm:col-8">
+            <p-dropdown [options]="branchData" optionLabel="name" optionValue="id" [filter]="true" filterBy="name"
+                formControlName="idbranch"
+                [ngClass]="{ 'invalid-dropdown': myForm.get('idbranch')?.touched && myForm.get('idbranch')?.invalid }"
+                [showClear]="true" placeholder="Select a Branch">
+            </p-dropdown>
+        </div>
+        <label
+            class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Restrict
+            Access By Branch
+        </label>
+        <div class="col-8 md:col-4 sm:mb-1 sm:col-8">
+            <div class="checkBox">
+                <input type="checkbox" formControlName="accessByBranch" />
+            </div>
+        </div>
+    </div>
+    <div class="field grid">
+        <label
+            class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Department
+            <span style="color: red">&nbsp; *</span></label>
+        <div class="dropdown col-8 md:col-4 sm:mb-1 sm:col-8">
+            <p-dropdown [options]="departmentData" optionLabel="name" optionValue="id" [filter]="true" filterBy="name"
+                formControlName="idhrdepartment"
+                [ngClass]="{ 'invalid-dropdown': myForm.get('idhrdepartment')?.touched && myForm.get('idhrdepartment')?.invalid }"
+                [showClear]="true" placeholder="Select a Department">
+            </p-dropdown>
+        </div>
+        <label
+            class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Role
+            Name
+            <span style="color: red">&nbsp; *</span></label>
+        <div class="dropdown col-8 md:col-4 sm:mb-1 sm:col-8">
+            <p-dropdown [options]="roleData" optionLabel="name" optionValue="id" [filter]="true" filterBy="name"
+                formControlName="idhrrole"
+                [ngClass]="{ 'invalid-dropdown': myForm.get('idhrrole')?.touched && myForm.get('idhrrole')?.invalid }"
+                [showClear]="true" placeholder="Select a Role">
+            </p-dropdown>
+        </div>
+    </div>
+    <div class="field grid " style="margin-top: 10px;">
+        <label
+            class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Allow
+            Cluster Branches
+        </label>
+        <div class="col-8 md:col-4 sm:mb-1 sm:col-8">
+            <div class="checkBox">
+                <input type="checkbox" formControlName="allowClusterBranch" />
+            </div>
+        </div>
+        <label
+            class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Allow
+            Province Branches
+        </label>
+        <div class="col-8 md:col-4 sm:mb-1 sm:col-8">
+            <div class="checkBox">
+                <input type="checkbox" formControlName="allowProvinceBranch" />
+            </div>
+        </div>
+    </div>
+    <div class="field grid" style="margin-top: 10px;">
+        <label
+            class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Email
+            Address
+            <span style="color: red">&nbsp; *</span></label>
+        <div class="input col-8 md:col-4 sm:mb-1 sm:col-8">
+            <input id="emailId" type="email" formControlName="emailId" [ngClass]="{
+                'invalid-input':
+                  myForm.get('emailId')?.invalid &&
+                  myForm.get('emailId')?.touched
+              }"
+                class="h-full text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
+
+        </div>
+        <label
+            class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Mobile
+            No <span style="color: red">&nbsp; *</span>
+        </label>
+        <div class="input col-8 md:col-4 sm:mb-1 sm:col-8">
+            <input id="phoneNo" type="text" formControlName="mobileNo" [ngClass]="{
+                'invalid-input':
+                  myForm.get('mobileNo')?.invalid &&
+                  myForm.get('mobileNo')?.touched
+              }"
+                class="h-full text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
+        </div>
+    </div>
+    <div class="field grid">
+        <label
+            class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Password
+            Expiry Period: <span style="color: red">&nbsp; *</span></label>
+        <div class="input col-8 md:col-4 sm:mb-1 sm:col-8">
+            <input id="performanceCutOff" type="number" formControlName="passwordExpiryPeriod" [ngClass]="{
+                'invalid-input':
+                  myForm.get('passwordExpiryPeriod')?.invalid &&
+                  myForm.get('passwordExpiryPeriod')?.touched
+              }"
+                class="h-full text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
+
+        </div>
+        <label
+            class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Enable
+            Change Type
+        </label>
+        <div class="col-8 md:col-4 sm:mb-1 sm:col-8">
+            <div class="checkBox">
+                <input type="checkbox" formControlName="enableChangeType" />
+            </div>
+        </div>
+    </div>
+    <div class="field grid" style="margin-top: 10px;">
+        <label class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Is
+            Newly Added
+        </label>
+        <div class="col-8 md:col-4 sm:mb-1 sm:col-8">
+            <div class="checkBox">
+                <input type="checkbox" formContolName="isNewlyAdded" />
+            </div>
+        </div>
+        <label
+            class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">IsActive
+        </label>
+        <div class="col-8 md:col-4 sm:mb-1 sm:col-8">
+            <div class="checkBox">
+                <input type="checkbox" formControlName="isActive" />
+            </div>
+        </div>
+    </div>
+
+</form>
+<div class="btnGroup absolute z-1 flex h-2rem bg-white justify-content-end">
+    <p-button label="Close" class="closeBtn" (click)="onCancel()"></p-button>
+    <p-button label="Submit" class="submitBtn" (click)="onSubmit()"></p-button>
+</div>

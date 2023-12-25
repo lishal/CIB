@@ -11,7 +11,6 @@ import { MessageService } from 'primeng/api';
 import { DeleteRoleComponent } from './delete/delete.component';
 import { TableLazyLoadEvent } from 'primeng/table';
 import { LoadingService } from 'src/app/Services/loading.service';
-import { __awaiter } from 'tslib';
 
 @Component({
   selector: 'app-role',
