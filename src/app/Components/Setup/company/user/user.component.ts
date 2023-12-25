@@ -10,6 +10,8 @@ import { MessageService } from 'primeng/api';
 import * as FileSaver from 'file-saver';
 import { AddUserComponent } from './add/add.component';
 import { EditUserComponent } from './edit/edit.component';
+import { ViewUserComponent } from './view/view.component';
+import { DeleteUserComponent } from './delete/delete.component';
 
 @Component({
   selector: 'app-user',
@@ -96,6 +98,62 @@ export class UserComponent {
           severity: 'success',
           summary: 'Success',
           detail: 'Data updated successfully!',
+        });
+      }
+      this.loadingService.hide();
+    });
+    this.loadingService.hide();
+  }
+  async showData(id: string) {
+    this.loadingService.show();
+    await this.individualData(id);
+    await this.getBranchData();
+    await this.getDepartmentData();
+    await this.getRoleData();
+    this.loadingService.hide();
+    this.ref = this.dialogService.open(ViewUserComponent, {
+      header: `Role : View - ${this.innerdata.fullName} `,
+      width: '100%',
+      height: '100%',
+      contentStyle: { overflow: 'auto' },
+      baseZIndex: 10000,
+      maximizable: false,
+      data: [
+        this.branchData,
+        this.departmentData,
+        this.roleData,
+        this.innerdata,
+      ],
+    });
+  }
+  async deleteData(id: string) {
+    this.loadingService.show();
+    await this.individualData(id);
+    await this.getBranchData();
+    await this.getDepartmentData();
+    await this.getRoleData();
+    this.loadingService.hide();
+    this.ref = this.dialogService.open(DeleteUserComponent, {
+      header: `Role : Delete - ${this.innerdata.fullName} `,
+      width: '100%',
+      height: '100%',
+      contentStyle: { overflow: 'auto' },
+      baseZIndex: 10000,
+      maximizable: false,
+      data: [
+        this.branchData,
+        this.departmentData,
+        this.roleData,
+        this.innerdata,
+      ],
+    });
+    this.ref.onClose.subscribe((data: any) => {
+      if (data === 'accepted') {
+        this.getUserData();
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'Data Deleted successfully!',
         });
       }
       this.loadingService.hide();

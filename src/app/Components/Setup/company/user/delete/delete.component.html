@@ -1,0 +1,146 @@
+<p-toast></p-toast>
+<app-custom-loading *ngIf="(loadingService.isLoading$ | async)"></app-custom-loading>
+<div class="addForm relative min-h-full h-auto mb-3">
+    <div class="field grid">
+        <label class="col-4 mb-1 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">
+            Login Identifier</label>
+        <div class="input col-8 md:col-4 sm:mb-1 sm:col-8">
+            <input id="loginIdentifier" type="text" value="{{data[0].loginId}}" disabled
+                class="readonly text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
+        </div>
+    </div>
+    <div class="field grid">
+        <label
+            class="col-4 mb-1 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Full
+            Name </label>
+        <div class="input col-8 md:col-4 sm:mb-1 sm:col-8">
+            <input id="fullName" type="text" value="{{data[0].fullName}}" disabled
+                class="readonly text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
+        </div>
+        <label
+            class="col-4 mb-1 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Staff
+            Code
+        </label>
+        <div class="input col-8 md:col-4 sm:mb-1 sm:col-8">
+            <input id="staffCode" type="text" value="{{data[0].staffCode}}" disabled
+                class="readonly h-full text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
+        </div>
+    </div>
+    <div class="field grid">
+        <label
+            class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Default
+            Branch
+        </label>
+        <div class="dropdown col-8 md:col-4 sm:mb-1 sm:col-8">
+            <p-dropdown placeholder="{{branchData[0].name}}" [disabled]="true" class="readonly">
+            </p-dropdown>
+        </div>
+        <label
+            class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Restrict
+            Access By Branch
+        </label>
+        <div class="col-8 md:col-4 sm:mb-1 sm:col-8">
+            <div class="checkBox">
+                <input type="checkbox" [checked]="data[0].accessByBranch" disabled />
+            </div>
+        </div>
+    </div>
+    <div class="field grid">
+        <label
+            class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Department
+        </label>
+        <div class="dropdown col-8 md:col-4 sm:mb-1 sm:col-8">
+            <p-dropdown placeholder="{{departmentData[0].name}}" [disabled]="true" class="readonly">
+            </p-dropdown>
+        </div>
+        <label
+            class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Role
+            Name
+        </label>
+        <div class="dropdown col-8 md:col-4 sm:mb-1 sm:col-8">
+            <p-dropdown placeholder="{{roleData[0].name}}" [disabled]="true" class="readonly">
+            </p-dropdown>
+        </div>
+    </div>
+    <div class="field grid " style="margin-top: 10px;">
+        <label
+            class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Allow
+            Cluster Branches
+        </label>
+        <div class="col-8 md:col-4 sm:mb-1 sm:col-8">
+            <div class="checkBox">
+                <input type="checkbox" [checked]="data[0].allowClusterBranch" disabled />
+            </div>
+        </div>
+        <label
+            class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Allow
+            Province Branches
+        </label>
+        <div class="col-8 md:col-4 sm:mb-1 sm:col-8">
+            <div class="checkBox">
+                <input type="checkbox" [checked]="data[0].allowProvinceBranch" disabled />
+            </div>
+        </div>
+    </div>
+    <div class="field grid" style="margin-top: 10px;">
+        <label
+            class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Email
+            Address
+        </label>
+        <div class="input col-8 md:col-4 sm:mb-1 sm:col-8">
+            <input id="emailId" type="email" value="{{data[0].emailId}}" disabled
+                class="readonly text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
+
+        </div>
+        <label
+            class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Mobile
+            No
+        </label>
+        <div class="input col-8 md:col-4 sm:mb-1 sm:col-8">
+            <input id="phoneNo" type="text" value="{{data[0].mobileNo}}" disabled
+                class="readonly text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
+        </div>
+    </div>
+    <div class="field grid">
+        <label
+            class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Password
+            Expiry Period: </label>
+        <div class="input col-8 md:col-4 sm:mb-1 sm:col-8">
+            <input id="performanceCutOff" type="number" value="{{data[0].passwordExpiryPeriod}}" disabled
+                class="readonly text-base text-color surface-overlay p-1 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
+
+        </div>
+        <label
+            class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Enable
+            Change Type
+        </label>
+        <div class="col-8 md:col-4 sm:mb-1 sm:col-8">
+            <div class="checkBox">
+                <input type="checkbox" [checked]="data[0].enableChangeType" disabled />
+            </div>
+        </div>
+    </div>
+    <div class="field grid" style="margin-top: 10px;">
+        <label class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">Is
+            Newly Added
+        </label>
+        <div class="col-8 md:col-4 sm:mb-1 sm:col-8">
+            <div class="checkBox">
+                <input type="checkbox" [checked]="data[0].isNewlyAdded" disabled />
+            </div>
+        </div>
+        <label
+            class="col-4 mb-3 md:col-2 sm:mb-1 md:justify-content-end sm:justify-content-start font-bold sm:col-4">IsActive
+        </label>
+        <div class="col-8 md:col-4 sm:mb-1 sm:col-8">
+            <div class="checkBox">
+                <input type="checkbox" [checked]="data[0].isActive" disabled />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="btnGroup absolute z-1 flex h-2rem bg-white justify-content-end">
+    <p-button label="Close" class="closeBtn" (click)="onCancel()"></p-button>
+    <p-confirmPopup></p-confirmPopup>
+    <p-button label="Delete" class="submitBtn" (click)="onDelete($event)"></p-button>
+</div>

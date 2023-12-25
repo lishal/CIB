@@ -181,4 +181,10 @@ export class UserService {
   public viewUserData(id: string): Observable<OdataResponse> {
     return this.httpClient.get<{ value: any[] }>(`${this.baseUrl}/user/${id}`);
   }
+  public deleteUserData(id: string): Observable<HttpResponse<any>> {
+    return this.httpClient.delete<{ value: any[] }>(
+      `${this.baseUrl}/user/${id}`,
+      { observe: 'response' }
+    );
+  }
 }
