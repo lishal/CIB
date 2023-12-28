@@ -390,6 +390,10 @@
 
 }
 
+.p-tabmenu .p-tabmenu-nav {
+  background: transparent !important;
+}
+
 .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link {
   box-shadow: inset 0 0 0 0.05rem var(--cyan);
   margin: 0 5px 0px 0;
@@ -399,7 +403,7 @@
   /* padding: 0.7rem 0.5rem; */
   padding: 12px 6px;
   font-weight: 500;
-
+  background-color: transparent;
 }
 
 .p-tabmenu .p-tabmenu-nav .p-tabmenuitem.p-highlight .p-menuitem-link {
