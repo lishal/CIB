@@ -127,7 +127,7 @@ export class DashboardComponent implements OnInit {
   // if(this.currentRoute=="/company"){
   //   this.topPanel="Company";
   // }
-  isSidebarClosed = false;
+  isSidebarClosed = true;
 
   profileOverlay: boolean = false;
 

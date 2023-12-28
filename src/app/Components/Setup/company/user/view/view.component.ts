@@ -8,6 +8,7 @@ import {
   DynamicDialogRef,
 } from 'primeng/dynamicdialog';
 import { ToastModule } from 'primeng/toast';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-user-view',

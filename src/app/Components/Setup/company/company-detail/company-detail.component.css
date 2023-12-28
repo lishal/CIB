@@ -1,0 +1,38 @@
+.image-container {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.fit-content-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.p-inputtext {
+    height: unset !important;
+}
+
+.p-float-label input.p-filled~label,
+.p-float-label input:focus~label {
+    top: 12px !important;
+}
+
+.companyLabel {
+    color: #67757c;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+}
+
+.companyImg:hover {
+    cursor: pointer;
+}
+
+.companyImg::-webkit-file-upload-button {
+    border: none;
+    padding: 0.375rem 0.75rem;
+    cursor: pointer;
+    color: #495057;
+}

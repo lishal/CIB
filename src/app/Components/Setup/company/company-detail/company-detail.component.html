@@ -1,50 +1,131 @@
-<div class="card mt-3">
-  <p-table [value]="data" styleClass="p-datatable-sm p-datatable-striped " [showCurrentPageReport]="true"
-    [tableStyle]="{ 'min-width': '70rem' }" [rows]="5" [paginator]="true"
-    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" styleClass="p-datatable-gridlines">
-    <!-- 
-     -->
-    <!-- 
-    [rowsPerPageOptions]="[5,10, 25, 50,100]" 
-    <th pSortableColumn="id"  style="width:30%">Id <p-sortIcon class="hidden" field="id"></p-sortIcon></th>
--->
-    <ng-template pTemplate="header">
-      <p-toast [ngClass]="'custom-toast'"></p-toast>
-      <tr>
-        <th></th>
-        <th pSortableColumn="companyName">Company Name <p-sortIcon field="companyName"></p-sortIcon></th>
-        <th pSortableColumn="dataProviderId">DPID <p-sortIcon field="dataProviderId"></p-sortIcon></th>
-        <th pSortableColumn="prevDataProviderId">Prev.DPID <p-sortIcon field="prevDataProviderId"></p-sortIcon></th>
-        <th pSortableColumn="tradingSymbol">TradingSym <p-sortIcon field="tradingSymbol"></p-sortIcon></th>
-        <th pSortableColumn="secretKey">SecretKey <p-sortIcon field="secretKey"></p-sortIcon></th>
-      </tr>
+<div class="btnGroup-topbar mb-2 mt-1">
+  <p-overlayPanel #printDrop [styleClass]="'export'">
+    <ng-template pTemplate="content">
+      <p class="exportButton">Html</p>
+      <p class="exportButton">Pdf</p>
+      <p class="exportButton">Excel</p>
     </ng-template>
-    <ng-template pTemplate="body" let-data>
-      <tr style="white-space: nowrap;">
-        <td class="actionMenu flex justify-content-center align-items-center">
-          <p-overlayPanel #setting [styleClass]="'actionOverlay'">
-            <ng-template pTemplate="content">
-              <div pRipple class="actionItem w-full h-2rem flex justify-content-center align-items-center"
-                (click)="showData(data.id)">
-                <i class="fa-solid fa-file mr-2"></i> View
-              </div>
-              <div pRipple class="actionItem w-full h-2rem flex justify-content-center align-items-center"
-                (click)="editData(data.id)">
-                <i class="fa-solid fa-pen-to-square mr-2"></i> Edit
-              </div>
-            </ng-template>
-          </p-overlayPanel>
-          <div pRipple class="action border-circle w-2rem h-2rem flex justify-content-center align-items-center"
-            (click)="setting.toggle($event)">
-            <i class="fa-solid fa-gear"></i>
-          </div>
-        </td>
-        <td>{{ data.companyName }}</td>
-        <td>{{ data.dataProviderId }}</td>
-        <td>{{ data.prevDataProviderId }}</td>
-        <td>{{ data.tradingSymbol }}</td>
-        <td>{{ data.secretKey }}</td>
-      </tr>
+  </p-overlayPanel>
+  <p-button (click)="printDrop.toggle($event)" class="printDropdown">
+    <ng-template pTemplate="content">
+      <ng-container>
+        <i class="fa-solid fa-print" style="margin-left: -5px;"></i>
+        <i class="fa-solid fa-angle-down" style="margin-left: 5px;"></i>
+      </ng-container>
     </ng-template>
-  </p-table>
+  </p-button>
+  <p-button icon="fa-regular fa-pen-to-square"></p-button>
+  <p-button icon="fa-regular fa-floppy-disk"></p-button>
+</div>
+<div class="field grid">
+  <div class="xl:col-4 lg:col-4 md:col-4 sm:mb-1 sm:col-12 col-12">
+    <div class="image-container">
+      <img src="assets/images/companyImg.jpg" alt="Company Logo" class="fit-content-image">
+    </div>
+  </div>
+  <div class="xl:col-8 lg:col-8 md:col-8 sm:mb-1 sm:col-12 col-12 mt-1">
+    <div class="grid mb-3">
+      <div class="xl:col-6 lg:col-6 md:col-6 sm:mb-1 sm:col-12 col-12 mb-3">
+        <span class="p-float-label">
+          <input pInputText id="companyName"
+            class="h-full text-base text-color surface-overlay border-1 border-solid surface-border border-round focus:border-primary w-full"
+            style="padding:1rem 0.75rem;" />
+          <label for="companyName">Company Name</label>
+        </span>
+      </div>
+      <div class="xl:col-6 lg:col-6 md:col-6 sm:mb-1 sm:col-12 col-12 mb-3">
+        <span class="p-float-label">
+          <input pInputText id="companySName"
+            class="h-full text-base text-color surface-overlay border-1 border-solid surface-border border-round focus:border-primary w-full"
+            style="padding:1rem 0.75rem;" />
+          <label for="companySName">Company Short Name</label>
+        </span>
+      </div>
+    </div>
+    <div class="grid mb-3">
+      <div class="xl:col-6 lg:col-6 md:col-6 sm:mb-1 sm:col-12 col-12 mb-3">
+        <span class="p-float-label">
+          <input pInputText id="dpID"
+            class="h-full text-base text-color surface-overlay border-1 border-solid surface-border border-round focus:border-primary w-full"
+            style="padding:1rem 0.75rem;" />
+          <label for="dpID">Data Provider ID</label>
+        </span>
+      </div>
+      <div class="xl:col-6 lg:col-6 md:col-6 sm:mb-1 sm:col-12 col-12 mb-3">
+        <span class="p-float-label">
+          <input pInputText id="pdpID"
+            class="h-full text-base text-color surface-overlay border-1 border-solid surface-border border-round focus:border-primary w-full"
+            style="padding:1rem 0.75rem;" />
+          <label for="pdpID">Previous Data Provider ID</label>
+        </span>
+      </div>
+    </div>
+    <div class="grid mb-3">
+      <div class="xl:col-12 lg:col-12 md:col-12 sm:mb-1 sm:col-12 col-12 mb-3">
+        <label for="companyImg" class="companyLabel">Choose Company Image</label>
+        <input type="file" id="companyImg"
+          class="companyImg text-base text-color surface-overlay border-1 border-solid surface-border border-round focus:border-primary w-full mt-2" />
+      </div>
+    </div>
+    <div class="grid mb-3">
+      <div class="xl:col-6 lg:col-6 md:col-6 sm:mb-1 sm:col-12 col-12 mb-3">
+        <span class="p-float-label">
+          <input pInputText id="ts"
+            class="h-full text-base text-color surface-overlay border-1 border-solid surface-border border-round focus:border-primary w-full"
+            style="padding:1rem 0.75rem;" />
+          <label for="ts">Trading Symbol</label>
+        </span>
+      </div>
+      <div class="xl:col-6 lg:col-6 md:col-6 sm:mb-1 sm:col-12 col-12 mb-3">
+        <span class="p-float-label">
+          <input pInputText id="skey"
+            class="h-full text-base text-color surface-overlay border-1 border-solid surface-border border-round focus:border-primary w-full"
+            style="padding:1rem 0.75rem;" />
+          <label for="skey">Secret Key</label>
+        </span>
+      </div>
+    </div>
+    <div class="grid mb-3">
+      <div class="xl:col-6 lg:col-6 md:col-6 sm:mb-1 sm:col-12 col-12 mb-3 flex">
+        <div class="checkBox">
+          <input type="checkbox" style="border: 1px solid black;" />
+        </div>
+        <label class="companyLabel ml-2">Check To Disable Repayment Frequency Validation</label>
+      </div>
+      <div class="xl:col-6 lg:col-6 md:col-6 sm:mb-1 sm:col-12 col-12 mb-3 flex">
+        <div class="checkBox">
+          <input type="checkbox" style="border: 1px solid black;" />
+        </div>
+        <label class="companyLabel ml-2">Check To Disable Number of Installment Validation</label>
+      </div>
+    </div>
+    <div class="grid mb-3">
+      <div class="xl:col-6 lg:col-6 md:col-6 sm:mb-1 sm:col-12 col-12 mb-3 flex">
+        <div class="checkBox">
+          <input type="checkbox" style="border: 1px solid black;" />
+        </div>
+        <label class="companyLabel ml-2">Check To Disable Amount of Installment Validation</label>
+      </div>
+      <div class="xl:col-6 lg:col-6 md:col-6 sm:mb-1 sm:col-12 col-12 mb-3 flex">
+        <div class="checkBox">
+          <input type="checkbox" style="border: 1px solid black;" />
+        </div>
+        <label class="companyLabel ml-2">Check To Disable Disbursed Amount Date Validation</label>
+      </div>
+    </div>
+    <div class="grid mb-3">
+      <div class="xl:col-6 lg:col-6 md:col-6 sm:mb-1 sm:col-12 col-12 mb-3 flex">
+        <div class="checkBox">
+          <input type="checkbox" style="border: 1px solid black;" />
+        </div>
+        <label class="companyLabel ml-2">Check To Disable Number of Installment Overdue Validation</label>
+      </div>
+      <div class="xl:col-6 lg:col-6 md:col-6 sm:mb-1 sm:col-12 col-12 mb-3 flex">
+        <div class="checkBox">
+          <input type="checkbox" style="border: 1px solid black;" />
+        </div>
+        <label class="companyLabel ml-2">Check To Disable Highest Credit Usage Validation</label>
+      </div>
+    </div>
+  </div>
 </div>
