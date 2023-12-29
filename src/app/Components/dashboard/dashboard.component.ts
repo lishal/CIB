@@ -127,6 +127,12 @@ export class DashboardComponent implements OnInit {
   // if(this.currentRoute=="/company"){
   //   this.topPanel="Company";
   // }
+
+  isSearchVisible: boolean = false;
+
+  toggleSearch() {
+    this.isSearchVisible = !this.isSearchVisible;
+  }
   isSidebarClosed = true;
 
   profileOverlay: boolean = false;

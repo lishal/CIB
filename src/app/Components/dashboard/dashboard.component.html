@@ -16,6 +16,12 @@
         <button class="sideBar_button" (click)="toggleSidebar()">
           <i class="fa-solid fa-bars"></i>
         </button>
+        <button (click)="toggleSearch()" class="sideBar_button"><i class="fa-solid fa-search"></i></button>
+        <div class="search-box" [class.show]="isSearchVisible">
+          <input pInputText placeholder="Search & Enter"
+            class="text-base text-color surface-overlay border-1 surface-border border-round focus:border-primary w-full" />
+          <p-button (click)="toggleSearch()" class="search-btn" label="X"></p-button>
+        </div>
         <button class="navDropdown" (click)="showDropdownNavbar()">
           <i class="fa-solid fa-table-cells-large"></i>
         </button>

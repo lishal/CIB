@@ -266,3 +266,39 @@
   height: 100%;
   margin-right: 10px;
 }
+
+.search-box {
+  position: fixed;
+  top: -100%;
+  left: -100%;
+  border-radius: 0px;
+  width: 100%;
+  transition: all 0.3s ease-in-out;
+  z-index: 10003;
+  height: 59px;
+}
+
+.search-box input {
+  width: 100%;
+  height: 100% !important;
+  padding-left: 25px;
+  font-size: 17px;
+  height: 59px;
+  border-radius: unset !important;
+}
+
+.search-box .p-inputtext:enabled:focus {
+  box-shadow: none !important;
+}
+
+.search-box.show {
+  top: 0;
+  left: 0;
+}
+
+.search-btn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
