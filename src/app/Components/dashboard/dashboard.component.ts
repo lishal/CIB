@@ -145,20 +145,24 @@ export class DashboardComponent implements OnInit {
   }
 
   // Right Panel
-  displayRightPanel = false;
+  // displayRightPanel = false;
+  dropdownNavBar: boolean = false;
 
-  showRightPanel() {
-    this.displayRightPanel = true;
+  showDropdownNavbar() {
+    this.dropdownNavBar = !this.dropdownNavBar;
   }
+  // showRightPanel() {
+  //   this.displayRightPanel = true;
+  // }
 
-  hideRightPanel() {
-    this.displayRightPanel = false;
-  }
+  // hideRightPanel() {
+  //   this.displayRightPanel = false;
+  // }
   currentLeftPanel: string = '';
 
   items: MenuItem[] | undefined;
 
-  onClickRightPanel(content: string) {
+  onClickNavDropdown(content: string) {
     this.currentLeftPanel = content;
     switch (this.currentLeftPanel) {
       case 'Setup':
@@ -226,7 +230,8 @@ export class DashboardComponent implements OnInit {
           },
         ];
         this.router.navigate(['/dashboard/company/companyDetail']);
-        this.displayRightPanel = false;
+        // this.displayRightPanel = false;
+        this.dropdownNavBar = false;
         break;
 
       case 'Credit':
@@ -408,7 +413,8 @@ export class DashboardComponent implements OnInit {
           },
         ];
         this.router.navigate(['/dashboard/creditDashboard']);
-        this.displayRightPanel = false;
+        // this.displayRightPanel = false;
+        this.dropdownNavBar = false;
         break;
     }
   }
@@ -433,11 +439,18 @@ export class DashboardComponent implements OnInit {
     // this.companyRedirect()
     this.items = [
       {
-        label: 'Company',
-        icon: 'fa-solid fa-building',
+        label: 'Admin',
+        icon: 'fa-solid fa-user-group',
         routerLink: 'company',
         title: 'Company',
         command: () => this.companyRedirect(),
+      },
+      {
+        label: 'Security',
+        icon: 'fa-solid fa-shield-halved',
+        routerLink: 'security',
+        title: 'Security',
+        command: () => this.securityRedirect(),
       },
       {
         label: 'Employee',
@@ -460,13 +473,7 @@ export class DashboardComponent implements OnInit {
         command: () => this.lookupRedirect(),
         title: 'Lookup List',
       },
-      {
-        label: 'Security',
-        icon: 'fa-solid fa-key',
-        routerLink: 'security',
-        title: 'Security',
-        command: () => this.securityRedirect(),
-      },
+
       {
         label: 'AD Management',
         icon: 'fa-solid fa-gears',

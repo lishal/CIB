@@ -194,6 +194,64 @@
 /* .p-menuitem-link-active {
   background-color: red !important;
 } */
+/* Overlay */
+.p-component-overlay {
+  top: 60px !important;
+}
+
+/* Top Navbar Dropdown Container */
+.navDropdownContainer .p-sidebar-top {
+  top: 60px !important;
+  max-height: 480px !important;
+  padding: 30px !important;
+  width: 100%;
+  overflow: auto;
+  height: auto;
+}
+
+.navDropdownContentButton .p-button {
+  border-radius: 50rem !important;
+  height: 2rem !important;
+}
+
+.navDropdownContent .card {
+  border: 1px solid lightgray !important;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.navDropdownContent .card :hover {
+  cursor: pointer;
+}
+
+.navDropdownContent .card-body {
+  padding: 1.25rem !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.navDropdownContent .card-body .card-body-icon {
+  font-size: x-large;
+  color: gray;
+}
+
+.navDropdownContent .card-body .card-body-icon-label {
+  font-size: 0.875rem !important;
+  color: rgba(0, 0, 0, 0.6) !important;
+}
+
+.navDropdownContainer .p-sidebar .p-sidebar-header {
+  padding: unset !important;
+}
+
+
+.navDropdownContainer .p-sidebar .p-sidebar-header .p-sidebar-icon {
+  color: unset !important;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+
 
 .rightSidePanel .p-sidebar {
   width: 15rem !important;

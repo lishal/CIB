@@ -1,16 +1,51 @@
 <app-custom-loading *ngIf="(loadingService.isLoading$ | async)"></app-custom-loading>
 <div class="topnavbar flex">
   <div [class.sidepanelCloseOuter]="isSidebarClosed">
-    <button class="sideBar_button" (click)="toggleSidebar()">
-      <i class="fa-solid fa-bars"></i>
-    </button>
-  </div>
-  <div [class.sidepanelCloseOuter]="isSidebarClosed">
-    <div class="toppanel_heading">
-      <span>{{ topPanelLabel }}</span>
+    <div class="leftTopBar">
+      <div class="leftTopBarItems">
+        <button class="sideBar_button" (click)="toggleSidebar()">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <button class="navDropdown" (click)="showDropdownNavbar()">
+          <i class="fa-solid fa-table-cells-large"></i>
+        </button>
+
+        <div class="toppanel_heading">
+          <span>{{ topPanelLabel }}</span>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="profile">
+  <div class="rightTopBar">
+    <div class="rightTopBarItems">
+      <div class="profile">
+        <div pRipple class="userBtn border-circle w-2rem h-2rem flex" (click)="profileToggle()">
+          <i class="fa-solid fa-user"></i>
+        </div>
+        <p-overlay [(visible)]="profileOverlay" contentStyleClass="p-4 surface-overlay shadow-2 border-round">
+          <div class="userinfo">
+            <span class="text-2xl">Admin</span>
+            <span class="text-1xl">Admin@admin.com</span>
+          </div>
+          <div class="userSettings">
+            <p-button label="Change Password" styleClass="p-button-raised p-button-text"></p-button>
+            <p-button label="Sign Out" styleClass="p-button-raised p-button-text p-button-danger"></p-button>
+          </div>
+        </p-overlay>
+      </div>
+      <div class="notification">
+        <div pRipple class="notificationBtn border-circle w-2rem h-2rem flex" (click)="notificationToggle()">
+          <i class="fa-solid fa-bell"></i>
+        </div>
+        <p-overlay [(visible)]="notificationOverlay" contentStyleClass="p-4 surface-overlay shadow-2 border-round">
+          Notifications here!
+        </p-overlay>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- <div class="profile">
     <div pRipple class="userBtn border-circle w-2rem h-2rem flex" (click)="profileToggle()">
       <i class="fa-solid fa-user"></i>
     </div>
@@ -38,11 +73,11 @@
       <input type="text" name="" placeholder="Search Here...." class="search_field" />
       <button pRipple type="submit" class="fa-solid fa-search search_icon border-circle flex"></button>
     </div>
-  </div>
+  </div> -->
 
-  <button class="rightSide_button" (click)="showRightPanel()">
+  <!-- <button class="rightSide_button" (click)="showRightPanel()">
     <i class="fa-solid fa-ellipsis-v"></i>
-  </button>
+  </button> -->
 </div>
 <div class="leftSidePanel" [class.sidepanelCloseOuter]="isSidebarClosed">
   <div *ngIf="!isSidebarClosed; else brandIcon">
@@ -59,23 +94,129 @@
   <p-panelMenu class="leftPanelContainer" [model]="items" [class.sidepanelCloseInner]="isSidebarClosed"
     [multiple]="false"></p-panelMenu>
 </div>
-<div class="rightSidePanel">
+<!-- <div class="rightSidePanel">
   <p-sidebar [(visible)]="displayRightPanel" position="right">
     <ng-template pTemplate="header"><span>contents</span></ng-template>
     <div class="rightSide_panel-content">
-      <div class="rightpanel_content setup" (click)="onClickRightPanel('Setup')">
+      <div class="rightpanel_content setup" (click)="onClickNavDropdown('Setup')">
         <span class="content_icon fa-solid fa-wrench"> </span>
         <span class="content_label flex"> Setup </span>
       </div>
 
       <div class="rightSide_panel-content">
-        <div class="rightpanel_content credit" (click)="onClickRightPanel('Credit')">
+        <div class="rightpanel_content credit" (click)="onClickNavDropdown('Credit')">
           <span class="content_icon fa-solid fa-chart-simple flex-row">
           </span>
           <span class="content_label"> Credit Reporting </span>
         </div>
       </div>
     </div>
+  </p-sidebar>
+</div> -->
+<div class="navDropdownContainer">
+  <p-sidebar [(visible)]="dropdownNavBar" position="top">
+    <ng-template pTemplate="header">
+      <div class="grid w-full">
+        <div class="xl:col-3 lg:col-3 md:col-3 sm:col-12 col-12 flex flex-column mb-2">
+          <span class="navDropdownHeading mb-3">
+            ADVERTISE
+          </span>
+          <div class="navDropdownContent">
+            Open to Advertise Please contact admin
+          </div>
+        </div>
+        <div class="xl:col-6 lg:col-6 md:col-6 sm:col-12 col-12 flex flex-column mb-2">
+          <span class="navDropdownHeading mb-3">
+            ALLOWED APPLICATION(S)
+          </span>
+          <div class="navDropdownContent w-full">
+            <div class="grid">
+              <div class="xl:col-3 lg:col-3 md:col-3 sm:col-6 col-6">
+                <div class="card" (click)="onClickNavDropdown('Setup')">
+                  <div class="card-body">
+                    <span class="card-body-icon"><i class="fa-regular fa-sun"></i></span>
+                    <span class="card-body-icon-label">SETUP</span>
+                  </div>
+                </div>
+              </div>
+              <div class="xl:col-3 lg:col-3 md:col-3 sm:col-6 col-6">
+                <div class="card" (click)="onClickNavDropdown('Credit')">
+                  <div class="card-body">
+                    <span class="card-body-icon"><i class="fa-solid fa-list"></i></span>
+                    <span class="card-body-icon-label">IIF..</span>
+                  </div>
+                </div>
+              </div>
+              <div class="xl:col-3 lg:col-3 md:col-3 sm:col-6 col-6">
+                <div class="card">
+                  <div class="card-body">
+                    <span class="card-body-icon"><i class="fa-solid fa-wallet"></i></span>
+                    <span class="card-body-icon-label">VMGT.</span>
+                  </div>
+                </div>
+              </div>
+              <div class="xl:col-3 lg:col-3 md:col-3 sm:col-6 col-6">
+                <div class="card">
+                  <div class="card-body">
+                    <span class="card-body-icon"><i class="fa-regular fa-copy"></i></span>
+                    <span class="card-body-icon-label">EXSYS</span>
+                  </div>
+                </div>
+              </div>
+              <div class="xl:col-3 lg:col-3 md:col-3 sm:col-6 col-6">
+                <div class="card">
+                  <div class="card-body">
+                    <span class="card-body-icon"><i class="fa-regular fa-user"></i></span>
+                    <span class="card-body-icon-label">KYC..</span>
+                  </div>
+                </div>
+              </div>
+              <div class="xl:col-3 lg:col-3 md:col-3 sm:col-6 col-6">
+                <div class="card">
+                  <div class="card-body">
+                    <span class="card-body-icon"><i class="fa-solid fa-wand-sparkles"></i></span>
+                    <span class="card-body-icon-label">AML..</span>
+                  </div>
+                </div>
+              </div>
+              <div class="xl:col-3 lg:col-3 md:col-3 sm:col-6 col-6">
+                <div class="card">
+                  <div class="card-body">
+                    <span class="card-body-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+                    <span class="card-body-icon-label">INQURY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="xl:col-3 lg:col-3 md:col-3 sm:col-12 col-12 flex flex-column mb-2">
+          <span class="navDropdownHeading mb-3">
+            LOG ISSUE
+          </span>
+          <div class="navDropdownContent">
+            <span class="p-float-label">
+              <input pInputText id="username"
+                class="h-full text-base text-color surface-overlay border-1 surface-border border-round focus:border-primary w-full mb-2"
+                style="padding:1rem 0.75rem;" />
+              <label for="username">Username</label>
+            </span>
+            <span class="p-float-label">
+              <input pInputText id="email"
+                class="h-full text-base text-color surface-overlay border-1 surface-border border-round focus:border-primary w-full mb-2"
+                style="padding:1rem 0.75rem;" />
+              <label for="email">Email Address</label>
+            </span>
+            <span class="p-float-label">
+              <textarea id="message" rows="2" pInputTextarea
+                class="h-full text-base text-color surface-overlay border-1 surface-border border-round focus:border-primary w-full mb-2"></textarea>
+              <label for="message">Message</label>
+            </span>
+            <p-button label="Submit" class="navDropdownContentButton"></p-button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
   </p-sidebar>
 </div>
 <div class="mainContainer" [class.sidePanelClosedContainer]="isSidebarClosed">
