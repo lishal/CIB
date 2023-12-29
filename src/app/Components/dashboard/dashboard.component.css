@@ -1,22 +1,48 @@
 .topnavbar {
-
   background-color: var(--cyan);
   position: fixed;
   display: block;
   height: 60px;
   width: 100%;
-  box-shadow: 0 0px 0px 2px rgba(0, 0, 0, .2);
+  box-shadow: 0 0px 0px 2px rgba(0, 0, 0, .1);
+  z-index: 10001;
 }
 
 .leftTopBar {
   position: absolute;
-  left: 250px;
+  left: 0 !important;
   height: 60px;
   height: 100%;
 }
 
+.brandname {
+  display: flex;
+  justify-content: center;
+  background-color: var(--cyan);
+  height: 60px;
+  width: 250px;
+  color: var(--white);
+  text-align: center;
+  line-height: 60px;
+  letter-spacing: 2px;
+  font-size: 18px;
+  font-weight: 700;
+  transition: background-color 0.2s;
+}
+
+.brandIcon {
+  height: 60px;
+  width: 55px;
+  font-size: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--white);
+  z-index: 10002;
+}
+
 .sidepanelCloseOuter .leftTopBar {
-  left: 55px !important;
+  /* left: 55px !important; */
   transition: left 0.2s ease-in-out;
 }
 
@@ -124,27 +150,9 @@
   padding-bottom: 4rem;
   white-space: nowrap;
   overflow-x: hidden;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.leftSidePanel .brandname {
-  position: fixed;
-  display: flex;
-  top: 0px;
-  left: 0px;
-  justify-content: center;
-  background-color: var(--cyan);
-  height: 60px;
-  width: 250px;
-  color: var(--white);
-  text-align: center;
-  line-height: 60px;
-  letter-spacing: 2px;
-  font-size: 18px;
-  font-weight: 700;
-  transition: background-color 0.2s;
-  z-index: 1;
-}
+
 
 /* .leftSidePanel .sidepanelCloseInner {
   display: none;
@@ -168,17 +176,7 @@
 
 
 
-.sidepanelCloseOuter .brandIcon {
-  position: fixed;
-  height: 60px;
-  width: 55px;
-  font-size: 28px;
-  top: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--white);
-}
+
 
 .rightSidePanel .rightSide_panel-content .rightpanel_content {
   display: flex;

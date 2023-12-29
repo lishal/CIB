@@ -3,6 +3,16 @@
   <div [class.sidepanelCloseOuter]="isSidebarClosed">
     <div class="leftTopBar">
       <div class="leftTopBarItems">
+        <div *ngIf="!isSidebarClosed; else brandIcon">
+          <div class="brandname">
+            <span>CADUTILS</span>
+          </div>
+        </div>
+        <ng-template #brandIcon>
+          <div class="brandIcon">
+            <i class="fa-solid fa-c"></i>
+          </div>
+        </ng-template>
         <button class="sideBar_button" (click)="toggleSidebar()">
           <i class="fa-solid fa-bars"></i>
         </button>
@@ -80,17 +90,6 @@
   </button> -->
 </div>
 <div class="leftSidePanel" [class.sidepanelCloseOuter]="isSidebarClosed">
-  <div *ngIf="!isSidebarClosed; else brandIcon">
-    <div class="brandname">
-      <span>CADUTILS</span>
-    </div>
-  </div>
-  <ng-template #brandIcon>
-    <div class="brandIcon">
-      <i class="fa-solid fa-c"></i>
-    </div>
-  </ng-template>
-
   <p-panelMenu class="leftPanelContainer" [model]="items" [class.sidepanelCloseInner]="isSidebarClosed"
     [multiple]="false"></p-panelMenu>
 </div>
