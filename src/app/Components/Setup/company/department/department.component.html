@@ -61,26 +61,9 @@
     </ng-template>
     <ng-template pTemplate="body" let-data>
       <tr style="white-space: nowrap">
-        <td class="actionMenu flex justify-content-center align-items-center">
-          <p-overlayPanel #setting [styleClass]="'actionOverlay'">
-            <ng-template pTemplate="content">
-              <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center"
-                (click)="showData(data.Id)">
-                <i class="fa-solid fa-file mr-2"></i> View
-              </div>
-              <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center"
-                (click)="editData(data.Id)">
-                <i class="fa-solid fa-pen-to-square mr-2"></i> Edit
-              </div>
-              <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center"
-                (click)="deleteData(data.Id)">
-                <i class="fa-solid  fa-trash mr-2"></i> Delete
-              </div>
-            </ng-template>
-          </p-overlayPanel>
-          <div pRipple class="action w-2rem flex justify-content-center align-items-center"
-            (click)="setting.toggle($event)">
-            <i class="fa-solid fa-gear"></i>
+        <td>
+          <div class="actionMenu">
+            <i class="fa-solid fa-gear" (click)="setting.toggle($event)"></i>
           </div>
         </td>
         <td>{{ data?.ABBR }}</td>
@@ -91,6 +74,22 @@
         <td>{{ data?.EMAIL }}</td>
         <td>{{ data?.ACTIVE }}</td>
       </tr>
+      <p-overlayPanel #setting [styleClass]="'actionOverlay'">
+        <ng-template pTemplate="content">
+          <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center"
+            (click)="showData(data.Id)">
+            <i class="fa-solid fa-file mr-2"></i> View
+          </div>
+          <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center"
+            (click)="editData(data.Id)">
+            <i class="fa-solid fa-pen-to-square mr-2"></i> Edit
+          </div>
+          <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center"
+            (click)="deleteData(data.Id)">
+            <i class="fa-solid  fa-trash mr-2"></i> Delete
+          </div>
+        </ng-template>
+      </p-overlayPanel>
     </ng-template>
     <ng-template pTemplate="emptymessage">
       <tr>

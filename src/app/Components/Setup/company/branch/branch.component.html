@@ -63,41 +63,42 @@
     </ng-template>
     <ng-template pTemplate="body" let-data>
       <tr>
-        <td class="actionMenu flex justify-content-center align-items-center">
-          <p-overlayPanel #setting [styleClass]="'actionOverlay'">
-            <ng-template pTemplate="content">
-              <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center"
-                (click)="showData(data.Id)">
-                <i class="fa-solid fa-file mr-2"></i> View
-              </div>
-              <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center"
-                (click)="editData(data.Id)">
-                <i class="fa-solid fa-pen-to-square mr-2"></i> Edit
-              </div>
-              <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center"
-                (click)="deleteData(data.Id)">
-                <i class="fa-solid  fa-trash mr-2"></i> Delete
-              </div>
-            </ng-template>
-          </p-overlayPanel>
-          <div pRipple class="action w-2rem flex justify-content-center align-items-center"
-            (click)="setting.toggle($event)">
-            <i class="fa-solid fa-gear"></i>
+        <td>
+          <div class="actionMenu">
+            <i class="fa-solid fa-gear" (click)="setting.toggle($event)"></i>
           </div>
         </td>
-        <td style="padding: 5px;">{{ data?.SOLID }}</td>
-        <td style="padding: 5px;">{{ data?.NAME }}</td>
-        <td style="padding: 5px;">{{ data?.DISTRICT }}</td>
-        <td style="padding: 5px;">{{ data?.ADDRESS }}</td>
-        <td style="padding: 5px;">{{ data?.EMAIL }}</td>
-        <td style="padding: 5px;">{{ data?.CUTOFF }}</td>
+        <td>{{ data?.SOLID }}</td>
+        <td>{{ data?.NAME }}</td>
+        <td>{{ data?.DISTRICT }}</td>
+        <td>{{ data?.ADDRESS }}</td>
+        <td>{{ data?.EMAIL }}</td>
+        <td>{{ data?.CUTOFF }}</td>
       </tr>
+      <p-overlayPanel #setting [styleClass]="'actionOverlay'">
+        <ng-template pTemplate="content">
+          <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center"
+            (click)="showData(data.Id)">
+            <i class="fa-solid fa-file mr-2"></i> View
+          </div>
+          <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center"
+            (click)="editData(data.Id)">
+            <i class="fa-solid fa-pen-to-square mr-2"></i> Edit
+          </div>
+          <div pRipple class="actionItem w-full h-2rem flex justify-content-start align-items-center"
+            (click)="deleteData(data.Id)">
+            <i class="fa-solid  fa-trash mr-2"></i> Delete
+          </div>
+        </ng-template>
+      </p-overlayPanel>
     </ng-template>
     <ng-template pTemplate="emptymessage">
       <tr>
         <td colspan="9" style="text-align: center">Sorry! No record found</td>
       </tr>
     </ng-template>
+
   </p-table>
+
 </div>
 <!-- <app-custom-loading></app-custom-loading> -->
