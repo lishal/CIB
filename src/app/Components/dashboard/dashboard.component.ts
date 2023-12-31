@@ -155,20 +155,11 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  // Right Panel
-  // displayRightPanel = false;
   dropdownNavBar: boolean = false;
 
   showDropdownNavbar() {
     this.dropdownNavBar = !this.dropdownNavBar;
   }
-  // showRightPanel() {
-  //   this.displayRightPanel = true;
-  // }
-
-  // hideRightPanel() {
-  //   this.displayRightPanel = false;
-  // }
   currentLeftPanel: string = '';
 
   items: MenuItem[] | undefined;

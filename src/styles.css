@@ -98,8 +98,9 @@
 }
 
 .leftSidePanel .leftPanelContainer .p-panelmenu .p-panelmenu-header>a:hover {
-  padding: 14px 8px;
-  background-color: var(--cyanOnHover) !important;
+  /* padding: 14px 8px;
+  background-color: var(--cyanOnHover) !important; */
+  background-color: transparent;
   color: var(--white) !important;
   transition: 0.2s ease-in-out;
   opacity: 1;
