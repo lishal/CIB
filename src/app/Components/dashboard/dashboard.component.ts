@@ -148,6 +148,11 @@ export class DashboardComponent implements OnInit {
 
   toggleSidebar() {
     this.isSidebarClosed = !this.isSidebarClosed;
+    if (this.isSidebarClosed) {
+      this.menuItems = this.closedItems;
+    } else {
+      this.menuItems = this.items;
+    }
   }
 
   // Right Panel
@@ -167,6 +172,31 @@ export class DashboardComponent implements OnInit {
   currentLeftPanel: string = '';
 
   items: MenuItem[] | undefined;
+  closedItems: any;
+  isHovered = false;
+  menuItems: any;
+
+  handleMouseOver() {
+    if (!this.isSidebarClosed) {
+      return;
+    }
+    this.isHovered = true;
+    setTimeout(() => {
+      this.updateModel();
+    }, 100);
+  }
+  handleMouseLeave() {
+    if (!this.isSidebarClosed) {
+      return;
+    }
+    this.isHovered = false;
+    setTimeout(() => {
+      this.updateModel();
+    }, 100);
+  }
+  private updateModel() {
+    this.menuItems = this.isHovered ? this.items : this.closedItems;
+  }
 
   onClickNavDropdown(content: string) {
     this.currentLeftPanel = content;
@@ -509,5 +539,14 @@ export class DashboardComponent implements OnInit {
         title: 'Popup Message',
       },
     ];
+    if (this.isSidebarClosed) {
+      this.closedItems = this.items.map((items) => {
+        const { label, ...all } = items;
+        return all;
+      });
+      this.menuItems = this.closedItems;
+    } else {
+      this.menuItems = this.items;
+    }
   }
 }

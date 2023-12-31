@@ -60,64 +60,12 @@
 
     </div>
   </div>
-
-  <!-- <div class="profile">
-    <div pRipple class="userBtn border-circle w-2rem h-2rem flex" (click)="profileToggle()">
-      <i class="fa-solid fa-user"></i>
-    </div>
-    <p-overlay [(visible)]="profileOverlay" contentStyleClass="p-4 surface-overlay shadow-2 border-round">
-      <div class="userinfo">
-        <span class="text-2xl">Admin</span>
-        <span class="text-1xl">Admin@admin.com</span>
-      </div>
-      <div class="userSettings">
-        <p-button label="Change Password" styleClass="p-button-raised p-button-text"></p-button>
-        <p-button label="Sign Out" styleClass="p-button-raised p-button-text p-button-danger"></p-button>
-      </div>
-    </p-overlay>
-  </div>
-  <div class="notification">
-    <div pRipple class="notificationBtn border-circle w-2rem h-2rem flex" (click)="notificationToggle()">
-      <i class="fa-solid fa-bell"></i>
-    </div>
-    <p-overlay [(visible)]="notificationOverlay" contentStyleClass="p-4 surface-overlay shadow-2 border-round">
-      Notifications here!
-    </p-overlay>
-  </div>
-  <div class="search">
-    <div class="search-bar flex flex-row">
-      <input type="text" name="" placeholder="Search Here...." class="search_field" />
-      <button pRipple type="submit" class="fa-solid fa-search search_icon border-circle flex"></button>
-    </div>
-  </div> -->
-
-  <!-- <button class="rightSide_button" (click)="showRightPanel()">
-    <i class="fa-solid fa-ellipsis-v"></i>
-  </button> -->
 </div>
-<div class="leftSidePanel" [class.sidepanelCloseOuter]="isSidebarClosed">
-  <p-panelMenu class="leftPanelContainer" [model]="items" [class.sidepanelCloseInner]="isSidebarClosed"
-    [multiple]="false"></p-panelMenu>
+<div class="leftSidePanel" [class.sidepanelCloseOuter]="isSidebarClosed"
+  (mouseover)="isSidebarClosed && handleMouseOver()" (mouseout)="isSidebarClosed && handleMouseLeave()">
+  <p-panelMenu class="leftPanelContainer" [model]="menuItems" [class.sidepanelCloseInner]="isSidebarClosed"
+    [multiple]="true"></p-panelMenu>
 </div>
-<!-- <div class="rightSidePanel">
-  <p-sidebar [(visible)]="displayRightPanel" position="right">
-    <ng-template pTemplate="header"><span>contents</span></ng-template>
-    <div class="rightSide_panel-content">
-      <div class="rightpanel_content setup" (click)="onClickNavDropdown('Setup')">
-        <span class="content_icon fa-solid fa-wrench"> </span>
-        <span class="content_label flex"> Setup </span>
-      </div>
-
-      <div class="rightSide_panel-content">
-        <div class="rightpanel_content credit" (click)="onClickNavDropdown('Credit')">
-          <span class="content_icon fa-solid fa-chart-simple flex-row">
-          </span>
-          <span class="content_label"> Credit Reporting </span>
-        </div>
-      </div>
-    </div>
-  </p-sidebar>
-</div> -->
 <div class="navDropdownContainer">
   <p-sidebar [(visible)]="dropdownNavBar" position="top">
     <ng-template pTemplate="header">
